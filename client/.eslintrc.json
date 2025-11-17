@@ -1,0 +1,22 @@
+/*
+ * ========================================
+ * FILE: client/.eslintrc.json (WAJIB ADA)
+ * ========================================
+ */
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:prettier/recommended" // Ini mengaktifkan integrasi Prettier
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    // Memastikan Prettier berjalan sebagai aturan ESLint
+    "prettier/prettier": "error",
+    // Mengizinkan penggunaan 'any' (kita gunakan ini di controller/service)
+    "@typescript-eslint/no-explicit-any": "off", 
+    // Mengizinkan tag <img> (karena kita menggunakan Link/Button di Dashboard)
+    "@next/next/no-img-element": "off", 
+    // Mengizinkan penggunaan dependency yang tidak ada di array 'deps' (sering terjadi di Next.js)
+    "react-hooks/exhaustive-deps": "off" 
+  }
+}

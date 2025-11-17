@@ -1,0 +1,29 @@
+/*
+ * ========================================
+ * FILE: server/.eslintrc.json
+ * ========================================
+ */
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended" // Integrasi Prettier
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    // Matikan aturan yang tidak perlu di Node.js
+    "no-console": "off",
+    // Aturan yang memastikan penanganan error yang baik
+    "@typescript-eslint/no-explicit-any": "off", // Izinkan 'any' untuk kemudahan
+    "@typescript-eslint/explicit-module-boundary-types": "off", 
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }] // Abaikan variabel yang diawali '_'
+  }
+}

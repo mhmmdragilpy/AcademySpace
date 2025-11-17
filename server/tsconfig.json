@@ -1,0 +1,43 @@
+/*
+ * ========================================
+ * FILE: server/tsconfig.json (PERBAIKAN LENGKAP)
+ * ========================================
+ */
+{
+  "compilerOptions": {
+    /* Pilihan Proyek Dasar */
+    "target": "es2016", // Kompatibel dengan Node.js modern
+    "module": "commonjs", // Standar untuk Node.js/Express
+    "esModuleInterop": true, // Memudahkan import
+    "forceConsistentCasingInFileNames": true, // Mencegah bug di Linux/Mac
+    
+    /* Pilihan Pengecekan Ketat */
+    "strict": true, // Mengaktifkan semua pengecekan tipe
+    
+    /* Pilihan Modul */
+    "moduleResolution": "node", // Cara Node.js mencari modul
+
+    /* Pilihan Output */
+    "rootDir": "./src", // HANYA file di 'src' adalah kode sumber
+    "outDir": "./dist", // Hasil kompilasi JavaScript akan ditaruh di 'dist'
+
+    /* Lain-lain */
+    "skipLibCheck": true // Melewatkan pengecekan tipe file .d.ts
+  },
+  
+  /*
+   * INI BAGIAN PALING PENTING:
+   * Kita HANYA menyertakan file di dalam folder 'src'.
+   * Pastikan tidak ada path yang mengarah ke '../client'
+   */
+  "include": [
+    "src/**/*"
+  ],
+  
+  /*
+   * Folder yang diabaikan oleh compiler
+   */
+  "exclude": [
+    "node_modules"
+  ]
+}

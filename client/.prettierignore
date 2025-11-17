@@ -1,0 +1,11 @@
+# ========================================
+# FILE: client/.prettierignore
+# ========================================
+
+# Abaikan folder build dan cache
+/node_modules
+/.next
+
+# Abaikan file YAML
+*.yaml
+*.yml
