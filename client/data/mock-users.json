@@ -1,0 +1,352 @@
+[
+    {
+        "id": 1,
+        "name": "Arif Wibowo",
+        "avatar": "https://i.pravatar.cc/150?u=arif",
+        "bio": "Bookworm and tech enthusiast from Bandung. Loves exploring new libraries.",
+        "role": "Student"
+    },
+    {
+        "id": 2,
+        "name": "Budi Santoso",
+        "avatar": "https://i.pravatar.cc/150?u=budi",
+        "bio": "Badminton player and Engineering student. Always looking for a court to play.",
+        "role": "Student"
+    },
+    {
+        "id": 3,
+        "name": "Citra Lestari",
+        "avatar": "https://i.pravatar.cc/150?u=citra",
+        "bio": "Design major who needs quiet spaces for creativity. Coffee addict.",
+        "role": "Student"
+    },
+    {
+        "id": 4,
+        "name": "Dewi Putri",
+        "avatar": "https://i.pravatar.cc/150?u=dewi",
+        "bio": "Organizer of the campus debate club. Frequently books meeting rooms.",
+        "role": "Student"
+    },
+    {
+        "id": 5,
+        "name": "Eko Saputra",
+        "avatar": "https://i.pravatar.cc/150?u=eko",
+        "bio": "PhD candidate in Computer Science. Needs focus and reliable wifi.",
+        "role": "Researcher"
+    },
+    {
+        "id": 6,
+        "name": "Fajar Nugraha",
+        "avatar": "https://i.pravatar.cc/150?u=fajar",
+        "bio": "Music club president. Always checking availability for the auditorium.",
+        "role": "Student"
+    },
+    {
+        "id": 7,
+        "name": "Gita Permata",
+        "avatar": "https://i.pravatar.cc/150?u=gita",
+        "bio": "Loves organizing events and seminars. Master of logistics.",
+        "role": "Student"
+    },
+    {
+        "id": 8,
+        "name": "Hendra Wijaya",
+        "avatar": "https://i.pravatar.cc/150?u=hendra",
+        "bio": "Sports enthusiast. Captain of the basketball team.",
+        "role": "Student"
+    },
+    {
+        "id": 9,
+        "name": "Indah Sari",
+        "avatar": "https://i.pravatar.cc/150?u=indah",
+        "bio": "Literature student. Enjoys reading in the green lounge.",
+        "role": "Student"
+    },
+    {
+        "id": 10,
+        "name": "Joko Susilo",
+        "avatar": "https://i.pravatar.cc/150?u=joko",
+        "bio": "Robotics team lead. Needs the workshop room 24/7.",
+        "role": "Student"
+    },
+    {
+        "id": 11,
+        "name": "Kartika Dewi",
+        "avatar": "https://i.pravatar.cc/150?u=kartika",
+        "bio": "Architecture student. Appreciates well-designed spaces.",
+        "role": "Student"
+    },
+    {
+        "id": 12,
+        "name": "Lukman Hakim",
+        "avatar": "https://i.pravatar.cc/150?u=lukman",
+        "bio": "Physics major. Looking for labs with specialized equipment.",
+        "role": "Researcher"
+    },
+    {
+        "id": 13,
+        "name": "Maya Anggraini",
+        "avatar": "https://i.pravatar.cc/150?u=maya",
+        "bio": "Social media manager for the student council. Always online.",
+        "role": "Student"
+    },
+    {
+        "id": 14,
+        "name": "Nanda Pratama",
+        "avatar": "https://i.pravatar.cc/150?u=nanda",
+        "bio": "Avid gamer and developer. Part of the game dev community.",
+        "role": "Student"
+    },
+    {
+        "id": 15,
+        "name": "Oki Setiawan",
+        "avatar": "https://i.pravatar.cc/150?u=oki",
+        "bio": "Photographer. Scouting locations for campus photoshoots.",
+        "role": "Student"
+    },
+    {
+        "id": 16,
+        "name": "Putri Rahmawati",
+        "avatar": "https://i.pravatar.cc/150?u=putri",
+        "bio": "Biology student. Fascinated by the campus greenhouse.",
+        "role": "Student"
+    },
+    {
+        "id": 17,
+        "name": "Qori Ahmad",
+        "avatar": "https://i.pravatar.cc/150?u=qori",
+        "bio": "History buff. Studying the archives in the library.",
+        "role": "Researcher"
+    },
+    {
+        "id": 18,
+        "name": "Rina Kusuma",
+        "avatar": "https://i.pravatar.cc/150?u=rina",
+        "bio": "Chef in training. Frequently books the culinary lab.",
+        "role": "Student"
+    },
+    {
+        "id": 19,
+        "name": "Surya Darma",
+        "avatar": "https://i.pravatar.cc/150?u=surya",
+        "bio": "Lecturer in Economics. Needs seminar rooms for guest lectures.",
+        "role": "Faculty"
+    },
+    {
+        "id": 20,
+        "name": "Tia Agustina",
+        "avatar": "https://i.pravatar.cc/150?u=tia",
+        "bio": "Dance troupe leader. Needs the studio with mirrors.",
+        "role": "Student"
+    },
+    {
+        "id": 21,
+        "name": "Umar Faruq",
+        "avatar": "https://i.pravatar.cc/150?u=umar",
+        "bio": "International relations student. Organizing Model UN.",
+        "role": "Student"
+    },
+    {
+        "id": 22,
+        "name": "Vina Melati",
+        "avatar": "https://i.pravatar.cc/150?u=vina",
+        "bio": "Eco-warrior. Managing the campus recycling program.",
+        "role": "Student"
+    },
+    {
+        "id": 23,
+        "name": "Wahyu Hidayat",
+        "avatar": "https://i.pravatar.cc/150?u=wahyu",
+        "bio": "Tech setup wizard. Helps maintain AV equipment in halls.",
+        "role": "Staff"
+    },
+    {
+        "id": 24,
+        "name": "Xena Warrior",
+        "avatar": "https://i.pravatar.cc/150?u=xena",
+        "bio": "Just kidding, name is Xena. Fencing champion.",
+        "role": "Student"
+    },
+    {
+        "id": 25,
+        "name": "Yudi Pratama",
+        "avatar": "https://i.pravatar.cc/150?u=yudi",
+        "bio": "Film student. Booking rooms for scene rehearsals.",
+        "role": "Student"
+    },
+    {
+        "id": 26,
+        "name": "Zara Zulaikha",
+        "avatar": "https://i.pravatar.cc/150?u=zara",
+        "bio": "Fashion design student. Preparing for the grad show.",
+        "role": "Student"
+    },
+    {
+        "id": 27,
+        "name": "Agus Salim",
+        "avatar": "https://i.pravatar.cc/150?u=agus",
+        "bio": "Chemistry lab assistant. Always ensuring safety first.",
+        "role": "Staff"
+    },
+    {
+        "id": 28,
+        "name": "Bella Swan",
+        "avatar": "https://i.pravatar.cc/150?u=bella",
+        "bio": "Exchange student. Exploring every corner of the campus.",
+        "role": "Student"
+    },
+    {
+        "id": 29,
+        "name": "Candra Wijaya",
+        "avatar": "https://i.pravatar.cc/150?u=candra",
+        "bio": "Badminton pro. Teaching beginners on weekends.",
+        "role": "Student"
+    },
+    {
+        "id": 30,
+        "name": "Dian Sastro",
+        "avatar": "https://i.pravatar.cc/150?u=dian",
+        "bio": "Theater enthusiast. Looking for drama practice spots.",
+        "role": "Student"
+    },
+    {
+        "id": 31,
+        "name": "Edi Suhardi",
+        "avatar": "https://i.pravatar.cc/150?u=edi",
+        "bio": "Campus security head. Ensures all bookings are authorized.",
+        "role": "Staff"
+    },
+    {
+        "id": 32,
+        "name": "Fani Rose",
+        "avatar": "https://i.pravatar.cc/150?u=fani",
+        "bio": "Journalism major. Interviewing students in the cafeteria.",
+        "role": "Student"
+    },
+    {
+        "id": 33,
+        "name": "Gilang Dirga",
+        "avatar": "https://i.pravatar.cc/150?u=gilang",
+        "bio": "Stand-up comedian. Testing jokes in the student center.",
+        "role": "Student"
+    },
+    {
+        "id": 34,
+        "name": "Hana Pertiwi",
+        "avatar": "https://i.pravatar.cc/150?u=hana",
+        "bio": "Landscape architecture. Studying the campus gardens.",
+        "role": "Student"
+    },
+    {
+        "id": 35,
+        "name": "Ivan Gunawan",
+        "avatar": "https://i.pravatar.cc/150?u=ivan",
+        "bio": "Fashionista. Organizing the annual fashion week.",
+        "role": "Student"
+    },
+    {
+        "id": 36,
+        "name": "Jessica Mila",
+        "avatar": "https://i.pravatar.cc/150?u=jessica",
+        "bio": "Part-time model and student. Balancing work and study.",
+        "role": "Student"
+    },
+    {
+        "id": 37,
+        "name": "Kevin Julio",
+        "avatar": "https://i.pravatar.cc/150?u=kevin",
+        "bio": "Motorcycle enthusiast. Founding the campus riding club.",
+        "role": "Student"
+    },
+    {
+        "id": 38,
+        "name": "Lesti Kejora",
+        "avatar": "https://i.pravatar.cc/150?u=lesti",
+        "bio": "Singer. Practicing vocals in the soundproof rooms.",
+        "role": "Student"
+    },
+    {
+        "id": 39,
+        "name": "Maudy Ayunda",
+        "avatar": "https://i.pravatar.cc/150?u=maudy",
+        "bio": "The overachiever. Booking library rooms for study groups.",
+        "role": "Student"
+    },
+    {
+        "id": 40,
+        "name": "Nino Fernandez",
+        "avatar": "https://i.pravatar.cc/150?u=nino",
+        "bio": "Culinary arts. Experimenting with new recipes.",
+        "role": "Student"
+    },
+    {
+        "id": 41,
+        "name": "Opick Tombo",
+        "avatar": "https://i.pravatar.cc/150?u=opick",
+        "bio": "Spiritual guidance counselor. Available for chats.",
+        "role": "Staff"
+    },
+    {
+        "id": 42,
+        "name": "Prilly Latuconsina",
+        "avatar": "https://i.pravatar.cc/150?u=prilly",
+        "bio": "Entrepreneurship student. Running a startup from campus.",
+        "role": "Student"
+    },
+    {
+        "id": 43,
+        "name": "Raditya Dika",
+        "avatar": "https://i.pravatar.cc/150?u=raditya",
+        "bio": "Creative writing major. Writing scripts in the coffee shop.",
+        "role": "Student"
+    },
+    {
+        "id": 44,
+        "name": "Sule Sutisna",
+        "avatar": "https://i.pravatar.cc/150?u=sule",
+        "bio": "Performing arts. Master of improv.",
+        "role": "Student"
+    },
+    {
+        "id": 45,
+        "name": "Tulus Hati",
+        "avatar": "https://i.pravatar.cc/150?u=tulus",
+        "bio": "Architecture. Sketching buildings around campus.",
+        "role": "Student"
+    },
+    {
+        "id": 46,
+        "name": "Uya Kuya",
+        "avatar": "https://i.pravatar.cc/150?u=uya",
+        "bio": "Psychology major. Interested in human behavior.",
+        "role": "Student"
+    },
+    {
+        "id": 47,
+        "name": "Vicky Prasetyo",
+        "avatar": "https://i.pravatar.cc/150?u=vicky",
+        "bio": "Debate club member. Known for complex vocabulary.",
+        "role": "Student"
+    },
+    {
+        "id": 48,
+        "name": "Wendi Cagur",
+        "avatar": "https://i.pravatar.cc/150?u=wendi",
+        "bio": "Visual arts. Creating murals for the student center.",
+        "role": "Student"
+    },
+    {
+        "id": 49,
+        "name": "Yoga Pratama",
+        "avatar": "https://i.pravatar.cc/150?u=yoga",
+        "bio": "Yoga instructor. Leading morning sessions on the lawn.",
+        "role": "Staff"
+    },
+    {
+        "id": 50,
+        "name": "Zaskia Gotik",
+        "avatar": "https://i.pravatar.cc/150?u=zaskia",
+        "bio": "Dance major. Specializing in traditional dance.",
+        "role": "Student"
+    }
+]

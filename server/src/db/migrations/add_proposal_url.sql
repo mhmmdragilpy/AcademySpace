@@ -1,0 +1,1 @@
+ALTER TABLE reservations ADD COLUMN proposal_url VARCHAR(255) DEFAULT NULL;
