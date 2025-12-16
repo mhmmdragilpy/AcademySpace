@@ -4,3 +4,8 @@
 2025-12-16 15:29:32:2932 [32minfo[39m: [32m✅ Connected to Database[39m
 2025-12-16 15:29:34:2934 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
 2025-12-16 15:29:34:2934 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-16 15:32:23:3223 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-16 15:32:23:3223 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-16 15:40:36:4036 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-16 15:42:53:4253 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-16 15:43:23:4323 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
