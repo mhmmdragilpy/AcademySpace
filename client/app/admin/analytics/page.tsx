@@ -3,35 +3,38 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import api from "@/lib/api";
-import { Bar, Pie, Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-} from "chart.js";
+import { LazyBar, LazyPie, LazyLine } from "@/components/LazyCharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Calendar, CheckCircle, Clock, FileText } from "lucide-react";
 
-// Register Chart.js components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement
-);
+// Types
+interface Stats {
+  totalReservations: number;
+  approvedReservations: number;
+  pendingReservations: number;
+  rejectedReservations: number;
+  recentReservations: number;
+  topFacilities: { facility_name: string; reservation_count: number }[];
+}
+
+interface Utilization {
+  dailyUtilization: { date: string; reservation_count: number }[];
+  facilitiesUtilization: {
+    id: number;
+    facility_name: string;
+    facility_type: string;
+    building: string;
+    capacity: number;
+    total_reservations: number;
+    avg_participants: number;
+  }[];
+}
+
+interface Activity {
+  weeklyActivity: { reservation_count: number }[];
+  activeUsers: { name: string; username: string; department: string; reservation_count: number }[];
+}
 
 export default function AnalyticsPage() {
   const { data: session } = useSession();
@@ -40,7 +43,7 @@ export default function AnalyticsPage() {
     queryKey: ['analytics-stats'],
     queryFn: async () => {
       const res = await api.get("/reservations/stats");
-      return res as any;
+      return res.data as Stats;
     },
     enabled: !!session?.accessToken,
   });
@@ -49,7 +52,7 @@ export default function AnalyticsPage() {
     queryKey: ['analytics-utilization'],
     queryFn: async () => {
       const res = await api.get("/reservations/utilization");
-      return res as any;
+      return res.data as Utilization;
     },
     enabled: !!session?.accessToken,
   });
@@ -58,7 +61,7 @@ export default function AnalyticsPage() {
     queryKey: ['analytics-activity'],
     queryFn: async () => {
       const res = await api.get("/reservations/user-activity");
-      return res as any;
+      return res.data as Activity;
     },
     enabled: !!session?.accessToken,
   });
@@ -92,11 +95,11 @@ export default function AnalyticsPage() {
   } : null;
 
   const topFacilitiesData = stats?.topFacilities ? {
-    labels: stats.topFacilities.map((f: any) => f.facility_name),
+    labels: stats.topFacilities.map((f) => f.facility_name),
     datasets: [
       {
         label: 'Reservation Count',
-        data: stats.topFacilities.map((f: any) => f.reservation_count),
+        data: stats.topFacilities.map((f) => f.reservation_count),
         backgroundColor: 'rgba(54, 162, 235, 0.6)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1,
@@ -105,11 +108,11 @@ export default function AnalyticsPage() {
   } : null;
 
   const dailyUtilizationData = utilization?.dailyUtilization ? {
-    labels: utilization.dailyUtilization.map((d: any) => d.date),
+    labels: utilization.dailyUtilization.map((d) => d.date),
     datasets: [
       {
         label: 'Reservations per Day',
-        data: utilization.dailyUtilization.map((d: any) => d.reservation_count),
+        data: utilization.dailyUtilization.map((d) => d.reservation_count),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
@@ -122,7 +125,7 @@ export default function AnalyticsPage() {
     datasets: [
       {
         label: 'Reservations by Day of Week',
-        data: activity.weeklyActivity.map((d: any) => d.reservation_count),
+        data: activity.weeklyActivity.map((d) => d.reservation_count),
         backgroundColor: 'rgba(153, 102, 255, 0.6)',
         borderColor: 'rgba(153, 102, 255, 1)',
         borderWidth: 1,
@@ -209,7 +212,7 @@ export default function AnalyticsPage() {
               </div>
             ) : (
               <div className="h-[300px] w-full">
-                <Pie
+                <LazyPie
                   data={reservationStatusData}
                   options={{ responsive: true, maintainAspectRatio: false }}
                 />
@@ -229,7 +232,7 @@ export default function AnalyticsPage() {
               </div>
             ) : (
               <div className="h-[300px] w-full">
-                <Bar
+                <LazyBar
                   data={topFacilitiesData}
                   options={{ responsive: true, maintainAspectRatio: false }}
                 />
@@ -249,7 +252,7 @@ export default function AnalyticsPage() {
               </div>
             ) : (
               <div className="h-[300px] w-full">
-                <Line
+                <LazyLine
                   data={dailyUtilizationData}
                   options={{ responsive: true, maintainAspectRatio: false }}
                 />
@@ -269,7 +272,7 @@ export default function AnalyticsPage() {
               </div>
             ) : (
               <div className="h-[300px] w-full">
-                <Bar
+                <LazyBar
                   data={weeklyActivityData}
                   options={{ responsive: true, maintainAspectRatio: false }}
                 />
@@ -305,7 +308,7 @@ export default function AnalyticsPage() {
                   </tr>
                 </thead>
                 <tbody className="bg-background divide-y divide-border">
-                  {utilization?.facilitiesUtilization?.map((facility: any) => (
+                  {utilization?.facilitiesUtilization?.map((facility) => (
                     <tr key={facility.id} className="hover:bg-muted/50">
                       <td className="px-6 py-4 whitespace-nowrap font-medium">{facility.facility_name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-muted-foreground">{facility.facility_type}</td>
@@ -347,7 +350,7 @@ export default function AnalyticsPage() {
                   </tr>
                 </thead>
                 <tbody className="bg-background divide-y divide-border">
-                  {activity?.activeUsers?.map((user: any, index: number) => (
+                  {activity?.activeUsers?.map((user, index: number) => (
                     <tr key={user.username || index} className="hover:bg-muted/50">
                       <td className="px-6 py-4 whitespace-nowrap font-medium">{user.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-muted-foreground">@{user.username}</td>

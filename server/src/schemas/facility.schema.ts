@@ -3,12 +3,20 @@ import { z } from 'zod';
 export const createFacilitySchema = z.object({
     body: z.object({
         name: z.string().min(2),
-        type: z.string(),
-        building: z.string(),
-        roomNumber: z.string(),
-        capacity: z.number().int().positive(),
-        description: z.string().optional(),
+        // Support both ID-based (new) and string-based (legacy) inputs
+        type_id: z.number().int().positive().optional(),
+        type: z.string().optional(),
+        building_id: z.number().int().positive().nullable().optional(),
+        building: z.string().optional(),
+        room_number: z.string().nullable().optional(),
+        roomNumber: z.string().optional(),
+        capacity: z.number().int().positive().nullable().optional(),
+        floor: z.number().int().nullable().optional(),
+        description: z.string().nullable().optional(),
+        layout_description: z.string().nullable().optional(),
+        photo_url: z.string().nullable().optional(),
         imageUrl: z.string().optional(),
+        is_active: z.boolean().optional(),
     }),
 });
 
@@ -18,12 +26,20 @@ export const updateFacilitySchema = z.object({
     }),
     body: z.object({
         name: z.string().min(2).optional(),
+        // Support both ID-based (new) and string-based (legacy) inputs
+        type_id: z.number().int().positive().optional(),
         type: z.string().optional(),
+        building_id: z.number().int().positive().nullable().optional(),
         building: z.string().optional(),
+        room_number: z.string().nullable().optional(),
         roomNumber: z.string().optional(),
-        capacity: z.number().int().positive().optional(),
-        description: z.string().optional(),
+        capacity: z.number().int().positive().nullable().optional(),
+        floor: z.number().int().nullable().optional(),
+        description: z.string().nullable().optional(),
+        layout_description: z.string().nullable().optional(),
+        photo_url: z.string().nullable().optional(),
         imageUrl: z.string().optional(),
+        is_active: z.boolean().optional(),
     }),
 });
 

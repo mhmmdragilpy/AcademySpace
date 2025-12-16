@@ -27,7 +27,7 @@ export default function EditUserPage() {
     const userId = params.id as string;
 
     const [formData, setFormData] = useState({
-        email: "",
+        username: "",
         full_name: "",
         role: "user",
         profile_picture_url: "",
@@ -47,9 +47,9 @@ export default function EditUserPage() {
     useEffect(() => {
         if (user) {
             setFormData({
-                email: user.email,
-                full_name: user.full_name,
-                role: user.role,
+                username: user.username || "",
+                full_name: user.full_name || "",
+                role: user.role || "user",
                 profile_picture_url: user.profile_picture_url || "",
                 password: "",
             });
@@ -75,7 +75,7 @@ export default function EditUserPage() {
 
         // Prepare data - only include password if it's not empty
         const submitData: any = {
-            email: formData.email,
+            username: formData.username,
             full_name: formData.full_name,
             role: formData.role,
             profile_picture_url: formData.profile_picture_url || null,
@@ -142,17 +142,19 @@ export default function EditUserPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="email">
-                                Email <span className="text-destructive">*</span>
+                            <Label htmlFor="username">
+                                Username <span className="text-destructive">*</span>
                             </Label>
                             <Input
-                                id="email"
-                                type="email"
+                                id="username"
                                 required
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                placeholder="e.g., john.doe@example.com"
+                                value={formData.username}
+                                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                                placeholder="e.g., john_doe"
                             />
+                            <p className="text-xs text-muted-foreground">
+                                Only letters, numbers, and underscores (3-30 characters)
+                            </p>
                         </div>
 
                         <div className="space-y-2">
@@ -175,7 +177,6 @@ export default function EditUserPage() {
                                 Role <span className="text-destructive">*</span>
                             </Label>
                             <Select
-                                required
                                 value={formData.role}
                                 onValueChange={(value) => setFormData({ ...formData, role: value })}
                             >
@@ -185,7 +186,6 @@ export default function EditUserPage() {
                                 <SelectContent>
                                     <SelectItem value="user">User</SelectItem>
                                     <SelectItem value="admin">Admin</SelectItem>
-                                    <SelectItem value="admin_verificator">Admin Verificator</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>

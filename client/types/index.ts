@@ -4,10 +4,11 @@ export type AuditChange = 'CREATE' | 'UPDATE' | 'DELETE' | 'CANCEL';
 
 export interface User {
     user_id: number;
-    email: string;
+    username: string;
     full_name: string;
     role: UserRole;
     profile_picture_url?: string | null;
+    is_suspended?: boolean;
     created_at: string; // Dates are strings in JSON
     last_login_at?: string | null;
 }
@@ -40,6 +41,8 @@ export interface Facility {
     layout_description?: string | null;
     photo_url?: string | null;
     is_active: boolean;
+    maintenance_until?: string | null;
+    maintenance_reason?: string | null;
     created_at: string;
     updated_at: string;
     // Computed/Joined fields often present in responses

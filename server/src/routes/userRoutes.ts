@@ -10,7 +10,9 @@ import {
     updateProfileAvatar,
     deleteProfileAvatar,
     getMyProfile,
-    updateMyProfile
+    updateMyProfile,
+    suspendUser,
+    unsuspendUser
 } from "../controllers/userController.js";
 import { authenticateToken, authorizeAdmin } from "../middlewares/authMiddleware.js";
 import { upload } from "../middlewares/uploadMiddleware.js";
@@ -33,5 +35,7 @@ router.put("/:id", authenticateToken, authorizeAdmin, validate(updateUserSchema)
 router.delete("/:id", authenticateToken, authorizeAdmin, validate(userIdSchema), deleteUser);
 router.put("/:id/promote", authenticateToken, authorizeAdmin, validate(userIdSchema), promoteToAdmin);
 router.put("/:id/demote", authenticateToken, authorizeAdmin, validate(userIdSchema), demoteToUser);
+router.put("/:id/suspend", authenticateToken, authorizeAdmin, validate(userIdSchema), suspendUser);
+router.put("/:id/unsuspend", authenticateToken, authorizeAdmin, validate(userIdSchema), unsuspendUser);
 
 export default router;

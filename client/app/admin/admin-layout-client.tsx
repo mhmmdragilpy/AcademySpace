@@ -73,7 +73,7 @@ export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
             <div className="h-16 flex items-center px-6 border-b border-gray-200">
                 <span className="text-xl font-bold text-gray-900 flex items-center gap-2">
                     <Building className="h-6 w-6 text-primary" />
-                    Academy Admin
+                    Admin Panel
                 </span>
             </div>
             <div className="flex-1 overflow-y-auto py-4">

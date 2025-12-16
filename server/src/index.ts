@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
-import { query } from "./db/index.js";
+import { query, pool } from "./db/index.js";
 import apiRoutes from "./routes/index.js";
 import { logger } from "./utils/logger.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
@@ -11,8 +11,13 @@ import { apiLimiter } from "./middlewares/rateLimiter.js";
 
 dotenv.config();
 
+import { env } from "./config/env.js";
+
 const app = express();
-const port = process.env.PORT || 5001;
+const port = env.PORT;
+
+// Trust Proxy for Heroku/Docker/Nginx
+app.enable('trust proxy');
 
 app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
@@ -25,24 +30,16 @@ app.use(
             scriptSrc: ["'self'", "'unsafe-inline'"],
             styleSrc: ["'self'", "'unsafe-inline'"],
             imgSrc: ["'self'", "data:", "https:", "http:", "blob:"],
-            connectSrc: ["'self'", "http://localhost:3000", "http://localhost:3001", "http://localhost:5000"],
-            frameSrc: ["'self'", "http://localhost:5000", "http://localhost:3000", "http://localhost:3001", "blob:"],
-            frameAncestors: ["'self'", "http://localhost:3000", "http://localhost:3001"],
+            connectSrc: ["'self'", env.CLIENT_URL, "http://localhost:3000"],
+            frameSrc: ["'self'", env.CLIENT_URL, "blob:"],
+            frameAncestors: ["'self'", env.CLIENT_URL],
         },
     })
 );
 
 // Allow multiple frontend origins for development
-const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
-        return callback(null, true); // Allow all for development
-    },
+    origin: env.CORS_ORIGIN,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]

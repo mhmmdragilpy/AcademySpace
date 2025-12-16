@@ -162,6 +162,18 @@ export default function ProfilePage() {
 
             if (field === "fullName") {
                 updatePayload.full_name = tempValue;
+            } else if (field === "username") {
+                if (tempValue.length < 3 || tempValue.length > 30) {
+                    toast.error("Username harus 3-30 karakter", { id: toastId });
+                    setIsUploading(false);
+                    return;
+                }
+                if (!/^[a-z0-9_]+$/.test(tempValue)) {
+                    toast.error("Username hanya boleh huruf kecil, angka, dan underscore", { id: toastId });
+                    setIsUploading(false);
+                    return;
+                }
+                updatePayload.username = tempValue;
             } else if (field === "password") {
                 if (tempValue.length < 6) {
                     toast.error("Password must be at least 6 characters", { id: toastId });
@@ -177,6 +189,8 @@ export default function ProfilePage() {
             if (field === "fullName") {
                 updatedData.fullName = updatedUser.full_name;
                 await update({ user: { name: updatedUser.full_name } });
+            } else if (field === "username") {
+                updatedData.username = updatedUser.username;
             } else if (field === "password") {
                 updatedData.password = "";
             }
@@ -349,16 +363,47 @@ export default function ProfilePage() {
                             )}
                         </div>
 
-                        {/* Username - Read Only */}
+                        {/* Username - Editable */}
                         <div className="space-y-2">
-                            <Label className="flex items-center gap-2 text-sm font-medium">
+                            <Label htmlFor="username" className="flex items-center gap-2 text-sm font-medium">
                                 <AtSign size={16} className="text-gray-500" />
                                 Username
                             </Label>
-                            <div className="px-4 py-3 bg-gray-100 rounded-lg border border-gray-200">
-                                <span className="text-gray-700 font-medium">@{userData.username}</span>
-                                <span className="ml-2 text-xs text-gray-500">(Cannot be changed)</span>
-                            </div>
+                            {editingField === "username" ? (
+                                <div className="flex gap-2">
+                                    <Input
+                                        id="username"
+                                        value={tempValue}
+                                        onChange={(e) => setTempValue(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") handleSave("username");
+                                            if (e.key === "Escape") handleCancel();
+                                        }}
+                                        className="flex-1"
+                                        autoFocus
+                                        placeholder="3-30 karakter, huruf, angka, underscore"
+                                    />
+                                    <Button onClick={() => handleSave("username")} size="icon" className="bg-green-600 hover:bg-green-700">
+                                        <Check size={18} />
+                                    </Button>
+                                    <Button onClick={handleCancel} size="icon" variant="outline">
+                                        <X size={18} />
+                                    </Button>
+                                </div>
+                            ) : (
+                                <div className="flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg border hover:border-gray-300 transition-colors">
+                                    <span className="text-gray-900 font-medium">@{userData.username}</span>
+                                    <Button
+                                        onClick={() => handleEdit("username", userData.username)}
+                                        variant="ghost"
+                                        size="sm"
+                                        className="text-gray-600 hover:text-primary"
+                                    >
+                                        <Pencil size={16} />
+                                    </Button>
+                                </div>
+                            )}
+                            <p className="text-xs text-gray-500">Username harus 3-30 karakter, hanya huruf, angka, dan underscore (_)</p>
                         </div>
 
                         {/* Role - Read Only */}
