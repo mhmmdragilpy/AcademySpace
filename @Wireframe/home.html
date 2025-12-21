@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Home</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center">
+            <div class="logo">ACADEMY SPACE</div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="check-availability.html">Check Availability</a></li>
+                <li><a href="guide.html">Guidelines</a></li>
+                <!-- Authenticated State could be toggled here -->
+                <li><a href="login.html" class="btn">Login</a></li>
+                <li><a href="register.html" class="btn">Register</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="box-gray flex flex-col items-center" style="padding: 60px 20px; text-align: center;">
+            <div class="placeholder-img" style="width: 100%; height: 200px; margin-bottom: 20px;">
+                HERO BACKGROUND IMAGE PLACEHOLDER
+            </div>
+            <h1>Empowering Campus Activities</h1>
+            <p>Simple, fast, and transparent facility booking system.</p>
+
+            <!-- Quick Search Card -->
+            <div class="box" style="width: 80%; background: white;">
+                <h3>Quick Search</h3>
+                <div class="grid" style="grid-template-columns: 1fr 1fr 1fr auto;">
+                    <div>
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <label>Time</label>
+                        <input type="time">
+                    </div>
+                    <div>
+                        <label>Facility Type</label>
+                        <select>
+                            <option>All Types</option>
+                            <option>Room</option>
+                            <option>Auditorium</option>
+                            <option>Sports Hall</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: end;">
+                        <button style="width: 100%;">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Features/Process Section -->
+        <section style="margin-top: 60px;">
+            <h2 style="text-align: center; width: 100%; border: none;">How It Works</h2>
+            <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="box">
+                    <div class="placeholder-img" style="height: 100px; margin-bottom: 10px;">ICON</div>
+                    <h4>1. Check Schedule</h4>
+                    <p>See real-time availability of rooms and facilities.</p>
+                </div>
+                <div class="box">
+                    <div class="placeholder-img" style="height: 100px; margin-bottom: 10px;">ICON</div>
+                    <h4>2. Book Online</h4>
+                    <p>Login using SSO and fill out the reservation form.</p>
+                </div>
+                <div class="box">
+                    <div class="placeholder-img" style="height: 100px; margin-bottom: 10px;">ICON</div>
+                    <h4>3. Get Approval</h4>
+                    <p>Track your request status and receive notifications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Facilities -->
+        <section style="margin-top: 60px;">
+            <div class="flex justify-between items-center">
+                <h2>Popular Facilities</h2>
+                <a href="check-availability.html">View All &rarr;</a>
+            </div>
+            <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Card 1 -->
+                <div class="box">
+                    <div class="placeholder-img" style="height: 150px; margin-bottom: 10px;">IMAGE</div>
+                    <h3>Auditorium A</h3>
+                    <p>Capacity: 200 | AC, Projector</p>
+                    <button class="btn" style="width: 100%;">View Details</button>
+                </div>
+                <!-- Card 2 -->
+                <div class="box">
+                    <div class="placeholder-img" style="height: 150px; margin-bottom: 10px;">IMAGE</div>
+                    <h3>Lab TULT</h3>
+                    <p>Capacity: 40 | PC, Whiteboard</p>
+                    <button class="btn" style="width: 100%;">View Details</button>
+                </div>
+                <!-- Card 3 -->
+                <div class="box">
+                    <div class="placeholder-img" style="height: 150px; margin-bottom: 10px;">IMAGE</div>
+                    <h3>GKU Room 301</h3>
+                    <p>Capacity: 60 | AC, Sound System</p>
+                    <button class="btn" style="width: 100%;">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; text-align: left;">
+                <div>
+                    <h4>Academy Space</h4>
+                    <p>Campus Facility Reservation System</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="guide.html">Guidelines</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>logistik@telkomuniversity.ac.id</p>
+                </div>
+            </div>
+            <p style="margin-top: 40px;">&copy; 2024 AcademySpace. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

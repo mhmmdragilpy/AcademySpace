@@ -43,7 +43,7 @@ export default function AnalyticsPage() {
     queryKey: ['analytics-stats'],
     queryFn: async () => {
       const res = await api.get("/reservations/stats");
-      return res.data as Stats;
+      return res as unknown as Stats;
     },
     enabled: !!session?.accessToken,
   });
@@ -52,7 +52,7 @@ export default function AnalyticsPage() {
     queryKey: ['analytics-utilization'],
     queryFn: async () => {
       const res = await api.get("/reservations/utilization");
-      return res.data as Utilization;
+      return res as unknown as Utilization;
     },
     enabled: !!session?.accessToken,
   });
@@ -61,7 +61,7 @@ export default function AnalyticsPage() {
     queryKey: ['analytics-activity'],
     queryFn: async () => {
       const res = await api.get("/reservations/user-activity");
-      return res.data as Activity;
+      return res as unknown as Activity;
     },
     enabled: !!session?.accessToken,
   });

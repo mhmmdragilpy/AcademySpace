@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Facility Detail</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center">
+            <div class="logo">ACADEMY SPACE</div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="check-availability.html">Check Availability</a></li>
+                <li><a href="my-reservations.html">My Dashboard</a></li>
+            </ul>
+        </nav>
+
+        <a href="check-availability.html" style="margin-bottom: 20px; display: inline-block;">&larr; Back to Search</a>
+
+        <div class="grid" style="grid-template-columns: 2fr 1fr;">
+            <!-- Left Info -->
+            <main>
+                <div class="placeholder-img" style="width: 100%; height: 400px; margin-bottom: 20px;">
+                    LARGE FACILITY IMAGE
+                </div>
+
+                <h1>Auditorium A (TULT)</h1>
+                <p class="box-gray" style="display: inline-block; padding: 5px 10px; margin-bottom: 20px;">Category:
+                    Auditorium</p>
+
+                <section style="margin-bottom: 40px;">
+                    <h3>Description</h3>
+                    <p>
+                        A large auditorium suitable for seminars, guest lectures, and large gatherings.
+                        Equipped with modern sound systems and tiered seating for optimal viewing.
+                    </p>
+                </section>
+
+                <section style="margin-bottom: 40px;">
+                    <h3>Facilities & Amenities</h3>
+                    <ul class="grid"
+                        style="grid-template-columns: 1fr 1fr; list-style-type: square; padding-left: 20px;">
+                        <li>Central Air Conditioning</li>
+                        <li>High-lumen Projector (HDMI/VGA)</li>
+                        <li>Professional Sound System</li>
+                        <li>Wireless Microphone (2 units)</li>
+                        <li>Podium</li>
+                        <li>High-speed WiFi</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Usage Guidelines</h3>
+                    <div class="box-gray">
+                        <ul>
+                            <li>No food or drink allowed inside (except water).</li>
+                            <li>Clean up after use.</li>
+                            <li>Turn off AC and lights before leaving.</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Right Booking -->
+            <aside>
+                <div class="box" style="position: sticky; top: 20px;">
+                    <h3>Book This Facility</h3>
+
+                    <form>
+                        <!-- Date Selection -->
+                        <div style="margin-bottom: 20px;">
+                            <label>Date</label>
+                            <input type="date">
+                        </div>
+
+                        <!-- Time Selection (mockup) -->
+                        <div style="margin-bottom: 20px;">
+                            <label>Start Time</label>
+                            <select>
+                                <option>08:00</option>
+                                <option>09:00</option>
+                                <option>10:00</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <label>End Time</label>
+                            <select>
+                                <option>10:00</option>
+                                <option>11:00</option>
+                                <option>12:00</option>
+                            </select>
+                        </div>
+
+                        <!-- Conflict Warning (Conditional) -->
+                        <!-- <div class="box-gray" style="border-color: red; color: red; margin-bottom: 10px;">Warning: Time slot conflict!</div> -->
+
+                        <div style="margin-bottom: 20px;">
+                            <label>Purpose</label>
+                            <textarea rows="3" placeholder="Describe your event..."></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label>Number of Attendees</label>
+                            <input type="number" placeholder="200">
+                        </div>
+
+                        <div style="margin-bottom: 20px; border-top: 1px solid var(--border-color); padding-top: 10px;">
+                            <label style="display:block; font-weight: bold; margin-bottom: 10px;">Upload Supporting
+                                Documents</label>
+                            <input type="file">
+                            <small>Max 5MB (PDF/JPG)</small>
+                        </div>
+
+                        <button class="btn" style="width: 100%;">SUBMIT BOOKING REQUEST</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+
+</html>

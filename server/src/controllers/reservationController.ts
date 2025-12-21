@@ -41,9 +41,12 @@ export const updateReservationStatus = catchAsync(async (req: Request, res: Resp
 });
 
 export const updateReservation = catchAsync(async (req: Request, res: Response) => {
-    // Current requirement: "Update reservation not fully implemented for new schema" in old service
-    // We will keep it minimal or throw not implemented if complicated
-    throw new AppError("Update reservation details not implemented yet", 501);
+    const userId = (req as any).user.id;
+    const id = parseInt(req.params.id || "0");
+    const data = req.body;
+
+    const updated = await reservationService.update(id, userId, data);
+    sendSuccess(res, updated);
 });
 
 export const cancelReservation = catchAsync(async (req: Request, res: Response) => {
@@ -52,6 +55,21 @@ export const cancelReservation = catchAsync(async (req: Request, res: Response) 
 
     await reservationService.cancel(id, userId);
     sendSuccess(res, { message: "Reservation cancelled successfully" });
+});
+
+export const getReservationById = catchAsync(async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id || "0");
+    const userId = (req as any).user.id;
+
+    // Optional: Pass userId to service if you want to enforce ownership there
+    // For now, service.getById gets the details, we can check auth here or trust service
+    const reservation = await reservationService.getById(id, userId);
+
+    if (!reservation) {
+        throw new AppError("Reservation not found", 404);
+    }
+
+    sendSuccess(res, reservation);
 });
 
 export const getReservationStats = catchAsync(async (req: Request, res: Response) => {

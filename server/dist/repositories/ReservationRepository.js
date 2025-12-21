@@ -51,6 +51,8 @@ export class ReservationRepository extends BaseRepository {
                 u.username as user_username, 
                 f.name as facility_name,
                 f.name as facility_raw_name,
+                f.capacity as facility_capacity,
+                ri.facility_id,
                 rs.name as status,
                 r.purpose,
                 r.requester_id as user_id,
@@ -119,8 +121,65 @@ export class ReservationRepository extends BaseRepository {
         const result = await this.query(query, [userId]);
         return result.rows;
     }
-    async findConflicts(facilityId, start, end) {
-        const query = `
+    async updateWithDetails(id, data) {
+        const client = await this.db.connect();
+        try {
+            await client.query('BEGIN');
+            // 1. Update Reservation Header
+            if (data.purpose !== undefined || data.attendees !== undefined) {
+                const updates = [];
+                const values = [];
+                let idx = 1;
+                if (data.purpose !== undefined) {
+                    updates.push(`purpose = $${idx++}`);
+                    values.push(data.purpose);
+                }
+                if (data.attendees !== undefined) {
+                    updates.push(`attendees = $${idx++}`);
+                    values.push(data.attendees);
+                }
+                if (updates.length > 0) {
+                    values.push(id);
+                    await client.query(`UPDATE reservations SET ${updates.join(', ')} WHERE reservation_id = $${idx}`, values);
+                }
+            }
+            // 2. Update Reservation Item
+            if (data.startDateTime || data.endDateTime || data.facilityId) {
+                const itemUpdates = [];
+                const itemValues = [];
+                let itemIdx = 1;
+                if (data.startDateTime) {
+                    itemUpdates.push(`start_datetime = $${itemIdx++}`);
+                    itemValues.push(data.startDateTime);
+                }
+                if (data.endDateTime) {
+                    itemUpdates.push(`end_datetime = $${itemIdx++}`);
+                    itemValues.push(data.endDateTime);
+                }
+                if (data.facilityId) {
+                    itemUpdates.push(`facility_id = $${itemIdx++}`);
+                    itemValues.push(data.facilityId);
+                }
+                if (itemUpdates.length > 0) {
+                    itemValues.push(id);
+                    // Assuming 1 item per reservation for now
+                    await client.query(`UPDATE reservation_items SET ${itemUpdates.join(', ')} WHERE reservation_id = $${itemIdx}`, itemValues);
+                }
+            }
+            await client.query('COMMIT');
+            // Return updated details
+            return await this.findWithDetails(id);
+        }
+        catch (error) {
+            await client.query('ROLLBACK');
+            throw error;
+        }
+        finally {
+            client.release();
+        }
+    }
+    async findConflicts(facilityId, start, end, excludeReservationId) {
+        let query = `
             SELECT ri.item_id 
             FROM reservation_items ri
             JOIN reservations r ON ri.reservation_id = r.reservation_id
@@ -129,7 +188,12 @@ export class ReservationRepository extends BaseRepository {
             AND rs.name IN ('APPROVED', 'PENDING')
             AND (ri.start_datetime < $3 AND ri.end_datetime > $2)
         `;
-        const result = await this.query(query, [facilityId, start, end]);
+        const params = [facilityId, start, end];
+        if (excludeReservationId) {
+            query += ` AND r.reservation_id != $4`;
+            params.push(excludeReservationId);
+        }
+        const result = await this.query(query, params);
         return result.rows;
     }
 }

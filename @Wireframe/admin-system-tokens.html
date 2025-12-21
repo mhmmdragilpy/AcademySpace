@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - System Tokens</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+    <div class="container" style="max-width: 1400px;">
+        <!-- Header -->
+        <header class="flex justify-between items-center"
+            style="border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px;">
+            <div class="logo">ACADEMY SPACE ADMIN</div>
+            <div class="flex items-center">
+                <span>Welcome, Admin</span>
+                <a href="admin-profile.html" class="btn" style="margin-left: 10px;">Profile</a>
+            </div>
+        </header>
+
+        <div class="grid" style="grid-template-columns: 250px 1fr;">
+            <!-- Sidebar -->
+            <nav style="border: none; margin: 0;">
+                <ul class="flex-col" style="gap: 10px;">
+                    <li><a href="admin-dashboard.html" style="display: block; padding: 10px;">Dashboard</a></li>
+                    <li><a href="admin-reservations.html" style="display: block; padding: 10px;">Reservations</a></li>
+                    <li><a href="admin-facilities.html" style="display: block; padding: 10px;">Facilities</a></li>
+                    <li><a href="admin-system-tokens.html"
+                            style="background: var(--gray-medium); display: block; padding: 10px;">System Tokens</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main>
+                <h1>System Configurations & Tokens</h1>
+
+                <div class="box" style="margin-bottom: 20px;">
+                    <h3>API Tokens</h3>
+                    <p>Manage third-party integration tokens.</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <thead>
+                            <tr style="background: var(--gray-light);">
+                                <th style="border: 1px solid black; padding: 5px;">Name</th>
+                                <th style="border: 1px solid black; padding: 5px;">Key Hint</th>
+                                <th style="border: 1px solid black; padding: 5px;">Created</th>
+                                <th style="border: 1px solid black; padding: 5px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid black; padding: 5px;">SSO Integration</td>
+                                <td style="border: 1px solid black; padding: 5px;">tk_live_...4a2b</td>
+                                <td style="border: 1px solid black; padding: 5px;">2024-01-01</td>
+                                <td style="border: 1px solid black; padding: 5px; text-align: center;">
+                                    <button class="btn"
+                                        style="padding: 2px 5px; color: red; border-color: red;">Revoke</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn" style="margin-top: 20px;">Generate New Token</button>
+                </div>
+
+                <div class="box">
+                    <h3>Global Settings</h3>
+                    <form>
+                        <div style="margin-bottom: 15px;">
+                            <label>Max Advance Booking Days</label>
+                            <input type="number" value="30">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label>Auto-Cancel Unpaid Reservations (Hours)</label>
+                            <input type="number" value="24">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label>Maintenance Mode</label>
+                            <select>
+                                <option>Off</option>
+                                <option>On</option>
+                            </select>
+                        </div>
+                        <button class="btn">Save Configuration</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

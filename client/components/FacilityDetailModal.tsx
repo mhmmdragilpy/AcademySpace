@@ -71,6 +71,7 @@ export function FacilityDetailModal({
                             <MapPin size={16} />
                             <span>{facility.building_name || "Unknown Building"}</span>
                             {facility.room_number && <span>• Room {facility.room_number}</span>}
+                            {facility.floor && <span>• Floor {facility.floor}</span>}
                         </div>
                     </div>
                 </div>
@@ -84,6 +85,15 @@ export function FacilityDetailModal({
                                     {facility.description || "No description available for this facility."}
                                 </DialogDescription>
                             </div>
+
+                            {facility.layout_description && (
+                                <div>
+                                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Layout & Setup</h3>
+                                    <p className="text-gray-600 leading-relaxed text-base">
+                                        {facility.layout_description}
+                                    </p>
+                                </div>
+                            )}
                         </div>
 
                         <div className="space-y-6">
@@ -119,9 +129,16 @@ export function FacilityDetailModal({
                                         <Wrench className="mr-2 h-5 w-5" />
                                         Under Maintenance
                                     </Button>
-                                    <p className="text-xs text-red-500 text-center font-medium">
-                                        Until: {new Date(facility.maintenance_until).toLocaleDateString()}
-                                    </p>
+                                    <div className="text-center">
+                                        <p className="text-sm font-medium text-red-600">
+                                            Until: {new Date(facility.maintenance_until).toLocaleDateString()}
+                                        </p>
+                                        {facility.maintenance_reason && (
+                                            <p className="text-xs text-gray-500 mt-1 italic">
+                                                "{facility.maintenance_reason}"
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
                             ) : (
                                 <Button asChild className="w-full bg-[#FA7436] hover:bg-[#e5672f] shadow-lg text-lg py-6">

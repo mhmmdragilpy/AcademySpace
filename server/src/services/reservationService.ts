@@ -2,7 +2,6 @@ import { ReservationRepository } from '../repositories/ReservationRepository.js'
 import { FacilityRepository } from '../repositories/FacilityRepository.js';
 import { UserRepository } from '../repositories/UserRepository.js';
 import { NotificationRepository } from '../repositories/NotificationRepository.js';
-import { emailService } from './emailService.js';
 import { query } from '../db/index.js'; // For raw queries if needed, but try to avoid
 import logger from '../utils/logger.js';
 import { AppError } from '../utils/AppError.js';
@@ -156,7 +155,76 @@ export class ReservationService {
             date: detail.date,
             startTime: detail.start_time,
             endTime: detail.end_time,
+            participants: detail.attendees,
+            facilityCapacity: detail.facility_capacity
         };
+    }
+
+    async update(id: number, userId: number, data: {
+        date?: string;
+        startTime?: string;
+        endTime?: string;
+        purpose?: string;
+        participants?: number;
+    }) {
+        const existing = await this.reservationRepository.findWithDetails(id);
+        if (!existing) throw new AppError("Reservation not found", 404);
+
+        if (existing.user_id !== userId) throw new AppError("Not authorized to edit this reservation", 403);
+
+        if (String(existing.status).toUpperCase() !== 'PENDING') {
+            throw new AppError("Only PENDING reservations can be edited", 400);
+        }
+
+        let startDateTime = undefined;
+        let endDateTime = undefined;
+
+        // Simplify Date/Time Logic
+        const newDate = data.date || existing.date;
+        const newStart = data.startTime || existing.start_time;
+        const newEnd = data.endTime || existing.end_time;
+        const newParticipants = data.participants || existing.attendees;
+
+        // Check if time is changing
+        const timeChanged = data.date || data.startTime || data.endTime;
+
+        if (timeChanged) {
+            startDateTime = `${newDate} ${newStart}:00`;
+            endDateTime = `${newDate} ${newEnd}:00`;
+
+            const facilityId = existing.facility_id;
+            if (facilityId) {
+                // Check Conflicts
+                const conflicts = await this.reservationRepository.findConflicts(
+                    facilityId,
+                    startDateTime,
+                    endDateTime,
+                    id // Exclude self
+                );
+
+                if (conflicts.length > 0) {
+                    throw new AppError("Time slot not available. Conflict with an existing reservation.", 409);
+                }
+            }
+        }
+
+        // Check Capacity (if participants or facility/time changed - though here facility doesn't change)
+        if (data.participants || timeChanged) {
+            const facilityId = existing.facility_id;
+            if (facilityId) {
+                const facility = await this.facilityRepository.findById(facilityId);
+                if (facility && newParticipants > (facility.capacity || 0)) {
+                    throw new AppError(`Kapasitas tidak mencukupi, sisa hanya ${facility.capacity}`, 400);
+                }
+            }
+        }
+
+        return this.reservationRepository.updateWithDetails(id, {
+            purpose: data.purpose,
+            attendees: data.participants,
+            startDateTime,
+            endDateTime
+        });
     }
 
     async updateStatus(id: number, status: string) {

@@ -71,6 +71,9 @@ CREATE TABLE IF NOT EXISTS "users" (
   "full_name" varchar NOT NULL,
   "role" user_role_enum NOT NULL DEFAULT 'user',
   "profile_picture_url" varchar,
+  "verification_token" varchar,
+  "recovery_token" varchar,
+  "is_suspended" boolean DEFAULT false,
   "created_at" timestamptz NOT NULL DEFAULT NOW(),
   "last_login_at" timestamptz
 );

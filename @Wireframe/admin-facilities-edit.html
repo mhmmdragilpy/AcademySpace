@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Admin Edit Facility</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+    <div class="container" style="max-width: 1400px;">
+        <!-- Header -->
+        <header class="flex justify-between items-center"
+            style="border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px;">
+            <div class="logo">ACADEMY SPACE ADMIN</div>
+            <div class="flex items-center">
+                <span>Welcome, Admin</span>
+                <a href="admin-profile.html" class="btn" style="margin-left: 10px;">Profile</a>
+            </div>
+        </header>
+
+        <div class="grid" style="grid-template-columns: 250px 1fr;">
+            <!-- Sidebar -->
+            <nav style="border: none; margin: 0;">
+                <ul class="flex-col" style="gap: 10px;">
+                    <li><a href="admin-dashboard.html" style="display: block; padding: 10px;">Dashboard</a></li>
+                    <li><a href="admin-reservations.html" style="display: block; padding: 10px;">Reservations</a></li>
+                    <li><a href="admin-facilities.html"
+                            style="background: var(--gray-medium); display: block; padding: 10px;">Facilities</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main>
+                <a href="admin-facilities.html" style="display: inline-block; margin-bottom: 20px;">&larr; Back to
+                    List</a>
+                <h1>Edit Facility: Auditorium A</h1>
+
+                <form class="box">
+                    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <label>Facility Name</label>
+                            <input type="text" value="Auditorium A">
+                        </div>
+                        <div>
+                            <label>Slug (URL Friendly)</label>
+                            <input type="text" value="auditorium-a">
+                        </div>
+                    </div>
+
+                    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                        <div>
+                            <label>Type</label>
+                            <select>
+                                <option selected>Auditorium</option>
+                                <option>Room</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Capacity</label>
+                            <input type="number" value="200">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <label>Description</label>
+                        <textarea rows="5">Large auditorium suitable for...</textarea>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <label>Status</label>
+                        <select>
+                            <option selected>Active</option>
+                            <option>Maintenance</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+
+                    <div class="flex justify-between" style="margin-top: 30px;">
+                        <button class="btn" style="border-color: red; color: red;">Cancel</button>
+                        <button class="btn">Save Changes</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

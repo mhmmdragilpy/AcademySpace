@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Login</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+    <div class="container" style="width: 400px; padding: 0; border: none;">
+        <div class="logo" style="text-align: center; margin-bottom: 20px;">ACADEMY SPACE</div>
+
+        <div class="box">
+            <h2 style="text-align: center; width: 100%; border: none; margin-bottom: 30px;">Login</h2>
+
+            <form>
+                <div>
+                    <label>Email / Username</label>
+                    <input type="text" placeholder="example@telkomuniversity.ac.id">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" placeholder="********">
+                </div>
+
+                <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" style="width: auto; margin: 0;"> Remember me
+                    </label>
+                    <a href="forgot-password.html" style="font-size: 0.9em;">Forgot Password?</a>
+                </div>
+
+                <a href="my-reservations.html" class="btn" style="width: 100%;">LOGIN</a>
+            </form>
+
+            <div
+                style="text-align: center; margin-top: 20px; border-top: 1px dashed var(--gray-medium); padding-top: 20px;">
+                <p>Or login with</p>
+                <button class="btn" style="width: 100%; margin-bottom: 10px;">SSO Telkom University</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+            <p><a href="home.html">Back to Home</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

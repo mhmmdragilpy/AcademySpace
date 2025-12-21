@@ -65,6 +65,8 @@ export class ReservationRepository extends BaseRepository<Reservation> {
                 u.username as user_username, 
                 f.name as facility_name,
                 f.name as facility_raw_name,
+                f.capacity as facility_capacity,
+                ri.facility_id,
                 rs.name as status,
                 r.purpose,
                 r.requester_id as user_id,
@@ -136,8 +138,84 @@ export class ReservationRepository extends BaseRepository<Reservation> {
         return result.rows;
     }
 
-    async findConflicts(facilityId: number, start: string, end: string) {
-        const query = `
+    async updateWithDetails(id: number, data: {
+        purpose?: string;
+        attendees?: number;
+        startDateTime?: string;
+        endDateTime?: string;
+        facilityId?: number;
+    }) {
+        const client = await this.db.connect();
+        try {
+            await client.query('BEGIN');
+
+            // 1. Update Reservation Header
+            if (data.purpose !== undefined || data.attendees !== undefined) {
+                const updates: any[] = [];
+                const values: any[] = [];
+                let idx = 1;
+
+                if (data.purpose !== undefined) {
+                    updates.push(`purpose = $${idx++}`);
+                    values.push(data.purpose);
+                }
+                if (data.attendees !== undefined) {
+                    updates.push(`attendees = $${idx++}`);
+                    values.push(data.attendees);
+                }
+
+                if (updates.length > 0) {
+                    values.push(id);
+                    await client.query(
+                        `UPDATE reservations SET ${updates.join(', ')} WHERE reservation_id = $${idx}`,
+                        values
+                    );
+                }
+            }
+
+            // 2. Update Reservation Item
+            if (data.startDateTime || data.endDateTime || data.facilityId) {
+                const itemUpdates: any[] = [];
+                const itemValues: any[] = [];
+                let itemIdx = 1;
+
+                if (data.startDateTime) {
+                    itemUpdates.push(`start_datetime = $${itemIdx++}`);
+                    itemValues.push(data.startDateTime);
+                }
+                if (data.endDateTime) {
+                    itemUpdates.push(`end_datetime = $${itemIdx++}`);
+                    itemValues.push(data.endDateTime);
+                }
+                if (data.facilityId) {
+                    itemUpdates.push(`facility_id = $${itemIdx++}`);
+                    itemValues.push(data.facilityId);
+                }
+
+                if (itemUpdates.length > 0) {
+                    itemValues.push(id);
+                    // Assuming 1 item per reservation for now
+                    await client.query(
+                        `UPDATE reservation_items SET ${itemUpdates.join(', ')} WHERE reservation_id = $${itemIdx}`,
+                        itemValues
+                    );
+                }
+            }
+
+            await client.query('COMMIT');
+
+            // Return updated details
+            return await this.findWithDetails(id);
+        } catch (error) {
+            await client.query('ROLLBACK');
+            throw error;
+        } finally {
+            client.release();
+        }
+    }
+
+    async findConflicts(facilityId: number, start: string, end: string, excludeReservationId?: number) {
+        let query = `
             SELECT ri.item_id 
             FROM reservation_items ri
             JOIN reservations r ON ri.reservation_id = r.reservation_id
@@ -146,7 +224,14 @@ export class ReservationRepository extends BaseRepository<Reservation> {
             AND rs.name IN ('APPROVED', 'PENDING')
             AND (ri.start_datetime < $3 AND ri.end_datetime > $2)
         `;
-        const result = await this.query(query, [facilityId, start, end]);
+        const params: any[] = [facilityId, start, end];
+
+        if (excludeReservationId) {
+            query += ` AND r.reservation_id != $4`;
+            params.push(excludeReservationId);
+        }
+
+        const result = await this.query(query, params);
         return result.rows;
     }
 }

@@ -166,14 +166,27 @@ export default function ReservationManagementPage() {
                                                 </TableCell>
                                                 <TableCell className="text-right space-x-2">
                                                     {(res.status?.toUpperCase() === 'PENDING' || res.status?.toUpperCase() === 'APPROVED') && !isPast(res.date || '', res.endTime || res.end_time || '') && (
-                                                        <Button
-                                                            variant="destructive"
-                                                            size="sm"
-                                                            onClick={() => handleCancel((res.reservation_id || res.id) as number)}
-                                                            disabled={cancelMutation.isPending}
-                                                        >
-                                                            {cancelMutation.isPending ? <Loader2 className="h-3 w-3 animate-spin" /> : "Cancel"}
-                                                        </Button>
+                                                        <>
+                                                            {res.status?.toUpperCase() === 'PENDING' && (
+                                                                <Button
+                                                                    variant="outline"
+                                                                    size="sm"
+                                                                    asChild
+                                                                >
+                                                                    <Link href={`/reservations/${res.reservation_id || res.id}/edit`}>
+                                                                        Edit
+                                                                    </Link>
+                                                                </Button>
+                                                            )}
+                                                            <Button
+                                                                variant="destructive"
+                                                                size="sm"
+                                                                onClick={() => handleCancel((res.reservation_id || res.id) as number)}
+                                                                disabled={cancelMutation.isPending}
+                                                            >
+                                                                {cancelMutation.isPending ? <Loader2 className="h-3 w-3 animate-spin" /> : "Cancel"}
+                                                            </Button>
+                                                        </>
                                                     )}
 
                                                     {res.status?.toUpperCase() === 'APPROVED' && isPast(res.date || '', res.endTime || res.end_time || '') && !res.isRated && (

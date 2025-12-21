@@ -44,11 +44,7 @@ const sidebarNavItems = [
         href: "/admin/facilities",
         icon: Building,
     },
-    {
-        title: "Users",
-        href: "/admin/users",
-        icon: Users,
-    },
+    // Users item removed here
     {
         title: "Analytics",
         href: "/admin/analytics",

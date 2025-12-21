@@ -39,8 +39,7 @@ Dilengkapi dengan sistem deteksi konflik jadwal cerdas dan alur persetujuan digi
 - 📊 **Dashboard Eksekutif** - Statistik penggunaan fasilitas
 - ✅ **Manajemen Persetujuan** - Review pengajuan reservasi dengan cepat
 - 🛠️ **Manajemen Fasilitas** - Tambah/Edit/Hapus gedung dan ruangan, set status maintenance
-- 👤 **Manajemen Pengguna** - Kelola akun user dan akses role
-- 🔧 **Konfigurasi Sistem** - Kelola variabel sistem via token
+-  **Konfigurasi Sistem** - Kelola variabel sistem via token
 
 ## 🛠️ Tech Stack
 
@@ -76,6 +75,9 @@ academy_space/
 ├── 📂 client/                    # Frontend (Next.js 16)
 │   ├── 📂 app/                   # App Router
 │   │   ├── 📂 admin/             # Dashboard Admin
+│   │   │   ├── 📂 facilities/    # Kelola fasilitas
+│   │   │   ├── 📂 reservations/  # Kelola reservasi
+│   │   │   └── 📂 system-tokens/ # System tokens
 │   │   ├── 📂 availability/      # Halaman Detail Ruangan & Booking
 │   │   ├── 📂 cek-ketersediaan/  # Landing Page Pencarian
 │   │   ├── 📂 login/             # Auth Pages

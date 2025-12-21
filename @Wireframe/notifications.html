@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Notifications</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center">
+            <div class="logo">ACADEMY SPACE</div>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="check-availability.html">Check Availability</a></li>
+                <li><a href="my-reservations.html">My Dashboard</a></li>
+                <li><a href="notifications.html" style="text-decoration: underline;">Notifications (2)</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <h1>Notifications</h1>
+
+        <div class="box">
+            <div class="flex justify-between items-center"
+                style="border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 20px;">
+                <button class="btn">Mark all as read</button>
+                <select>
+                    <option>All</option>
+                    <option>Unread</option>
+                </select>
+            </div>
+
+            <!-- Notification List -->
+            <div class="grid">
+                <!-- Item 1 (Unread) -->
+                <div class="box-gray" style="border-left: 5px solid black;">
+                    <div class="flex justify-between">
+                        <h4>Booking Approved</h4>
+                        <small>2 hours ago</small>
+                    </div>
+                    <p>Your request for <strong>Auditorium A</strong> on 2024-12-25 has been approved by Admin.</p>
+                    <a href="my-reservations.html">View Detail</a>
+                </div>
+
+                <!-- Item 2 (Unread) -->
+                <div class="box-gray" style="border-left: 5px solid black;">
+                    <div class="flex justify-between">
+                        <h4>Booking Rejected</h4>
+                        <small>Yesterday</small>
+                    </div>
+                    <p>Your request for <strong>Meeting Room 1</strong> was rejected. Reason: Maintenance.</p>
+                </div>
+
+                <!-- Item 3 (Read) -->
+                <div class="box">
+                    <div class="flex justify-between">
+                        <h4>Reminder</h4>
+                        <small>3 days ago</small>
+                    </div>
+                    <p>Don't forget your booking for <strong>Lab TULT</strong> tomorrow at 08:00.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

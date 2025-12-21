@@ -88,3 +88,49 @@
 2025-12-21 16:03:36:336 [32minfo[39m: [32m✅ Connected to Database[39m
 2025-12-21 16:05:35:535 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
 2025-12-21 16:05:35:535 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 17:06:35:635 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 17:06:35:635 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 17:35:29:3529 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 17:42:22:4222 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 18:08:52:852 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 18:08:52:852 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 19:24:17:2417 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 19:24:17:2417 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 19:24:26:2426 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 19:24:31:2431 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 19:24:51:2451 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 19:24:59:2459 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 19:25:00:250 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 19:25:00:250 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 19:27:17:2717 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 20:03:22:322 [33mwarn[39m: [33m400 - Kapasitas tidak mencukupi, sisa hanya 300 - /api/reservations - POST - ::1[39m
+2025-12-21 20:58:28:5828 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 20:58:29:5829 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 20:58:48:5848 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 20:58:48:5848 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 20:58:59:5859 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 20:58:59:5859 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 20:59:32:5932 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 20:59:32:5932 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:02:30:230 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:02:30:230 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:02:46:246 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:02:46:246 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:03:16:316 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:03:17:317 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:05:21:521 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:05:21:521 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:05:29:529 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:05:29:529 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:10:36:1036 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:10:36:1036 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:17:15:1715 [33mwarn[39m: [33m409 - Time slot not available. Conflict with an existing reservation. - /api/reservations/2 - PUT - ::1[39m
+2025-12-21 21:58:09:589 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:58:09:589 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 21:58:18:5818 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 21:58:18:5818 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 22:36:44:3644 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 23:29:07:297 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 23:30:01:301 [33mwarn[39m: [33m400 - User with this username already exists - /api/auth/register - POST - ::1[39m
+2025-12-22 01:18:39:1839 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-22 01:18:39:1839 [32minfo[39m: [32m✅ Connected to Database[39m

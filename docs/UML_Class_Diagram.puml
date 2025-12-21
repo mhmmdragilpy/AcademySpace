@@ -1,0 +1,504 @@
+@startuml AcademySpace_UML_Class_Diagram
+
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam groupInheritance 2
+skinparam nodesep 50
+skinparam ranksep 50
+
+title AcademySpace - Campus Facility Reservation System\nComplete UML Class Diagram\n(Updated: 2025-12-21)
+
+' ============================================
+' ENUMERATIONS
+' ============================================
+package "Enumerations" #FFF5E6 {
+    enum UserRole {
+        admin
+        user
+    }
+    
+    enum ApprovalAction {
+        PENDING
+        APPROVED
+        REJECTED
+        CANCELED
+    }
+    
+    enum AuditChange {
+        CREATE
+        UPDATE
+        DELETE
+        CANCEL
+    }
+}
+
+' ============================================
+' DOMAIN ENTITIES (Database Models)
+' ============================================
+package "Domain Entities" #E6F3FF {
+    
+    class SystemToken {
+        - key: string <<PK>>
+        - value: string
+        - description: text
+    }
+    
+    class User {
+        - user_id: int <<PK>>
+        - username: string <<UNIQUE>>
+        - password_hash: string
+        - full_name: string
+        - role: UserRole
+        - profile_picture_url: string
+        - verification_token: string
+        - recovery_token: string
+        - is_suspended: boolean
+        - created_at: timestamp
+        - last_login_at: timestamp
+    }
+    
+    class FacilityType {
+        - type_id: int <<PK>>
+        - name: string
+        - description: text
+    }
+    
+    class Building {
+        - building_id: int <<PK>>
+        - name: string
+        - code: string
+        - location_description: text
+        - image_url: string
+        - created_at: timestamp
+        - updated_at: timestamp
+    }
+    
+    class Facility {
+        - facility_id: int <<PK>>
+        - type_id: int <<FK>>
+        - building_id: int <<FK>>
+        - name: string
+        - room_number: string
+        - capacity: int
+        - floor: int
+        - description: text
+        - layout_description: text
+        - photo_url: string
+        - is_active: boolean
+        - maintenance_until: timestamp
+        - maintenance_reason: text
+        - created_at: timestamp
+        - updated_at: timestamp
+    }
+    
+    class ReservationStatus {
+        - status_id: int <<PK>>
+        - name: string
+        - description: text
+    }
+    
+    class Reservation {
+        - reservation_id: int <<PK>>
+        - requester_id: int <<FK>>
+        - status_id: int <<FK>>
+        - purpose: text
+        - attendees: int
+        - proposal_url: string
+        - created_at: timestamp
+        - updated_at: timestamp
+        - is_canceled: boolean
+    }
+    
+    class ReservationItem {
+        - item_id: int <<PK>>
+        - reservation_id: int <<FK>>
+        - facility_id: int <<FK>>
+        - start_datetime: timestamp
+        - end_datetime: timestamp
+        - created_at: timestamp
+        __
+        <<constraint>> end > start
+        <<constraint>> facility_id NOT NULL
+    }
+    
+    class ApprovalLog {
+        - approval_id: int <<PK>>
+        - reservation_id: int <<FK>>
+        - acted_by: int <<FK>>
+        - action: ApprovalAction
+        - comment: text
+        - acted_at: timestamp
+    }
+    
+    class ReservationAudit {
+        - audit_id: int <<PK>>
+        - reservation_id: int <<FK>>
+        - changed_by: int <<FK>>
+        - change_type: AuditChange
+        - change_data: jsonb
+        - changed_at: timestamp
+    }
+    
+    class Notification {
+        - notification_id: int <<PK>>
+        - user_id: int <<FK>>
+        - reservation_id: int <<FK>>
+        - title: string
+        - message: text
+        - is_read: boolean
+        - status_id: int <<FK>>
+        - created_at: timestamp
+    }
+    
+    class Rating {
+        - rating_id: int <<PK>>
+        - user_id: int <<FK>>
+        - facility_id: int <<FK>>
+        - reservation_id: int <<FK>>
+        - rating: int
+        - review: text
+        - created_at: timestamp
+        __
+        <<constraint>> rating >= 1 AND rating <= 5
+    }
+}
+
+' ============================================
+' REPOSITORIES (Data Access Layer)
+' ============================================
+package "Repositories" #E6FFE6 {
+    
+    abstract class BaseRepository<T> {
+        # tableName: string
+        # primaryKey: string
+        + findAll(): Promise<T[]>
+        + findById(id: number): Promise<T | null>
+        + create(data: Partial<T>): Promise<T>
+        + update(id: number, data: Partial<T>): Promise<T | null>
+        + delete(id: number): Promise<boolean>
+    }
+    
+    class UserRepository {
+        + findAll(): Promise<User[]>
+        + findById(id: number): Promise<User | null>
+        + findByUsername(username: string): Promise<User | null>
+        + create(data: Partial<User>): Promise<User>
+        + update(id: number, data: Partial<User>): Promise<User | null>
+        + delete(id: number): Promise<boolean>
+    }
+    
+    class FacilityRepository {
+        + findAll(filters?: object): Promise<Facility[]>
+        + findById(id: number): Promise<Facility | null>
+        + create(data: Partial<Facility>): Promise<Facility>
+        + update(id: number, data: Partial<Facility>): Promise<Facility | null>
+        + delete(id: number): Promise<boolean>
+        + findByBuilding(buildingId: number): Promise<Facility[]>
+        + findByType(typeId: number): Promise<Facility[]>
+    }
+    
+    class BuildingRepository {
+        + findAll(): Promise<Building[]>
+        + findById(id: number): Promise<Building | null>
+    }
+    
+    class FacilityTypeRepository {
+        + findAll(): Promise<FacilityType[]>
+        + findById(id: number): Promise<FacilityType | null>
+    }
+    
+    class ReservationRepository {
+        + findAll(): Promise<Reservation[]>
+        + findById(id: number): Promise<Reservation | null>
+        + findByUserId(userId: number): Promise<Reservation[]>
+        + create(data: Partial<Reservation>): Promise<Reservation>
+        + update(id: number, data: Partial<Reservation>): Promise<Reservation | null>
+        + updateStatus(id: number, statusId: number): Promise<Reservation | null>
+        + createItem(data: ReservationItem): Promise<ReservationItem>
+        + updateItem(id: number, data: Partial<ReservationItem>): Promise<ReservationItem | null>
+        + deleteItems(reservationId: number): Promise<boolean>
+        + checkConflict(facilityId: number, start: string, end: string, excludeReservationId?: number): Promise<boolean>
+    }
+    
+    class NotificationRepository {
+        + findByUserId(userId: number): Promise<Notification[]>
+        + create(data: Partial<Notification>): Promise<Notification>
+        + markAsRead(userId: number, notificationId: number): Promise<boolean>
+        + markAllAsRead(userId: number): Promise<boolean>
+        + delete(userId: number, notificationId: number): Promise<boolean>
+    }
+    
+    class RatingRepository {
+        + findByFacilityId(facilityId: number): Promise<Rating[]>
+        + getAverageByFacilityId(facilityId: number): Promise<number>
+        + findByUserAndReservation(userId: number, reservationId: number): Promise<Rating | null>
+        + create(data: Partial<Rating>): Promise<Rating>
+    }
+}
+
+' ============================================
+' SERVICES (Business Logic Layer)
+' ============================================
+package "Services" #FFE6F3 {
+    
+    abstract class BaseService<T> {
+        # repository: BaseRepository<T>
+        + findAll(): Promise<T[]>
+        + findById(id: number): Promise<T | null>
+        + create(data: Partial<T>): Promise<T>
+        + update(id: number, data: Partial<T>): Promise<T | null>
+        + delete(id: number): Promise<boolean>
+    }
+    
+    class UserService {
+        - userRepository: UserRepository
+        + findAll(): Promise<User[]>
+        + findById(id: number): Promise<User | null>
+        + findByUsername(username: string): Promise<User | null>
+        + create(data: object): Promise<User>
+        + update(id: number, data: object): Promise<User | null>
+        + delete(id: number): Promise<boolean>
+        + validateAdminToken(token: string): Promise<boolean>
+        + validateResetToken(token: string): Promise<boolean>
+    }
+    
+    class FacilityService {
+        - facilityRepository: FacilityRepository
+        + findAll(filters?: object): Promise<Facility[]>
+        + findById(id: number): Promise<Facility | null>
+        + create(data: object): Promise<Facility>
+        + update(id: number, data: object): Promise<Facility | null>
+        + delete(id: number): Promise<boolean>
+        + checkAvailability(facilityId: number, date: string, startTime: string, endTime: string): Promise<boolean>
+    }
+    
+    class ReservationService {
+        - reservationRepository: ReservationRepository
+        - facilityRepository: FacilityRepository
+        - userRepository: UserRepository
+        - notificationRepository: NotificationRepository
+        + create(data: object): Promise<Reservation>
+        + getUserReservations(userId: number): Promise<Reservation[]>
+        + getAllReservations(): Promise<Reservation[]>
+        + getById(id: number, requesterId?: number): Promise<Reservation | null>
+        + update(id: number, userId: number, data: object): Promise<Reservation | null>
+        + updateStatus(id: number, status: string): Promise<Reservation | null>
+        + cancel(id: number, userId: number): Promise<boolean>
+    }
+    
+    class NotificationService {
+        - notificationRepository: NotificationRepository
+        + getUserNotifications(userId: number): Promise<Notification[]>
+        + create(data: object): Promise<Notification>
+        + markAsRead(userId: number, notificationId: number): Promise<boolean>
+        + markAllAsRead(userId: number): Promise<boolean>
+        + deleteNotification(userId: number, notificationId: number): Promise<boolean>
+    }
+    
+    class RatingService {
+        - ratingRepository: RatingRepository
+        + createRating(data: object): Promise<Rating>
+        + getRatingsByFacility(facilityId: number): Promise<Rating[]>
+        + getAverageRatingForFacility(facilityId: number): Promise<number>
+        + getUserRatingForReservation(userId: number, reservationId: number): Promise<Rating | null>
+    }
+}
+
+' ============================================
+' CONTROLLERS (Presentation Layer)
+' ============================================
+package "Controllers" #FFFDE6 {
+    
+    class AuthController {
+        + register(req: Request, res: Response): void
+        + login(req: Request, res: Response): void
+        + getMe(req: Request, res: Response): void
+        + resetPassword(req: Request, res: Response): void
+    }
+    
+    class UserController {
+        + getAllUsers(req: Request, res: Response): void
+        + getUserById(req: Request, res: Response): void
+        + createUser(req: Request, res: Response): void
+        + updateUser(req: Request, res: Response): void
+        + deleteUser(req: Request, res: Response): void
+        + promoteToAdmin(req: Request, res: Response): void
+        + demoteToUser(req: Request, res: Response): void
+        + suspendUser(req: Request, res: Response): void
+        + unsuspendUser(req: Request, res: Response): void
+        + getMyProfile(req: Request, res: Response): void
+        + updateMyProfile(req: Request, res: Response): void
+        + updateProfileAvatar(req: Request, res: Response): void
+        + deleteProfileAvatar(req: Request, res: Response): void
+    }
+    
+    class FacilityController {
+        + getAllFacilities(req: Request, res: Response): void
+        + getFacilityById(req: Request, res: Response): void
+        + createFacility(req: Request, res: Response): void
+        + updateFacility(req: Request, res: Response): void
+        + deleteFacility(req: Request, res: Response): void
+        + getFacilityReservations(req: Request, res: Response): void
+        + setMaintenance(req: Request, res: Response): void
+        + clearMaintenance(req: Request, res: Response): void
+    }
+    
+    class BuildingController {
+        + getAllBuildings(req: Request, res: Response): void
+    }
+    
+    class FacilityTypeController {
+        + getAllFacilityTypes(req: Request, res: Response): void
+    }
+    
+    class ReservationController {
+        + createReservation(req: Request, res: Response): void
+        + getUserReservations(req: Request, res: Response): void
+        + getAllReservations(req: Request, res: Response): void
+        + getReservationById(req: Request, res: Response): void
+        + updateReservation(req: Request, res: Response): void
+        + updateReservationStatus(req: Request, res: Response): void
+        + cancelReservation(req: Request, res: Response): void
+        + getReservationStats(req: Request, res: Response): void
+        + getFacilityUtilization(req: Request, res: Response): void
+        + getUserActivity(req: Request, res: Response): void
+    }
+    
+    class NotificationController {
+        + getUserNotifications(req: Request, res: Response): void
+        + markNotificationAsRead(req: Request, res: Response): void
+        + markAllNotificationsAsRead(req: Request, res: Response): void
+        + deleteNotification(req: Request, res: Response): void
+    }
+    
+    class RatingController {
+        + createRating(req: Request, res: Response): void
+        + getRatingsByFacility(req: Request, res: Response): void
+        + getAverageRatingForFacility(req: Request, res: Response): void
+        + getUserRatingForReservation(req: Request, res: Response): void
+    }
+    
+    class DashboardController {
+        + getDashboardStats(req: Request, res: Response): void
+        + getSystemTokens(req: Request, res: Response): void
+    }
+    
+    class UploadController {
+        + uploadFile(req: Request, res: Response): void
+    }
+}
+
+' ============================================
+' ENTITY RELATIONSHIPS
+' ============================================
+
+' User relationships
+User --> UserRole : has role
+User "1" --o "0..*" Reservation : creates >
+User "1" --o "0..*" Notification : receives >
+User "1" --o "0..*" Rating : writes >
+User "1" --o "0..*" ApprovalLog : acts >
+User "1" --o "0..*" ReservationAudit : changes >
+
+' Facility relationships
+Facility "0..*" o-- "1" FacilityType : has type <
+Facility "0..*" o-- "0..1" Building : located in <
+Facility "1" --o "0..*" ReservationItem : reserved in >
+Facility "1" --o "0..*" Rating : has ratings >
+
+' Reservation relationships
+Reservation "0..*" o-- "1" User : requested by <
+Reservation "0..*" o-- "1" ReservationStatus : has status <
+Reservation "1" --o "1..*" ReservationItem : contains >
+Reservation "1" --o "0..*" ApprovalLog : has logs >
+Reservation "1" --o "0..*" ReservationAudit : has audit >
+Reservation "1" --o "0..*" Notification : generates >
+Reservation "1" --o "0..*" Rating : can be rated >
+
+' Notification relationships
+Notification "0..*" o-- "0..1" ReservationStatus : references <
+
+' Enums
+ApprovalLog --> ApprovalAction : uses
+ReservationAudit --> AuditChange : uses
+
+' ============================================
+' LAYER RELATIONSHIPS (Composition/Dependency)
+' ============================================
+
+' Repository inheritance
+BaseRepository <|-- UserRepository
+BaseRepository <|-- FacilityRepository
+BaseRepository <|-- ReservationRepository
+
+' Service inheritance
+BaseService <|-- UserService
+BaseService <|-- FacilityService
+
+' Service -> Repository dependencies
+UserService ..> UserRepository : uses
+FacilityService ..> FacilityRepository : uses
+ReservationService ..> ReservationRepository : uses
+ReservationService ..> FacilityRepository : uses
+ReservationService ..> UserRepository : uses
+ReservationService ..> NotificationRepository : uses
+NotificationService ..> NotificationRepository : uses
+RatingService ..> RatingRepository : uses
+
+' Controller -> Service dependencies
+AuthController ..> UserService : uses
+UserController ..> UserService : uses
+FacilityController ..> FacilityService : uses
+ReservationController ..> ReservationService : uses
+NotificationController ..> NotificationService : uses
+RatingController ..> RatingService : uses
+
+' ============================================
+' LEGEND
+' ============================================
+legend right
+    |= Symbol |= Meaning |
+    | <<PK>> | Primary Key |
+    | <<FK>> | Foreign Key |
+    | <<UNIQUE>> | Unique Constraint |
+    | --|> | Inheritance |
+    | o-- | Aggregation |
+    | --o | Composition |
+    | ..> | Dependency |
+    | -- | Association |
+endlegend
+
+note bottom of "Domain Entities"
+    <b>Database Tables (PostgreSQL)</b>
+    - All entities are persisted in the database
+    - Timestamps use timestamptz for timezone support
+    - Auto-generated IDs use IDENTITY
+    - Cascading deletes applied on foreign keys
+end note
+
+note bottom of Repositories
+    <b>Data Access Layer</b>
+    - Implements Repository Pattern
+    - Direct database queries
+    - Connection pooling via pg
+    - Redis caching for performance
+end note
+
+note bottom of Services
+    <b>Business Logic Layer</b>
+    - Implements business rules
+    - Transaction management
+    - Validation and conflict checking
+    - Notification triggers
+end note
+
+note bottom of Controllers
+    <b>Presentation Layer</b>
+    - Express.js route handlers
+    - Request validation (Zod schemas)
+    - Authentication/Authorization middleware
+    - Standardized API responses
+end note
+
+@enduml

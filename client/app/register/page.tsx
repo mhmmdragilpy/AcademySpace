@@ -69,7 +69,18 @@ export default function RegisterPage() {
             router.push("/login?registered=true");
         } catch (error: any) {
             console.error("Registration error:", error);
-            const message = error.response?.data?.message || "Something went wrong";
+            console.error("Response data:", error.response?.data);
+
+            // Extract detailed error message
+            let message = "Something went wrong";
+            if (error.response?.data?.message) {
+                message = error.response.data.message;
+            } else if (error.response?.data?.error) {
+                message = error.response.data.error;
+            } else if (error.message) {
+                message = error.message;
+            }
+
             toast.error(message);
         } finally {
             setIsLoading(false);
