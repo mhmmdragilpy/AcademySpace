@@ -17,7 +17,7 @@ const app = express();
 const port = env.PORT;
 
 // Trust Proxy for Heroku/Docker/Nginx
-app.enable('trust proxy');
+app.set('trust proxy', 1);
 
 app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
@@ -76,15 +76,12 @@ app.use(errorHandler);
 
 app.listen(port, async () => {
     const msg = `🚀 Server running on http://localhost:${port}`;
-    console.log(msg); // Ensure visible in terminal
     logger.info(msg);
 
     try {
         await query("SELECT NOW()");
-        console.log("✅ Connected to Database"); // Ensure visible in terminal
         logger.info("✅ Connected to Database");
     } catch (error) {
-        console.error("❌ Failed to connect to Database:", error);
         logger.error("❌ Failed to connect to Database:", error);
     }
 });

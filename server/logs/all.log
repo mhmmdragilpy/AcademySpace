@@ -9,3 +9,31 @@
 2025-12-16 15:40:36:4036 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
 2025-12-16 15:42:53:4253 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
 2025-12-16 15:43:23:4323 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-18 23:28:06:286 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-18 23:28:06:286 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-18 23:29:02:292 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-18 23:29:02:292 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-18 23:30:25:3025 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-18 23:30:25:3025 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:05:13:513 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-19 00:05:13:513 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:08:22:822 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-19 00:08:22:822 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:10:36:1036 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-19 00:10:36:1036 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:11:05:115 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-19 00:11:06:116 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:11:48:1148 [32minfo[39m: [32m🚀 Server running on http://localhost:5001[39m
+2025-12-19 00:11:48:1148 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:13:34:1334 [32minfo[39m: [32m🚀 Server running on http://localhost:5001[39m
+2025-12-19 00:13:34:1334 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-19 00:16:23:1623 [32minfo[39m: [32m🚀 Server running on http://localhost:5001[39m
+2025-12-19 00:16:23:1623 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 14:19:43:1943 [32minfo[39m: [32m🚀 Server running on http://localhost:5001[39m
+2025-12-21 14:19:44:1944 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 14:20:17:2017 [32minfo[39m: [32m🚀 Server running on http://localhost:5001[39m
+2025-12-21 14:20:17:2017 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 14:24:09:249 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 14:24:09:249 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 14:26:13:2613 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 14:26:13:2613 [32minfo[39m: [32m✅ Connected to Database[39m

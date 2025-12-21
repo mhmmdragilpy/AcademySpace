@@ -31,7 +31,7 @@ export default function EditUserPage() {
         full_name: "",
         role: "user",
         profile_picture_url: "",
-        password: "", // Optional - only if changing password
+
     });
 
     // Fetch user data
@@ -51,7 +51,7 @@ export default function EditUserPage() {
                 full_name: user.full_name || "",
                 role: user.role || "user",
                 profile_picture_url: user.profile_picture_url || "",
-                password: "",
+
             });
         }
     }, [user]);
@@ -81,10 +81,7 @@ export default function EditUserPage() {
             profile_picture_url: formData.profile_picture_url || null,
         };
 
-        // Only include password if user wants to change it
-        if (formData.password) {
-            submitData.password = formData.password;
-        }
+
 
         updateMutation.mutate(submitData);
     };
@@ -157,20 +154,7 @@ export default function EditUserPage() {
                             </p>
                         </div>
 
-                        <div className="space-y-2">
-                            <Label htmlFor="password">New Password (leave blank to keep current)</Label>
-                            <Input
-                                id="password"
-                                type="password"
-                                minLength={6}
-                                value={formData.password}
-                                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                placeholder="Enter new password to change"
-                            />
-                            <p className="text-xs text-muted-foreground">
-                                Leave empty if you don't want to change the password
-                            </p>
-                        </div>
+                        {/* Password update removed as per policy: Admins cannot change user passwords */}
 
                         <div className="space-y-2">
                             <Label htmlFor="role">

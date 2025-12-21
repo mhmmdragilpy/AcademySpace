@@ -35,7 +35,10 @@ export const updateUser = catchAsync(async (req: Request, res: Response) => {
         }
     }
 
-    const updatedUser = await userService.update(id, req.body);
+    // Prevent password update by admin
+    const { password, ...updateData } = req.body;
+
+    const updatedUser = await userService.update(id, updateData);
     if (!updatedUser) {
         throw new AppError("User not found", 404);
     }

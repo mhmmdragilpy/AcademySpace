@@ -14,7 +14,8 @@ import {
     LogOut,
     Menu,
     X,
-    Key
+    Key,
+    User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -57,6 +58,11 @@ const sidebarNavItems = [
         title: "System Tokens",
         href: "/admin/system-tokens",
         icon: Key,
+    },
+    {
+        title: "Profile",
+        href: "/admin/profile",
+        icon: User,
     },
 ];
 
