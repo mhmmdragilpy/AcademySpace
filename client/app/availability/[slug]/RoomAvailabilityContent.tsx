@@ -164,6 +164,19 @@ export function RoomAvailabilityContent({ roomDetails }: { roomDetails: RoomDeta
       return;
     }
 
+    // Client-side conflict check
+    const hasConflict = timeSlots.some(slot => {
+      if (slot >= startTime && slot < endTime) {
+        return bookingsForDate[slot] && bookingsForDate[slot].length > 0;
+      }
+      return false;
+    });
+
+    if (hasConflict) {
+      toast.error("Waktu yang dipilih sudah terisi! Silakan pilih waktu lain.");
+      return;
+    }
+
     try {
       setSubmitting(true);
       const bookingData = {
@@ -191,9 +204,14 @@ export function RoomAvailabilityContent({ roomDetails }: { roomDetails: RoomDeta
 
     } catch (error: any) {
       console.error("Booking failed", error);
+      const statusCode = error.response?.status;
       const errorMessage = error.response?.data?.message;
 
-      if (Array.isArray(errorMessage)) {
+      if (statusCode === 409) {
+        toast.error("Slot waktu ini sudah dipesan! Silakan pilih waktu lain yang tersedia.");
+        // Refresh bookings to show updated availability
+        fetchBookings(selectedDate);
+      } else if (Array.isArray(errorMessage)) {
         errorMessage.forEach((err: any) => {
           toast.error(`${err.path}: ${err.message}`);
         });

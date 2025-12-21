@@ -44,6 +44,11 @@ export const login = catchAsync(async (req: Request, res: Response) => {
         throw new AppError("Invalid credentials", 401);
     }
 
+    // Check if user is suspended
+    if ((user as any).is_suspended) {
+        throw new AppError("Your account has been suspended. Please contact administrator.", 403);
+    }
+
     // Update last login
     // await userService.update(user.user_id, { last_login_at: new Date() }); // If method exists or add it
 

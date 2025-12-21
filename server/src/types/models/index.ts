@@ -12,6 +12,7 @@ export interface User {
     verification_token?: string | null;
     username?: string | null;
     recovery_token?: string | null;
+    is_suspended?: boolean;
     created_at: Date;
     last_login_at?: Date | null;
 }
@@ -44,6 +45,8 @@ export interface Facility {
     layout_description?: string | null;
     photo_url?: string | null;
     is_active: boolean;
+    maintenance_until?: Date | null;
+    maintenance_reason?: string | null;
     created_at: Date;
     updated_at: Date;
 }

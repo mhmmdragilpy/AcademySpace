@@ -5,7 +5,9 @@ import {
     getFacilityReservations,
     createFacility,
     updateFacility,
-    deleteFacility
+    deleteFacility,
+    setMaintenance,
+    clearMaintenance
 } from "../controllers/facilityController.js";
 import { authenticateToken, authorizeAdmin } from "../middlewares/authMiddleware.js";
 import { validate } from "../middlewares/validate.js";
@@ -25,5 +27,9 @@ router.get("/:id/reservations", validate(facilityIdSchema), getFacilityReservati
 router.post("/", authenticateToken, authorizeAdmin, validate(createFacilitySchema), createFacility);
 router.put("/:id", authenticateToken, authorizeAdmin, validate(updateFacilitySchema), updateFacility);
 router.delete("/:id", authenticateToken, authorizeAdmin, validate(facilityIdSchema), deleteFacility);
+
+// Maintenance routes
+router.put("/:id/maintenance", authenticateToken, authorizeAdmin, validate(facilityIdSchema), setMaintenance);
+router.delete("/:id/maintenance", authenticateToken, authorizeAdmin, validate(facilityIdSchema), clearMaintenance);
 
 export default router;

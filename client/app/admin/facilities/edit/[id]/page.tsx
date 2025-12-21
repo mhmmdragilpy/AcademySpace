@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import api from "@/lib/api";
 import { toast } from "sonner";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2, X, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,6 +28,9 @@ export default function EditFacilityPage() {
     const router = useRouter();
     const params = useParams();
     const facilityId = params.id as string;
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const [isUploading, setIsUploading] = useState(false);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -82,8 +86,86 @@ export default function EditFacilityPage() {
                 photo_url: facility.photo_url || "",
                 is_active: facility.is_active,
             });
+            // Set existing photo as preview if exists
+            if (facility.photo_url) {
+                setPreviewUrl(facility.photo_url);
+            }
         }
     }, [facility]);
+
+    // Handle file upload
+    const handleFileUpload = async (file: File) => {
+        if (!file) return;
+
+        // Validate file type
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+        if (!allowedTypes.includes(file.type)) {
+            toast.error("Only JPG, JPEG, and PNG images are allowed");
+            return;
+        }
+
+        // Validate file size (5MB)
+        if (file.size > 5 * 1024 * 1024) {
+            toast.error("File size must be less than 5MB");
+            return;
+        }
+
+        setIsUploading(true);
+
+        // Create preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            setPreviewUrl(e.target?.result as string);
+        };
+        reader.readAsDataURL(file);
+
+        try {
+            const formDataUpload = new FormData();
+            formDataUpload.append('file', file);
+
+            const response = await api.post('/upload', formDataUpload);
+            const uploadedUrl = (response as any)?.url || response;
+
+            setFormData(prev => ({ ...prev, photo_url: uploadedUrl }));
+            toast.success("Image uploaded successfully");
+        } catch (error: any) {
+            console.error("Upload failed:", error);
+            toast.error(error?.response?.data?.message || "Failed to upload image");
+            // Revert to existing photo if upload fails
+            setPreviewUrl(formData.photo_url || null);
+        } finally {
+            setIsUploading(false);
+        }
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            handleFileUpload(file);
+        }
+    };
+
+    const handleDragOver = (e: React.DragEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
+    const handleDrop = (e: React.DragEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const file = e.dataTransfer.files?.[0];
+        if (file) {
+            handleFileUpload(file);
+        }
+    };
+
+    const removeImage = () => {
+        setPreviewUrl(null);
+        setFormData(prev => ({ ...prev, photo_url: "" }));
+        if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
+    };
 
     const updateMutation = useMutation({
         mutationFn: async (data: any) => {
@@ -102,7 +184,7 @@ export default function EditFacilityPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Prepare data
+        // Prepare data - photo_url is optional
         const submitData = {
             name: formData.name,
             type_id: parseInt(formData.type_id),
@@ -286,15 +368,75 @@ export default function EditFacilityPage() {
                             />
                         </div>
 
+                        {/* Photo Upload Section */}
                         <div className="space-y-2">
-                            <Label htmlFor="photo_url">Photo URL</Label>
+                            <Label>Facility Photo <span className="text-muted-foreground text-sm">(Optional)</span></Label>
+
+                            {previewUrl || formData.photo_url ? (
+                                <div className="relative w-full h-48 rounded-lg overflow-hidden border bg-muted">
+                                    <Image
+                                        src={previewUrl || formData.photo_url}
+                                        alt="Facility preview"
+                                        fill
+                                        className="object-cover"
+                                        unoptimized
+                                    />
+                                    <Button
+                                        type="button"
+                                        variant="destructive"
+                                        size="icon"
+                                        className="absolute top-2 right-2"
+                                        onClick={removeImage}
+                                    >
+                                        <X className="w-4 h-4" />
+                                    </Button>
+                                </div>
+                            ) : (
+                                <div
+                                    className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors"
+                                    onDragOver={handleDragOver}
+                                    onDrop={handleDrop}
+                                    onClick={() => fileInputRef.current?.click()}
+                                >
+                                    {isUploading ? (
+                                        <div className="flex flex-col items-center gap-2">
+                                            <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+                                            <p className="text-sm text-muted-foreground">Uploading...</p>
+                                        </div>
+                                    ) : (
+                                        <div className="flex flex-col items-center gap-2">
+                                            <div className="p-3 rounded-full bg-muted">
+                                                <ImageIcon className="w-6 h-6 text-muted-foreground" />
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-medium">Click to upload or drag and drop</p>
+                                                <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            <input
+                                ref={fileInputRef}
+                                type="file"
+                                accept="image/png,image/jpeg,image/jpg"
+                                onChange={handleFileChange}
+                                className="hidden"
+                            />
+
+                            {/* Alternative: Manual URL input */}
+                            <div className="flex items-center gap-2 pt-2">
+                                <span className="text-xs text-muted-foreground">Or enter URL directly:</span>
+                            </div>
                             <Input
                                 id="photo_url"
                                 type="url"
                                 value={formData.photo_url}
-                                onChange={(e) =>
-                                    setFormData({ ...formData, photo_url: e.target.value })
-                                }
+                                onChange={(e) => {
+                                    setFormData({ ...formData, photo_url: e.target.value });
+                                    setPreviewUrl(e.target.value || null);
+                                }}
                                 placeholder="https://example.com/image.jpg"
                             />
                         </div>
@@ -313,7 +455,7 @@ export default function EditFacilityPage() {
                         </div>
 
                         <div className="flex gap-3 pt-4">
-                            <Button type="submit" disabled={updateMutation.isPending}>
+                            <Button type="submit" disabled={updateMutation.isPending || isUploading}>
                                 {updateMutation.isPending && (
                                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                                 )}

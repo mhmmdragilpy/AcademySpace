@@ -50,6 +50,11 @@ export class ReservationService {
             throw new AppError(`Kapasitas tidak mencukupi, sisa hanya ${safeCapacity}`, 400);
         }
 
+        // Validation: Maintenance Check
+        if (facility.maintenance_until && new Date(facility.maintenance_until) > new Date()) {
+            throw new AppError(`Fasilitas sedang dalam perbaikan sampai ${new Date(facility.maintenance_until).toLocaleDateString()}. Alasan: ${facility.maintenance_reason || 'Maintenance'}`, 400);
+        }
+
         const startDateTime = `${data.date} ${data.startTime}:00`;
         const endDateTime = `${data.date} ${data.endTime}:00`;
 

@@ -22,7 +22,7 @@ import {
 export default function CreateUserPage() {
     const router = useRouter();
     const [formData, setFormData] = useState({
-        email: "",
+        username: "",
         password: "",
         full_name: "",
         role: "user",
@@ -48,7 +48,7 @@ export default function CreateUserPage() {
 
         // Prepare data
         const submitData = {
-            email: formData.email,
+            username: formData.username,
             password: formData.password,
             full_name: formData.full_name,
             role: formData.role,
@@ -93,17 +93,22 @@ export default function CreateUserPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="email">
-                                Email <span className="text-destructive">*</span>
+                            <Label htmlFor="username">
+                                Username <span className="text-destructive">*</span>
                             </Label>
                             <Input
-                                id="email"
-                                type="email"
+                                id="username"
+                                type="text"
                                 required
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                placeholder="e.g., john.doe@example.com"
+                                value={formData.username}
+                                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                                placeholder="e.g., john_doe"
+                                pattern="[a-zA-Z0-9_]{3,30}"
+                                title="Username must be 3-30 characters and contain only letters, numbers, and underscores"
                             />
+                            <p className="text-xs text-muted-foreground">
+                                3-30 characters, letters, numbers, and underscores only.
+                            </p>
                         </div>
 
                         <div className="space-y-2">
@@ -124,28 +129,10 @@ export default function CreateUserPage() {
                             </p>
                         </div>
 
-                        <div className="space-y-2">
-                            <Label htmlFor="role">
-                                Role <span className="text-destructive">*</span>
-                            </Label>
-                            <Select
-                                required
-                                value={formData.role}
-                                onValueChange={(value) => setFormData({ ...formData, role: value })}
-                            >
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select role" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="user">User</SelectItem>
-                                    <SelectItem value="admin">Admin</SelectItem>
-                                    <SelectItem value="admin_verificator">Admin Verificator</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
+                        {/* Role selection removed - Admin can only create 'user' role accounts */}
 
                         <div className="space-y-2">
-                            <Label htmlFor="profile_picture_url">Profile Picture URL</Label>
+                            <Label htmlFor="profile_picture_url">Profile Picture URL (Optional)</Label>
                             <Input
                                 id="profile_picture_url"
                                 type="url"

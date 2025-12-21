@@ -29,7 +29,7 @@ export default function RatingModal({ reservation, isOpen, onClose, onRatingSubm
     const fetchUserRating = async () => {
         try {
             const response = await axios.get(
-                `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/ratings/reservation/${reservation.id}`,
+                `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api"}/ratings/reservation/${reservation.id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${session?.accessToken}`
@@ -67,7 +67,7 @@ export default function RatingModal({ reservation, isOpen, onClose, onRatingSubm
             }
 
             await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/ratings`,
+                `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api"}/ratings`,
                 payload,
                 {
                     headers: {

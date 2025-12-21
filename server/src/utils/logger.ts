@@ -39,10 +39,19 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export const logger = winston.createLogger({
-    level: process.env.NODE_ENV === 'development' ? 'debug' : 'warn',
+    level: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
     levels,
     format,
     transports,
 });
+
+// If we're not in production then log to the `console` with the format:
+// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
+if (process.env.NODE_ENV !== 'production') {
+    // transports.push(new winston.transports.Console()); // Already added above but conditionally?
+    // The original code was pushing to transports array if not production. 
+    // But wait, the previous code had `if (process.env.NODE_ENV !== 'production') { transports.push(...) }` *before* creating logger.
+    // I should just update the level creation line.
+}
 
 export default logger;

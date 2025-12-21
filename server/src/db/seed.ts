@@ -42,7 +42,6 @@ async function seedDatabase() {
             { name: 'Auditorium', description: 'Large venue for events and seminars' },
             { name: 'Meeting Room', description: 'Room for meetings and discussions' },
             { name: 'Sports Facility', description: 'Fields and courts for sports activities' },
-            { name: 'Laboratory', description: 'Computer or science lab' },
             { name: 'Outdoor', description: 'Outdoor areas and parks' },
             { name: 'Other', description: 'Other facilities not listed above' }
         ];
@@ -94,7 +93,7 @@ async function seedDatabase() {
         logger.info('Reading CSV and seeding buildings and facilities...');
         const csvPath = path.join(__dirname, 'datagedungruangan.csv');
         const csvContent = fs.readFileSync(csvPath, 'utf-8');
-        const lines = csvContent.trim().split('\n');
+        const lines = csvContent.trim().split(/\r?\n/);
 
         if (lines.length > 1) {
             const buildingMap = new Map<string, number>();
@@ -127,7 +126,7 @@ async function seedDatabase() {
                 const line = lines[i];
                 if (!line) continue;
 
-                const [buildingCode, name, capacityStr] = line.split(';');
+                const [buildingCode, name, capacityStr, description] = line.split(';');
 
                 if (!buildingCode || !name || !capacityStr) {
                     continue;
@@ -146,7 +145,7 @@ async function seedDatabase() {
                 } else if (lowerName.includes('ruang') || lowerName.includes('rapat') || lowerName.includes('lounge')) {
                     typeName = 'Meeting Room';
                 } else if (lowerName.includes('lab') || lowerName.includes('komputer')) {
-                    typeName = 'Laboratory';
+                    typeName = 'Other'; // Changed from Laboratory to Other
                 } else if (lowerName.includes('outdoor') || lowerName.includes('taman') || lowerName.includes('teras')) {
                     typeName = 'Outdoor';
                 }
@@ -172,9 +171,9 @@ async function seedDatabase() {
                         buildingId,
                         roomNumber,
                         capacity,
-                        `Layout for ${name.trim()}`,
+                        `Optimized layout for ${typeName} usage`, // Better layout description
                         imageUrl,
-                        `Facility located available for booking.`
+                        description ? description.trim() : `Facility located at ${buildingCode.trim()}`
                     ]
                 );
             }
@@ -186,6 +185,57 @@ async function seedDatabase() {
         logger.error('Error during database seeding:', error);
         process.exit(1);
     }
+}
+
+function generateDescription(name: string, type: string, capacity: number, buildingCode: string): string {
+    const amenities: string[] = [];
+    let base = "";
+    const lowerName = name.toLowerCase();
+
+    // Building specific context (optional)
+    let buildingContext = "";
+    if (buildingCode === "TULT") buildingContext = "Located in the iconic TULT tower, offering stunning views and modern infrastructure.";
+    else if (buildingCode === "GKU") buildingContext = "Situated in the General Course Building, a central hub for student activities.";
+    else if (buildingCode === "SPORT_CENTER") buildingContext = "Part of the comprehensive Sport Center complex.";
+
+    if (type === 'Auditorium' || lowerName.includes('aula') || lowerName.includes('convention') || lowerName.includes('hall')) {
+        base = `A prestigious and expansive auditorium designed to host major university events, international conferences, and large-scale ceremonies. The acoustic architecture is world-class, ensuring every word is heard clearly.`;
+        amenities.push("professional stage lighting rig", "cinema-grade surround sound system", "plush theater-style seating", "backstage preparation rooms");
+    } else if (type === 'Sports Facility' || lowerName.includes('lapangan') || lowerName.includes('basket') || lowerName.includes('futsal') || lowerName.includes('volley') || lowerName.includes('tennis') || lowerName.includes('skate')) {
+        const isOutdoor = lowerName.includes('outdoor') || !lowerName.includes('hall') && !lowerName.includes('gedung');
+        base = `A premier ${isOutdoor ? 'outdoor' : 'indoor'} sports arena crafted for peak performance. Whether for competitive tournaments or recreational training, this facility offers a professional playing experience.`;
+        amenities.push("competition-standard flooring/turf", "digital scoreboards", "dedicated spectator stands", "changing, and locker rooms");
+    } else if (type === 'Meeting Room' || lowerName.includes('rapat') || lowerName.includes('vip') || lowerName.includes('lounge')) {
+        base = `A sophisticated executive meeting suite designed for privacy, focus, and high-level decision making. The ambiance combines professional elegance with modern comfort.`;
+        amenities.push("premium granite conference table", "4K video conferencing system", "ergonomic executive chairs", "sound-proofed walls");
+    } else if (lowerName.includes('mulmed') || lowerName.includes('lab') || lowerName.includes('komputer')) {
+        base = `A state-of-the-art innovation lab designed for technical mastery and creative production. This workspace is optimized for complex computations, multimedia design, and collaborative research.`;
+        amenities.push("high-performance workstations", "gigabit fiber internet", "interactive smart boards", "specialized software suites");
+    } else if (type === 'Outdoor' || lowerName.includes('taman') || lowerName.includes('teras') || lowerName.includes('joglo') || lowerName.includes('pendopo')) {
+        base = `A tranquil open-air sanctuary that blends academic life with nature. Perfect for informal discussions, creative breakout sessions, or simply recharging in a refreshing environment.`;
+        amenities.push("landscaped gardens", "weather-resistant seating", "integrated power outlets for mobile working", "ambient evening lighting");
+    } else if (type === 'Classroom' || lowerName.includes('kelas')) {
+        base = `A dynamic learning environment designed to facilitate active student engagement and modern pedagogical methods. The layout supports both lecture-style and collaborative group work.`;
+        amenities.push("ultra-short-throw projectors", "modular furniture for flexible layouts", "climate control", "high-density Wi-Fi coverage");
+    } else {
+        base = `A highly versatile multi-purpose facility that adapts to your specific needs. From workshops to administrative functions, this space provides a reliable and comfortable setting.`;
+        amenities.push("essential office furniture", "adjustable lighting", "central air conditioning", "whiteboard walls");
+    }
+
+    // Add capacity flair
+    let capacityText = "";
+    if (capacity >= 500) {
+        capacityText = " With a massive capacity, it stands as a landmark venue for the entire academic community.";
+    } else if (capacity >= 100) {
+        capacityText = " Its spacious design comfortably accommodates large lecture cohorts and department-wide gatherings.";
+    } else if (capacity >= 40) {
+        capacityText = " Ideally sized for standard academic sessions, offering a balance of personal interaction and group energy.";
+    } else if (capacity < 20) {
+        capacityText = " The intimate setting fosters deep collaboration and focused group dynamics.";
+    }
+
+    const fullDesc = `${buildingContext} ${base} ${capacityText} Key features include: ${amenities.join(', ')}.`.trim();
+    return fullDesc;
 }
 
 seedDatabase();

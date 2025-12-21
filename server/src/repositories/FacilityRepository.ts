@@ -20,6 +20,9 @@ export class FacilityRepository extends BaseRepository<Facility> {
                 f.floor,
                 f.description,
                 f.type_id,
+                f.is_active,
+                f.maintenance_until,
+                f.maintenance_reason,
                 f.created_at,
                 f.updated_at
             FROM facilities f
@@ -30,6 +33,11 @@ export class FacilityRepository extends BaseRepository<Facility> {
         const values: any[] = [];
         let filterConditions: string[] = [];
         let paramIndex = 1;
+
+        // Filter by active status - if includeInactive is false or not provided, only show active OR maintenance
+        if (filters.includeInactive !== true) {
+            filterConditions.push(`(f.is_active = true OR (f.maintenance_until IS NOT NULL AND f.maintenance_until > NOW()))`);
+        }
 
         if (filters.building) {
             filterConditions.push(`b.name = $${paramIndex}`);
@@ -58,6 +66,8 @@ export class FacilityRepository extends BaseRepository<Facility> {
         if (filterConditions.length > 0) {
             queryText += " WHERE " + filterConditions.join(" AND ");
         }
+
+        queryText += " ORDER BY f.name ASC";
 
         const result = await this.query(queryText, values);
         return result.rows;

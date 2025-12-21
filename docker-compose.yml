@@ -1,16 +1,86 @@
 version: '3.8'
+
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: academy_space_db
-    ports:
-      - "5432:5432"
+    container_name: academy_space_db_prod
+    restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: academy_space
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-academy_space}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_prod:/var/lib/postgresql/data
+    networks:
+      - backend_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:alpine
+    container_name: academy_space_redis_prod
+    restart: always
+    networks:
+      - backend_network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      target: production
+    container_name: academy_space_backend_prod
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-academy_space}
+      REDIS_URL: redis://redis:6379
+      # Add other env vars here or use env_file
+    env_file:
+      - ./server/.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - backend_network
+      - frontend_network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: runner
+    container_name: academy_space_frontend_prod
+    restart: always
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: http://localhost:5000/api
+      # Accessing backend public URL properly? 
+      # In server-side rendering, it might need internal URL: http://backend:5000/api
+      # But client-side fetches need public URL.
+      # Usually managed by Ninx or just exposing backend.
+    ports:
+      - "3000:3000"
+    networks:
+      - frontend_network
+
+networks:
+  backend_network:
+    internal: true
+  frontend_network:
+
 
 volumes:
-  postgres_data:
+  postgres_data_prod:

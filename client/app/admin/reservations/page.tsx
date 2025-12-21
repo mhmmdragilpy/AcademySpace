@@ -102,7 +102,7 @@ export default function AdminReservationsPage() {
     if (!url) return <span className="text-gray-400 text-sm">No document</span>;
 
     // Get base URL by removing '/api' from the API URL
-    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api").replace(/\/api$/, "");
+    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api").replace(/\/api$/, "");
     const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`;
     const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
     const isPdf = /\.pdf$/i.test(url);
@@ -162,7 +162,7 @@ export default function AdminReservationsPage() {
   const ReservationDetailModal = ({ reservation }: { reservation: any }) => {
     if (!reservation) return null;
 
-    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api").replace(/\/api$/, "");
+    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api").replace(/\/api$/, "");
     const fullUrl = reservation.proposalUrl?.startsWith('http')
       ? reservation.proposalUrl
       : reservation.proposalUrl

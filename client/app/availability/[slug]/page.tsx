@@ -6,7 +6,7 @@ import { RoomAvailabilityContent } from './RoomAvailabilityContent';
 // Function to get room details from API
 const getRoomDetails = async (slug: string) => {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
     // We have to fetch all and filter because backend doesn't support slug lookup yet
     // In production, we should add a specific endpoint for this
     const res = await fetch(`${apiUrl}/facilities`, { cache: 'no-store' });

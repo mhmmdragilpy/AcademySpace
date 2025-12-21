@@ -27,6 +27,14 @@ export class FacilityService {
             if (conflictingIds.length > 0) {
                 facilities = facilities.filter((f: any) => !conflictingIds.includes(f.facility_id));
             }
+
+            // Conflicting IDs filter
+            if (conflictingIds.length > 0) {
+                facilities = facilities.filter((f: any) => !conflictingIds.includes(f.facility_id));
+            }
+
+            // Maintenance exclusion removal - User wants to see maintenance status
+            // The frontend will handle disabling the booking button.
         }
 
         // Map to backward compatible structure if needed, or stick to new structure?
@@ -43,13 +51,15 @@ export class FacilityService {
             building_id: f.building_id,
             room_number: f.room_number,
             capacity: f.capacity,
-            description: f.layout_description,
+            description: f.description,
             layout_description: f.layout_description,
             image_url: f.photo_url,
             photo_url: f.photo_url,
             floor: f.floor,
             generic_description: f.description,
-            is_active: f.is_active !== false
+            is_active: f.is_active !== false,
+            maintenance_until: f.maintenance_until,
+            maintenance_reason: f.maintenance_reason
         }));
     }
 
@@ -187,6 +197,10 @@ export class FacilityService {
             updateData.photo_url = data.photo_url || data.image_url || data.imageUrl;
         }
         if (data.is_active !== undefined) updateData.is_active = data.is_active;
+
+        // Maintenance fields
+        if (data.maintenance_until !== undefined) (updateData as any).maintenance_until = data.maintenance_until;
+        if (data.maintenance_reason !== undefined) (updateData as any).maintenance_reason = data.maintenance_reason;
 
         const res = await this.facilityRepository.update(id, updateData);
         return res ? { id: res.facility_id, ...res } : null;

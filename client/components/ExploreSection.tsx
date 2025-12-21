@@ -8,6 +8,7 @@ import api from "@/lib/api";
 import { Facility, FacilityType } from "@/types";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search } from "lucide-react";
+import { FacilityDetailModal } from "./FacilityDetailModal";
 
 // Group facilities by building
 interface BuildingGroup {
@@ -20,14 +21,16 @@ interface BuildingGroup {
 const ExploreSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState<number | null>(null);
+  const [selectedFacility, setSelectedFacility] = useState<Facility | null>(null);
 
   // Fetch all facilities from API
   const { data: facilities, isLoading, isError } = useQuery({
-    queryKey: ['all-facilities'],
+    queryKey: ['all-facilities-v4'], // Updated version to bust cache
     queryFn: async () => {
       const res = await api.get('/facilities');
       return res as unknown as Facility[];
-    }
+    },
+    staleTime: 1000 * 60, // 1 minute
   });
 
   // Fetch facility types for classification
@@ -234,12 +237,12 @@ const ExploreSection = () => {
                               {room.description || room.generic_description || room.layout_description || "No description available"}
                             </p>
                           </div>
-                          <Link
-                            href={`/availability/${room.facility_id}`}
+                          <button
+                            onClick={() => setSelectedFacility(room)}
                             className="bg-[#08294B] text-white text-xs px-3 py-1 rounded hover:bg-[#0a3a6e] transition-colors whitespace-nowrap ml-2"
                           >
                             Cek
-                          </Link>
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -248,6 +251,14 @@ const ExploreSection = () => {
               </div>
             ))}
           </div>
+        )}
+
+        {selectedFacility && (
+          <FacilityDetailModal
+            facility={selectedFacility}
+            isOpen={!!selectedFacility}
+            onClose={() => setSelectedFacility(null)}
+          />
         )}
 
         <div className="mt-12 text-center">

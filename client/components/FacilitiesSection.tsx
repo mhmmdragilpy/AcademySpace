@@ -12,16 +12,18 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFacilities, useFacilityTypes } from "@/hooks/useFacilities";
 
+import { FacilityDetailModal } from "./FacilityDetailModal";
+
 interface FacilityCardProps {
   facility: Facility;
+  onSelect: (facility: Facility) => void;
 }
 
-const FacilityCard = ({ facility }: FacilityCardProps) => {
+const FacilityCard = ({ facility, onSelect }: FacilityCardProps) => {
   const imageUrl = facility.image_url || facility.photo_url;
-  const slug = facility.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
 
   return (
-    <div className="block group h-full">
+    <div className="block group h-full cursor-pointer" onClick={() => onSelect(facility)}>
       <Card className="overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col">
         <div className="relative h-48 bg-muted">
           {imageUrl ? (
@@ -44,14 +46,20 @@ const FacilityCard = ({ facility }: FacilityCardProps) => {
             </div>
           )}
           <div className="absolute top-2 right-2">
-            <Badge variant={facility.is_active ? "default" : "secondary"}>
-              {facility.is_active ? "Available" : "Maintenance"}
-            </Badge>
+            {facility.maintenance_until && new Date(facility.maintenance_until) > new Date() ? (
+              <Badge variant="destructive">
+                Maintenance
+              </Badge>
+            ) : (
+              <Badge variant="default" className="bg-green-600 hover:bg-green-700">
+                Available
+              </Badge>
+            )}
           </div>
         </div>
         <CardContent className="p-4 space-y-3 flex-1 flex flex-col">
           <div className="flex justify-between items-start">
-            <h3 className="font-bold text-lg line-clamp-1">{facility.name}</h3>
+            <h3 className="font-bold text-lg line-clamp-1 group-hover:text-[#FA7436] transition-colors">{facility.name}</h3>
             <div className="flex items-center gap-1 text-xs font-semibold bg-secondary px-2 py-1 rounded">
               <Users size={12} />
               <span>{facility.capacity}</span>
@@ -63,15 +71,13 @@ const FacilityCard = ({ facility }: FacilityCardProps) => {
             <span>{facility.building_name || "Unknown Building"}</span>
           </div>
 
-          <p className="text-sm text-muted-foreground line-clamp-2 flex-1">
+          {/*           <p className="text-sm text-muted-foreground line-clamp-2 flex-1">
             {facility.description}
-          </p>
+          </p> */}
 
-          <Button asChild className="w-full mt-4 bg-[#FA7436] hover:bg-[#e5672f]">
-            <Link href={`/availability/${slug}`}>
-              <Calendar className="w-4 h-4 mr-2" />
-              Book Now
-            </Link>
+          <Button className="w-full mt-4 bg-[#FA7436] hover:bg-[#e5672f]">
+            <Calendar className="w-4 h-4 mr-2" />
+            View Details
           </Button>
         </CardContent>
       </Card>
@@ -84,6 +90,7 @@ export default function FacilitiesSection() {
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [activeTab, setActiveTab] = useState<"facilities" | "tools">("facilities");
   const [selectedType, setSelectedType] = useState<number | null>(null);
+  const [selectedFacility, setSelectedFacility] = useState<Facility | null>(null);
 
   // Debounce search
   useEffect(() => {
@@ -212,7 +219,7 @@ export default function FacilitiesSection() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in duration-500">
                 {filteredFacilities.map((facility) => (
-                  <FacilityCard key={facility.facility_id} facility={facility} />
+                  <FacilityCard key={facility.facility_id} facility={facility} onSelect={setSelectedFacility} />
                 ))}
               </div>
             )}
@@ -234,6 +241,12 @@ export default function FacilitiesSection() {
             ))}
           </div>
         )}
+
+        <FacilityDetailModal
+          facility={selectedFacility}
+          isOpen={!!selectedFacility}
+          onClose={() => setSelectedFacility(null)}
+        />
       </div>
     </section>
   );

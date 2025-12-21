@@ -4,20 +4,21 @@ import { Facility, FacilityType } from "@/types";
 
 // Keys
 export const facilitiesKeys = {
-    all: ['facilities'] as const,
-    list: (filters: { search?: string; type?: number | null } = {}) => [...facilitiesKeys.all, 'list', filters] as const,
+    all: ['facilities', 'v3'] as const,
+    list: (filters: { search?: string; type?: number | null; includeInactive?: boolean } = {}) => [...facilitiesKeys.all, 'list', filters] as const,
     detail: (id: string | number) => [...facilitiesKeys.all, 'detail', id] as const,
     types: ['facility-types'] as const,
 };
 
 // Hooks
 
-export function useFacilities(filters: { search?: string; type?: number | null } = {}) {
+export function useFacilities(filters: { search?: string; type?: number | null; includeInactive?: boolean } = {}) {
     return useQuery({
         queryKey: facilitiesKeys.list(filters),
         queryFn: async () => {
             const params = new URLSearchParams();
             if (filters.search) params.append("search", filters.search);
+            if (filters.includeInactive) params.append("includeInactive", "true");
             // Add other filters as needed if backend supports them directly, 
             // currently frontend often does filtering too, but good to have prepared.
 

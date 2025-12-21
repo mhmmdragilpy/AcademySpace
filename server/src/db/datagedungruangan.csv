@@ -1,43 +1,43 @@
-Gedung;Nama Ruangan;Kapasitas
-SEBATIK;Aula FIK Lantai 5;400
-KAWALUSU;Aula FKS Lantai 5;400
-SELARU;Aula FIT Lantai 4;800
-TENNIS_HALL;Lapangan Tennis A;10
-TENNIS_HALL;Lapangan Tennis B;10
-BATEK_BTP;Ruang MULMED Ged. C;80
-BATEK_BTP;Ruang MULMED Ged. A;60
-TERAS_PRIANGAN;Outdoor class;100
-TERAS_PRIANGAN;PENDOPO PRIANGAN;100
-TERAS_PRIANGAN;Teras Outdoor;300
-TERAS_PRIANGAN;Joglo;40
-TUCH;Convention Hall;3000
-SPORT_CENTER;Skate Park;6
-SPORT_CENTER;Lapangan Pickleball;4
-SPORT_CENTER;Lapangan Basket 3X3 Utara;5
-SPORT_CENTER;Lapangan Basket 3X3 selatan;6
-SPORT_CENTER;Lapangan Panahan;20
-SPORT_CENTER;Lapangan Basket;50
-SPORT_CENTER;Lapangan Volley;50
-SPORT_CENTER;Lapangan Futsal;50
-TULT;Ruang kecil 1605;4
-TULT;Area Makan TULT Lt.16;50
-TULT;Ruang Rapat 1601;20
-TULT;Ruang Rapat TULT 1604;20
-TULT;Ruang Rapat TULT 1602;20
-TULT;Auditorium TULT Lantai 16;100
-TULT;Aula TULT Lt 2;400
-GSG;Sayap Kanan lantai 3;100
-GSG;VIP C;60
-GSG;Sayap kiri lantai 3;100
-GSG;Lapang samping timur GSG;600
-GSG;Lapangan Upacara;3000
-GSG;VIP B;60
-GSG;VIP A;50
-GSG;Aula Besar Lt 1;800
-STUDENT_CENTER;Lapangan Bulutangkis B;12
-STUDENT_CENTER;Lapangan Bulutangkis A;12
-MANTERAWU;Aula Dekanat;300
-MARATUA;Aula FEB Lantai 5;400
-GEDUNG_DAMAR;Auditorium Gedung Damar;300
-GREEN_LOUNGE;Taman Green Lounge;50
-GREEN_LOUNGE;Ruangan Green Lounge;20
+Gedung;Nama Ruangan;Kapasitas;Deskripsi
+SEBATIK;Aula FIK Lantai 5;400;Ruangan aula besar yang terletak di Gedung SEBATIK dengan kapasitas 400 orang, cocok untuk acara besar atau seminar.
+KAWALUSU;Aula FKS Lantai 5;400;Ruangan aula besar yang terletak di Gedung KAWALUSU dengan kapasitas 400 orang, cocok untuk acara besar atau seminar.
+SELARU;Aula FIT Lantai 4;800;Ruangan aula besar yang terletak di Gedung SELARU dengan kapasitas 800 orang, cocok untuk acara besar atau seminar.
+TENNIS_HALL;Lapangan Tennis A;10;Fasilitas olahraga Lapangan Tennis A di area TENNIS_HALL, dapat menampung sekitar 10 orang.
+TENNIS_HALL;Lapangan Tennis B;10;Fasilitas olahraga Lapangan Tennis B di area TENNIS_HALL, dapat menampung sekitar 10 orang.
+BATEK_BTP;Ruang MULMED Ged. C;80;Ruang multimedia di Gedung BATEK_BTP yang dilengkapi fasilitas audio visual, kapasitas 80 orang.
+BATEK_BTP;Ruang MULMED Ged. A;60;Ruang multimedia di Gedung BATEK_BTP yang dilengkapi fasilitas audio visual, kapasitas 60 orang.
+TERAS_PRIANGAN;Outdoor class;100;Area terbuka atau semi-terbuka di TERAS_PRIANGAN (Outdoor class), cocok untuk kegiatan santai atau gathering dengan kapasitas 100 orang.
+TERAS_PRIANGAN;PENDOPO PRIANGAN;100;Area terbuka atau semi-terbuka di TERAS_PRIANGAN (PENDOPO PRIANGAN), cocok untuk kegiatan santai atau gathering dengan kapasitas 100 orang.
+TERAS_PRIANGAN;Teras Outdoor;300;Area terbuka atau semi-terbuka di TERAS_PRIANGAN (Teras Outdoor), cocok untuk kegiatan santai atau gathering dengan kapasitas 300 orang.
+TERAS_PRIANGAN;Joglo;40;Area terbuka atau semi-terbuka di TERAS_PRIANGAN (Joglo), cocok untuk kegiatan santai atau gathering dengan kapasitas 40 orang.
+TUCH;Convention Hall;3000;Hall konvensi utama di TUCH dengan kapasitas sangat besar hingga 3000 orang, untuk acara wisuda atau pameran.
+SPORT_CENTER;Skate Park;6;Fasilitas olahraga Skate Park di area SPORT_CENTER, dapat menampung sekitar 6 orang.
+SPORT_CENTER;Lapangan Pickleball;4;Fasilitas olahraga Lapangan Pickleball di area SPORT_CENTER, dapat menampung sekitar 4 orang.
+SPORT_CENTER;Lapangan Basket 3X3 Utara;5;Fasilitas olahraga Lapangan Basket 3X3 Utara di area SPORT_CENTER, dapat menampung sekitar 5 orang.
+SPORT_CENTER;Lapangan Basket 3X3 selatan;6;Fasilitas olahraga Lapangan Basket 3X3 selatan di area SPORT_CENTER, dapat menampung sekitar 6 orang.
+SPORT_CENTER;Lapangan Panahan;20;Fasilitas olahraga Lapangan Panahan di area SPORT_CENTER, dapat menampung sekitar 20 orang.
+SPORT_CENTER;Lapangan Basket;50;Fasilitas olahraga Lapangan Basket di area SPORT_CENTER, dapat menampung sekitar 50 orang.
+SPORT_CENTER;Lapangan Volley;50;Fasilitas olahraga Lapangan Volley di area SPORT_CENTER, dapat menampung sekitar 50 orang.
+SPORT_CENTER;Lapangan Futsal;50;Fasilitas olahraga Lapangan Futsal di area SPORT_CENTER, dapat menampung sekitar 50 orang.
+TULT;Ruang kecil 1605;4;Ruangan kecil di TULT, cocok untuk diskusi privat atau kelompok kecil, kapasitas 4 orang.
+TULT;Area Makan TULT Lt.16;50;Area makan di TULT yang nyaman untuk istirahat, kapasitas 50 pengunjung.
+TULT;Ruang Rapat 1601;20;Ruang pertemuan yang berlokasi di TULT, ideal untuk diskusi tim atau rapat dengan kapasitas 20 kursi.
+TULT;Ruang Rapat TULT 1604;20;Ruang pertemuan yang berlokasi di TULT, ideal untuk diskusi tim atau rapat dengan kapasitas 20 kursi.
+TULT;Ruang Rapat TULT 1602;20;Ruang pertemuan yang berlokasi di TULT, ideal untuk diskusi tim atau rapat dengan kapasitas 20 kursi.
+TULT;Auditorium TULT Lantai 16;100;Ruangan Auditorium TULT Lantai 16 yang berlokasi di Gedung TULT dengan fasilitas untuk menampung 100 orang.
+TULT;Aula TULT Lt 2;400;Ruangan aula besar yang terletak di Gedung TULT dengan kapasitas 400 orang, cocok untuk acara besar atau seminar.
+GSG;Sayap Kanan lantai 3;100;Ruangan Sayap Kanan lantai 3 yang berlokasi di Gedung GSG dengan fasilitas untuk menampung 100 orang.
+GSG;VIP C;60;Ruangan VIP C yang berlokasi di Gedung GSG dengan fasilitas untuk menampung 60 orang.
+GSG;Sayap kiri lantai 3;100;Ruangan Sayap kiri lantai 3 yang berlokasi di Gedung GSG dengan fasilitas untuk menampung 100 orang.
+GSG;Lapang samping timur GSG;600;Ruangan Lapang samping timur GSG yang berlokasi di Gedung GSG dengan fasilitas untuk menampung 600 orang.
+GSG;Lapangan Upacara;3000;Fasilitas olahraga Lapangan Upacara di area GSG, dapat menampung sekitar 3000 orang.
+GSG;VIP B;60;Ruangan VIP B yang berlokasi di Gedung GSG dengan fasilitas untuk menampung 60 orang.
+GSG;VIP A;50;Ruangan VIP A yang berlokasi di Gedung GSG dengan fasilitas untuk menampung 50 orang.
+GSG;Aula Besar Lt 1;800;Ruangan aula besar yang terletak di Gedung GSG dengan kapasitas 800 orang, cocok untuk acara besar atau seminar.
+STUDENT_CENTER;Lapangan Bulutangkis B;12;Fasilitas olahraga Lapangan Bulutangkis B di area STUDENT_CENTER, dapat menampung sekitar 12 orang.
+STUDENT_CENTER;Lapangan Bulutangkis A;12;Fasilitas olahraga Lapangan Bulutangkis A di area STUDENT_CENTER, dapat menampung sekitar 12 orang.
+MANTERAWU;Aula Dekanat;300;Ruangan aula besar yang terletak di Gedung MANTERAWU dengan kapasitas 300 orang, cocok untuk acara besar atau seminar.
+MARATUA;Aula FEB Lantai 5;400;Ruangan aula besar yang terletak di Gedung MARATUA dengan kapasitas 400 orang, cocok untuk acara besar atau seminar.
+GEDUNG_DAMAR;Auditorium Gedung Damar;300;Ruangan Auditorium Gedung Damar yang berlokasi di Gedung GEDUNG_DAMAR dengan fasilitas untuk menampung 300 orang.
+GREEN_LOUNGE;Taman Green Lounge;50;Ruangan Taman Green Lounge yang berlokasi di Gedung GREEN_LOUNGE dengan fasilitas untuk menampung 50 orang.
+GREEN_LOUNGE;Ruangan Green Lounge;20;Ruangan Ruangan Green Lounge yang berlokasi di Gedung GREEN_LOUNGE dengan fasilitas untuk menampung 20 orang.
