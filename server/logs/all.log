@@ -37,3 +37,54 @@
 2025-12-21 14:24:09:249 [32minfo[39m: [32m✅ Connected to Database[39m
 2025-12-21 14:26:13:2613 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
 2025-12-21 14:26:13:2613 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 15:32:06:326 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 15:32:06:326 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 15:42:03:423 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 15:42:03:423 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 15:43:45:4345 [32minfo[39m: [32mDatabase initialized successfully![39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mStarting database seeding...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mClearing existing data...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mSeeding system tokens...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mSeeding facility types...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mSeeding reservation statuses...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mCreating users...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mReading CSV and seeding buildings and facilities...[39m
+2025-12-21 15:43:52:4352 [32minfo[39m: [32mDatabase seeding completed successfully![39m
+2025-12-21 15:51:57:5157 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 15:51:57:5157 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31m500 - Internal Server Error - /api/facilities? - GET - ::1[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31merror: column f.maintenance_until does not exist[39m
+[31m    at C:\academy_space\server\node_modules\pg-pool\index.js:45:11[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async FacilityRepository.findWithDetails (C:\academy_space\server\src\repositories\FacilityRepository.ts:72:24)[39m
+[31m    at async FacilityService.findAll (C:\academy_space\server\src\services\facilityService.ts:18:26)[39m
+[31m    at async <anonymous> (C:\academy_space\server\src\controllers\facilityController.ts:22:20)[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31m500 - Internal Server Error - /api/facilities - GET - ::1[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31merror: column f.maintenance_until does not exist[39m
+[31m    at C:\academy_space\server\node_modules\pg-pool\index.js:45:11[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async FacilityRepository.findWithDetails (C:\academy_space\server\src\repositories\FacilityRepository.ts:72:24)[39m
+[31m    at async FacilityService.findAll (C:\academy_space\server\src\services\facilityService.ts:18:26)[39m
+[31m    at async <anonymous> (C:\academy_space\server\src\controllers\facilityController.ts:22:20)[39m
+2025-12-21 15:52:54:5254 [32minfo[39m: [32mDatabase initialized successfully![39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mStarting database seeding...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mClearing existing data...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mSeeding system tokens...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mSeeding facility types...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mSeeding reservation statuses...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mCreating users...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mReading CSV and seeding buildings and facilities...[39m
+2025-12-21 15:53:02:532 [32minfo[39m: [32mDatabase seeding completed successfully![39m
+2025-12-21 15:55:18:5518 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 15:55:18:5518 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 15:55:55:5555 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 15:56:00:560 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 15:56:08:568 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 15:56:10:5610 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 15:56:12:5612 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-21 16:02:26:226 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 16:02:26:226 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 16:03:36:336 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 16:03:36:336 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-21 16:05:35:535 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-21 16:05:35:535 [32minfo[39m: [32m✅ Connected to Database[39m

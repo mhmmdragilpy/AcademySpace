@@ -1,0 +1,14 @@
+2025-12-21 15:52:05:525 [31merror[39m: [31m500 - Internal Server Error - /api/facilities? - GET - ::1[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31merror: column f.maintenance_until does not exist[39m
+[31m    at C:\academy_space\server\node_modules\pg-pool\index.js:45:11[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async FacilityRepository.findWithDetails (C:\academy_space\server\src\repositories\FacilityRepository.ts:72:24)[39m
+[31m    at async FacilityService.findAll (C:\academy_space\server\src\services\facilityService.ts:18:26)[39m
+[31m    at async <anonymous> (C:\academy_space\server\src\controllers\facilityController.ts:22:20)[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31m500 - Internal Server Error - /api/facilities - GET - ::1[39m
+2025-12-21 15:52:05:525 [31merror[39m: [31merror: column f.maintenance_until does not exist[39m
+[31m    at C:\academy_space\server\node_modules\pg-pool\index.js:45:11[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async FacilityRepository.findWithDetails (C:\academy_space\server\src\repositories\FacilityRepository.ts:72:24)[39m
+[31m    at async FacilityService.findAll (C:\academy_space\server\src\services\facilityService.ts:18:26)[39m
+[31m    at async <anonymous> (C:\academy_space\server\src\controllers\facilityController.ts:22:20)[39m

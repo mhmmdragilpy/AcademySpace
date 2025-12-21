@@ -28,7 +28,7 @@ export class ReservationRepository extends BaseRepository {
             `;
             await client.query(itemQuery, [
                 reservation.reservation_id,
-                data.facilityId,
+                data.facilityId || null,
                 data.startDateTime,
                 data.endDateTime
             ]);
@@ -50,6 +50,7 @@ export class ReservationRepository extends BaseRepository {
                 u.full_name as user_name, 
                 u.username as user_username, 
                 f.name as facility_name,
+                f.name as facility_raw_name,
                 rs.name as status,
                 r.purpose,
                 r.requester_id as user_id,
@@ -63,7 +64,7 @@ export class ReservationRepository extends BaseRepository {
             FROM reservations r
             JOIN users u ON r.requester_id = u.user_id
             JOIN reservation_items ri ON r.reservation_id = ri.reservation_id
-            JOIN facilities f ON ri.facility_id = f.facility_id
+            LEFT JOIN facilities f ON ri.facility_id = f.facility_id
             JOIN reservation_statuses rs ON r.status_id = rs.status_id
             WHERE r.reservation_id = $1
         `;
@@ -87,7 +88,7 @@ export class ReservationRepository extends BaseRepository {
             FROM reservations r
             JOIN users u ON r.requester_id = u.user_id
             JOIN reservation_items ri ON r.reservation_id = ri.reservation_id
-            JOIN facilities f ON ri.facility_id = f.facility_id
+            LEFT JOIN facilities f ON ri.facility_id = f.facility_id
             JOIN reservation_statuses rs ON r.status_id = rs.status_id
             ORDER BY r.created_at DESC
         `;
@@ -104,11 +105,14 @@ export class ReservationRepository extends BaseRepository {
                 to_char(ri.start_datetime, 'YYYY-MM-DD') as date,
                 to_char(ri.start_datetime, 'HH24:MI') as start_time,
                 to_char(ri.end_datetime, 'HH24:MI') as end_time,
-                r.created_at
+                r.created_at,
+                f.facility_id,
+                CASE WHEN rt.rating_id IS NOT NULL THEN true ELSE false END as is_rated
             FROM reservations r
             JOIN reservation_items ri ON r.reservation_id = ri.reservation_id
-            JOIN facilities f ON ri.facility_id = f.facility_id
+            LEFT JOIN facilities f ON ri.facility_id = f.facility_id
             JOIN reservation_statuses rs ON r.status_id = rs.status_id
+            LEFT JOIN ratings rt ON r.reservation_id = rt.reservation_id
             WHERE r.requester_id = $1 
             ORDER BY r.created_at DESC
         `;

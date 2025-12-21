@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { Star, StarHalf } from 'lucide-react';
 import api from '@/lib/api';
+import { useFacilityRatingStats, useFacilityRatings } from '@/hooks/useRatings';
 
 // Define the booking interface
 interface Booking {
@@ -40,6 +42,9 @@ export function RoomAvailabilityContent({ roomDetails }: { roomDetails: RoomDeta
   const [proposalUrl, setProposalUrl] = useState<string>("");
   const [uploading, setUploading] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const { data: ratingStats } = useFacilityRatingStats(roomDetails.id);
+  const { data: ratings } = useFacilityRatings(roomDetails.id);
 
   // Define time slots (from 05:00 to 21:00, every hour)
   const timeSlots = Array.from({ length: 17 }, (_, i) => {
@@ -256,6 +261,15 @@ export function RoomAvailabilityContent({ roomDetails }: { roomDetails: RoomDeta
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Cek Ketersediaan Ruangan</h1>
           <p className="mt-2 text-lg text-gray-600">{roomDetails.name} - {roomDetails.building}</p>
+          {ratingStats && ratingStats.totalRatings > 0 && (
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <div className="flex items-center text-yellow-500">
+                <span className="font-bold text-gray-900 mr-1">{ratingStats.averageRating.toFixed(1)}</span>
+                <Star className="w-5 h-5 fill-current" />
+              </div>
+              <span className="text-sm text-gray-500">({ratingStats.totalRatings} ulasan)</span>
+            </div>
+          )}
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
@@ -278,6 +292,37 @@ export function RoomAvailabilityContent({ roomDetails }: { roomDetails: RoomDeta
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Deskripsi</h3>
             <p className="text-gray-700">{roomDetails.description}</p>
           </div>
+
+          {ratings && ratings.length > 0 && (
+            <div className="mt-6 border-t pt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Ulasan Pengguna</h3>
+              <div className="space-y-4">
+                {ratings.map((rating, idx) => (
+                  <div key={idx} className="bg-gray-50 p-4 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="font-medium text-gray-900">{rating.user_name}</div>
+                        <div className="flex text-yellow-500">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`w-4 h-4 ${i < rating.rating ? "fill-current" : "text-gray-300"}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {new Date(rating.created_at).toLocaleDateString()}
+                      </div>
+                    </div>
+                    {rating.review && (
+                      <p className="text-gray-600 text-sm">{rating.review}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Calendar Section */}

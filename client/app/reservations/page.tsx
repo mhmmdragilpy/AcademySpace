@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -20,8 +21,11 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { RatingDialog } from "@/components/RatingDialog";
+
 export default function ReservationManagementPage() {
     const { data: session } = useSession();
+    const [ratingModal, setRatingModal] = useState<{ isOpen: boolean, reservationId: number, facilityId: number, facilityName: string } | null>(null);
 
     const { data: reservations, isLoading, isError } = useMyReservations();
     const cancelMutation = useCancelReservation();
@@ -30,6 +34,19 @@ export default function ReservationManagementPage() {
         if (confirm("Are you sure you want to cancel this reservation?")) {
             cancelMutation.mutate(id);
         }
+    };
+
+    const openRatingModal = (reservation: any) => {
+        setRatingModal({
+            isOpen: true,
+            reservationId: reservation.reservation_id || reservation.id,
+            facilityId: reservation.facilityId,
+            facilityName: reservation.facilityName || reservation.facility_name
+        });
+    };
+
+    const closeRatingModal = () => {
+        setRatingModal(null);
     };
 
     const getStatusVariant = (status: string): "default" | "secondary" | "destructive" | "outline" => {
@@ -49,6 +66,17 @@ export default function ReservationManagementPage() {
             case 'REJECTED': return "bg-red-100 text-red-800 border-red-200";
             case 'CANCELED': return "bg-gray-100 text-gray-800 border-gray-200";
             default: return "bg-gray-100 text-gray-800 border-gray-200";
+        }
+    };
+
+    const isPast = (dateStr: string, timeStr: string) => {
+        // Simple check. Ideally parse properly.
+        // dateStr: YYYY-MM-DD, timeStr: HH:MM
+        try {
+            const endDateTime = new Date(`${dateStr}T${timeStr}`);
+            return new Date() > endDateTime;
+        } catch (e) {
+            return false;
         }
     };
 
@@ -137,7 +165,7 @@ export default function ReservationManagementPage() {
                                                     {res.purpose}
                                                 </TableCell>
                                                 <TableCell className="text-right space-x-2">
-                                                    {(res.status?.toUpperCase() === 'PENDING' || res.status?.toUpperCase() === 'APPROVED') && (
+                                                    {(res.status?.toUpperCase() === 'PENDING' || res.status?.toUpperCase() === 'APPROVED') && !isPast(res.date || '', res.endTime || res.end_time || '') && (
                                                         <Button
                                                             variant="destructive"
                                                             size="sm"
@@ -146,6 +174,20 @@ export default function ReservationManagementPage() {
                                                         >
                                                             {cancelMutation.isPending ? <Loader2 className="h-3 w-3 animate-spin" /> : "Cancel"}
                                                         </Button>
+                                                    )}
+
+                                                    {res.status?.toUpperCase() === 'APPROVED' && isPast(res.date || '', res.endTime || res.end_time || '') && !res.isRated && (
+                                                        <Button
+                                                            variant="outline"
+                                                            size="sm"
+                                                            className="text-yellow-600 border-yellow-200 hover:bg-yellow-50"
+                                                            onClick={() => openRatingModal(res)}
+                                                        >
+                                                            Rate
+                                                        </Button>
+                                                    )}
+                                                    {res.isRated && (
+                                                        <Badge variant="secondary" className="bg-green-50 text-green-700">Rated</Badge>
                                                     )}
                                                 </TableCell>
                                             </TableRow>
@@ -156,6 +198,16 @@ export default function ReservationManagementPage() {
                         )}
                     </CardContent>
                 </Card>
+
+                {ratingModal && (
+                    <RatingDialog
+                        isOpen={ratingModal.isOpen}
+                        onClose={closeRatingModal}
+                        reservationId={ratingModal.reservationId}
+                        facilityId={ratingModal.facilityId}
+                        facilityName={ratingModal.facilityName}
+                    />
+                )}
             </main>
         </div>
     );

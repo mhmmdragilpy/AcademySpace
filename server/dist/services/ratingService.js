@@ -35,9 +35,13 @@ export class RatingService {
         // If my status is 'APPROVED' but date is past, maybe it's effectively completed?
         // Or is there an explicit 'COMPLETED' status?
         // I will assume explicit status for now or check 'APPROVED'.
-        if (reservation.status !== 'COMPLETED' && reservation.status !== 'APPROVED') {
-            // Allowing APPROVED for flexibility if COMPLETED job isn't running
-            throw new AppError("Cannot rate an incomplete reservation", 400);
+        if (reservation.status !== 'APPROVED') {
+            throw new AppError("Only approved reservations can be rated", 400);
+        }
+        const now = new Date();
+        const endTime = new Date(reservation.end_datetime_raw || reservation.end_datetime); // Ensure we get a valid date object
+        if (now < endTime) {
+            throw new AppError("Cannot rate a reservation that has not ended yet", 400);
         }
         const newRating = await this.ratingRepository.create({
             user_id: data.userId,

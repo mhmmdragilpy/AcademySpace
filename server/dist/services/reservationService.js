@@ -28,23 +28,31 @@ export class ReservationService {
         const user = await this.userRepository.findById(data.userId);
         if (!user)
             throw new AppError("User not found", 404);
-        const facility = await this.facilityRepository.findById(data.facilityId);
-        if (!facility)
-            throw new AppError("Facility not found", 404);
-        // Validation: Capacity Check
-        const safeCapacity = facility.capacity || 0;
-        if (data.participants > safeCapacity) {
-            throw new AppError(`Kapasitas tidak mencukupi, sisa hanya ${safeCapacity}`, 400);
+        if (!data.facilityId) {
+            throw new AppError("Must specify facilityId", 400);
         }
-        // Validation: Maintenance Check
-        if (facility.maintenance_until && new Date(facility.maintenance_until) > new Date()) {
-            throw new AppError(`Fasilitas sedang dalam perbaikan sampai ${new Date(facility.maintenance_until).toLocaleDateString()}. Alasan: ${facility.maintenance_reason || 'Maintenance'}`, 400);
+        let facility = null;
+        if (data.facilityId) {
+            facility = await this.facilityRepository.findById(data.facilityId);
+            if (!facility)
+                throw new AppError("Facility not found", 404);
+            // Validation: Capacity Check
+            const safeCapacity = facility.capacity || 0;
+            if (data.participants > safeCapacity) {
+                throw new AppError(`Kapasitas tidak mencukupi, sisa hanya ${safeCapacity}`, 400);
+            }
+            // Validation: Maintenance Check
+            if (facility.maintenance_until && new Date(facility.maintenance_until) > new Date()) {
+                throw new AppError(`Fasilitas sedang dalam perbaikan sampai ${new Date(facility.maintenance_until).toLocaleDateString()}. Alasan: ${facility.maintenance_reason || 'Maintenance'}`, 400);
+            }
         }
         const startDateTime = `${data.date} ${data.startTime}:00`;
         const endDateTime = `${data.date} ${data.endTime}:00`;
-        const conflicts = await this.reservationRepository.findConflicts(data.facilityId, startDateTime, endDateTime);
-        if (conflicts.length > 0) {
-            throw new AppError("Time slot not available. Conflict with an existing reservation.", 409);
+        if (data.facilityId) {
+            const conflicts = await this.reservationRepository.findConflicts(data.facilityId, startDateTime, endDateTime);
+            if (conflicts.length > 0) {
+                throw new AppError("Time slot not available. Conflict with an existing reservation.", 409);
+            }
         }
         const pendingStatusId = await getStatusId('PENDING');
         if (!pendingStatusId)
@@ -61,20 +69,6 @@ export class ReservationService {
         });
         // Notifications
         await this.notificationRepository.createNotification(data.userId, `New reservation for ${data.date} at ${data.startTime}-${data.endTime} is pending approval`);
-        // Email notification disabled - email field removed from users table
-        // try {
-        //     await emailService.sendReservationCreatedEmail(
-        //         user.email,
-        //         user.full_name,
-        //         facility.name,
-        //         data.date,
-        //         data.startTime,
-        //         data.endTime,
-        //         data.purpose
-        //     );
-        // } catch (e) {
-        //     logger.warn("Failed to send email notification", e);
-        // }
         // Return enriched result
         return {
             id: reservation.reservation_id,
@@ -87,11 +81,14 @@ export class ReservationService {
         return rows.map((r) => ({
             id: r.reservation_id,
             facilityName: r.facility_name,
+            facilityType: 'facility',
             date: r.date,
             startTime: r.start_time,
             endTime: r.end_time,
             status: r.status,
-            purpose: r.purpose
+            purpose: r.purpose,
+            facilityId: r.facility_id,
+            isRated: r.is_rated
         }));
     }
     async getAllReservations() {
@@ -143,21 +140,6 @@ export class ReservationService {
         const updated = await this.reservationRepository.update(id, { status_id: statusId });
         // Notification & Email
         await this.notificationRepository.createNotification(detail.user_id, `Your reservation for ${detail.date} at ${detail.start_time} has been ${status}`);
-        // Email notification disabled - email field removed from users table
-        // try {
-        //     await emailService.sendReservationStatusEmail(
-        //         detail.user_email,
-        //         detail.user_name,
-        //         detail.facility_name,
-        //         detail.date,
-        //         detail.start_time,
-        //         detail.end_time,
-        //         status,
-        //         detail.purpose
-        //     );
-        // } catch (e) {
-        //     logger.warn("Email error", e);
-        // }
         return updated;
     }
     async cancel(id, userId) {

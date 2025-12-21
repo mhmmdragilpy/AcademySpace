@@ -51,18 +51,7 @@ export interface Facility {
     updated_at: Date;
 }
 
-export interface Equipment {
-    equipment_id: number;
-    type_id: number;
-    name: string;
-    location?: string | null;
-    quantity: number;
-    description?: string | null;
-    photo_url?: string | null;
-    is_active: boolean;
-    created_at: Date;
-    updated_at: Date;
-}
+
 
 export interface ReservationStatus {
     status_id: number;
@@ -85,7 +74,7 @@ export interface ReservationItem {
     item_id: number;
     reservation_id: number;
     facility_id?: number | null;
-    equipment_id?: number | null;
+
     start_datetime: Date;
     end_datetime: Date;
     created_at: Date;

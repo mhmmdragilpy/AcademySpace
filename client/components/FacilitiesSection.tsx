@@ -88,7 +88,7 @@ const FacilityCard = ({ facility, onSelect }: FacilityCardProps) => {
 export default function FacilitiesSection() {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  const [activeTab, setActiveTab] = useState<"facilities" | "tools">("facilities");
+  const [activeTab, setActiveTab] = useState<"facilities">("facilities");
   const [selectedType, setSelectedType] = useState<number | null>(null);
   const [selectedFacility, setSelectedFacility] = useState<Facility | null>(null);
 
@@ -112,15 +112,8 @@ export default function FacilitiesSection() {
     return list.filter(f => Number(f.type_id) === Number(type));
   }
 
-  // Tools data
-  const toolsContent = [
-    { id: "1", name: "Projector", description: "High-quality projectors available for presentations" },
-    { id: "2", name: "Whiteboard", description: "Interactive whiteboards for collaborative work" },
-    { id: "3", name: "Sound System", description: "Professional audio equipment for events" },
-    { id: "4", name: "Video Conference", description: "Video conferencing equipment and setup" },
-    { id: "5", name: "Computer Lab", description: "Full computer stations with software" },
-    { id: "6", name: "Kitchen Equipment", description: "Professional kitchen tools and appliances" },
-  ];
+  // Tools data removed in favor of real data
+
 
   return (
     <section id="facilities-section" className="py-16 bg-secondary/30 min-h-screen">
@@ -153,16 +146,6 @@ export default function FacilitiesSection() {
           >
             Facilities
             {activeTab === "facilities" && (
-              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
-            )}
-          </button>
-          <button
-            onClick={() => setActiveTab("tools")}
-            className={`flex-1 pb-4 text-sm font-medium transition-colors relative ${activeTab === "tools" ? "text-primary" : "text-muted-foreground"
-              }`}
-          >
-            Equipment
-            {activeTab === "tools" && (
               <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
             )}
           </button>
@@ -226,21 +209,7 @@ export default function FacilitiesSection() {
           </>
         )}
 
-        {activeTab === "tools" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-in fade-in duration-500">
-            {toolsContent.map((tool) => (
-              <Card key={tool.id} className="border-none shadow-md hover:shadow-lg transition-all">
-                <CardContent className="p-6">
-                  <h3 className="font-bold text-lg mb-2">{tool.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
-                  <Button variant="outline" className="w-full text-sm">
-                    Check Availability
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
+
 
         <FacilityDetailModal
           facility={selectedFacility}

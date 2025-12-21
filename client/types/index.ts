@@ -52,18 +52,7 @@ export interface Facility {
     generic_description?: string | null;  // Alias for description
 }
 
-export interface Equipment {
-    equipment_id: number;
-    type_id: number;
-    name: string;
-    location?: string | null;
-    quantity: number;
-    description?: string | null;
-    photo_url?: string | null;
-    is_active: boolean;
-    created_at: string;
-    updated_at: string;
-}
+
 
 export interface ReservationStatus {
     status_id: number;
@@ -92,6 +81,8 @@ export interface Reservation {
     endTime?: string;
     start_time?: string;
     end_time?: string;
+    facilityId?: number;
+    isRated?: boolean;
 }
 
 export interface ReservationItem {

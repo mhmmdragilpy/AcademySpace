@@ -35,16 +35,6 @@ export default function AvailabilityPage() {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  // Hardcoded tools content matching FacilitiesSection
-  const toolsContent = [
-    { id: "1", name: "Projector", description: "High-quality projectors available for presentations" },
-    { id: "2", name: "Whiteboard", description: "Interactive whiteboards for collaborative work" },
-    { id: "3", name: "Sound System", description: "Professional audio equipment for events" },
-    { id: "4", name: "Video Conference", description: "Video conferencing equipment and setup" },
-    { id: "5", name: "Computer Lab", description: "Full computer stations with software" },
-    { id: "6", name: "Kitchen Equipment", description: "Professional kitchen tools and appliances" },
-  ];
-
   // Fetch facilities with Custom Hook
   const { data: facilities, isLoading } = useFacilities({ search: debouncedSearch });
 
@@ -113,23 +103,6 @@ export default function AvailabilityPage() {
                 Facility
               </button>
               {activeTab === "facilities" && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary-orange rounded-t-lg"></div>
-              )}
-            </div>
-
-            {/* Divider */}
-            <div className="w-px bg-gray-300 h-6"></div>
-
-            {/* Tools Tab */}
-            <div className="relative">
-              <button
-                onClick={() => setActiveTab("tools")}
-                className={`font-poppins text-lg pb-2 transition-all duration-300 ${activeTab === "tools" ? "text-primary-orange" : "text-gray-600 hover:text-gray-800"
-                  }`}
-              >
-                Tools & Equipments
-              </button>
-              {activeTab === "tools" && (
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary-orange rounded-t-lg"></div>
               )}
             </div>
@@ -246,25 +219,7 @@ export default function AvailabilityPage() {
             </div>
           )}
 
-          {activeTab === "tools" && (
-            <div className="animate-fadeIn">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                {toolsContent.map((tool) => (
-                  <div
-                    key={tool.id}
-                    className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer border border-gray-100"
-                  >
-                    <h3 className="font-poppins font-bold text-gray-800 mb-2">{tool.name}</h3>
-                    <p className="text-gray-600 text-sm font-poppins">{tool.description}</p>
 
-                    <button className="mt-4 w-full border border-gray-300 text-gray-600 font-medium py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm">
-                      Check Availability
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </main >
 
