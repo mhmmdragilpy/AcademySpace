@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Admin Dashboard</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body class="wf-admin-body">
+
+    <!-- Admin Sidebar -->
+    <aside class="wf-admin-sidebar">
+        <div class="wf-logo">[Logo]</div>
+        <nav class="wf-admin-nav">
+            <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html">
+                <span class="wf-icon">[Cal]</span> Reservations
+            </a>
+            <a href="FR-11-Mengelola_Fasilitas.html">
+                <span class="wf-icon">[Bldg]</span> Facilities
+            </a>
+            <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">
+                <span class="wf-icon">[Chart]</span> Analytics
+            </a>
+            <a href="FR-15-Mengambil_Token_Sistem.html">
+                <span class="wf-icon">[Key]</span> Tokens
+            </a>
+            <a href="FR-02-Mengelola_Profil_Admin.html">
+                <span class="wf-icon">[User]</span> Profile
+            </a>
+            <div style="margin-top: auto; border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" style="color: #aaa;">
+                    <span class="wf-icon">[Out]</span> Logout
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wf-admin-main">
+        <header style="margin-bottom: 2rem;">
+            <h1>Admin Panel</h1>
+            <p class="wf-text-muted">Overview and management.</p>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="wf-grid wf-grid-cols-4 wf-gap-4" style="margin-bottom: 2rem;">
+            <!-- Total Users -->
+            <div class="wf-card">
+                <div class="wf-card-header wf-flex wf-justify-between">
+                    <span class="wf-text-small wf-text-bold">Total Users</span>
+                    <span class="wf-icon">[Users]</span>
+                </div>
+                <div class="wf-card-body">
+                    <span style="font-size: 2rem; font-weight: bold;">1,234</span>
+                </div>
+            </div>
+            <!-- Total Facilities -->
+            <div class="wf-card">
+                <div class="wf-card-header wf-flex wf-justify-between">
+                    <span class="wf-text-small wf-text-bold">Total Facilities</span>
+                    <span class="wf-icon">[Bldg]</span>
+                </div>
+                <div class="wf-card-body">
+                    <span style="font-size: 2rem; font-weight: bold;">42</span>
+                </div>
+            </div>
+            <!-- Total Reservations -->
+            <div class="wf-card">
+                <div class="wf-card-header wf-flex wf-justify-between">
+                    <span class="wf-text-small wf-text-bold">Total Reservations</span>
+                    <span class="wf-icon">[Cal]</span>
+                </div>
+                <div class="wf-card-body">
+                    <span style="font-size: 2rem; font-weight: bold;">8,567</span>
+                </div>
+            </div>
+            <!-- Pending Approval -->
+            <div class="wf-card">
+                <div class="wf-card-header wf-flex wf-justify-between">
+                    <span class="wf-text-small wf-text-bold">Pending Approval</span>
+                    <span class="wf-icon">[Clock]</span>
+                </div>
+                <div class="wf-card-body">
+                    <span style="font-size: 2rem; font-weight: bold;">15</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="wf-grid wf-grid-cols-7 wf-gap-4">
+
+            <!-- Management & Quick Access (Col-4) -->
+            <div class="wf-card" style="grid-column: span 4;">
+                <div class="wf-card-header">
+                    <h3>Management</h3>
+                    <p class="wf-text-muted wf-text-small">Quick access to administrative tasks.</p>
+                </div>
+                <div class="wf-card-body wf-grid wf-grid-cols-2 wf-gap-4">
+                    <a href="FR-11-Mengelola_Fasilitas.html"
+                        class="wf-box wf-flex wf-flex-col wf-items-center wf-justify-center wf-gap-2"
+                        style="height: 100px; border: 1px solid #000; text-decoration: none; color: #000;">
+                        <span class="wf-icon">[Bldg]</span>
+                        <span>Manage Facilities</span>
+                    </a>
+                    <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html"
+                        class="wf-box wf-flex wf-flex-col wf-items-center wf-justify-center wf-gap-2"
+                        style="height: 100px; border: 1px solid #000; text-decoration: none; color: #000;">
+                        <span class="wf-icon">[Cal]</span>
+                        <span>Manage Reservations</span>
+                    </a>
+                    <a href="admin-users.html"
+                        class="wf-box wf-flex wf-flex-col wf-items-center wf-justify-center wf-gap-2"
+                        style="height: 100px; border: 1px solid #000; text-decoration: none; color: #000;">
+                        <span class="wf-icon">[Users]</span>
+                        <span>Manage Users</span>
+                    </a>
+                    <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html"
+                        class="wf-box wf-flex wf-flex-col wf-items-center wf-justify-center wf-gap-2"
+                        style="height: 100px; border: 1px solid #000; text-decoration: none; color: #000;">
+                        <span class="wf-icon">[Chart]</span>
+                        <span>View Analytics</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Activity (Col-3) -->
+            <div class="wf-card" style="grid-column: span 3;">
+                <div class="wf-card-header">
+                    <h3>Recent Activity</h3>
+                    <p class="wf-text-muted wf-text-small">Latest system events.</p>
+                </div>
+                <div class="wf-card-body">
+                    <div class="wf-flex wf-flex-col wf-gap-4">
+                        <!-- Item 1 -->
+                        <div class="wf-flex wf-justify-between">
+                            <div>
+                                <div class="wf-text-bold">John Doe</div>
+                                <div class="wf-text-small wf-text-muted">Created a reservation</div>
+                            </div>
+                            <div class="wf-text-small wf-text-muted">2 mins ago</div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="wf-flex wf-justify-between">
+                            <div>
+                                <div class="wf-text-bold">System</div>
+                                <div class="wf-text-small wf-text-muted">Monthly backup completed</div>
+                            </div>
+                            <div class="wf-text-small wf-text-muted">1 hour ago</div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="wf-flex wf-justify-between">
+                            <div>
+                                <div class="wf-text-bold">Jane Smith</div>
+                                <div class="wf-text-small wf-text-muted">Updated profile</div>
+                            </div>
+                            <div class="wf-text-small wf-text-muted">3 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+@startuml FR-03-Mengajukan_Reservasi
+
+title Sequence Diagram: FR-03 Mengajukan Reservasi
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang ingin mengajukan reservasi
+' Objek:
+'   - FacilityDetailPage: Halaman detail fasilitas (Boundary)
+'   - BookingForm: Form pemesanan (Boundary)
+'   - ReservationController: Controller untuk reservasi
+'   - FacilityDB: Database fasilitas (Entity)
+'   - ReservationDB: Database reservasi (Entity)
+'   - NotificationService: Service untuk notifikasi
+'   - MyReservationsPage: Halaman daftar reservasi (Boundary)
+
+actor "User" as User
+
+boundary "FacilityDetailPage" as FacDetail
+boundary "BookingForm" as BookForm
+control "ReservationController" as ResCtrl
+entity "FacilityDB" as FacDB
+entity "ReservationDB" as ResDB
+control "NotificationService" as NotifSvc
+boundary "MyReservationsPage" as MyRes
+
+' ============================================
+' SKENARIO: MENGAJUKAN RESERVASI
+' ============================================
+== Mengajukan Reservasi ==
+
+User -> FacDetail: Akses halaman detail ruangan
+activate FacDetail
+
+FacDetail -> ResCtrl: getFacilityDetails(facilityId)
+activate ResCtrl
+
+ResCtrl -> FacDB: findFacilityById(facilityId)
+activate FacDB
+FacDB --> ResCtrl: facilityData
+deactivate FacDB
+
+ResCtrl --> FacDetail: facilityDetails
+deactivate ResCtrl
+
+FacDetail --> User: Tampilkan detail fasilitas\n(Nama, Gedung, Kapasitas, Deskripsi)
+deactivate FacDetail
+
+User -> FacDetail: Pilih tanggal dari kalender
+activate FacDetail
+
+FacDetail -> ResCtrl: getAvailableSlots(facilityId, date)
+activate ResCtrl
+
+ResCtrl -> ResDB: findReservationsByDate(facilityId, date)
+activate ResDB
+ResDB --> ResCtrl: existingReservations
+deactivate ResDB
+
+ResCtrl -> ResCtrl: calculateAvailableSlots()
+
+ResCtrl --> FacDetail: availableSlots[]
+deactivate ResCtrl
+
+FacDetail --> User: Tampilkan slot waktu\n(hijau = tersedia, merah = terpesan)
+deactivate FacDetail
+
+User -> BookForm: Isi form pemesanan
+activate BookForm
+
+note right of User
+  User mengisi:
+  - Tanggal
+  - Waktu Mulai
+  - Waktu Selesai
+  - Jumlah Peserta
+  - Upload Dokumen (opsional)
+  - Keperluan Penggunaan
+end note
+
+User -> BookForm: Klik "Ajukan Pemesanan"
+
+BookForm -> ResCtrl: submitReservation(reservationData)
+activate ResCtrl
+
+ResCtrl -> ResCtrl: validateReservationData()
+
+alt Data tidak lengkap
+    ResCtrl --> BookForm: error("Please fill all required fields")
+    BookForm --> User: Tampilkan pesan error
+else Data lengkap
+    ResCtrl -> ResDB: checkTimeConflict(facilityId, date, startTime, endTime)
+    activate ResDB
+    ResDB --> ResCtrl: hasConflict: boolean
+    deactivate ResDB
+    
+    alt Ada konflik waktu
+        ResCtrl --> BookForm: error("Time slot is already booked")
+        BookForm --> User: Tampilkan pesan error
+    else Tidak ada konflik
+        ResCtrl -> ResDB: createReservation(reservationData, status: "PENDING")
+        activate ResDB
+        ResDB --> ResCtrl: reservationCreated
+        deactivate ResDB
+        
+        ResCtrl -> NotifSvc: notifyAdmin(newReservation)
+        activate NotifSvc
+        NotifSvc --> ResCtrl: notified
+        deactivate NotifSvc
+        
+        ResCtrl --> BookForm: success(reservationId)
+        deactivate ResCtrl
+        
+        BookForm -> MyRes: redirect("/my-reservations")
+        activate MyRes
+        MyRes --> User: Tampilkan halaman reservasi\ndengan status "Pending"
+        deactivate MyRes
+        deactivate BookForm
+    end
+end
+
+@enduml

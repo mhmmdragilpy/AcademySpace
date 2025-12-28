@@ -1,0 +1,197 @@
+@startuml FR-01-Membuat_atau_Masuk_Akun
+
+title Sequence Diagram: FR-01 Membuat atau Masuk Akun
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang ingin registrasi atau login
+'   - Admin: Administrator yang ingin registrasi atau login
+' Objek:
+'   - RegisterPage: Halaman registrasi (Boundary)
+'   - LoginPage: Halaman login (Boundary)
+'   - AuthController: Controller untuk autentikasi
+'   - UserDB: Database untuk data user (Entity)
+'   - TokenDB: Database untuk token (Entity)
+'   - HomePage: Halaman utama setelah login (Boundary)
+'   - AdminDashboard: Dashboard admin (Boundary)
+
+actor "User" as User
+actor "Admin" as Admin
+
+boundary "RegisterPage" as RegPage
+boundary "LoginPage" as LogPage
+control "AuthController" as AuthCtrl
+entity "UserDB" as UserDB
+entity "TokenDB" as TokenDB
+boundary "HomePage" as HomePage
+boundary "AdminDashboard" as AdminDash
+
+' ============================================
+' SKENARIO 1: REGISTRASI USER
+' ============================================
+== Registrasi User ==
+
+User -> RegPage: Akses halaman registrasi
+activate RegPage
+
+User -> RegPage: Pilih tab "User"
+User -> RegPage: Isi form (Full Name, Username, Password, Confirm Password)
+User -> RegPage: Klik "Sign Up"
+
+RegPage -> AuthCtrl: submitRegistration(userData)
+activate AuthCtrl
+
+AuthCtrl -> UserDB: checkUsernameExists(username)
+activate UserDB
+UserDB --> AuthCtrl: isExists: boolean
+deactivate UserDB
+
+alt Username sudah ada
+    AuthCtrl --> RegPage: error("Username already exists")
+    RegPage --> User: Tampilkan pesan error
+else Username tersedia
+    AuthCtrl -> UserDB: createUser(userData)
+    activate UserDB
+    UserDB --> AuthCtrl: user created
+    deactivate UserDB
+    
+    AuthCtrl --> RegPage: success
+    deactivate AuthCtrl
+    
+    RegPage --> User: Redirect ke halaman login
+    deactivate RegPage
+end
+
+' ============================================
+' SKENARIO 2: REGISTRASI ADMIN
+' ============================================
+== Registrasi Admin ==
+
+Admin -> RegPage: Akses halaman registrasi
+activate RegPage
+
+Admin -> RegPage: Pilih tab "Admin"
+Admin -> RegPage: Isi form (Full Name, Username, Password, Confirm Password, Admin Token)
+Admin -> RegPage: Klik "Sign Up as Admin"
+
+RegPage -> AuthCtrl: submitAdminRegistration(adminData, token)
+activate AuthCtrl
+
+AuthCtrl -> TokenDB: validateAdminToken(token)
+activate TokenDB
+TokenDB --> AuthCtrl: isValid: boolean
+deactivate TokenDB
+
+alt Token tidak valid
+    AuthCtrl --> RegPage: error("Invalid admin token")
+    RegPage --> Admin: Tampilkan pesan error
+else Token valid
+    AuthCtrl -> UserDB: checkUsernameExists(username)
+    activate UserDB
+    UserDB --> AuthCtrl: isExists: boolean
+    deactivate UserDB
+    
+    alt Username sudah ada
+        AuthCtrl --> RegPage: error("Username already exists")
+        RegPage --> Admin: Tampilkan pesan error
+    else Username tersedia
+        AuthCtrl -> UserDB: createAdmin(adminData)
+        activate UserDB
+        UserDB --> AuthCtrl: admin created
+        deactivate UserDB
+        
+        AuthCtrl --> RegPage: success
+        deactivate AuthCtrl
+        
+        RegPage --> Admin: Redirect ke halaman login
+        deactivate RegPage
+    end
+end
+
+' ============================================
+' SKENARIO 3: LOGIN USER
+' ============================================
+== Login User ==
+
+User -> LogPage: Akses halaman login
+activate LogPage
+
+User -> LogPage: Pilih tab "User"
+User -> LogPage: Isi username dan password
+User -> LogPage: Klik "Sign In"
+
+LogPage -> AuthCtrl: login(username, password)
+activate AuthCtrl
+
+AuthCtrl -> UserDB: findUserByUsername(username)
+activate UserDB
+UserDB --> AuthCtrl: userData
+deactivate UserDB
+
+alt User tidak ditemukan
+    AuthCtrl --> LogPage: error("User not found")
+    LogPage --> User: Tampilkan pesan error
+else User ditemukan
+    AuthCtrl -> AuthCtrl: validatePassword(password, hashedPassword)
+    
+    alt Password salah
+        AuthCtrl --> LogPage: error("Invalid password")
+        LogPage --> User: Tampilkan pesan error
+    else Password benar
+        AuthCtrl -> AuthCtrl: generateSessionToken()
+        AuthCtrl --> LogPage: loginSuccess(token)
+        deactivate AuthCtrl
+        
+        LogPage -> HomePage: redirect("/my-reservations")
+        activate HomePage
+        HomePage --> User: Tampilkan halaman My Reservations
+        deactivate HomePage
+        deactivate LogPage
+    end
+end
+
+' ============================================
+' SKENARIO 4: LOGIN ADMIN
+' ============================================
+== Login Admin ==
+
+Admin -> LogPage: Akses halaman login
+activate LogPage
+
+Admin -> LogPage: Pilih tab "Admin"
+Admin -> LogPage: Isi username dan password
+Admin -> LogPage: Klik "Sign In as Admin"
+
+LogPage -> AuthCtrl: loginAdmin(username, password)
+activate AuthCtrl
+
+AuthCtrl -> UserDB: findAdminByUsername(username)
+activate UserDB
+UserDB --> AuthCtrl: adminData
+deactivate UserDB
+
+alt Admin tidak ditemukan
+    AuthCtrl --> LogPage: error("Admin not found")
+    LogPage --> Admin: Tampilkan pesan error
+else Admin ditemukan
+    AuthCtrl -> AuthCtrl: validatePassword(password, hashedPassword)
+    
+    alt Password salah
+        AuthCtrl --> LogPage: error("Invalid password")
+        LogPage --> Admin: Tampilkan pesan error
+    else Password benar
+        AuthCtrl -> AuthCtrl: generateSessionToken()
+        AuthCtrl --> LogPage: loginSuccess(token)
+        deactivate AuthCtrl
+        
+        LogPage -> AdminDash: redirect("/admin/dashboard")
+        activate AdminDash
+        AdminDash --> Admin: Tampilkan Admin Dashboard
+        deactivate AdminDash
+        deactivate LogPage
+    end
+end
+
+@enduml

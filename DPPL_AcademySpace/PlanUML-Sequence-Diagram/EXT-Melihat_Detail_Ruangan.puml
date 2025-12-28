@@ -1,0 +1,127 @@
+@startuml EXT-Melihat_Detail_Ruangan
+
+title Sequence Diagram: EXT Melihat Detail Ruangan (Popup Card)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang melihat detail ruangan
+' Objek:
+'   - FacilitySearchPage: Halaman pencarian fasilitas (Boundary)
+'   - FacilityDetailPopup: Popup card detail (Boundary)
+'   - FacilityController: Controller fasilitas
+'   - FacilityDB: Database fasilitas (Entity)
+'   - BuildingDB: Database gedung (Entity)
+
+actor "User" as User
+
+boundary "FacilitySearchPage" as SearchPage
+boundary "FacilityDetailPopup" as DetailPopup
+control "FacilityController" as FacCtrl
+entity "FacilityDB" as FacDB
+entity "BuildingDB" as BuildDB
+
+' ============================================
+' SKENARIO 1: MEMBUKA POPUP DETAIL RUANGAN
+' ============================================
+== Membuka Popup Detail Ruangan ==
+
+User -> SearchPage: Berada di halaman pencarian fasilitas
+activate SearchPage
+
+User -> SearchPage: Klik card fasilitas atau "View Details"
+SearchPage -> DetailPopup: openPopup(facilityId)
+activate DetailPopup
+
+DetailPopup -> FacCtrl: getFacilityDetail(facilityId)
+activate FacCtrl
+
+FacCtrl -> FacDB: findById(facilityId)
+activate FacDB
+FacDB --> FacCtrl: facility
+deactivate FacDB
+
+FacCtrl -> BuildDB: findById(facility.buildingId)
+activate BuildDB
+BuildDB --> FacCtrl: building
+deactivate BuildDB
+
+FacCtrl --> DetailPopup: facilityDetail{facility, building}
+deactivate FacCtrl
+
+DetailPopup --> User: Tampilkan popup card:\n- Gambar fasilitas\n- Badge status (Available/Unavailable)\n- Nama ruangan dan lokasi\n- Description\n- Layout & Setup\n- Details (Capacity, Type)\n- Tombol Book Now
+
+deactivate DetailPopup
+deactivate SearchPage
+
+' ============================================
+' SKENARIO 2: MENUTUP POPUP
+' ============================================
+== Menutup Popup ==
+
+User -> DetailPopup: Klik tombol close (X)
+activate DetailPopup
+
+DetailPopup -> DetailPopup: closePopup()
+DetailPopup --> User: Popup tertutup, kembali ke halaman pencarian
+
+deactivate DetailPopup
+
+' ============================================
+' SKENARIO 3: KLIK DI LUAR POPUP
+' ============================================
+== Menutup Popup (Klik Backdrop) ==
+
+User -> DetailPopup: Klik area di luar popup (backdrop)
+activate DetailPopup
+
+DetailPopup -> DetailPopup: closePopup()
+DetailPopup --> User: Popup tertutup
+
+deactivate DetailPopup
+
+' ============================================
+' SKENARIO 4: MELAKUKAN BOOKING
+' ============================================
+== Melanjutkan ke Booking ==
+
+User -> DetailPopup: Klik tombol "Book Now"
+activate DetailPopup
+
+DetailPopup -> SearchPage: navigateToBooking(facilityId)
+activate SearchPage
+
+SearchPage --> User: Redirect ke halaman booking\n(FR-07: Melihat Detail Ruangan)
+
+deactivate SearchPage
+deactivate DetailPopup
+
+' ============================================
+' SKENARIO 5: FASILITAS TIDAK TERSEDIA
+' ============================================
+== Fasilitas Tidak Tersedia ==
+
+User -> SearchPage: Klik card fasilitas yang tidak tersedia
+activate SearchPage
+
+SearchPage -> DetailPopup: openPopup(facilityId)
+activate DetailPopup
+
+DetailPopup -> FacCtrl: getFacilityDetail(facilityId)
+activate FacCtrl
+
+FacCtrl -> FacDB: findById(facilityId)
+activate FacDB
+FacDB --> FacCtrl: facility{status: 'unavailable'}
+deactivate FacDB
+
+FacCtrl --> DetailPopup: facilityDetail
+deactivate FacCtrl
+
+DetailPopup --> User: Tampilkan popup dengan:\n- Badge "Unavailable" (merah)\n- Tombol "Book Now" disabled\n- Pesan: "Fasilitas sedang tidak tersedia"
+
+deactivate DetailPopup
+deactivate SearchPage
+
+@enduml

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-08 Mengedit atau Membatalkan Reservasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.1.1.8 Use Case Scenario #8 &lt;Mengedit atau Membatalkan Reservasi&gt;</h1>
+
+    <h2>Skenario Use Case #8:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>User sudah login.</li>
+            <li>User memiliki minimal satu reservasi aktif (status Pending atau Approved).</li>
+            <li>Reservasi belum melewati tanggal pelaksanaan.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Mengedit Reservasi)</div>
+        <ul>
+            <li>User mengakses halaman "My Reservations".</li>
+            <li>User mencari reservasi yang ingin diedit.</li>
+            <li>User mengklik tombol "Edit" pada reservasi tersebut.</li>
+            <li>Form edit dengan data reservasi saat ini ditampilkan.</li>
+            <li>User dapat mengubah:
+                <ul>
+                    <li>Fasilitas (dropdown)</li>
+                    <li>Tanggal reservasi</li>
+                    <li>Waktu mulai dan selesai</li>
+                    <li>Catatan/keperluan</li>
+                </ul>
+            </li>
+            <li>User mengklik tombol "Save Changes".</li>
+            <li>Perubahan divalidasi.</li>
+            <li>Perubahan disimpan dan status menjadi "Pending" (jika sebelumnya Approved).</li>
+            <li>User diarahkan kembali ke halaman My Reservations.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Membatalkan Reservasi)</div>
+        <ul>
+            <li>User mengakses halaman "My Reservations".</li>
+            <li>User mencari reservasi yang ingin dibatalkan.</li>
+            <li>User mengklik tombol "Cancel" pada reservasi tersebut.</li>
+            <li>Dialog konfirmasi ditampilkan.</li>
+            <li>User mengkonfirmasi pembatalan.</li>
+            <li>Status reservasi diubah menjadi "Cancelled".</li>
+            <li>Notifikasi sukses ditampilkan.</li>
+        </ul>
+
+        <div class="flow-title">c. Alternative Flow</div>
+        <ul>
+            <li>User mencoba mengedit reservasi yang sudah lewat tanggalnya.</li>
+            <li>Pesan bahwa reservasi tidak dapat diedit ditampilkan.</li>
+            <li>User mencoba mengedit ke slot waktu yang sudah terisi.</li>
+            <li>Pesan error "Slot waktu tidak tersedia" ditampilkan.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Reservasi berhasil diubah atau dibatalkan.</li>
+            <li>Slot waktu yang dibatalkan kembali tersedia untuk booking lain.</li>
+            <li>Admin menerima notifikasi jika reservasi yang sudah di-approve di-edit.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-08-Mengedit_atau_Membatalkan_Reservasi.html" class="nav-link">Lihat UI Design: Edit</a>
+    <a href="../UI-Design/FR-10-Melihat_Riwayat_Reservasi.html" class="nav-link">Lihat UI Design: My Reservations</a>
+
+</body>
+
+</html>

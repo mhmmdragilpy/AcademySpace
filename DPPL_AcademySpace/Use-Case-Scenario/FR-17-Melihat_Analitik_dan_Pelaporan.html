@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-17 Melihat Analitik dan Pelaporan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.2.1.6 Use Case Scenario #18 &lt;Melihat Analitik dan Pelaporan&gt; <span class="admin-badge">ADMIN</span></h1>
+
+    <h2>Skenario Use Case #18:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>Admin sudah login dengan role Admin.</li>
+            <li>Terdapat data historis reservasi dalam database.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Melihat Statistics Overview)</div>
+        <ul>
+            <li>Admin mengakses menu "Analytics" dari sidebar.</li>
+            <li>Halaman Analytics & Reporting ditampilkan.</li>
+            <li>Admin melihat kartu statistik ringkas:
+                <ul>
+                    <li><strong>Total Reservations:</strong> Jumlah total semua reservasi</li>
+                    <li><strong>Approved:</strong> Jumlah reservasi yang disetujui</li>
+                    <li><strong>Pending:</strong> Jumlah reservasi yang menunggu approval</li>
+                    <li><strong>Past 30 Days:</strong> Jumlah reservasi dalam 30 hari terakhir</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Melihat Chart Visualisasi)</div>
+        <ul>
+            <li>Admin scroll ke bagian chart.</li>
+            <li>Berbagai visualisasi data ditampilkan:
+                <ul>
+                    <li><strong>Reservation Status Distribution:</strong> Pie chart proporsi status reservasi</li>
+                    <li><strong>Top 5 Facilities:</strong> Bar chart fasilitas paling banyak direservasi</li>
+                    <li><strong>Daily Reservation Trend:</strong> Line chart tren reservasi harian</li>
+                    <li><strong>Weekly Reservation Activity:</strong> Bar chart aktivitas per hari dalam seminggu</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Melihat Tabel Utilisasi Fasilitas)</div>
+        <ul>
+            <li>Admin melihat tabel "Facility Utilization".</li>
+            <li>Tabel menampilkan untuk setiap fasilitas:
+                <ul>
+                    <li>Nama fasilitas</li>
+                    <li>Tipe</li>
+                    <li>Gedung</li>
+                    <li>Kapasitas</li>
+                    <li>Total reservasi</li>
+                    <li>Rata-rata peserta</li>
+                </ul>
+            </li>
+            <li>Admin dapat mengidentifikasi fasilitas dengan utilisasi tinggi/rendah.</li>
+        </ul>
+
+        <div class="flow-title">d. Primary Flow (Melihat Top Active Users)</div>
+        <ul>
+            <li>Admin melihat tabel "Top Active Users".</li>
+            <li>Tabel menampilkan user dengan reservasi terbanyak:
+                <ul>
+                    <li>Nama user</li>
+                    <li>Username</li>
+                    <li>Department/Fakultas</li>
+                    <li>Total reservasi</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="flow-title">e. Alternative Flow</div>
+        <ul>
+            <li>Tidak ada data reservasi dalam periode tertentu.</li>
+            <li>Chart dan statistik menampilkan nilai 0 atau kosong.</li>
+            <li>Admin dapat memilih periode waktu berbeda.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Admin mendapatkan insight tentang penggunaan fasilitas.</li>
+            <li>Admin dapat membuat keputusan berdasarkan data (menambah/mengurangi fasilitas, dll).</li>
+            <li>Data dapat digunakan untuk laporan kepada manajemen.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-17-Melihat_Analitik_dan_Pelaporan.html" class="nav-link">Lihat UI Design</a>
+
+</body>
+
+</html>

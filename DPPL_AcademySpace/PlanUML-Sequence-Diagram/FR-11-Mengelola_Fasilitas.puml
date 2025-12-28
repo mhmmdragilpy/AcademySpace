@@ -1,0 +1,212 @@
+@startuml FR-11-Mengelola_Fasilitas
+
+title Sequence Diagram: FR-11 Mengelola Fasilitas (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang mengelola fasilitas
+' Objek:
+'   - ManageFacilitiesPage: Halaman daftar fasilitas (Boundary)
+'   - CreateFacilityPage: Halaman create fasilitas (Boundary)
+'   - EditFacilityPage: Halaman edit fasilitas (Boundary)
+'   - FacilityController: Controller fasilitas
+'   - FacilityDB: Database fasilitas (Entity)
+'   - BuildingDB: Database gedung (Entity)
+'   - FacilityTypeDB: Database tipe fasilitas (Entity)
+
+actor "Admin" as Admin
+
+boundary "ManageFacilitiesPage" as ManageFac
+boundary "CreateFacilityPage" as CreatePage
+boundary "EditFacilityPage" as EditPage
+control "FacilityController" as FacCtrl
+entity "FacilityDB" as FacDB
+entity "BuildingDB" as BuildDB
+entity "FacilityTypeDB" as TypeDB
+
+' ============================================
+' SKENARIO 1: MELIHAT DAFTAR FASILITAS
+' ============================================
+== Melihat Daftar Fasilitas ==
+
+Admin -> ManageFac: Akses menu "Facilities"
+activate ManageFac
+
+ManageFac -> FacCtrl: getAllFacilities()
+activate FacCtrl
+
+FacCtrl -> FacDB: findAll()
+activate FacDB
+FacDB --> FacCtrl: facilities[]
+deactivate FacDB
+
+FacCtrl --> ManageFac: facilitiesList
+deactivate FacCtrl
+
+ManageFac --> Admin: Tampilkan tabel fasilitas\n(Name, Building, Type, Capacity, Status, Actions)
+deactivate ManageFac
+
+' ============================================
+' SKENARIO 2: MENAMBAH FASILITAS BARU
+' ============================================
+== Menambah Fasilitas Baru ==
+
+Admin -> ManageFac: Klik "Add Facility"
+activate ManageFac
+
+ManageFac -> CreatePage: navigate("/admin/facilities/create")
+activate CreatePage
+
+CreatePage -> FacCtrl: getFormData()
+activate FacCtrl
+
+FacCtrl -> BuildDB: getAllBuildings()
+activate BuildDB
+BuildDB --> FacCtrl: buildings[]
+deactivate BuildDB
+
+FacCtrl -> TypeDB: getAllTypes()
+activate TypeDB
+TypeDB --> FacCtrl: facilityTypes[]
+deactivate TypeDB
+
+FacCtrl --> CreatePage: formData (buildings, types)
+deactivate FacCtrl
+
+CreatePage --> Admin: Tampilkan form create
+deactivate ManageFac
+
+Admin -> CreatePage: Isi form fasilitas
+Admin -> CreatePage: Klik "Create Facility"
+
+CreatePage -> FacCtrl: createFacility(facilityData)
+activate FacCtrl
+
+FacCtrl -> FacCtrl: validateFacilityData()
+
+alt Data tidak valid
+    FacCtrl --> CreatePage: error("Invalid data")
+    CreatePage --> Admin: Tampilkan pesan error
+else Data valid
+    FacCtrl -> FacDB: create(facilityData)
+    activate FacDB
+    FacDB --> FacCtrl: facilityCreated
+    deactivate FacDB
+    
+    FacCtrl --> CreatePage: success
+    deactivate FacCtrl
+    
+    CreatePage -> ManageFac: redirect("/admin/facilities")
+    activate ManageFac
+    ManageFac --> Admin: Tampilkan daftar dengan fasilitas baru
+    deactivate ManageFac
+    deactivate CreatePage
+end
+
+' ============================================
+' SKENARIO 3: MENGEDIT FASILITAS
+' ============================================
+== Mengedit Fasilitas ==
+
+Admin -> ManageFac: Klik "Edit" pada fasilitas
+activate ManageFac
+
+ManageFac -> EditPage: navigate("/admin/facilities/{id}/edit")
+activate EditPage
+
+EditPage -> FacCtrl: getFacilityById(facilityId)
+activate FacCtrl
+
+FacCtrl -> FacDB: findById(facilityId)
+activate FacDB
+FacDB --> FacCtrl: facilityData
+deactivate FacDB
+
+FacCtrl --> EditPage: facilityData, formData
+deactivate FacCtrl
+
+EditPage --> Admin: Tampilkan form edit dengan data existing
+deactivate ManageFac
+
+Admin -> EditPage: Ubah data fasilitas
+Admin -> EditPage: Klik "Update Facility"
+
+EditPage -> FacCtrl: updateFacility(facilityId, updatedData)
+activate FacCtrl
+
+FacCtrl -> FacDB: update(facilityId, updatedData)
+activate FacDB
+FacDB --> FacCtrl: updated
+deactivate FacDB
+
+FacCtrl --> EditPage: success
+deactivate FacCtrl
+
+EditPage -> ManageFac: redirect("/admin/facilities")
+activate ManageFac
+ManageFac --> Admin: Tampilkan daftar dengan data terbaru
+deactivate ManageFac
+deactivate EditPage
+
+' ============================================
+' SKENARIO 4: TOGGLE MAINTENANCE
+' ============================================
+== Toggle Status Maintenance ==
+
+Admin -> ManageFac: Klik "Maint" pada fasilitas Active
+activate ManageFac
+
+ManageFac -> FacCtrl: setMaintenance(facilityId)
+activate FacCtrl
+
+FacCtrl -> FacDB: updateStatus(facilityId, "MAINTENANCE")
+activate FacDB
+FacDB --> FacCtrl: updated
+deactivate FacDB
+
+FacCtrl --> ManageFac: success
+deactivate FacCtrl
+
+ManageFac --> Admin: Update status menjadi "Maintenance"
+deactivate ManageFac
+
+' ============================================
+' SKENARIO 5: MENGHAPUS FASILITAS
+' ============================================
+== Menghapus Fasilitas ==
+
+Admin -> ManageFac: Klik "Del" pada fasilitas
+activate ManageFac
+
+ManageFac --> Admin: Tampilkan dialog konfirmasi
+
+Admin -> ManageFac: Konfirmasi "Delete"
+
+ManageFac -> FacCtrl: deleteFacility(facilityId)
+activate FacCtrl
+
+FacCtrl -> FacDB: checkActiveReservations(facilityId)
+activate FacDB
+FacDB --> FacCtrl: hasActiveReservations: boolean
+deactivate FacDB
+
+alt Ada reservasi aktif
+    FacCtrl --> ManageFac: error("Cannot delete")
+    ManageFac --> Admin: Tampilkan pesan error
+else Tidak ada reservasi aktif
+    FacCtrl -> FacDB: delete(facilityId)
+    activate FacDB
+    FacDB --> FacCtrl: deleted
+    deactivate FacDB
+    
+    FacCtrl --> ManageFac: success
+    deactivate FacCtrl
+    
+    ManageFac --> Admin: Hapus fasilitas dari daftar
+end
+
+deactivate ManageFac
+
+@enduml

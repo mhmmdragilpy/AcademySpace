@@ -1,0 +1,148 @@
+@startuml FR-06-Mencari_Fasilitas
+
+title Sequence Diagram: FR-06 Mencari Fasilitas
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang mencari fasilitas
+' Objek:
+'   - HomePage: Halaman utama (Boundary)
+'   - SearchController: Controller untuk pencarian
+'   - FacilityDB: Database fasilitas (Entity)
+'   - FacilityCard: Komponen kartu fasilitas (Boundary)
+'   - FacilityDetailPage: Halaman detail (Boundary)
+
+actor "User" as User
+
+boundary "HomePage" as HomePage
+control "SearchController" as SearchCtrl
+entity "FacilityDB" as FacDB
+boundary "FacilityCard" as FacCard
+boundary "FacilityDetailPage" as FacDetail
+
+' ============================================
+' SKENARIO 1: LOAD HALAMAN HOME
+' ============================================
+== Load Halaman Home ==
+
+User -> HomePage: Akses halaman Home
+activate HomePage
+
+HomePage -> SearchCtrl: getAllFacilities()
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findAllActiveFacilities()
+activate FacDB
+FacDB --> SearchCtrl: facilities[]
+deactivate FacDB
+
+SearchCtrl --> HomePage: facilitiesList
+deactivate SearchCtrl
+
+loop untuk setiap facility
+    HomePage -> FacCard: render(facilityData)
+    activate FacCard
+    FacCard --> HomePage: cardComponent
+    deactivate FacCard
+end
+
+HomePage --> User: Tampilkan grid kartu fasilitas
+deactivate HomePage
+
+' ============================================
+' SKENARIO 2: PENCARIAN DENGAN KEYWORD
+' ============================================
+== Pencarian dengan Keyword ==
+
+User -> HomePage: Ketik keyword di search bar
+activate HomePage
+
+User -> HomePage: Submit pencarian (Enter / klik search)
+
+HomePage -> SearchCtrl: searchFacilities(keyword)
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findByNameOrBuilding(keyword)
+activate FacDB
+FacDB --> SearchCtrl: matchingFacilities[]
+deactivate FacDB
+
+SearchCtrl --> HomePage: searchResults
+deactivate SearchCtrl
+
+alt Hasil ditemukan
+    loop untuk setiap result
+        HomePage -> FacCard: render(facilityData)
+        activate FacCard
+        FacCard --> HomePage: cardComponent
+        deactivate FacCard
+    end
+    HomePage --> User: Tampilkan hasil pencarian
+else Tidak ada hasil
+    HomePage --> User: Tampilkan pesan "Tidak ada fasilitas yang sesuai"
+end
+
+deactivate HomePage
+
+' ============================================
+' SKENARIO 3: FILTER BERDASARKAN TIPE
+' ============================================
+== Filter berdasarkan Tipe ==
+
+User -> HomePage: Klik tombol filter (Classrooms/Auditoriums/Labs)
+activate HomePage
+
+HomePage -> SearchCtrl: filterByType(facilityType)
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findByType(facilityType)
+activate FacDB
+FacDB --> SearchCtrl: filteredFacilities[]
+deactivate FacDB
+
+SearchCtrl --> HomePage: filteredResults
+deactivate SearchCtrl
+
+alt Hasil ditemukan
+    loop untuk setiap facility
+        HomePage -> FacCard: render(facilityData)
+        activate FacCard
+        FacCard --> HomePage: cardComponent
+        deactivate FacCard
+    end
+    HomePage --> User: Tampilkan fasilitas terfilter
+else Tidak ada hasil untuk tipe ini
+    HomePage --> User: Tampilkan pesan "Tidak ada fasilitas untuk kategori ini"
+end
+
+deactivate HomePage
+
+' ============================================
+' SKENARIO 4: LIHAT DETAIL FASILITAS
+' ============================================
+== Lihat Detail Fasilitas ==
+
+User -> FacCard: Klik "Book Now"
+activate FacCard
+
+FacCard -> FacDetail: navigate("/facility/{slug}")
+activate FacDetail
+
+FacDetail -> SearchCtrl: getFacilityBySlug(slug)
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findBySlug(slug)
+activate FacDB
+FacDB --> SearchCtrl: facilityData
+deactivate FacDB
+
+SearchCtrl --> FacDetail: facilityDetails
+deactivate SearchCtrl
+
+FacDetail --> User: Tampilkan halaman detail fasilitas
+deactivate FacDetail
+deactivate FacCard
+
+@enduml

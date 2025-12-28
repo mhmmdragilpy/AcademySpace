@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-04 Melihat Jadwal dan Ketersediaan Fasilitas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.1.1.4 Use Case Scenario #4 &lt;Melihat Jadwal dan Ketersediaan Fasilitas&gt;</h1>
+
+    <h2>Skenario Use Case #4:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>User mengakses website Academy Space.</li>
+            <li>Terdapat data fasilitas yang sudah terdaftar dalam database.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow</div>
+        <ul>
+            <li>User mengakses halaman "Check Availability" dari menu navigasi atau footer.</li>
+            <li>Daftar semua fasilitas yang tersedia ditampilkan.</li>
+            <li>User dapat menggunakan search bar untuk mencari fasilitas berdasarkan nama.</li>
+            <li>User dapat memfilter fasilitas berdasarkan tipe (Auditorium, Lab, Meeting Room, dll).</li>
+            <li>Informasi singkat setiap fasilitas ditampilkan (nama, gedung, kapasitas, status).</li>
+            <li>User memilih fasilitas untuk melihat detail ketersediaan.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Melihat Kalender Ketersediaan)</div>
+        <ul>
+            <li>User masuk ke halaman detail fasilitas.</li>
+            <li>Kalender ketersediaan bulanan ditampilkan.</li>
+            <li>User dapat navigasi ke bulan sebelumnya atau berikutnya.</li>
+            <li>User memilih tanggal tertentu pada kalender.</li>
+            <li>Slot waktu yang tersedia dan terpesan untuk tanggal tersebut ditampilkan.</li>
+        </ul>
+
+        <div class="flow-title">c. Alternative Flow</div>
+        <ul>
+            <li>User mencari fasilitas dengan kata kunci yang tidak ditemukan.</li>
+            <li>Pesan "Tidak ada fasilitas yang ditemukan" ditampilkan.</li>
+            <li>User mengubah kata kunci pencarian atau menghapus filter.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>User mendapatkan informasi ketersediaan fasilitas secara real-time.</li>
+            <li>User dapat melanjutkan ke proses reservasi jika slot tersedia.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html" class="nav-link">Lihat UI Design</a>
+
+</body>
+
+</html>

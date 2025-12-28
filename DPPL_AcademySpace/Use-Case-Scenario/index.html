@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - Index</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            margin-top: 2rem;
+            color: #333;
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+        }
+
+        .use-case-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .use-case-list li {
+            margin-bottom: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .use-case-list li:hover {
+            background: #eee;
+            border-color: #000;
+        }
+
+        .use-case-list a {
+            text-decoration: none;
+            color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .use-case-list a:hover {
+            color: #333;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .badge-user {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge-admin {
+            background: #333;
+            color: #fff;
+        }
+
+        .badge-extend {
+            background: #666;
+            color: #fff;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .summary-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .summary-card .label {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📋 Use Case Scenario - Academy Space</h1>
+
+    <div class="summary">
+        <div class="summary-card">
+            <div class="number">12</div>
+            <div class="label">User Use Cases</div>
+        </div>
+        <div class="summary-card">
+            <div class="number">6</div>
+            <div class="label">Admin Use Cases</div>
+        </div>
+        <div class="summary-card">
+            <div class="number">18</div>
+            <div class="label">Total Use Cases</div>
+        </div>
+    </div>
+
+    <h2>👤 Use Case Mahasiswa (User)</h2>
+    <ul class="use-case-list">
+        <li>
+            <a href="FR-01-Membuat_atau_Masuk_Akun.html">
+                <span>FR-01 Membuat atau Masuk Akun</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-02-Mengelola_Profil.html">
+                <span>FR-02 Mengelola Profil</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-03-Mengajukan_Reservasi.html">
+                <span>FR-03 Mengajukan Reservasi</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html">
+                <span>FR-04 Melihat Jadwal dan Ketersediaan Fasilitas</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-05-Menerima_Notifikasi_Approval_Rejection.html">
+                <span>FR-05 Menerima Notifikasi Approval/Rejection</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-06-Mencari_Fasilitas.html">
+                <span>FR-06 Mencari Fasilitas</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-07-Melihat_Detail_Ruangan.html">
+                <span>FR-07 Melihat Detail Ruangan</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-08-Mengedit_atau_Membatalkan_Reservasi.html">
+                <span>FR-08 Mengedit atau Membatalkan Reservasi</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-10-Melihat_Riwayat_Reservasi.html">
+                <span>FR-10 Melihat Riwayat Reservasi</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-12-Menyaring_Pencarian_Fasilitas.html">
+                <span>FR-12 Menyaring Pencarian Fasilitas</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-16-Melihat_Guide_Penggunaan_Website.html">
+                <span>FR-16 Melihat Guide Penggunaan Website</span>
+                <span class="badge badge-user">USER</span>
+            </a>
+        </li>
+        <li>
+            <a href="EXT-Mereset_Password.html">
+                <span>EXT Mereset Password</span>
+                <span class="badge badge-extend">EXTEND</span>
+            </a>
+        </li>
+    </ul>
+
+    <h2>🔧 Use Case Admin</h2>
+    <ul class="use-case-list">
+        <li>
+            <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html">
+                <span>FR-09 Menyetujui atau Menolak Reservasi</span>
+                <span class="badge badge-admin">ADMIN</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-11-Mengelola_Fasilitas.html">
+                <span>FR-11 Mengelola Fasilitas</span>
+                <span class="badge badge-admin">ADMIN</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-13-Melihat_Detail_Reservasi.html">
+                <span>FR-13 Melihat Detail Reservasi</span>
+                <span class="badge badge-admin">ADMIN</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-14-Melihat_Jadwal_Reservasi.html">
+                <span>FR-14 Melihat Jadwal Reservasi</span>
+                <span class="badge badge-admin">ADMIN</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-15-Mengambil_Token_Sistem.html">
+                <span>FR-15 Mengambil Token Sistem</span>
+                <span class="badge badge-admin">ADMIN</span>
+            </a>
+        </li>
+        <li>
+            <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">
+                <span>FR-17 Melihat Analitik dan Pelaporan</span>
+                <span class="badge badge-admin">ADMIN</span>
+            </a>
+        </li>
+    </ul>
+
+    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; text-align: center; color: #666;">
+        <p>Academy Space - Use Case Scenario Documentation</p>
+        <p><a href="../UI-Design/FR-06-Mencari_Fasilitas.html">Lihat UI Design →</a></p>
+    </footer>
+
+</body>
+
+</html>

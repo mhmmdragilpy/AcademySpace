@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-11 Mengelola Fasilitas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.2.1.2 Use Case Scenario #14 &lt;Mengelola Fasilitas&gt; <span class="admin-badge">ADMIN</span></h1>
+
+    <h2>Skenario Use Case #14:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>Admin sudah login dengan role Admin.</li>
+            <li>Admin memiliki akses ke menu Facilities.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Melihat Daftar Fasilitas)</div>
+        <ul>
+            <li>Admin mengakses menu "Facilities" dari sidebar.</li>
+            <li>Halaman Manage Facilities dengan tabel fasilitas ditampilkan.</li>
+            <li>Setiap baris menampilkan: Nama, Gedung, Tipe, Kapasitas, Status, dan Aksi.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Menambah Fasilitas Baru)</div>
+        <ul>
+            <li>Admin mengklik tombol "Add Facility".</li>
+            <li>Form Create Facility ditampilkan.</li>
+            <li>Admin mengisi data fasilitas:
+                <ul>
+                    <li>Nama fasilitas</li>
+                    <li>Tipe fasilitas (dropdown)</li>
+                    <li>Gedung/Building (dropdown)</li>
+                    <li>Nomor ruangan</li>
+                    <li>Kapasitas</li>
+                    <li>Lantai</li>
+                    <li>Deskripsi</li>
+                    <li>Layout description</li>
+                    <li>Foto fasilitas (upload atau URL)</li>
+                    <li>Status Active (checkbox)</li>
+                </ul>
+            </li>
+            <li>Admin mengklik "Create Facility".</li>
+            <li>Data divalidasi dan disimpan.</li>
+            <li>Admin diarahkan kembali ke daftar fasilitas.</li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Mengedit Fasilitas)</div>
+        <ul>
+            <li>Admin mengklik tombol "Edit" pada fasilitas tertentu.</li>
+            <li>Form Edit Facility dengan data existing ditampilkan.</li>
+            <li>Admin mengubah data yang diperlukan.</li>
+            <li>Admin mengklik "Update Facility".</li>
+            <li>Perubahan disimpan.</li>
+        </ul>
+
+        <div class="flow-title">d. Primary Flow (Toggle Status Maintenance)</div>
+        <ul>
+            <li>Admin mengklik tombol "Maint" pada fasilitas Active.</li>
+            <li>Status diubah menjadi "Maintenance".</li>
+            <li>Fasilitas tidak dapat direservasi selama maintenance.</li>
+            <li>Admin mengklik "Clear" untuk mengembalikan ke status Active.</li>
+        </ul>
+
+        <div class="flow-title">e. Primary Flow (Menghapus Fasilitas)</div>
+        <ul>
+            <li>Admin mengklik tombol "Del" pada fasilitas.</li>
+            <li>Dialog konfirmasi ditampilkan.</li>
+            <li>Admin mengkonfirmasi penghapusan.</li>
+            <li>Fasilitas dihapus dari database.</li>
+        </ul>
+
+        <div class="flow-title">f. Alternative Flow</div>
+        <ul>
+            <li>Admin mencoba menghapus fasilitas yang memiliki reservasi aktif.</li>
+            <li>Pesan error bahwa fasilitas tidak dapat dihapus ditampilkan.</li>
+            <li>Admin harus membatalkan reservasi aktif terlebih dahulu.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Fasilitas berhasil ditambah/diubah/dihapus.</li>
+            <li>Perubahan langsung terlihat di daftar fasilitas.</li>
+            <li>User dapat melihat fasilitas baru di halaman Check Availability.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-11-Mengelola_Fasilitas.html" class="nav-link">Lihat UI Design: List</a>
+    <a href="../UI-Design/FR-11-Mengelola_Fasilitas_Create.html" class="nav-link">Lihat UI Design: Create</a>
+    <a href="../UI-Design/FR-11-Mengelola_Fasilitas_Edit.html" class="nav-link">Lihat UI Design: Edit</a>
+
+</body>
+
+</html>

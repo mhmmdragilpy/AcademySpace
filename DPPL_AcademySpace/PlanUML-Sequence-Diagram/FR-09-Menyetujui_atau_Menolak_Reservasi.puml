@@ -1,0 +1,169 @@
+@startuml FR-09-Menyetujui_atau_Menolak_Reservasi
+
+title Sequence Diagram: FR-09 Menyetujui atau Menolak Reservasi (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang mengelola reservasi
+' Objek:
+'   - ManageReservationsPage: Halaman kelola reservasi (Boundary)
+'   - AdminReservationController: Controller reservasi admin
+'   - ReservationDB: Database reservasi (Entity)
+'   - UserDB: Database user (Entity)
+'   - NotificationService: Service notifikasi
+
+actor "Admin" as Admin
+
+boundary "ManageReservationsPage" as ManageRes
+control "AdminReservationController" as AdminResCtrl
+entity "ReservationDB" as ResDB
+entity "UserDB" as UserDB
+control "NotificationService" as NotifSvc
+
+' ============================================
+' SKENARIO 1: MELIHAT DAFTAR RESERVASI
+' ============================================
+== Melihat Daftar Reservasi ==
+
+Admin -> ManageRes: Akses menu "Reservations"
+activate ManageRes
+
+ManageRes -> AdminResCtrl: getAllReservations()
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: findAll()
+activate ResDB
+ResDB --> AdminResCtrl: reservations[]
+deactivate ResDB
+
+AdminResCtrl -> UserDB: getUsersForReservations(userIds[])
+activate UserDB
+UserDB --> AdminResCtrl: users[]
+deactivate UserDB
+
+AdminResCtrl --> ManageRes: reservationsWithUserData[]
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Tampilkan tabel reservasi\n(User, Facility, Date, Time, Status, Document, Actions)
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 2: FILTER BERDASARKAN STATUS
+' ============================================
+== Filter berdasarkan Status ==
+
+Admin -> ManageRes: Pilih filter status (Pending/Approved/Rejected)
+activate ManageRes
+
+ManageRes -> AdminResCtrl: filterByStatus(status)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: findByStatus(status)
+activate ResDB
+ResDB --> AdminResCtrl: filteredReservations[]
+deactivate ResDB
+
+AdminResCtrl --> ManageRes: filteredData
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Tampilkan reservasi terfilter
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 3: MELIHAT DOKUMEN PENDUKUNG
+' ============================================
+== Melihat Dokumen Pendukung ==
+
+Admin -> ManageRes: Klik "View" pada kolom Document
+activate ManageRes
+
+ManageRes -> AdminResCtrl: getDocumentUrl(reservationId)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: getDocument(reservationId)
+activate ResDB
+ResDB --> AdminResCtrl: documentUrl
+deactivate ResDB
+
+AdminResCtrl --> ManageRes: documentUrl
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Buka dokumen di tab baru
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 4: MENYETUJUI RESERVASI
+' ============================================
+== Menyetujui Reservasi ==
+
+Admin -> ManageRes: Klik "Approve" pada reservasi
+activate ManageRes
+
+ManageRes --> Admin: Tampilkan dialog konfirmasi
+
+Admin -> ManageRes: Konfirmasi "Approve"
+
+ManageRes -> AdminResCtrl: approveReservation(reservationId)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: updateStatus(reservationId, "APPROVED")
+activate ResDB
+ResDB --> AdminResCtrl: updated
+deactivate ResDB
+
+AdminResCtrl -> ResDB: getReservation(reservationId)
+activate ResDB
+ResDB --> AdminResCtrl: reservationData
+deactivate ResDB
+
+AdminResCtrl -> NotifSvc: sendNotification(userId, "Reservasi Approved", details)
+activate NotifSvc
+NotifSvc --> AdminResCtrl: sent
+deactivate NotifSvc
+
+AdminResCtrl --> ManageRes: success
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Tampilkan notifikasi sukses\nUpdate status menjadi "Approved"
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 5: MENOLAK RESERVASI
+' ============================================
+== Menolak Reservasi ==
+
+Admin -> ManageRes: Klik "Reject" pada reservasi
+activate ManageRes
+
+ManageRes --> Admin: Tampilkan dialog dengan field alasan
+
+Admin -> ManageRes: Isi alasan penolakan (opsional)
+Admin -> ManageRes: Konfirmasi "Reject"
+
+ManageRes -> AdminResCtrl: rejectReservation(reservationId, reason)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: updateStatus(reservationId, "REJECTED", rejectionReason)
+activate ResDB
+ResDB --> AdminResCtrl: updated
+deactivate ResDB
+
+AdminResCtrl -> ResDB: getReservation(reservationId)
+activate ResDB
+ResDB --> AdminResCtrl: reservationData
+deactivate ResDB
+
+AdminResCtrl -> NotifSvc: sendNotification(userId, "Reservasi Rejected", reason)
+activate NotifSvc
+NotifSvc --> AdminResCtrl: sent
+deactivate NotifSvc
+
+AdminResCtrl --> ManageRes: success
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Tampilkan notifikasi sukses\nUpdate status menjadi "Rejected"
+deactivate ManageRes
+
+@enduml

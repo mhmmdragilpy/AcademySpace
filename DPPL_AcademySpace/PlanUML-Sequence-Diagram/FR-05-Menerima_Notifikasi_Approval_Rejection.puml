@@ -1,0 +1,138 @@
+@startuml FR-05-Menerima_Notifikasi_Approval_Rejection
+
+title Sequence Diagram: FR-05 Menerima Notifikasi Approval/Rejection
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang menerima notifikasi
+' Objek:
+'   - NotificationsPage: Halaman notifikasi (Boundary)
+'   - NotificationController: Controller notifikasi
+'   - NotificationDB: Database notifikasi (Entity)
+'   - ReservationDB: Database reservasi (Entity)
+
+actor "User" as User
+
+boundary "NotificationsPage" as NotifPage
+control "NotificationController" as NotifCtrl
+entity "NotificationDB" as NotifDB
+entity "ReservationDB" as ResDB
+
+' ============================================
+' SKENARIO 1: MELIHAT DAFTAR NOTIFIKASI
+' ============================================
+== Melihat Daftar Notifikasi ==
+
+User -> NotifPage: Akses halaman "Notifications"
+activate NotifPage
+
+NotifPage -> NotifCtrl: getUserNotifications(userId)
+activate NotifCtrl
+
+NotifCtrl -> NotifDB: findByUserId(userId)
+activate NotifDB
+NotifDB --> NotifCtrl: notifications[]
+deactivate NotifDB
+
+NotifCtrl --> NotifPage: notificationsList
+deactivate NotifCtrl
+
+alt User memiliki notifikasi
+    loop untuk setiap notifikasi
+        NotifPage -> NotifPage: renderNotificationCard(notification)
+    end
+    NotifPage --> User: Tampilkan daftar notifikasi\n(Icon, Title, Description, Timestamp)
+else Tidak ada notifikasi
+    NotifPage --> User: Tampilkan pesan "No notifications yet"
+end
+
+deactivate NotifPage
+
+' ============================================
+' SKENARIO 2: MENERIMA NOTIFIKASI APPROVAL
+' ============================================
+== Menerima Notifikasi Approval ==
+
+note over User, NotifDB
+  Skenario ini terjadi ketika Admin
+  menyetujui reservasi user
+end note
+
+NotifCtrl -> NotifDB: createNotification(userId, type: "APPROVED", data)
+activate NotifDB
+activate NotifCtrl
+NotifDB --> NotifCtrl: notificationCreated
+deactivate NotifDB
+
+NotifCtrl -> ResDB: getReservationDetails(reservationId)
+activate ResDB
+ResDB --> NotifCtrl: reservationData
+deactivate ResDB
+
+NotifCtrl --> NotifPage: pushNotification(notification)
+deactivate NotifCtrl
+
+User -> NotifPage: Akses halaman Notifications
+activate NotifPage
+
+NotifPage --> User: Tampilkan notifikasi baru:\n"Reservasi Approved"\ndengan icon ✓ hijau
+
+deactivate NotifPage
+
+' ============================================
+' SKENARIO 3: MENERIMA NOTIFIKASI REJECTION
+' ============================================
+== Menerima Notifikasi Rejection ==
+
+note over User, NotifDB
+  Skenario ini terjadi ketika Admin
+  menolak reservasi user
+end note
+
+NotifCtrl -> NotifDB: createNotification(userId, type: "REJECTED", data, reason)
+activate NotifDB
+activate NotifCtrl
+NotifDB --> NotifCtrl: notificationCreated
+deactivate NotifDB
+
+NotifCtrl -> ResDB: getReservationDetails(reservationId)
+activate ResDB
+ResDB --> NotifCtrl: reservationData
+deactivate ResDB
+
+NotifCtrl --> NotifPage: pushNotification(notification)
+deactivate NotifCtrl
+
+User -> NotifPage: Akses halaman Notifications
+activate NotifPage
+
+NotifPage --> User: Tampilkan notifikasi baru:\n"Reservasi Rejected"\ndengan icon ✗ merah\ndan alasan penolakan
+
+deactivate NotifPage
+
+' ============================================
+' SKENARIO 4: MENANDAI NOTIFIKASI SEBAGAI DIBACA
+' ============================================
+== Menandai Notifikasi Dibaca ==
+
+User -> NotifPage: Klik pada notifikasi
+activate NotifPage
+
+NotifPage -> NotifCtrl: markAsRead(notificationId)
+activate NotifCtrl
+
+NotifCtrl -> NotifDB: update(notificationId, {isRead: true})
+activate NotifDB
+NotifDB --> NotifCtrl: updated
+deactivate NotifDB
+
+NotifCtrl --> NotifPage: success
+deactivate NotifCtrl
+
+NotifPage --> User: Update tampilan notifikasi\n(hilangkan badge unread)
+
+deactivate NotifPage
+
+@enduml

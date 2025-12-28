@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Profile</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="wf-navbar">
+        <div class="wf-container wf-navbar-container">
+            <div class="wf-flex wf-items-center wf-gap-2">
+                <div class="wf-box"
+                    style="width: 150px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [Logo]
+                </div>
+            </div>
+            <div class="wf-flex wf-gap-4">
+                <a href="FR-06-Mencari_Fasilitas.html" class="wf-btn">Home</a>
+                <a href="FR-10-Melihat_Riwayat_Reservasi.html" class="wf-btn">My Reservations</a>
+                <a href="FR-16-Melihat_Guide_Penggunaan_Website.html" class="wf-btn">Guide</a>
+            </div>
+            <div class="wf-flex wf-gap-2 wf-items-center">
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" class="wf-btn">Log in</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="background: #f9f9f9; padding: 3rem 0; min-height: 80vh;">
+        <div class="wf-container" style="max-width: 800px;">
+
+            <!-- Header Card -->
+            <div class="wf-card" style="margin-bottom: 2rem;">
+                <div style="height: 120px; background: #000; position: relative;"></div>
+                <div class="wf-card-body" style="position: relative; padding-top: 0;">
+
+                    <div class="wf-flex">
+                        <!-- Avatar -->
+                        <div
+                            style="width: 120px; height: 120px; border: 4px solid #fff; border-radius: 50%; background: #ccc; margin-top: -60px; margin-left: 2rem; position: relative; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                            U
+                            <!-- Hover actions simulated -->
+                            <div
+                                style="position: absolute; bottom: 0; right: 0; background: #000; color: #fff; padding: 0.25rem; font-size: 0.75rem;">
+                                [Cam]</div>
+                        </div>
+
+                        <!-- Info -->
+                        <div style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <h1 style="font-size: 2rem; margin: 0;">User Name</h1>
+                            <div class="wf-flex wf-items-center wf-gap-2 wf-text-muted">
+                                <span>@username</span>
+                                <span class="wf-badge">User</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Profile Settings -->
+            <div class="wf-card">
+                <div class="wf-card-header">
+                    <h2>Profile Settings</h2>
+                    <p class="wf-text-small wf-text-muted">Update your personal information and account settings</p>
+                </div>
+                <div class="wf-card-body">
+
+                    <!-- Full Name -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="wf-label">Full Name</label>
+                        <div class="wf-flex wf-justify-between wf-items-center"
+                            style="border: 1px solid #000; padding: 0.75rem; border-radius: 4px; background: #fff;">
+                            <span>User Name</span>
+                            <button class="wf-btn wf-text-small"
+                                onclick="alert('Open Edit Name Modal');">[Edit]</button>
+                        </div>
+                    </div>
+
+                    <!-- Username -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="wf-label">Username</label>
+                        <div class="wf-flex wf-justify-between wf-items-center"
+                            style="border: 1px solid #000; padding: 0.75rem; border-radius: 4px; background: #fff;">
+                            <span>@username</span>
+                            <button class="wf-btn wf-text-small"
+                                onclick="alert('Open Edit Username Modal');">[Edit]</button>
+                        </div>
+                        <p class="wf-text-small wf-text-muted">Username harus 3-30 karakter, hanya huruf, angka, dan
+                            underscore (_)</p>
+                    </div>
+
+                    <!-- Role -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="wf-label">Role</label>
+                        <div style="border: 1px solid #ccc; padding: 0.75rem; border-radius: 4px; background: #eee;">
+                            <span>User</span>
+                            <span class="wf-text-small wf-text-muted">(Cannot be changed)</span>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="wf-label">Password</label>
+                        <div class="wf-flex wf-justify-between wf-items-center"
+                            style="border: 1px solid #000; padding: 0.75rem; border-radius: 4px; background: #fff;">
+                            <span>••••••••••••</span>
+                            <button class="wf-btn wf-text-small"
+                                onclick="alert('Open Change Password Modal');">[Edit]</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="border-top: 2px solid #000; padding: 2rem 0;">
+        <div class="wf-container wf-text-center">
+            [Footer Content]
+        </div>
+    </footer>
+
+</body>
+
+</html>

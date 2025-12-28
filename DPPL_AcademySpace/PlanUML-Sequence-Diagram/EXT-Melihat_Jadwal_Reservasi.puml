@@ -1,0 +1,187 @@
+@startuml EXT-Melihat_Jadwal_Reservasi
+
+title Sequence Diagram: EXT Melihat Jadwal Reservasi - Calendar View (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang melihat jadwal kalender
+' Objek:
+'   - ManageReservationsPage: Halaman kelola reservasi (Boundary)
+'   - CalendarViewComponent: Komponen kalender (Boundary)
+'   - DayDetailModal: Modal detail hari (Boundary)
+'   - CalendarController: Controller kalender
+'   - ReservationDB: Database reservasi (Entity)
+'   - FacilityDB: Database fasilitas (Entity)
+
+actor "Admin" as Admin
+
+boundary "ManageReservationsPage" as ManageRes
+boundary "CalendarViewComponent" as CalendarView
+boundary "DayDetailModal" as DayModal
+control "CalendarController" as CalCtrl
+entity "ReservationDB" as ResDB
+entity "FacilityDB" as FacDB
+
+' ============================================
+' SKENARIO 1: MENGAKTIFKAN CALENDAR VIEW (EXTEND)
+' ============================================
+== Extend: Beralih ke Calendar View ==
+
+Admin -> ManageRes: Berada di halaman Manage Reservations
+activate ManageRes
+
+ManageRes --> Admin: Tampilkan List View (default)
+
+Admin -> ManageRes: Klik tab "Calendar View"
+
+ManageRes -> CalendarView: initializeCalendar()
+activate CalendarView
+
+CalendarView -> CalCtrl: loadCalendarData(currentMonth, currentYear)
+activate CalCtrl
+
+CalCtrl -> ResDB: getReservationsForMonth(month, year)
+activate ResDB
+ResDB --> CalCtrl: reservations[]
+deactivate ResDB
+
+CalCtrl -> FacDB: getAllFacilities()
+activate FacDB
+FacDB --> CalCtrl: facilities[]
+deactivate FacDB
+
+CalCtrl --> CalendarView: calendarData{reservations, facilities}
+deactivate CalCtrl
+
+CalendarView --> Admin: Tampilkan kalender bulanan:\n- Grid 7x5 (Minggu-Sabtu)\n- Event dengan warna status\n- Legend status
+
+deactivate CalendarView
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 2: NAVIGASI BULAN
+' ============================================
+== Navigasi Bulan (Next/Prev) ==
+
+Admin -> CalendarView: Klik tombol "Next >" atau "< Prev"
+activate CalendarView
+
+CalendarView -> CalCtrl: loadCalendarData(newMonth, newYear)
+activate CalCtrl
+
+CalCtrl -> ResDB: getReservationsForMonth(newMonth, newYear)
+activate ResDB
+ResDB --> CalCtrl: reservations[]
+deactivate ResDB
+
+CalCtrl --> CalendarView: calendarData
+deactivate CalCtrl
+
+CalendarView --> Admin: Tampilkan kalender bulan baru
+
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 3: MELIHAT DETAIL TANGGAL
+' ============================================
+== Melihat Detail Reservasi per Tanggal ==
+
+Admin -> CalendarView: Klik pada sel tanggal
+activate CalendarView
+
+CalendarView -> DayModal: openModal(selectedDate)
+activate DayModal
+
+DayModal -> CalCtrl: getReservationsByDate(date)
+activate CalCtrl
+
+CalCtrl -> ResDB: findByDate(date)
+activate ResDB
+ResDB --> CalCtrl: dailyReservations[]
+deactivate ResDB
+
+CalCtrl --> DayModal: reservationsOnDate[]
+deactivate CalCtrl
+
+DayModal --> Admin: Tampilkan popup:\n- List reservasi hari itu\n- Nama fasilitas, waktu, user\n- Status dan tombol aksi
+
+deactivate DayModal
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 4: FILTER BERDASARKAN FASILITAS
+' ============================================
+== Filter berdasarkan Fasilitas ==
+
+Admin -> CalendarView: Pilih fasilitas dari dropdown
+activate CalendarView
+
+CalendarView -> CalCtrl: filterByFacility(facilityId, month, year)
+activate CalCtrl
+
+CalCtrl -> ResDB: getReservationsByFacility(facilityId, month, year)
+activate ResDB
+ResDB --> CalCtrl: filteredReservations[]
+deactivate ResDB
+
+CalCtrl --> CalendarView: filteredCalendarData
+deactivate CalCtrl
+
+CalendarView --> Admin: Tampilkan kalender dengan\nreservasi fasilitas terpilih
+
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 5: FILTER BERDASARKAN STATUS
+' ============================================
+== Filter berdasarkan Status ==
+
+Admin -> CalendarView: Pilih status dari dropdown
+activate CalendarView
+
+CalendarView -> CalCtrl: filterByStatus(status, month, year)
+activate CalCtrl
+
+CalCtrl -> ResDB: getReservationsByStatus(status, month, year)
+activate ResDB
+ResDB --> CalCtrl: filteredReservations[]
+deactivate ResDB
+
+CalCtrl --> CalendarView: filteredCalendarData
+deactivate CalCtrl
+
+CalendarView --> Admin: Tampilkan kalender dengan\nreservasi status terpilih
+
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 6: AKSI DARI MODAL (APPROVE/REJECT)
+' ============================================
+== Approve/Reject dari Day Detail Modal ==
+
+Admin -> DayModal: Klik "Approve" pada reservasi pending
+activate DayModal
+
+DayModal -> CalCtrl: approveReservation(reservationId)
+activate CalCtrl
+
+CalCtrl -> ResDB: updateStatus(id, 'approved')
+activate ResDB
+ResDB --> CalCtrl: updatedReservation
+deactivate ResDB
+
+CalCtrl --> DayModal: success
+deactivate CalCtrl
+
+DayModal --> Admin: Tampilkan notifikasi sukses\nUpdate status di modal
+
+DayModal -> CalendarView: refreshCalendar()
+activate CalendarView
+CalendarView --> Admin: Update tampilan kalender
+deactivate CalendarView
+
+deactivate DayModal
+
+@enduml

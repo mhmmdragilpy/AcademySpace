@@ -1,0 +1,137 @@
+@startuml FR-13-Melihat_Detail_Reservasi
+
+title Sequence Diagram: FR-13 Melihat Detail Reservasi (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang melihat detail reservasi
+' Objek:
+'   - ManageReservationsPage: Halaman kelola reservasi (Boundary)
+'   - ReservationDetailModal: Modal detail reservasi (Boundary)
+'   - AdminReservationController: Controller reservasi admin
+'   - ReservationDB: Database reservasi (Entity)
+'   - UserDB: Database user (Entity)
+'   - FacilityDB: Database fasilitas (Entity)
+
+actor "Admin" as Admin
+
+boundary "ManageReservationsPage" as ManageRes
+boundary "ReservationDetailModal" as DetailModal
+control "AdminReservationController" as AdminResCtrl
+entity "ReservationDB" as ResDB
+entity "UserDB" as UserDB
+entity "FacilityDB" as FacDB
+
+' ============================================
+' SKENARIO 1: MELIHAT DETAIL DARI TABEL
+' ============================================
+== Melihat Detail Reservasi ==
+
+Admin -> ManageRes: Akses menu "Reservations"
+activate ManageRes
+
+ManageRes -> AdminResCtrl: getAllReservations()
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: findAll()
+activate ResDB
+ResDB --> AdminResCtrl: reservations[]
+deactivate ResDB
+
+AdminResCtrl --> ManageRes: reservationsList
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Tampilkan tabel reservasi
+
+Admin -> ManageRes: Klik pada baris reservasi
+activate DetailModal
+
+DetailModal -> AdminResCtrl: getReservationDetail(reservationId)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: findById(reservationId)
+activate ResDB
+ResDB --> AdminResCtrl: reservationData
+deactivate ResDB
+
+AdminResCtrl -> UserDB: findById(userId)
+activate UserDB
+UserDB --> AdminResCtrl: userData
+deactivate UserDB
+
+AdminResCtrl -> FacDB: findById(facilityId)
+activate FacDB
+FacDB --> AdminResCtrl: facilityData
+deactivate FacDB
+
+AdminResCtrl --> DetailModal: completeReservationDetail
+deactivate AdminResCtrl
+
+DetailModal --> Admin: Tampilkan detail reservasi:\n- Nama User & Username\n- Nama Fasilitas & Gedung\n- Tanggal & Waktu\n- Jumlah Peserta\n- Keperluan\n- Status\n- Dokumen (jika ada)
+deactivate DetailModal
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 2: MELIHAT DOKUMEN PENDUKUNG
+' ============================================
+== Melihat Dokumen Pendukung ==
+
+Admin -> DetailModal: Klik "View Document"
+activate DetailModal
+
+DetailModal -> AdminResCtrl: getDocumentUrl(reservationId)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: getDocument(reservationId)
+activate ResDB
+ResDB --> AdminResCtrl: documentUrl
+deactivate ResDB
+
+AdminResCtrl --> DetailModal: documentUrl
+deactivate AdminResCtrl
+
+alt Dokumen tersedia
+    DetailModal --> Admin: Buka dokumen di tab baru
+else Dokumen tidak ada
+    DetailModal --> Admin: Tampilkan pesan "No document attached"
+end
+
+deactivate DetailModal
+
+' ============================================
+' SKENARIO 3: AKSI DARI DETAIL
+' ============================================
+== Aksi dari Detail Modal ==
+
+Admin -> DetailModal: Klik "Approve" / "Reject"
+activate DetailModal
+
+alt Klik Approve
+    DetailModal -> AdminResCtrl: approveReservation(reservationId)
+    activate AdminResCtrl
+    AdminResCtrl -> ResDB: updateStatus(reservationId, "APPROVED")
+    activate ResDB
+    ResDB --> AdminResCtrl: updated
+    deactivate ResDB
+    AdminResCtrl --> DetailModal: success
+    deactivate AdminResCtrl
+    DetailModal --> Admin: Tutup modal\nUpdate status di tabel
+else Klik Reject
+    DetailModal --> Admin: Tampilkan form alasan penolakan
+    Admin -> DetailModal: Isi alasan dan konfirmasi
+    DetailModal -> AdminResCtrl: rejectReservation(reservationId, reason)
+    activate AdminResCtrl
+    AdminResCtrl -> ResDB: updateStatus(reservationId, "REJECTED", reason)
+    activate ResDB
+    ResDB --> AdminResCtrl: updated
+    deactivate ResDB
+    AdminResCtrl --> DetailModal: success
+    deactivate AdminResCtrl
+    DetailModal --> Admin: Tutup modal\nUpdate status di tabel
+end
+
+deactivate DetailModal
+
+@enduml

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Admin Facilities</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body class="wf-admin-body">
+
+    <!-- Admin Sidebar -->
+    <aside class="wf-admin-sidebar">
+        <div class="wf-logo">[Logo]</div>
+        <nav class="wf-admin-nav">
+            <nav class="wf-admin-nav">
+                <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html">
+                    <span class="wf-icon">[Cal]</span> Reservations
+                </a>
+                <a href="FR-11-Mengelola_Fasilitas.html" class="active">
+                    <span class="wf-icon">[Bldg]</span> Facilities
+                </a>
+                <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">
+                    <span class="wf-icon">[Chart]</span> Analytics
+                </a>
+                <a href="FR-15-Mengambil_Token_Sistem.html">
+                    <span class="wf-icon">[Key]</span> System Tokens
+                </a>
+                <a href="FR-02-Mengelola_Profil_Admin.html">
+                    <span class="wf-icon">[User]</span> Profile
+                </a>
+                <div style="margin-top: auto; border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+                    <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" style="color: #aaa;">
+                        <span class="wf-icon">[Out]</span> Logout
+                    </a>
+                </div>
+            </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wf-admin-main">
+        <header style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Manage Facilities</h1>
+                <p class="wf-text-muted">View and manage all facilities.</p>
+            </div>
+            <a href="FR-11-Mengelola_Fasilitas_Create.html" class="wf-btn wf-btn-primary">
+                <span class="wf-icon">[+]</span> Add Facility
+            </a>
+        </header>
+
+        <div class="wf-card">
+            <div class="wf-card-header">
+                <h3>Facility List</h3>
+            </div>
+            <div class="wf-card-body">
+                <table class="wf-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Building</th>
+                            <th>Type</th>
+                            <th>Capacity</th>
+                            <th>Status</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1: Active -->
+                        <tr>
+                            <td>Auditorium Utama</td>
+                            <td>Gedung A</td>
+                            <td>Auditorium</td>
+                            <td>200</td>
+                            <td><span class="wf-badge wf-badge-success">Active</span></td>
+                            <td class="text-right">
+                                <a href="FR-11-Mengelola_Fasilitas_Edit.html" class="wf-btn wf-text-small">[Edit]</a>
+                                <button class="wf-btn wf-text-small"
+                                    onclick="alert('Maintenance mode toggled');">[Maint]</button>
+                                <button class="wf-btn wf-text-small" style="color: red;"
+                                    onclick="if(confirm('Delete facility?')) alert('Deleted');">[Del]</button>
+                            </td>
+                        </tr>
+                        <!-- Row 2: Maintenance -->
+                        <tr>
+                            <td>Lab Komputer 2</td>
+                            <td>Gedung TULT</td>
+                            <td>Laboratorium</td>
+                            <td>40</td>
+                            <td><span class="wf-badge wf-badge-warning">Maintenance</span></td>
+                            <td class="text-right">
+                                <a href="FR-11-Mengelola_Fasilitas_Edit.html" class="wf-btn wf-text-small">[Edit]</a>
+                                <button class="wf-btn wf-text-small" style="color: green;">[Clear]</button>
+                                <button class="wf-btn wf-text-small" style="color: red;">[Del]</button>
+                            </td>
+                        </tr>
+                        <!-- Row 3: Inactive -->
+                        <tr>
+                            <td>Ruang Rapat Lama</td>
+                            <td>Gedung B</td>
+                            <td>Meeting Room</td>
+                            <td>12</td>
+                            <td><span class="wf-badge">Inactive</span></td>
+                            <td class="text-right">
+                                <a href="FR-11-Mengelola_Fasilitas_Edit.html" class="wf-btn wf-text-small">[Edit]</a>
+                                <button class="wf-btn wf-text-small">[Maint]</button>
+                                <button class="wf-btn wf-text-small" style="color: red;">[Del]</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+
+
+
+DOKUMEN UJI PERANGKAT LUNAK
+
+<Nama Proyek>
+
+
+untuk: 
+<nama pelanggan>
+
+
+Dipersiapkan oleh:
+<Nama Pelaksana Proyek>
+Prodi Teknik Informatika - Universitas Telkom
+
+
+
+
+	
+Prodi Teknik Informatika
+
+Universitas Telkom
+	Nomor Dokumen	Halaman
+		DUPL-xxx <x: id_proyek>	<#>/<jml #
+		Revisi	<nomor revisi>	Tgl: <isi tanggal>
+ 
+Daftar Isi
+
+1	Pendahuluan	6
+1.1	Tujuan Pembuatan Dokumen	6
+1.2	Deskripsi Umum Sistem	6
+1.3	Definisi dan Singkatan	6
+1.4	Referensi	6
+2	Lingkungan Pengujian Perangkat Lunak	6
+2.1	Perangkat Lunak Pengujian	6
+2.2	Perangkat Keras Pengujian	6
+2.3	Material Pengujian	6
+2.4	Sumber Daya Manusia	6
+2.5	Metode Pengujian	6
+2.6	Tujuan Pengujian	6
+2.7	Rencana Pengujian	7
+2.8	Pelaksanaan Pengujian	7
+2.8.1	Pengujian DUPL-01 Login User	7
+2.9	Kesimpulan Pengujian	8
+3	Lampiran	8
+
+ 
+Daftar Gambar
+Hanya dicantumkan dan diisi jika ada gambar pada badan dokumen
+
+
+Daftar Tabel
+Hanya dicantumkan dan diisi jika ada tabel pada badan dokumen
+
+
+Daftar Lampiran
+
+Hanya dicantumkan dan diisi jika ada lampiran setelah badan dokumen
+
+ 
+1	Pendahuluan
+1.1	Tujuan Pembuatan Dokumen
+Menjelaskan isi dari dokumen ini secara global dan diperuntukkan untuk apa/siapa
+1.2	Ruang Lingkup Pengujian
+1.3	Referensi
+Menjelaskan referensi SKPL & DPPL yang akan digunakan sebagi rujukan pembuatan dokumen ini
+1.4	Overview Sistem & Fitur Utamanya
+Menjelaskan deskripsi umum dari sistem/perangkat lunak yang diuji. 
+1.5	Overview Pengujian
+1.5.1	Perangkat Keras Pengujian
+Menjelaskan perangkat keras yang digunakan untuk pengujian
+1.5.2	Sumber Daya Manusia
+Menjelaskan sumber daya manusia yang terlibat dalam pengujian perangkat lunak
+1.5.3	Perangkat Lunak Pengujian
+1.5.4	Material Pengujian
+Menjelaskan modul – modul yang akan diuji
+1.5.5	Strategi dan Metode Pengujian 
+Menjelaskan strategi dan metode pengujian yang akan digunakan.
+1.5.6	Jadwal Pengujian
+(Sebutkan kasus data pengujiannya)
+Tabel 1. .............
+Use Case 	PIC 	Jadwal pengujian
+Login 		28 Maret 2016
+Use Case lainnya..		
+
+
+2	Pelaksanaan Pengujian
+(Uraiakan pengujian sesuai dengan butir uji yang sudah didefinisikan dalam rencana pengujian)
+
+
+2.1	Pengujian UNIT
+
+2.1.1	Pengujian White Box Method
+
+a.	Pilih Method paling rumit dari class paling rumit
+b.	Buat Flowchart/Flowgraphnya
+c.	Hitung cyclomatic complexitynya
+d.	Daftar Path yang perlu diuji
+e.	Siapkan data uji untuk setiap path
+f.	Tampilkan screenshoot hasilnya.
+
+
+2.1.2	Pengujian Class dengan Framework Jest (Typescript)
+
+Jelaskan di sini contoh pengujian sebuah class.
+Setiap methodnya perlu diuji, dengan data uji yang membuat VALID atau yang membuat FAIL.
+
+
+Tabel 1 Pengujian Class 
+CLASS	Method		Kasus dan Hasil Uji (Data normal) 		
+		Data Masukan 	Yang diharapkan 	Pengamatan* 		Kesimpulan 
+		User ID: Universitas
+Nama : xyz	Form menampilkan data user baru untuk user 	Dapat melakukan 	[X	] diterima 
+		password: rahasia	peneliti dan responden  	pengisian data user 	  [ 	] ditolak 
+				baru 		
+		konfirmasi password:rahasia(hasil pada lampiran B(Gambar B.2 dan B.4))		Sesuai yang diharapkan 		
+		Klik tombol simpan 	Data tersimpan di file User peneliti dan user 	Data pengisian user 	[X	] diterima 
+		(hasil pada lampiran 	Responden 	Responden dan peneliti 	[ 	] ditolak 
+		B(Gambar B.3 dan B.6))  		tersimpan 		
+				Sesuai yang diharapkan 		
+		Klik tombol Reset 	Data yang telah terisi telah dihapus 	Data telah terhapus 	[X	] diterima 
+		(hasil pada lampiran 		sesuai yang diharapkan 	[ 	] ditolak 
+		B(Gambar B.7 dan B.8 )  				
+
+* CONTOH PENGUJIAN DENGAN JEST DILAMPIRKAN
+
+
+
+
+
+
+
+
+
+
+
+A.	Contoh Code JEST untuk pengujian Class : (Sebutkan NamaClassnya)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+B.	Screenshoot hasil pengujian JUnit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.2	Pengujian INTEGRASI 
+Di bagian ini dijelaskan pengujian terhadap setiap proses level 1 DFD atau setiap use case di Use Case Diagram
+2.2.1	Pengujian DUPL-01 Login User
+Pengujian login terbagi menjadi dua bagian diantaranya pendaftaran user baru dan penggecekan user yang telah terdaftar sebagai berikut : 
+PROSES(DFD-1)/
+USE CASE		Kasus dan Hasil Uji (Data normal) 		
+	Data Masukan 	Yang diharapkan 	Pengamatan 		Kesimpulan 
+	User ID: Universitas
+Nama : xyz	Form menampilkan data user baru untuk user 	Dapat melakukan 	[X	] diterima 
+	password: rahasia	peneliti dan responden  	pengisian data user 	  [ 	] ditolak 
+			baru 		
+	konfirmasi password:rahasia(hasil pada lampiran B(Gambar B.2 dan B.4))		Sesuai yang diharapkan 		
+	Klik tombol simpan 	Data tersimpan di file User peneliti dan user 	Data pengisian user 	[X	] diterima 
+	(hasil pada lampiran 	Responden 	Responden dan peneliti 	[ 	] ditolak 
+	B(Gambar B.3 dan B.6))  		tersimpan 		
+			Sesuai yang diharapkan 		
+	Klik tombol Reset 	Data yang telah terisi telah dihapus 	Data telah terhapus 	[X	] diterima 
+	(hasil pada lampiran 		sesuai yang diharapkan 	[ 	] ditolak 
+	B(Gambar B.7 dan B.8 )  				
+
+2.2.1.1	Pengujian DUPL-01_01 Pendaftaran User Baru 
+Berikut ini adalah tabel pengujian login untuk pendaftaran user baru : 
+Tabel 2 Pengujian Pendaftaran User Baru 
+USE CASE		Kasus dan Hasil Uji (Data normal) 		
+	Data Masukan 	Yang diharapkan 	Pengamatan 		Kesimpulan 
+	User ID: Universitas
+Nama : xyz	Form menampilkan data user baru untuk user 	Dapat melakukan 	[X	] diterima 
+	password: rahasia	peneliti dan responden  	pengisian data user 	  [ 	] ditolak 
+			baru 		
+	konfirmasi password:rahasia(hasil pada lampiran B(Gambar B.2 dan B.4))		Sesuai yang diharapkan 		
+	Klik tombol simpan 	Data tersimpan di file User peneliti dan user 	Data pengisian user 	[X	] diterima 
+	(hasil pada lampiran 	Responden 	Responden dan peneliti 	[ 	] ditolak 
+	B(Gambar B.3 dan B.6))  		tersimpan 		
+			Sesuai yang diharapkan 		
+	Klik tombol Reset 	Data yang telah terisi telah dihapus 	Data telah terhapus 	[X	] diterima 
+	(hasil pada lampiran 		sesuai yang diharapkan 	[ 	] ditolak 
+	B(Gambar B.7 dan B.8 )  				
+
+Use CASE		Kasus dan Hasil Uji (Data salah:) 	
+	Data Masukan 	Yang diharapkan 	Pengamatan 	Kesimpulan 
+	Data Login User Peneliti dan 	Tidak Dapat login dan Menampilkan pesan “Login 	User tidak dapat login dan 	[X] diterima 
+	Responden  tidak terdaftar. 
+User Id : aaa	Gagal” 	memberikan pesan ”login 	[ ] ditolak 
+	Password : aaa		gagal” sesuai yang 	
+	(Lampiran 		diharapkan 	
+	D(Gambar D.1, D.2 dan D.3)) 			
+	Data Login User Peneliti dan 	Tidak Dapat melakukan pendaftaran karena 	Mengeluarkan pesan User 	[X ] diterima 
+	Responden telah terdaftar :
+User Id : universitas	userid telah terdaftar 	Id telah terdaftar 	[  ] ditolak 
+	Nama : xyz			
+	password : rahasia			
+	Konfirmasi password : 			
+	rahasia 			
+	(Lampiran B gambar B.9) 			
+
+(lakukan hal yang sama seperti butir uji di atas sampai seluruh butir uji tercapai
+
+2.3	SYSTEM TEST (Optional, jika software embedded di system IOT dll)
+
+PENGUJIAN SISTEM OLEH :   PETUGAS PELAKSANA PENGUJIAN
+TANGGAL                               :   ......
+
+Komponen Sistem	Fitur Komponen  Yang Diuji	Rencana pengujiannya	Hasil Yang Diharapkan	Hasil Pengujian	Kesimpulan
+					
+					
+					
+					
+					
+					
+					
+					
+
+
+2.4	USER ACCEPTANCE TEST (Berjuang mencari user potensial)
+
+USER ACCEPTANCE TEST OLEH :   PETUGAS PELAKSANA PENGUJIAN
+TANGGAL                               :   ......
+
+Use Case Yang Diuji	Rencana Pengujian	Hasil Yang Diharapkan	Hasil Aktual	Kesimpulan
+				
+				
+				
+				
+				
+				
+				
+				
+
+2.5	Summary Pengujian Yang Masih Gagal
+(Berisi laporan dari pengujian yang telah dilakukan, dengan menyampaikan informasi status dari setiap fungsional yang masih gagal)
+Kelas Uji 	Butir Uji 	Kesimpulan pengujian 
+Uji sensor ketinggian air	Tetesan air dianggap banjir	Ditolak
+		
+		
+		
+
+
+3	Lampiran
+
+A.	Capture /screenshot hasil pengujian modul-modul penting
+B.	Hasil pengukuran OOMetric aplikasi yang telah berhasil dibangun dengan software (tool)  pengukuran OOMetric (lihat http://www.virtualmachinery.com)
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-12 Menyaring Pencarian Fasilitas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.1.1.10 Use Case Scenario #10 &lt;Menyaring Pencarian Fasilitas&gt;</h1>
+
+    <h2>Skenario Use Case #10:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>User mengakses halaman Home atau Check Availability.</li>
+            <li>Terdapat daftar fasilitas yang ditampilkan.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Filter berdasarkan Tipe)</div>
+        <ul>
+            <li>User melihat daftar fasilitas pada halaman Home.</li>
+            <li>User melihat tombol filter di atas grid fasilitas (All, Classrooms, Auditoriums, Labs, dll).</li>
+            <li>User mengklik salah satu tombol filter.</li>
+            <li>Hanya fasilitas dengan tipe yang dipilih ditampilkan.</li>
+            <li>Tombol filter yang aktif ditandai dengan style berbeda (primary button).</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Reset Filter)</div>
+        <ul>
+            <li>User mengklik tombol "All".</li>
+            <li>Semua fasilitas ditampilkan tanpa filter.</li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Kombinasi Filter dan Pencarian)</div>
+        <ul>
+            <li>User menggunakan search bar untuk mencari dengan kata kunci.</li>
+            <li>User kemudian mengklik filter tipe.</li>
+            <li>Fasilitas yang memenuhi kedua kriteria (kata kunci DAN tipe) ditampilkan.</li>
+        </ul>
+
+        <div class="flow-title">d. Alternative Flow</div>
+        <ul>
+            <li>Tidak ada fasilitas yang sesuai dengan filter yang dipilih.</li>
+            <li>Pesan "Tidak ada fasilitas untuk kategori ini" ditampilkan.</li>
+            <li>User dapat memilih filter lain atau reset ke "All".</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Daftar fasilitas berhasil difilter sesuai kriteria.</li>
+            <li>User dapat lebih mudah menemukan fasilitas yang diinginkan.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-06-Mencari_Fasilitas.html" class="nav-link">Lihat UI Design: Home</a>
+    <a href="../UI-Design/FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html" class="nav-link">Lihat UI Design: Check
+        Availability</a>
+
+</body>
+
+</html>

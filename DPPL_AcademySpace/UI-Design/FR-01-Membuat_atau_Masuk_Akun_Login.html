@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Login</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+
+    <div class="wf-grid wf-grid-cols-2" style="min-height: 100vh;">
+        <!-- Left Side - Visual -->
+        <div
+            style="background-color: #000; color: #fff; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; text-align: center; align-items: center;">
+            <div>
+                <div class="wf-box"
+                    style="width: 200px; height: 60px; background: #fff; color: #000; display: flex; align-items: center; justify-content: center;">
+                    [Academy Space Logo]
+                </div>
+            </div>
+            <div>
+                <h1 style="font-size: 2.25rem;">Manage your facility reservations with ease.</h1>
+                <p>Premium spaces for your academic needs.</p>
+            </div>
+            <div class="wf-text-small">
+                &copy; 2025 Academy Space. All rights reserved.
+            </div>
+        </div>
+
+        <!-- Right Side - Form -->
+        <div class="wf-flex wf-items-center wf-justify-center" style="padding: 2rem;">
+            <div class="wf-card" style="width: 100%; max-width: 400px; border: none;">
+                <!-- Removed outer card border to mimic clean form look -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2>Welcome Back</h2>
+                    <p class="wf-text-muted">Sign in to access your account</p>
+                </div>
+
+                <div class="wf-card-body">
+                    <!-- Role Toggle -->
+                    <div class="wf-box"
+                        style="display: flex; padding: 0.25rem; margin-bottom: 1.5rem; background: #eee; border: none;">
+                        <button id="tab-user" class="wf-btn" onclick="switchTab('user')"
+                            style="flex: 1; border: 2px solid #000; background: #fff;">User</button>
+                        <button id="tab-admin" class="wf-btn" onclick="switchTab('admin')"
+                            style="flex: 1; border: none; background: transparent; color: #666;">Admin</button>
+                    </div>
+
+                    <!-- User Form -->
+                    <form id="form-user">
+                        <div style="margin-bottom: 1rem;">
+                            <label class="wf-label">Username</label>
+                            <input type="text" class="wf-input" placeholder="your_username">
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <div class="wf-flex wf-justify-between">
+                                <label class="wf-label">Password</label>
+                                <a href="EXT-Mereset_Password.html" class="wf-text-small">Forgot password?</a>
+                            </div>
+                            <input type="password" class="wf-input" placeholder="********">
+                        </div>
+
+                        <button type="button" onclick="window.location.href='FR-10-Melihat_Riwayat_Reservasi.html'"
+                            class="wf-btn wf-btn-primary" style="width: 100%;">Sign In</button>
+                    </form>
+
+                    <!-- Admin Form (Hidden by default) -->
+                    <form id="form-admin" style="display: none;">
+                        <div style="margin-bottom: 1rem;">
+                            <label class="wf-label">Admin Username</label>
+                            <input type="text" class="wf-input" placeholder="admin_user">
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <div class="wf-flex wf-justify-between">
+                                <label class="wf-label">Password</label>
+                                <a href="EXT-Mereset_Password.html" class="wf-text-small">Forgot password?</a>
+                            </div>
+                            <input type="password" class="wf-input" placeholder="********">
+                        </div>
+
+                        <button type="button" onclick="window.location.href='Admin_Dashboard.html'"
+                            class="wf-btn wf-btn-primary" style="width: 100%;">Sign In as Admin</button>
+                    </form>
+                </div>
+
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <p class="wf-text-small">
+                        Don't have an account? <a href="FR-01-Membuat_atau_Masuk_Akun_Register.html">Sign up</a>
+                    </p>
+                </div>
+
+                <script>
+                    function switchTab(role) {
+                        const tabUser = document.getElementById('tab-user');
+                        const tabAdmin = document.getElementById('tab-admin');
+                        const formUser = document.getElementById('form-user');
+                        const formAdmin = document.getElementById('form-admin');
+
+                        if (role === 'user') {
+                            // Active User Tab
+                            tabUser.style.border = '2px solid #000';
+                            tabUser.style.background = '#fff';
+                            tabUser.style.fontWeight = 'bold';
+                            tabUser.style.color = '#000';
+
+                            // Inactive Admin Tab
+                            tabAdmin.style.border = 'none';
+                            tabAdmin.style.background = 'transparent';
+                            tabAdmin.style.fontWeight = 'normal';
+                            tabAdmin.style.color = '#666';
+
+                            // Show User Form
+                            formUser.style.display = 'block';
+                            formAdmin.style.display = 'none';
+                        } else {
+                            // Active Admin Tab
+                            tabAdmin.style.border = '2px solid #000';
+                            tabAdmin.style.background = '#fff';
+                            tabAdmin.style.fontWeight = 'bold';
+                            tabAdmin.style.color = '#000';
+
+                            // Inactive User Tab
+                            tabUser.style.border = 'none';
+                            tabUser.style.background = 'transparent';
+                            tabUser.style.fontWeight = 'normal';
+                            tabUser.style.color = '#666';
+
+                            // Show Admin Form
+                            formAdmin.style.display = 'block';
+                            formUser.style.display = 'none';
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

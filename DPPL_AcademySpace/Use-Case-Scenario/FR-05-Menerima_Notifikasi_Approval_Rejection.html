@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-05 Menerima Notifikasi Approval/Rejection</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.1.1.5 Use Case Scenario #5 &lt;Menerima Notifikasi Approval/Rejection&gt;</h1>
+
+    <h2>Skenario Use Case #5:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>User sudah login.</li>
+            <li>User telah mengajukan minimal satu reservasi.</li>
+            <li>Admin telah memproses (approve/reject) reservasi user.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Melihat Notifikasi)</div>
+        <ul>
+            <li>User mengklik ikon notifikasi (Bell Icon) pada navigation bar.</li>
+            <li>Halaman notifikasi ditampilkan.</li>
+            <li>Daftar notifikasi ditampilkan dengan informasi:
+                <ul>
+                    <li>Judul notifikasi</li>
+                    <li>Deskripsi singkat</li>
+                    <li>Waktu notifikasi diterima</li>
+                    <li>Status (read/unread)</li>
+                </ul>
+            </li>
+            <li>Notifikasi terbaru ditampilkan di bagian atas.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Notifikasi Approval)</div>
+        <ul>
+            <li>Admin menyetujui reservasi user.</li>
+            <li>Notifikasi baru dibuat untuk user.</li>
+            <li>Badge notifikasi pada ikon Bell bertambah.</li>
+            <li>User membuka halaman notifikasi dan melihat pesan "Reservasi Anda telah disetujui".</li>
+            <li>User dapat mengklik notifikasi untuk melihat detail reservasi.</li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Notifikasi Rejection)</div>
+        <ul>
+            <li>Admin menolak reservasi user.</li>
+            <li>Notifikasi baru dibuat untuk user dengan alasan penolakan.</li>
+            <li>User membuka halaman notifikasi dan melihat pesan "Reservasi Anda ditolak".</li>
+            <li>User dapat melihat alasan penolakan dan mengajukan reservasi ulang.</li>
+        </ul>
+
+        <div class="flow-title">d. Alternative Flow</div>
+        <ul>
+            <li>User tidak memiliki notifikasi baru.</li>
+            <li>Pesan "Tidak ada notifikasi" ditampilkan.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>User mengetahui status reservasi mereka (Approved/Rejected).</li>
+            <li>Notifikasi yang sudah dibaca ditandai sebagai "read".</li>
+            <li>User dapat mengambil tindakan lanjutan berdasarkan status.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-05-Menerima_Notifikasi_Approval_Rejection.html" class="nav-link">Lihat UI Design</a>
+
+</body>
+
+</html>

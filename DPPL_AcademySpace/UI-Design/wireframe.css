@@ -1,0 +1,326 @@
+/* AcademySpace Low-Fidelity Wireframe CSS */
+:root {
+    --wf-border-color: #000;
+    --wf-bg-color: #fff;
+    --wf-text-color: #000;
+    --wf-muted-color: #666;
+    --wf-border-width: 2px;
+    --wf-font-family: 'Courier New', Courier, monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--wf-font-family);
+    background-color: var(--wf-bg-color);
+    color: var(--wf-text-color);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--wf-text-color);
+    text-decoration: underline;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.wf-text-muted {
+    color: var(--wf-muted-color);
+}
+
+.wf-text-small {
+    font-size: 0.875rem;
+}
+
+.wf-font-bold {
+    font-weight: bold;
+}
+
+.wf-font-medium {
+    font-weight: 600;
+}
+
+/* Layout Utilities */
+.wf-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.wf-flex {
+    display: flex;
+}
+
+.wf-flex-col {
+    flex-direction: column;
+}
+
+.wf-items-center {
+    align-items: center;
+}
+
+.wf-justify-between {
+    justify-content: space-between;
+}
+
+.wf-justify-center {
+    justify-content: center;
+}
+
+.wf-gap-1 {
+    gap: 0.25rem;
+}
+
+.wf-gap-2 {
+    gap: 0.5rem;
+}
+
+.wf-gap-4 {
+    gap: 1rem;
+}
+
+.wf-grid {
+    display: grid;
+}
+
+.wf-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.wf-grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.wf-grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Components */
+.wf-box {
+    border: var(--wf-border-width) solid var(--wf-border-color);
+    padding: 1rem;
+    background: #fff;
+}
+
+.wf-card {
+    border: var(--wf-border-width) solid var(--wf-border-color);
+    margin-bottom: 1rem;
+}
+
+.wf-card-header {
+    border-bottom: var(--wf-border-width) solid var(--wf-border-color);
+    padding: 1rem;
+    background: #f0f0f0;
+}
+
+.wf-card-body {
+    padding: 1rem;
+}
+
+.wf-btn {
+    display: inline-block;
+    border: var(--wf-border-width) solid var(--wf-border-color);
+    padding: 0.5rem 1rem;
+    background: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: bold;
+    text-align: center;
+}
+
+.wf-btn:hover {
+    background: #e0e0e0;
+}
+
+.wf-btn-primary {
+    background: #000;
+    color: #fff;
+}
+
+.wf-btn-primary:hover {
+    background: #333;
+}
+
+.wf-input,
+.wf-select,
+.wf-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: var(--wf-border-width) solid var(--wf-border-color);
+    font-family: inherit;
+    margin-bottom: 0.5rem;
+    background: #fff;
+}
+
+.wf-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+/* Admin Layout Specifics */
+.wf-admin-body {
+    background: #f4f4f4;
+    /* Slightly different bg for admin check */
+}
+
+.wf-admin-sidebar {
+    width: 250px;
+    border-right: var(--wf-border-width) solid var(--wf-border-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
+
+.wf-admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    margin-top: 1rem;
+}
+
+/* Links in sidebar */
+.wf-admin-nav a:not(.wf-btn) {
+    display: flex;
+    /* align icon and text */
+    align-items: center;
+    padding: 0.75rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    color: #000;
+}
+
+.wf-admin-nav a.active,
+.wf-admin-nav a:hover {
+    background: #eee;
+    border: 1px solid #000;
+    font-weight: bold;
+}
+
+.wf-admin-main {
+    margin-left: 250px;
+    padding: 2rem;
+    min-height: 100vh;
+    background: #fff;
+}
+
+/* Tables */
+.wf-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: var(--wf-border-width) solid var(--wf-border-color);
+}
+
+.wf-table th,
+.wf-table td {
+    border: 1px solid var(--wf-border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.wf-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Navbar (Public) */
+.wf-navbar {
+    border-bottom: var(--wf-border-width) solid var(--wf-border-color);
+    padding: 1rem 0;
+}
+
+.wf-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Placeholders */
+.wf-placeholder-img {
+    width: 100%;
+    height: 200px;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--wf-border-width) solid var(--wf-border-color);
+    color: #666;
+}
+
+.wf-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #000;
+    font-size: 12px;
+    margin-right: 0.5rem;
+}
+
+/* Badge */
+.wf-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #000;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.wf-badge-success {
+    background: #eee;
+}
+
+/* Grayscale rep of success */
+.wf-badge-warning {
+    background: #ddd;
+}
+
+/* Grayscale rep of warning */
+.wf-badge-danger {
+    background: #ccc;
+}
+
+/* Grayscale rep of danger */
+
+/* Utility for alignment */
+.text-right {
+    text-align: right;
+}
+
+.text-center,
+.wf-text-center {
+    text-align: center;
+}
+
+.text-right,
+.wf-text-right {
+    text-align: right;
+}
+
+.text-left,
+.wf-text-left {
+    text-align: left;
+}

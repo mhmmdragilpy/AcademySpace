@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Objek UI - FR-07 Melihat Detail Ruangan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 2rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+
+        .class-table th {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Deskripsi Objek UI - FR-07 Melihat Detail Ruangan</h1>
+
+    <div class="section">
+        <h2>Tabel Deskripsi Objek UI</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID. LAYAR</th>
+                    <th>NAMA LAYAR</th>
+                    <th>DESKRIPSI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>P008</td>
+                    <td>Page Facility Detail</td>
+                    <td>Page untuk melihat detail fasilitas dan mengajukan reservasi</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Antarmuka P008: Page FACILITY DETAIL</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id_Objek</th>
+                    <th>JENIS</th>
+                    <th>LABEL</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Navbar1</td>
+                    <td>Navigation Bar</td>
+                    <td>Navigation</td>
+                    <td>Menu navigasi ke halaman lain</td>
+                </tr>
+                <tr>
+                    <td>Image1</td>
+                    <td>Image</td>
+                    <td>Facility Image</td>
+                    <td>Gambar utama fasilitas</td>
+                </tr>
+                <tr>
+                    <td>Title1</td>
+                    <td>Title/Header</td>
+                    <td>Facility Name</td>
+                    <td>Nama fasilitas (contoh: Auditorium A)</td>
+                </tr>
+                <tr>
+                    <td>Text1</td>
+                    <td>Text</td>
+                    <td>Building Location</td>
+                    <td>Lokasi gedung fasilitas</td>
+                </tr>
+                <tr>
+                    <td>Text2</td>
+                    <td>Text</td>
+                    <td>Capacity</td>
+                    <td>Kapasitas maksimal fasilitas</td>
+                </tr>
+                <tr>
+                    <td>Text3</td>
+                    <td>Text</td>
+                    <td>Description</td>
+                    <td>Deskripsi lengkap fasilitas</td>
+                </tr>
+                <tr>
+                    <td>Text4</td>
+                    <td>Text</td>
+                    <td>Rating</td>
+                    <td>Rating dan jumlah review fasilitas</td>
+                </tr>
+                <tr>
+                    <td>Title2</td>
+                    <td>Title/Header</td>
+                    <td>Availability</td>
+                    <td>Header bagian ketersediaan</td>
+                </tr>
+                <tr>
+                    <td>Calendar1</td>
+                    <td>Calendar</td>
+                    <td>Monthly Calendar</td>
+                    <td>Kalender untuk memilih tanggal reservasi</td>
+                </tr>
+                <tr>
+                    <td>Button1</td>
+                    <td>Button</td>
+                    <td>Previous Month (&lt;)</td>
+                    <td>Jika diklik, akan menampilkan bulan sebelumnya</td>
+                </tr>
+                <tr>
+                    <td>Button2</td>
+                    <td>Button</td>
+                    <td>Next Month (&gt;)</td>
+                    <td>Jika diklik, akan menampilkan bulan berikutnya</td>
+                </tr>
+                <tr>
+                    <td>Title3</td>
+                    <td>Title/Header</td>
+                    <td>Time Slots</td>
+                    <td>Header bagian slot waktu</td>
+                </tr>
+                <tr>
+                    <td>Slot1</td>
+                    <td>Time Slot Button</td>
+                    <td>08:00-10:00</td>
+                    <td>Jika diklik, akan memilih slot waktu tersebut</td>
+                </tr>
+                <tr>
+                    <td>Slot2</td>
+                    <td>Time Slot Button</td>
+                    <td>10:00-12:00</td>
+                    <td>Jika diklik, akan memilih slot waktu tersebut</td>
+                </tr>
+                <tr>
+                    <td>Title4</td>
+                    <td>Title/Header</td>
+                    <td>Ajukan Pemesanan Digital</td>
+                    <td>Header form booking</td>
+                </tr>
+                <tr>
+                    <td>Textfield1</td>
+                    <td>Inputfield/Textfield</td>
+                    <td>Tanggal</td>
+                    <td>Field untuk input tanggal reservasi</td>
+                </tr>
+                <tr>
+                    <td>Textfield2</td>
+                    <td>Inputfield/Textfield</td>
+                    <td>Waktu Mulai</td>
+                    <td>Field untuk input waktu mulai</td>
+                </tr>
+                <tr>
+                    <td>Textfield3</td>
+                    <td>Inputfield/Textfield</td>
+                    <td>Waktu Selesai</td>
+                    <td>Field untuk input waktu selesai</td>
+                </tr>
+                <tr>
+                    <td>Textfield4</td>
+                    <td>Inputfield/Textfield</td>
+                    <td>Jumlah Peserta</td>
+                    <td>Field untuk input jumlah peserta</td>
+                </tr>
+                <tr>
+                    <td>FileUpload1</td>
+                    <td>File Upload</td>
+                    <td>Upload Proposal/Rundown</td>
+                    <td>Jika diklik, akan membuka dialog untuk upload dokumen</td>
+                </tr>
+                <tr>
+                    <td>Textarea1</td>
+                    <td>Textarea</td>
+                    <td>Keperluan Penggunaan</td>
+                    <td>Space untuk input keperluan penggunaan ruangan</td>
+                </tr>
+                <tr>
+                    <td>Button3</td>
+                    <td>Button</td>
+                    <td>Ajukan Pemesanan</td>
+                    <td>Jika diklik, akan submit form reservasi</td>
+                </tr>
+                <tr>
+                    <td>Footer1</td>
+                    <td>Footer</td>
+                    <td>Footer</td>
+                    <td>Bagian bawah halaman</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Identifikasi Object dan Tipe Kelas #7 &lt;Melihat Detail Ruangan&gt;</h2>
+        <table class="class-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Object Baru</th>
+                    <th>Jenis / Tipe Kelas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>FacilityDetailPage</td>
+                    <td>Boundary</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>BookingForm</td>
+                    <td>Boundary</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>AvailabilityCalendar</td>
+                    <td>Boundary</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>FacilityController</td>
+                    <td>Controller</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Facility</td>
+                    <td>Entity</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Reservation</td>
+                    <td>Entity</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="../UI-Design/FR-07-Melihat_Detail_Ruangan.html" class="nav-link">Lihat UI Design</a>
+    <a href="index.html" class="nav-link">Kembali ke Index</a>
+
+</body>
+
+</html>

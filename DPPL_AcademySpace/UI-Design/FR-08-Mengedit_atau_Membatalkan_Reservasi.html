@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Edit Reservation</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="wf-navbar">
+        <div class="wf-container wf-navbar-container">
+            <div class="wf-flex wf-items-center wf-gap-2">
+                <div class="wf-box"
+                    style="width: 150px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [Logo]
+                </div>
+            </div>
+            <div class="wf-flex wf-gap-4">
+                <a href="FR-06-Mencari_Fasilitas.html" class="wf-btn">Home</a>
+                <a href="FR-10-Melihat_Riwayat_Reservasi.html" class="wf-btn">My Reservations</a>
+                <a href="FR-16-Melihat_Guide_Penggunaan_Website.html" class="wf-btn">Guide</a>
+            </div>
+            <div class="wf-flex wf-gap-2 wf-items-center">
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" class="wf-btn">Log in</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="background: #f9f9f9; padding: 3rem 0; min-height: 80vh;">
+        <div class="wf-container" style="max-width: 800px;">
+
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1>Edit Reservasi</h1>
+                <p class="wf-text-muted" style="font-size: 1.25rem;">Auditorium Utama</p>
+            </div>
+
+            <!-- Room Details Card -->
+            <div class="wf-card" style="margin-bottom: 2rem;">
+                <div class="wf-card-body wf-grid wf-grid-cols-3 wf-gap-4">
+                    <div style="border: 1px solid #000; padding: 1rem;">
+                        <h3>Fasilitas</h3>
+                        <p>Auditorium Utama</p>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 1rem;">
+                        <h3>Status</h3>
+                        <span class="wf-badge wf-badge-warning">PENDING</span>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 1rem;">
+                        <h3>Kapasitas</h3>
+                        <p>200 orang</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Form -->
+            <div class="wf-card">
+                <div class="wf-card-body">
+                    <h2 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="width: 8px; height: 32px; background: #000; display: inline-block;"></span>
+                        Edit Detail Pemesanan
+                    </h2>
+
+                    <!-- Info Banner -->
+                    <div style="border: 1px solid #000; padding: 1rem; margin-bottom: 1.5rem; background: #f0f0f0;">
+                        <h4>✨ Informasi Edit</h4>
+                        <div class="wf-grid wf-grid-cols-3 wf-gap-4">
+                            <div>1. Ubah Detail</div>
+                            <div>2. Cek Ketersediaan</div>
+                            <div>3. Simpan Perubahan</div>
+                        </div>
+                    </div>
+
+                    <form>
+                        <div class="wf-grid wf-grid-cols-2 wf-gap-4">
+                            <div>
+                                <label class="wf-label">Tanggal</label>
+                                <input type="date" class="wf-input" value="2025-10-10">
+                            </div>
+                            <div>
+                                <label class="wf-label">Jumlah Peserta</label>
+                                <input type="number" class="wf-input" value="150">
+                            </div>
+                            <div>
+                                <label class="wf-label">Waktu Mulai</label>
+                                <select class="wf-select">
+                                    <option selected>09:00</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="wf-label">Waktu Selesai</label>
+                                <select class="wf-select">
+                                    <option selected>12:00</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1rem;">
+                            <label class="wf-label">Keperluan</label>
+                            <textarea class="wf-textarea" rows="3">Seminar Nasional Tech</textarea>
+                        </div>
+
+                        <div class="wf-flex wf-gap-4" style="margin-top: 1.5rem;">
+                            <button type="button" class="wf-btn wf-btn-primary" style="flex: 1;"
+                                onclick="alert('Changes saved!'); window.location.href='FR-10-Melihat_Riwayat_Reservasi.html';">Simpan
+                                Perubahan</button>
+                            <a href="FR-10-Melihat_Riwayat_Reservasi.html" class="wf-btn" style="flex: 1; text-align: center;">Batal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="border-top: 2px solid #000; padding: 2rem 0;">
+        <div class="wf-container wf-text-center">
+            [Footer Content]
+        </div>
+    </footer>
+
+</body>
+
+</html>

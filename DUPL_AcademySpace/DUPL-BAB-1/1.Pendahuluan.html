@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUPL Academy Space - BAB 1 Pendahuluan</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header .doc-title {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        header .doc-info {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        .nav-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Dokumen Uji Perangkat Lunak</h1>
+        <div class="doc-title">Academy Space</div>
+        <div class="doc-info">
+            <p>Sistem Reservasi Fasilitas Kampus</p>
+            <p>Prodi Teknik Informatika - Universitas Telkom</p>
+            <p>Nomor Dokumen: DUPL-001 | Revisi: 1.0 | Tanggal: 22 Desember 2024</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- BAB 1 -->
+        <section id="bab1">
+            <h2>BAB 1: Pendahuluan</h2>
+
+            <!-- 1.1 Tujuan Pembuatan Dokumen -->
+            <section id="section-1-1">
+                <h3>1.1 Tujuan Pembuatan Dokumen</h3>
+                <p>
+                    Dokumen Uji Perangkat Lunak (DUPL) ini disusun sebagai panduan komprehensif untuk melakukan
+                    pengujian terhadap sistem <strong>Academy Space</strong>, sebuah aplikasi berbasis web untuk
+                    reservasi fasilitas kampus di lingkungan Universitas Telkom. Dokumen ini bertujuan untuk:
+                </p>
+                <ol>
+                    <li>Memberikan panduan sistematis dalam melaksanakan pengujian perangkat lunak Academy Space.</li>
+                    <li>Mendefinisikan ruang lingkup, strategi, dan metode pengujian yang akan diterapkan.</li>
+                    <li>Menjadi acuan bagi tim pengembang dan penguji dalam memastikan kualitas perangkat lunak sebelum
+                        diimplementasikan.</li>
+                    <li>Mendokumentasikan hasil pengujian sebagai bukti verifikasi dan validasi sistem.</li>
+                    <li>Mengidentifikasi defect atau kegagalan sistem agar dapat diperbaiki sebelum deployment.</li>
+                </ol>
+                <p>
+                    Dokumen ini diperuntukkan bagi tim pengembang, tim Quality Assurance (QA), dosen pembimbing, serta
+                    pemangku kepentingan lainnya yang terlibat dalam proyek Academy Space.
+                </p>
+            </section>
+
+            <!-- 1.2 Ruang Lingkup Pengujian -->
+            <section id="section-1-2">
+                <h3>1.2 Ruang Lingkup Pengujian</h3>
+                <p>
+                    Pengujian yang dilakukan dalam dokumen ini mencakup seluruh fungsionalitas utama sistem Academy
+                    Space yang telah didefinisikan dalam Spesifikasi Kebutuhan Perangkat Lunak (SKPL) dan Deskripsi
+                    Perancangan Perangkat Lunak (DPPL). Ruang lingkup pengujian meliputi:
+                </p>
+                <ul>
+                    <li><strong>Pengujian Unit:</strong> Pengujian pada level method dan class untuk memastikan setiap
+                        komponen berfungsi dengan benar secara independen.</li>
+                    <li><strong>Pengujian Integrasi:</strong> Pengujian interaksi antar komponen dan modul sistem untuk
+                        memvalidasi alur proses bisnis.</li>
+                    <li><strong>Pengujian Fungsional:</strong> Pengujian berdasarkan use case yang telah didefinisikan
+                        untuk memastikan sistem memenuhi kebutuhan pengguna.</li>
+                    <li><strong>User Acceptance Test (UAT):</strong> Pengujian oleh pengguna potensial untuk memvalidasi
+                        kesesuaian sistem dengan ekspektasi pengguna.</li>
+                </ul>
+                <div class="info-box">
+                    <strong>Catatan:</strong> Pengujian tidak mencakup pengujian performa (load testing) dan pengujian
+                    keamanan (security testing) secara mendalam, karena proyek ini bersifat akademis dan pembelajaran.
+                </div>
+            </section>
+
+            <!-- 1.3 Referensi -->
+            <section id="section-1-3">
+                <h3>1.3 Referensi</h3>
+                <p>
+                    Dokumen ini disusun berdasarkan referensi dari dokumen-dokumen proyek sebelumnya, antara lain:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Dokumen</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>SKPL Academy Space</td>
+                            <td>Spesifikasi Kebutuhan Perangkat Lunak yang mendefinisikan functional dan non-functional
+                                requirements</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>DPPL Academy Space</td>
+                            <td>Deskripsi Perancangan Perangkat Lunak yang berisi arsitektur, class diagram, dan
+                                sequence diagram</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Use Case Scenario</td>
+                            <td>Dokumen skenario use case untuk setiap functional requirement (FR-01 s.d. FR-17)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>UI Design</td>
+                            <td>Desain antarmuka pengguna untuk setiap halaman sistem</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>IEEE 829-2008</td>
+                            <td>Standard for Software and System Test Documentation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 1.4 Overview Sistem & Fitur Utamanya -->
+            <section id="section-1-4">
+                <h3>1.4 Overview Sistem dan Fitur Utama</h3>
+                <p>
+                    <strong>Academy Space</strong> adalah sistem reservasi fasilitas kampus berbasis web yang dirancang
+                    untuk memudahkan mahasiswa dan admin dalam mengelola peminjaman ruangan di lingkungan Universitas
+                    Telkom. Sistem ini dibangun menggunakan teknologi modern dengan arsitektur client-server.
+                </p>
+
+                <h4>1.4.1 Deskripsi Sistem</h4>
+                <p>
+                    Sistem terdiri dari dua jenis pengguna utama: <strong>User (Mahasiswa)</strong> dan
+                    <strong>Admin</strong>. User dapat melakukan pencarian fasilitas, melihat ketersediaan jadwal,
+                    mengajukan reservasi, dan memantau status reservasi. Admin bertugas mengelola fasilitas, menyetujui
+                    atau menolak reservasi, serta melihat analitik penggunaan fasilitas.
+                </p>
+
+                <h4>1.4.2 Fitur Utama</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Fitur</th>
+                            <th>Deskripsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="8">User</td>
+                            <td>Registrasi & Login</td>
+                            <td>Membuat akun baru dan masuk ke sistem</td>
+                        </tr>
+                        <tr>
+                            <td>Mengelola Profil</td>
+                            <td>Mengubah nama, username, dan password</td>
+                        </tr>
+                        <tr>
+                            <td>Mencari Fasilitas</td>
+                            <td>Mencari dan memfilter fasilitas berdasarkan tipe</td>
+                        </tr>
+                        <tr>
+                            <td>Melihat Detail Ruangan</td>
+                            <td>Melihat informasi lengkap fasilitas dan jadwal</td>
+                        </tr>
+                        <tr>
+                            <td>Mengajukan Reservasi</td>
+                            <td>Mengisi form booking dengan dokumen pendukung</td>
+                        </tr>
+                        <tr>
+                            <td>Melihat Riwayat Reservasi</td>
+                            <td>Memantau status dan riwayat reservasi</td>
+                        </tr>
+                        <tr>
+                            <td>Menerima Notifikasi</td>
+                            <td>Menerima pemberitahuan approval/rejection</td>
+                        </tr>
+                        <tr>
+                            <td>Reset Password</td>
+                            <td>Mereset password menggunakan master token</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="5">Admin</td>
+                            <td>Mengelola Reservasi</td>
+                            <td>Menyetujui atau menolak permintaan reservasi</td>
+                        </tr>
+                        <tr>
+                            <td>Mengelola Fasilitas</td>
+                            <td>CRUD fasilitas (tambah, edit, hapus, maintenance)</td>
+                        </tr>
+                        <tr>
+                            <td>Melihat Jadwal Reservasi</td>
+                            <td>Melihat jadwal dalam tampilan kalender</td>
+                        </tr>
+                        <tr>
+                            <td>Melihat Analitik</td>
+                            <td>Dashboard statistik dan pelaporan</td>
+                        </tr>
+                        <tr>
+                            <td>Mengelola Token</td>
+                            <td>Mengambil dan menyalin token sistem</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>1.4.3 Teknologi yang Digunakan</h4>
+                <ul>
+                    <li><strong>Frontend:</strong> Next.js 14, React, TypeScript, Tailwind CSS</li>
+                    <li><strong>Backend:</strong> Node.js, Express.js, TypeScript</li>
+                    <li><strong>Database:</strong> PostgreSQL dengan Supabase</li>
+                    <li><strong>Authentication:</strong> JWT (JSON Web Token)</li>
+                </ul>
+            </section>
+
+            <!-- 1.5 Overview Pengujian -->
+            <section id="section-1-5">
+                <h3>1.5 Overview Pengujian</h3>
+
+                <!-- 1.5.1 Perangkat Keras Pengujian -->
+                <section id="section-1-5-1">
+                    <h4>1.5.1 Perangkat Keras Pengujian</h4>
+                    <p>
+                        Pengujian dilakukan menggunakan perangkat keras dengan spesifikasi sebagai berikut:
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Komponen</th>
+                                <th>Spesifikasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Processor</td>
+                                <td>Intel Core i5 / AMD Ryzen 5 atau setara</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>8 GB DDR4</td>
+                            </tr>
+                            <tr>
+                                <td>Storage</td>
+                                <td>256 GB SSD</td>
+                            </tr>
+                            <tr>
+                                <td>Display</td>
+                                <td>Resolusi 1920 x 1080 pixels</td>
+                            </tr>
+                            <tr>
+                                <td>Network</td>
+                                <td>Koneksi internet stabil (min. 10 Mbps)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 1.5.2 Sumber Daya Manusia -->
+                <section id="section-1-5-2">
+                    <h4>1.5.2 Sumber Daya Manusia</h4>
+                    <p>
+                        Tim yang terlibat dalam pelaksanaan pengujian perangkat lunak Academy Space:
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Peran</th>
+                                <th>Tanggung Jawab</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Muhammad Ragil</td>
+                                <td>Test Lead / PIC</td>
+                                <td>Perencanaan, koordinasi, dan supervisi pengujian</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Muhammad Ragil</td>
+                                <td>Tester</td>
+                                <td>Pelaksanaan pengujian unit dan integrasi</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Muhammad Ragil</td>
+                                <td>Developer</td>
+                                <td>Perbaikan defect yang ditemukan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 1.5.3 Perangkat Lunak Pengujian -->
+                <section id="section-1-5-3">
+                    <h4>1.5.3 Perangkat Lunak Pengujian</h4>
+                    <p>
+                        Berikut adalah perangkat lunak yang digunakan dalam proses pengujian:
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Perangkat Lunak</th>
+                                <th>Versi</th>
+                                <th>Kegunaan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Node.js</td>
+                                <td>18.x LTS</td>
+                                <td>Runtime environment untuk menjalankan aplikasi</td>
+                            </tr>
+                            <tr>
+                                <td>Jest</td>
+                                <td>29.x</td>
+                                <td>Framework pengujian unit untuk TypeScript/JavaScript</td>
+                            </tr>
+                            <tr>
+                                <td>Postman</td>
+                                <td>10.x</td>
+                                <td>Pengujian API endpoints</td>
+                            </tr>
+                            <tr>
+                                <td>Google Chrome</td>
+                                <td>Latest</td>
+                                <td>Browser untuk pengujian antarmuka pengguna</td>
+                            </tr>
+                            <tr>
+                                <td>Visual Studio Code</td>
+                                <td>Latest</td>
+                                <td>IDE untuk menulis dan menjalankan test cases</td>
+                            </tr>
+                            <tr>
+                                <td>PostgreSQL</td>
+                                <td>15.x</td>
+                                <td>Database untuk pengujian</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 1.5.4 Material Pengujian -->
+                <section id="section-1-5-4">
+                    <h4>1.5.4 Material Pengujian</h4>
+                    <p>
+                        Modul-modul yang akan diuji dalam dokumen ini meliputi seluruh Functional Requirements yang
+                        telah didefinisikan:
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Modul</th>
+                                <th>Prioritas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FR-01</td>
+                                <td>Membuat atau Masuk Akun (Registrasi & Login)</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-02</td>
+                                <td>Mengelola Profil</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-03</td>
+                                <td>Mengajukan Reservasi</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-04</td>
+                                <td>Melihat Jadwal dan Ketersediaan Fasilitas</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-05</td>
+                                <td>Menerima Notifikasi Approval/Rejection</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-06</td>
+                                <td>Mencari Fasilitas</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-07</td>
+                                <td>Melihat Detail Ruangan</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-08</td>
+                                <td>Mengedit atau Membatalkan Reservasi</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-09</td>
+                                <td>Menyetujui atau Menolak Reservasi (Admin)</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-10</td>
+                                <td>Melihat Riwayat Reservasi</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-11</td>
+                                <td>Mengelola Fasilitas (Admin)</td>
+                                <td>Tinggi</td>
+                            </tr>
+                            <tr>
+                                <td>FR-12</td>
+                                <td>Menyaring Pencarian Fasilitas</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-13</td>
+                                <td>Melihat Detail Reservasi (Admin)</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-14</td>
+                                <td>Melihat Jadwal Reservasi (Admin)</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>FR-15</td>
+                                <td>Mengambil Token Sistem (Admin)</td>
+                                <td>Rendah</td>
+                            </tr>
+                            <tr>
+                                <td>FR-16</td>
+                                <td>Melihat Guide Penggunaan Website</td>
+                                <td>Rendah</td>
+                            </tr>
+                            <tr>
+                                <td>FR-17</td>
+                                <td>Melihat Analitik dan Pelaporan (Admin)</td>
+                                <td>Sedang</td>
+                            </tr>
+                            <tr>
+                                <td>EXT</td>
+                                <td>Mereset Password</td>
+                                <td>Sedang</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 1.5.5 Strategi dan Metode Pengujian -->
+                <section id="section-1-5-5">
+                    <h4>1.5.5 Strategi dan Metode Pengujian</h4>
+                    <p>
+                        Pengujian perangkat lunak Academy Space menggunakan strategi dan metode berikut:
+                    </p>
+
+                    <p><strong>A. Strategi Pengujian</strong></p>
+                    <ul>
+                        <li><strong>Bottom-Up Testing:</strong> Pengujian dimulai dari level unit (method/function),
+                            kemudian berlanjut ke pengujian integrasi antar modul.</li>
+                        <li><strong>Risk-Based Testing:</strong> Prioritas pengujian diberikan pada modul dengan tingkat
+                            risiko dan dampak tertinggi terhadap sistem.</li>
+                    </ul>
+
+                    <p><strong>B. Metode Pengujian</strong></p>
+                    <ol>
+                        <li>
+                            <strong>White Box Testing:</strong>
+                            <ul>
+                                <li>Pengujian berdasarkan struktur internal kode</li>
+                                <li>Menggunakan teknik basis path testing dengan cyclomatic complexity</li>
+                                <li>Memastikan setiap path dalam kode teruji</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Black Box Testing:</strong>
+                            <ul>
+                                <li>Pengujian berdasarkan spesifikasi fungsional</li>
+                                <li>Menggunakan teknik equivalence partitioning dan boundary value analysis</li>
+                                <li>Fokus pada input-output tanpa melihat kode internal</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Automated Testing:</strong>
+                            <ul>
+                                <li>Menggunakan Jest untuk pengujian unit otomatis</li>
+                                <li>Test cases dapat dijalankan berulang kali secara konsisten</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+
+                <!-- 1.5.6 Jadwal Pengujian -->
+                <section id="section-1-5-6">
+                    <h4>1.5.6 Jadwal Pengujian</h4>
+                    <p>
+                        Berikut adalah jadwal pelaksanaan pengujian untuk setiap use case:
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Use Case</th>
+                                <th>PIC</th>
+                                <th>Jadwal Pengujian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FR-01 Registrasi & Login</td>
+                                <td>Muhammad Ragil</td>
+                                <td>23 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-02 Mengelola Profil</td>
+                                <td>Muhammad Ragil</td>
+                                <td>23 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-03 Mengajukan Reservasi</td>
+                                <td>Muhammad Ragil</td>
+                                <td>24 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-04 Melihat Ketersediaan</td>
+                                <td>Muhammad Ragil</td>
+                                <td>24 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-05 Notifikasi</td>
+                                <td>Muhammad Ragil</td>
+                                <td>25 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-06 Mencari Fasilitas</td>
+                                <td>Muhammad Ragil</td>
+                                <td>25 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-07 Detail Ruangan</td>
+                                <td>Muhammad Ragil</td>
+                                <td>26 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-08 Edit/Cancel Reservasi</td>
+                                <td>Muhammad Ragil</td>
+                                <td>26 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-09 Approval Reservasi (Admin)</td>
+                                <td>Muhammad Ragil</td>
+                                <td>27 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-10 Riwayat Reservasi</td>
+                                <td>Muhammad Ragil</td>
+                                <td>27 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-11 Kelola Fasilitas (Admin)</td>
+                                <td>Muhammad Ragil</td>
+                                <td>28 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>FR-12 s.d. FR-17 & EXT</td>
+                                <td>Muhammad Ragil</td>
+                                <td>28 - 30 Desember 2024</td>
+                            </tr>
+                            <tr>
+                                <td>User Acceptance Test</td>
+                                <td>Muhammad Ragil</td>
+                                <td>2 - 5 Januari 2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <div class="nav-links">
+        <a href="#">← Daftar Isi</a>
+        <a href="../DUPL-BAB-2/2.1.1-White_Box_Testing.html">BAB 2: Pelaksanaan Pengujian →</a>
+    </div>
+
+    <footer>
+        <p>DUPL Academy Space - Dokumen Uji Perangkat Lunak</p>
+        <p>Prodi Teknik Informatika - Universitas Telkom</p>
+        <p>© 2024 Muhammad Ragil</p>
+    </footer>
+
+</body>
+
+</html>

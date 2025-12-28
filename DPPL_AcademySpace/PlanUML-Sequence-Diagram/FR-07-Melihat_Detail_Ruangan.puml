@@ -1,0 +1,145 @@
+@startuml FR-07-Melihat_Detail_Ruangan
+
+title Sequence Diagram: FR-07 Melihat Detail Ruangan
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang melihat detail ruangan
+' Objek:
+'   - FacilityDetailPage: Halaman detail fasilitas (Boundary)
+'   - AvailabilityCalendar: Komponen kalender (Boundary)
+'   - FacilityController: Controller fasilitas
+'   - FacilityDB: Database fasilitas (Entity)
+'   - ReservationDB: Database reservasi (Entity)
+'   - BookingForm: Form pemesanan (Boundary)
+
+actor "User" as User
+
+boundary "FacilityDetailPage" as FacDetail
+boundary "AvailabilityCalendar" as Calendar
+control "FacilityController" as FacCtrl
+entity "FacilityDB" as FacDB
+entity "ReservationDB" as ResDB
+boundary "BookingForm" as BookForm
+
+' ============================================
+' SKENARIO 1: MELIHAT DETAIL FASILITAS
+' ============================================
+== Melihat Detail Fasilitas ==
+
+User -> FacDetail: Akses halaman detail fasilitas
+activate FacDetail
+
+FacDetail -> FacCtrl: getFacilityDetail(slug)
+activate FacCtrl
+
+FacCtrl -> FacDB: findBySlug(slug)
+activate FacDB
+FacDB --> FacCtrl: facilityData
+deactivate FacDB
+
+FacCtrl --> FacDetail: facilityDetails
+deactivate FacCtrl
+
+FacDetail --> User: Tampilkan informasi fasilitas:\n- Gambar\n- Nama & Gedung\n- Kapasitas\n- Deskripsi\n- Rating
+
+deactivate FacDetail
+
+' ============================================
+' SKENARIO 2: MELIHAT KALENDER KETERSEDIAAN
+' ============================================
+== Melihat Kalender Ketersediaan ==
+
+User -> FacDetail: Scroll ke bagian "Availability"
+activate FacDetail
+
+FacDetail -> Calendar: loadCalendar(facilityId, currentMonth)
+activate Calendar
+
+Calendar -> FacCtrl: getMonthlyAvailability(facilityId, month, year)
+activate FacCtrl
+
+FacCtrl -> ResDB: getReservationsForMonth(facilityId, month, year)
+activate ResDB
+ResDB --> FacCtrl: reservations[]
+deactivate ResDB
+
+FacCtrl -> FacCtrl: calculateDailyAvailability()
+
+FacCtrl --> Calendar: availabilityData[]
+deactivate FacCtrl
+
+Calendar --> FacDetail: renderedCalendar
+deactivate Calendar
+
+FacDetail --> User: Tampilkan kalender dengan:\n- Tanggal tersedia (hijau)\n- Tanggal terisi sebagian (kuning)\n- Tanggal penuh (merah)
+
+deactivate FacDetail
+
+' ============================================
+' SKENARIO 3: MELIHAT SLOT WAKTU UNTUK TANGGAL
+' ============================================
+== Melihat Slot Waktu ==
+
+User -> Calendar: Klik tanggal pada kalender
+activate Calendar
+
+Calendar -> FacCtrl: getTimeSlots(facilityId, selectedDate)
+activate FacCtrl
+
+FacCtrl -> ResDB: getReservationsByDate(facilityId, date)
+activate ResDB
+ResDB --> FacCtrl: reservationsOnDate[]
+deactivate ResDB
+
+FacCtrl -> FacCtrl: generateTimeSlots(reservations)
+
+FacCtrl --> Calendar: timeSlots[]
+deactivate FacCtrl
+
+Calendar --> User: Tampilkan slot waktu:\n- 08:00-10:00 (Available)\n- 10:00-12:00 (Booked)\n- dll
+
+deactivate Calendar
+
+' ============================================
+' SKENARIO 4: NAVIGASI BULAN
+' ============================================
+== Navigasi Bulan ==
+
+User -> Calendar: Klik tombol ">" (Next Month)
+activate Calendar
+
+Calendar -> FacCtrl: getMonthlyAvailability(facilityId, nextMonth, year)
+activate FacCtrl
+
+FacCtrl -> ResDB: getReservationsForMonth(facilityId, nextMonth, year)
+activate ResDB
+ResDB --> FacCtrl: reservations[]
+deactivate ResDB
+
+FacCtrl --> Calendar: availabilityData[]
+deactivate FacCtrl
+
+Calendar --> User: Tampilkan kalender bulan berikutnya
+
+deactivate Calendar
+
+' ============================================
+' SKENARIO 5: MULAI PEMESANAN
+' ============================================
+== Mulai Pemesanan ==
+
+User -> FacDetail: Scroll ke form "Ajukan Pemesanan Digital"
+activate FacDetail
+
+FacDetail -> BookForm: displayBookingForm(facilityData)
+activate BookForm
+
+BookForm --> User: Tampilkan form pemesanan:\n- Tanggal\n- Waktu Mulai\n- Waktu Selesai\n- Jumlah Peserta\n- Upload Dokumen\n- Keperluan
+
+deactivate BookForm
+deactivate FacDetail
+
+@enduml

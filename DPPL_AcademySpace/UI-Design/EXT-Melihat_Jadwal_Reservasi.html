@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Calendar View Reservations</title>
+    <link rel="stylesheet" href="wireframe.css">
+    <style>
+        /* Calendar + Detail Layout */
+        .calendar-layout {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .calendar-panel {
+            flex: 0 0 280px;
+        }
+
+        .detail-panel {
+            flex: 1;
+        }
+
+        /* Mini Calendar */
+        .mini-calendar {
+            border: var(--wf-border-width) solid var(--wf-border-color);
+            padding: 1rem;
+        }
+
+        .mini-calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+        }
+
+        .mini-calendar-header h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .mini-calendar-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mini-calendar-nav button {
+            background: #fff;
+            border: 1px solid #000;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Calendar Grid */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.875rem;
+            gap: 2px;
+        }
+
+        .day-header {
+            color: #666;
+            font-weight: bold;
+            padding: 0.25rem;
+        }
+
+        .day-cell {
+            padding: 0.5rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .day-cell:hover {
+            background: #eee;
+        }
+
+        .day-cell.has-event {
+            color: #000;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .day-cell.selected {
+            background: #000;
+            color: #fff;
+        }
+
+        .day-cell.today {
+            border: 2px solid #000;
+        }
+
+        .day-cell.other-month {
+            color: #ccc;
+        }
+
+        /* Reservation Card */
+        .reservation-item {
+            border: var(--wf-border-width) solid var(--wf-border-color);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .reservation-item h4 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .reservation-item .meta {
+            color: #666;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body class="wf-admin-body">
+
+    <!-- Admin Sidebar -->
+    <aside class="wf-admin-sidebar">
+        <div class="wf-logo">[Logo] Admin Panel</div>
+        <nav class="wf-admin-nav">
+            <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html" class="active">
+                <span class="wf-icon">[Cal]</span> Reservations
+            </a>
+            <a href="FR-11-Mengelola_Fasilitas.html">
+                <span class="wf-icon">[Bldg]</span> Facilities
+            </a>
+            <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">
+                <span class="wf-icon">[Chart]</span> Analytics
+            </a>
+            <a href="FR-15-Mengambil_Token_Sistem.html">
+                <span class="wf-icon">[Key]</span> System Tokens
+            </a>
+            <a href="FR-02-Mengelola_Profil_Admin.html">
+                <span class="wf-icon">[User]</span> Profile
+            </a>
+            <div style="margin-top: auto; border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html">
+                    <span class="wf-icon">[Out]</span> Logout
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wf-admin-main">
+        <header style="margin-bottom: 2rem;">
+            <h1>Manage Reservations</h1>
+            <p class="wf-text-muted">View and manage all reservations</p>
+        </header>
+
+        <div class="wf-card">
+            <div class="wf-card-header wf-flex wf-justify-between wf-items-center">
+                <h3 style="margin: 0;">Reservations</h3>
+                <select class="wf-select" style="width: auto;">
+                    <option>All Status</option>
+                    <option>Pending</option>
+                    <option>Approved</option>
+                    <option>Rejected</option>
+                </select>
+            </div>
+            <div class="wf-card-body">
+                <!-- Tabs -->
+                <div style="border-bottom: 1px solid #ccc; margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html" class="wf-btn"
+                        style="border: none; color: #777;">[≡] List View</a>
+                    <button class="wf-btn" style="border-bottom: 2px solid #000; border-radius: 0;">[📅] Calendar
+                        View</button>
+                </div>
+
+                <!-- Calendar + Detail Layout -->
+                <div class="calendar-layout">
+                    <!-- Mini Calendar -->
+                    <div class="calendar-panel">
+                        <div class="mini-calendar">
+                            <div class="mini-calendar-header">
+                                <h3>December 2025</h3>
+                                <div class="mini-calendar-nav">
+                                    <button>&lt;</button>
+                                    <button>&gt;</button>
+                                </div>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="day-header">Su</div>
+                                <div class="day-header">Mo</div>
+                                <div class="day-header">Tu</div>
+                                <div class="day-header">We</div>
+                                <div class="day-header">Th</div>
+                                <div class="day-header">Fr</div>
+                                <div class="day-header">Sa</div>
+                                <!-- Week 1 -->
+                                <div class="day-cell other-month"></div>
+                                <div class="day-cell has-event">1</div>
+                                <div class="day-cell">2</div>
+                                <div class="day-cell has-event">3</div>
+                                <div class="day-cell">4</div>
+                                <div class="day-cell has-event">5</div>
+                                <div class="day-cell">6</div>
+                                <!-- Week 2 -->
+                                <div class="day-cell">7</div>
+                                <div class="day-cell">8</div>
+                                <div class="day-cell">9</div>
+                                <div class="day-cell has-event">10</div>
+                                <div class="day-cell">11</div>
+                                <div class="day-cell">12</div>
+                                <div class="day-cell has-event">13</div>
+                                <!-- Week 3 -->
+                                <div class="day-cell has-event">14</div>
+                                <div class="day-cell">15</div>
+                                <div class="day-cell">16</div>
+                                <div class="day-cell has-event">17</div>
+                                <div class="day-cell">18</div>
+                                <div class="day-cell">19</div>
+                                <div class="day-cell">20</div>
+                                <!-- Week 4 -->
+                                <div class="day-cell has-event">21</div>
+                                <div class="day-cell">22</div>
+                                <div class="day-cell has-event">23</div>
+                                <div class="day-cell">24</div>
+                                <div class="day-cell">25</div>
+                                <div class="day-cell has-event">26</div>
+                                <div class="day-cell selected">27</div>
+                                <!-- Week 5 -->
+                                <div class="day-cell today">28</div>
+                                <div class="day-cell">29</div>
+                                <div class="day-cell has-event">30</div>
+                                <div class="day-cell">31</div>
+                                <div class="day-cell other-month"></div>
+                                <div class="day-cell other-month"></div>
+                                <div class="day-cell other-month"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reservation Detail Panel -->
+                    <div class="detail-panel">
+                        <h3>Reservations for December 27th, 2025</h3>
+
+                        <div class="reservation-item">
+                            <h4>Auditorium Gedung Damar</h4>
+                            <div class="meta">06:00 - 11:00</div>
+                            <div class="meta">User: Muhammad Ragil</div>
+                            <div style="margin-top: 0.5rem;">
+                                <span class="wf-badge wf-badge-success">APPROVED</span>
+                            </div>
+                        </div>
+
+                        <div class="reservation-item">
+                            <h4>Lab Komputer 1</h4>
+                            <div class="meta">13:00 - 15:00</div>
+                            <div class="meta">User: John Doe</div>
+                            <div style="margin-top: 0.5rem;">
+                                <span class="wf-badge wf-badge-warning">PENDING</span>
+                            </div>
+                            <div style="margin-top: 0.5rem;">
+                                <button class="wf-btn wf-text-small">[✓] Approve</button>
+                                <button class="wf-btn wf-text-small">[✗] Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

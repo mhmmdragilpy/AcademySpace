@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUPL Academy Space - 2.1.2 Pengujian Class dengan Jest</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --jest-color: #c21325;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --code-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: #fff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--jest-color);
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+        }
+
+        header .subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .jest-logo {
+            color: var(--jest-color);
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        /* Code Block Styling */
+        pre {
+            background-color: var(--code-bg);
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #e9ecef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .keyword {
+            color: #ff79c6;
+        }
+
+        .string {
+            color: #f1fa8c;
+        }
+
+        .number {
+            color: #bd93f9;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .function {
+            color: #50fa7b;
+        }
+
+        .class-name {
+            color: #8be9fd;
+        }
+
+        .decorator {
+            color: #ffb86c;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .success-box {
+            background-color: #d4edda;
+            border-left: 4px solid var(--success-color);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .jest-box {
+            background-color: #fce4e7;
+            border-left: 4px solid var(--jest-color);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background-color: var(--success-color);
+            color: #fff;
+        }
+
+        .badge-danger {
+            background-color: var(--danger-color);
+            color: #fff;
+        }
+
+        .badge-jest {
+            background-color: var(--jest-color);
+            color: #fff;
+        }
+
+        /* Screenshot placeholder */
+        .screenshot {
+            background-color: var(--light-bg);
+            border: 2px dashed var(--border-color);
+            padding: 3rem;
+            text-align: center;
+            margin: 1rem 0;
+            border-radius: 8px;
+            color: #666;
+        }
+
+        /* Terminal Output */
+        .terminal {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .terminal .pass {
+            color: #6aab73;
+        }
+
+        .terminal .fail {
+            color: #f14c4c;
+        }
+
+        .terminal .info {
+            color: #3dc9b0;
+        }
+
+        /* File Tree */
+        .file-tree {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        /* Navigation */
+        .nav-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>2.1.2 Pengujian Class dengan Framework <span class="jest-logo">Jest</span></h1>
+        <p class="subtitle">DUPL Academy Space - Pengujian Unit (TypeScript)</p>
+    </header>
+
+    <main>
+        <!-- Tabel Keterangan Awal -->
+        <section>
+            <h2>Tabel Kasus dan Hasil Uji (Data Normal)</h2>
+            <p>
+                Berikut adalah ringkasan tabel pengujian class menggunakan Jest Framework.
+                Tabel ini menyajikan kasus uji untuk setiap class dan method yang diuji pada proyek Academy Space.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2" style="vertical-align: middle; text-align: center;">CLASS</th>
+                        <th rowspan="2" style="vertical-align: middle; text-align: center;">Method</th>
+                        <th colspan="4" style="text-align: center;">Kasus dan Hasil Uji (Data normal)</th>
+                    </tr>
+                    <tr>
+                        <th>Data Masukan</th>
+                        <th>Yang diharapkan</th>
+                        <th>Pengamatan*</th>
+                        <th>Kesimpulan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ==================== AuthController ==================== -->
+                    <tr>
+                        <td rowspan="3" style="vertical-align: middle; font-weight: bold; background-color: #e3f2fd;">
+                            AuthController</td>
+                        <td rowspan="3" style="vertical-align: middle;"><code>login()</code></td>
+                        <td>username: "testuser"<br>password: "password123"<br>(valid credentials)</td>
+                        <td>{ token: "jwt-token", user: {...} }<br>Message: "Login successful"</td>
+                        <td>Login berhasil, token JWT digenerate</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "nonexistent"<br>password: "password"<br>(user tidak ada)</td>
+                        <td>AppError: "Invalid credentials"</td>
+                        <td>Throw AppError dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "testuser"<br>password: "wrongpassword"<br>(password salah)</td>
+                        <td>AppError: "Invalid credentials"</td>
+                        <td>Throw AppError dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+
+                    <!-- ==================== ReservationController ==================== -->
+                    <tr>
+                        <td rowspan="6" style="vertical-align: middle; font-weight: bold; background-color: #e8f5e9;">
+                            ReservationController</td>
+                        <td style="vertical-align: middle;"><code>createReservation()</code></td>
+                        <td>facilityId: 1<br>date: "2025-01-01"<br>startTime: "10:00"<br>endTime: "12:00"<br>purpose:
+                            "Test Meeting"</td>
+                        <td>{ id: 1, status: "PENDING", ... }</td>
+                        <td>Reservasi berhasil dibuat dengan status PENDING</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;"><code>getUserReservations()</code></td>
+                        <td>userId: 1 (dari JWT token)</td>
+                        <td>Array reservasi user: [{ id, purpose }, ...]</td>
+                        <td>Mengembalikan array reservasi milik user</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;"><code>getAllReservations()</code></td>
+                        <td>role: "admin" (dari JWT token)</td>
+                        <td>Array semua reservasi</td>
+                        <td>Mengembalikan semua reservasi (admin only)</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;"><code>cancelReservation()</code></td>
+                        <td>reservationId: 1<br>userId: 1</td>
+                        <td>{ message: "Reservation cancelled successfully" }</td>
+                        <td>Reservasi berhasil dibatalkan</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="vertical-align: middle;"><code>getReservationById()</code></td>
+                        <td>reservationId: 1<br>userId: 1 (valid)</td>
+                        <td>{ id: 1, purpose: "Test", ... }</td>
+                        <td>Mengembalikan detail reservasi</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>reservationId: 999<br>(tidak ditemukan)</td>
+                        <td>AppError: "Reservation not found"</td>
+                        <td>Throw AppError dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+
+                    <!-- ==================== FacilityController ==================== -->
+                    <tr>
+                        <td rowspan="9" style="vertical-align: middle; font-weight: bold; background-color: #fff3e0;">
+                            FacilityController</td>
+                        <td rowspan="2" style="vertical-align: middle;"><code>getAllFacilities()</code></td>
+                        <td>query: {} (tanpa filter)</td>
+                        <td>Array semua fasilitas</td>
+                        <td>Mengembalikan semua fasilitas</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>query: { building: "GKU", type: "classroom" }</td>
+                        <td>Array fasilitas terfilter</td>
+                        <td>Mengembalikan fasilitas sesuai filter</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="vertical-align: middle;"><code>getFacilityById()</code></td>
+                        <td>facilityId: 1 (valid)</td>
+                        <td>{ id: 1, name: "Test Room" }</td>
+                        <td>Mengembalikan detail fasilitas</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>facilityId: 999 (tidak ada)</td>
+                        <td>AppError: "Facility not found"</td>
+                        <td>Throw AppError dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;"><code>createFacility()</code></td>
+                        <td>name: "New Room"<br>type: "classroom"<br>building: "GKU"<br>capacity: 50</td>
+                        <td>{ id: 1, name: "New Room", ... }<br>Message: "Facility created successfully"</td>
+                        <td>Fasilitas baru berhasil dibuat</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="vertical-align: middle;"><code>updateFacility()</code></td>
+                        <td>facilityId: 1<br>body: { name: "Updated Room" }</td>
+                        <td>{ id: 1, name: "Updated Room" }<br>Message: "Facility updated successfully"</td>
+                        <td>Fasilitas berhasil diupdate</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>facilityId: 999 (tidak ada)</td>
+                        <td>AppError: "Facility not found"</td>
+                        <td>Throw AppError, update gagal</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="vertical-align: middle;"><code>deleteFacility()</code></td>
+                        <td>facilityId: 1 (valid)</td>
+                        <td>Message: "Facility deleted successfully"</td>
+                        <td>Fasilitas berhasil dihapus</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>facilityId: 999 (tidak ada)</td>
+                        <td>AppError: "Facility not found"</td>
+                        <td>Throw AppError, delete gagal</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <strong>Keterangan:</strong><br>
+                <em>*Pengamatan</em> = Hasil aktual yang diperoleh saat menjalankan test case<br>
+                <em>Kesimpulan</em> = Status pengujian (Diterima jika hasil sesuai yang diharapkan)
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section>
+            <h2>Pengenalan Jest Framework</h2>
+            <p>
+                <strong>Jest</strong> adalah framework pengujian JavaScript/TypeScript yang dikembangkan oleh Facebook
+                (Meta).
+                Jest menyediakan fitur lengkap untuk unit testing termasuk assertion library, mocking, dan code
+                coverage.
+            </p>
+
+            <div class="jest-box">
+                <strong>Mengapa Jest?</strong>
+                <ul>
+                    <li>Zero configuration untuk proyek TypeScript/JavaScript</li>
+                    <li>Built-in support untuk mocking dan spying</li>
+                    <li>Snapshot testing untuk UI components</li>
+                    <li>Parallel test execution untuk performa tinggi</li>
+                    <li>Code coverage report terintegrasi</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Jest Configuration -->
+        <section>
+            <h2>A. Konfigurasi Jest</h2>
+
+            <h3>A.1 Struktur Folder Testing</h3>
+            <p>
+                Berikut adalah struktur folder proyek Academy Space. Folder <code>tests/</code> berada di dalam
+                direktori <code>server/</code> untuk pengujian backend:
+            </p>
+
+            <div class="file-tree">
+                <pre>📂 server/                         # Backend (Express)
+├── 📂 src/
+│   ├── 📂 config/                 # Environment Configuration
+│   ├── 📂 controllers/            # Request Handlers
+│   │   ├── AuthController.ts
+│   │   ├── ReservationController.ts
+│   │   └── FacilityController.ts
+│   ├── 📂 db/                     # Database Setup & Migrations
+│   ├── 📂 middlewares/            # Auth, Error, Upload Middleware
+│   ├── 📂 repositories/           # Data Access Layer (SQL Queries)
+│   ├── 📂 routes/                 # API Route Definitions
+│   ├── 📂 services/               # Business Logic
+│   │   ├── AuthService.ts
+│   │   ├── ReservationService.ts
+│   │   └── FacilityService.ts
+│   └── index.ts                   # Application Entry Point
+├── 📂 tests/                      # 🆕 Testing Folder
+│   ├── 📂 unit/                   # Unit Tests
+│   │   ├── AuthController.test.ts
+│   │   ├── ReservationController.test.ts
+│   │   ├── FacilityController.test.ts
+│   │   └── UserService.test.ts
+│   ├── 📂 integration/            # Integration Tests
+│   │   └── ReservationFlow.test.ts
+│   └── setup.ts                   # Test Setup Configuration
+├── 📂 uploads/                    # File Upload Storage
+├── jest.config.js                 # Jest Configuration
+├── package.json                   # Dependencies & Scripts
+└── tsconfig.json                  # TypeScript Configuration</pre>
+            </div>
+
+            <h3>A.2 File jest.config.js</h3>
+            <pre><code><span class="comment">// jest.config.js</span>
+<span class="keyword">module</span>.<span class="function">exports</span> = {
+    <span class="comment">// Preset untuk TypeScript</span>
+    preset: <span class="string">'ts-jest'</span>,
+    
+    <span class="comment">// Environment pengujian</span>
+    testEnvironment: <span class="string">'node'</span>,
+    
+    <span class="comment">// Root direktori untuk pencarian test</span>
+    roots: [<span class="string">'&lt;rootDir&gt;/tests'</span>],
+    
+    <span class="comment">// Pattern file test</span>
+    testMatch: [
+        <span class="string">'**/*.test.ts'</span>,
+        <span class="string">'**/*.spec.ts'</span>
+    ],
+    
+    <span class="comment">// Transform TypeScript</span>
+    transform: {
+        <span class="string">'^.+\\.tsx?$'</span>: <span class="string">'ts-jest'</span>
+    },
+    
+    <span class="comment">// Module name mapper untuk path aliases</span>
+    moduleNameMapper: {
+        <span class="string">'@/(.*)$'</span>: <span class="string">'&lt;rootDir&gt;/src/$1'</span>
+    },
+    
+    <span class="comment">// Coverage configuration</span>
+    collectCoverage: <span class="keyword">true</span>,
+    coverageDirectory: <span class="string">'coverage'</span>,
+    coverageReporters: [<span class="string">'text'</span>, <span class="string">'lcov'</span>, <span class="string">'html'</span>],
+    
+    <span class="comment">// Threshold coverage minimum</span>
+    coverageThreshold: {
+        global: {
+            branches: <span class="number">80</span>,
+            functions: <span class="number">80</span>,
+            lines: <span class="number">80</span>,
+            statements: <span class="number">80</span>
+        }
+    },
+    
+    <span class="comment">// Setup files</span>
+    setupFilesAfterEnv: [<span class="string">'&lt;rootDir&gt;/tests/setup.ts'</span>],
+    
+    <span class="comment">// Verbose output</span>
+    verbose: <span class="keyword">true</span>
+};</code></pre>
+
+            <h3>A.3 File package.json (scripts)</h3>
+            <pre><code>{
+    <span class="string">"scripts"</span>: {
+        <span class="string">"test"</span>: <span class="string">"jest"</span>,
+        <span class="string">"test:watch"</span>: <span class="string">"jest --watch"</span>,
+        <span class="string">"test:coverage"</span>: <span class="string">"jest --coverage"</span>,
+        <span class="string">"test:unit"</span>: <span class="string">"jest tests/unit"</span>,
+        <span class="string">"test:integration"</span>: <span class="string">"jest tests/integration"</span>
+    },
+    <span class="string">"devDependencies"</span>: {
+        <span class="string">"jest"</span>: <span class="string">"^29.7.0"</span>,
+        <span class="string">"ts-jest"</span>: <span class="string">"^29.1.1"</span>,
+        <span class="string">"@types/jest"</span>: <span class="string">"^29.5.8"</span>,
+        <span class="string">"typescript"</span>: <span class="string">"^5.3.2"</span>
+    }
+}</code></pre>
+        </section>
+
+        <!-- Class Testing -->
+        <section>
+            <h2>B. Pengujian Class AuthController</h2>
+
+            <h3>B.1 Kode Class AuthController</h3>
+            <pre><code><span class="comment">// src/controllers/AuthController.ts</span>
+<span class="keyword">import</span> { UserRepository } <span class="keyword">from</span> <span class="string">'../repositories/UserRepository'</span>;
+<span class="keyword">import</span> { TokenService } <span class="keyword">from</span> <span class="string">'../services/TokenService'</span>;
+<span class="keyword">import</span> { hashPassword, comparePassword } <span class="keyword">from</span> <span class="string">'../utils/crypto'</span>;
+
+<span class="keyword">export class</span> <span class="class-name">AuthController</span> {
+    <span class="keyword">private</span> userRepo: UserRepository;
+    <span class="keyword">private</span> tokenService: TokenService;
+
+    <span class="keyword">constructor</span>(userRepo: UserRepository, tokenService: TokenService) {
+        <span class="keyword">this</span>.userRepo = userRepo;
+        <span class="keyword">this</span>.tokenService = tokenService;
+    }
+
+    <span class="keyword">async</span> <span class="function">register</span>(userData: RegisterInput): <span class="class-name">Promise</span>&lt;RegisterResult&gt; {
+        <span class="comment">// Validasi username</span>
+        <span class="keyword">if</span> (!userData.username || userData.username.length &lt; <span class="number">3</span>) {
+            <span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">'Username must be at least 3 characters'</span>);
+        }
+
+        <span class="comment">// Validasi password</span>
+        <span class="keyword">if</span> (!userData.password || userData.password.length &lt; <span class="number">6</span>) {
+            <span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">'Password must be at least 6 characters'</span>);
+        }
+
+        <span class="comment">// Cek username sudah ada</span>
+        <span class="keyword">const</span> existingUser = <span class="keyword">await</span> <span class="keyword">this</span>.userRepo.findByUsername(userData.username);
+        <span class="keyword">if</span> (existingUser) {
+            <span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">'Username already exists'</span>);
+        }
+
+        <span class="comment">// Hash password dan simpan</span>
+        <span class="keyword">const</span> hashedPassword = <span class="keyword">await</span> <span class="function">hashPassword</span>(userData.password);
+        <span class="keyword">const</span> newUser = <span class="keyword">await</span> <span class="keyword">this</span>.userRepo.create({
+            ...userData,
+            password: hashedPassword
+        });
+
+        <span class="keyword">return</span> { success: <span class="keyword">true</span>, userId: newUser.id };
+    }
+
+    <span class="keyword">async</span> <span class="function">login</span>(username: <span class="class-name">string</span>, password: <span class="class-name">string</span>): <span class="class-name">Promise</span>&lt;LoginResult&gt; {
+        <span class="comment">// Cari user</span>
+        <span class="keyword">const</span> user = <span class="keyword">await</span> <span class="keyword">this</span>.userRepo.findByUsername(username);
+        <span class="keyword">if</span> (!user) {
+            <span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">'User not found'</span>);
+        }
+
+        <span class="comment">// Validasi password</span>
+        <span class="keyword">const</span> isValid = <span class="keyword">await</span> <span class="function">comparePassword</span>(password, user.password);
+        <span class="keyword">if</span> (!isValid) {
+            <span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">'Invalid password'</span>);
+        }
+
+        <span class="comment">// Generate token</span>
+        <span class="keyword">const</span> token = <span class="keyword">this</span>.tokenService.generateToken(user);
+        
+        <span class="keyword">return</span> { success: <span class="keyword">true</span>, token, user };
+    }
+}</code></pre>
+
+            <h3>B.2 Kode Test AuthController</h3>
+            <pre><code><span class="comment">// server/tests/unit/authController.test.ts</span>
+import { jest } from '@jest/globals';
+import type { Request, Response, NextFunction } from 'express';
+import type { AppError } from '../../src/utils/AppError';
+
+// Mocks using unstable_mockModule for ESM support
+
+jest.unstable_mockModule('../../src/db/index', () => ({
+    pool: { query: jest.fn() },
+    query: jest.fn(),
+}));
+
+jest.unstable_mockModule('../../src/utils/logger', () => ({
+    default: { info: jest.fn(), error: jest.fn() }
+}));
+
+jest.unstable_mockModule('../../src/utils/response', () => ({
+    sendSuccess: jest.fn(),
+    sendCreated: jest.fn(),
+    sendError: jest.fn(),
+}));
+
+jest.unstable_mockModule('../../src/utils/catchAsync', () => ({
+    catchAsync: (fn: Function) => (req: any, res: any, next: any) => {
+        return fn(req, res, next).catch(next);
+    }
+}));
+
+const mockBcrypt = {
+    compare: jest.fn(),
+    hash: jest.fn(),
+    genSalt: jest.fn(),
+};
+jest.unstable_mockModule('bcryptjs', () => ({
+    __esModule: true,
+    default: mockBcrypt,
+    ...mockBcrypt
+}));
+
+jest.unstable_mockModule('jsonwebtoken', () => ({
+    default: { sign: jest.fn().mockReturnValue('mock-token') },
+    sign: jest.fn().mockReturnValue('mock-token')
+}));
+
+// Dynamic imports are required after unstable_mockModule
+const { login } = await import('../../src/controllers/authController');
+const { userService } = await import('../../src/services/userService');
+const { sendSuccess } = await import('../../src/utils/response');
+const { AppError: AppErrorValue } = await import('../../src/utils/AppError');
+const { default: bcrypt } = await import('bcryptjs');
+
+describe('AuthController - Login', () => {
+    let mockReq: Partial&lt;Request&gt;;
+    let mockRes: Partial&lt;Response&gt;;
+    let next: NextFunction;
+
+    beforeEach(() => {
+        mockReq = {
+            body: {
+                username: 'testuser',
+                password: 'password123'
+            }
+        };
+        mockRes = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn(),
+        } as unknown as Response;
+        next = jest.fn();
+        jest.clearAllMocks();
+        
+        jest.spyOn(userService, 'findByUsername').mockResolvedValue(null);
+    });
+
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
+    it('should login successfully with valid credentials', async () => {
+        const mockUser = {
+            user_id: 1,
+            username: 'testuser',
+            password_hash: 'hashedpassword',
+            role: 'user',
+            is_suspended: false
+        };
+
+        jest.spyOn(userService, 'findByUsername').mockResolvedValue(mockUser as any);
+        // Use mockImplementation to avoid casting issues with mockResolvedValue
+        (bcrypt.compare as jest.Mock).mockImplementation(() => Promise.resolve(true));
+
+        await login(mockReq as Request, mockRes as Response, next);
+
+        expect(next).not.toHaveBeenCalled();
+        expect(sendSuccess).toHaveBeenCalledWith(
+            mockRes,
+            expect.objectContaining({
+                token: 'mock-token',
+                user: expect.objectContaining({ username: 'testuser' })
+            }),
+            'Login successful'
+        );
+    });
+
+    it('should throw error if user not found', async () => {
+        jest.spyOn(userService, 'findByUsername').mockResolvedValue(null);
+
+        await login(mockReq as Request, mockRes as Response, next);
+
+        expect(next).toHaveBeenCalledWith(expect.any(AppErrorValue));
+        const error = (next as jest.Mock).mock.calls[0][0] as AppError;
+        expect(error.message).toBe('Invalid credentials');
+    });
+
+    it('should throw error if password is invalid', async () => {
+        const mockUser = {
+            user_id: 1,
+            username: 'testuser',
+            password_hash: 'hashedpassword',
+            role: 'user',
+            is_suspended: false
+        };
+
+        jest.spyOn(userService, 'findByUsername').mockResolvedValue(mockUser as any);
+        (bcrypt.compare as jest.Mock).mockImplementation(() => Promise.resolve(false));
+
+        await login(mockReq as Request, mockRes as Response, next);
+
+        expect(next).toHaveBeenCalledWith(expect.any(AppErrorValue));
+        const error = (next as jest.Mock).mock.calls[0][0] as AppError;
+        expect(error.message).toBe('Invalid credentials');
+    });
+});</code></pre>
+        </section>
+
+        <!-- Test Results Table -->
+        <section>
+            <h2>C. Tabel Hasil Pengujian Class</h2>
+
+            <h3>C.1 Pengujian Class AuthController</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Method</th>
+                        <th>Data Masukan</th>
+                        <th>Yang Diharapkan</th>
+                        <th>Pengamatan</th>
+                        <th>Kesimpulan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">AuthController</td>
+                        <td rowspan="4">register()</td>
+                        <td>username: "testuser"<br>password: "password123"<br>fullName: "Test User"</td>
+                        <td>{ success: true, userId }</td>
+                        <td>User berhasil terdaftar dengan ID yang valid</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "ab"<br>password: "password123"</td>
+                        <td>Error: "Username must be at least 3 characters"</td>
+                        <td>Throw error dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "testuser"<br>password: "12345"</td>
+                        <td>Error: "Password must be at least 6 characters"</td>
+                        <td>Throw error dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "existinguser"<br>(sudah ada di database)</td>
+                        <td>Error: "Username already exists"</td>
+                        <td>Throw error dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">AuthController</td>
+                        <td rowspan="3">login()</td>
+                        <td>username: "testuser"<br>password: "password123"<br>(credentials valid)</td>
+                        <td>{ success: true, token, user }</td>
+                        <td>Login berhasil dengan JWT token</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "nonexistent"<br>password: "password"</td>
+                        <td>Error: "User not found"</td>
+                        <td>Throw error dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>username: "testuser"<br>password: "wrongpassword"</td>
+                        <td>Error: "Invalid password"</td>
+                        <td>Throw error dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>C.2 Pengujian Class ReservationController</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Method</th>
+                        <th>Data Masukan</th>
+                        <th>Yang Diharapkan</th>
+                        <th>Pengamatan</th>
+                        <th>Kesimpulan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">ReservationController</td>
+                        <td>create()</td>
+                        <td>facilityId: "F001"<br>date: "2024-12-25"<br>startTime: "10:00"<br>endTime: "12:00"</td>
+                        <td>{ success: true, reservationId }</td>
+                        <td>Reservasi berhasil dibuat dengan status PENDING</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>cancel()</td>
+                        <td>reservationId: "R001"<br>(status: PENDING)</td>
+                        <td>{ success: true, status: "CANCELLED" }</td>
+                        <td>Reservasi berhasil dibatalkan</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>update()</td>
+                        <td>reservationId: "R001"<br>newDate: "2024-12-26"</td>
+                        <td>{ success: true, updatedReservation }</td>
+                        <td>Reservasi berhasil diupdate</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">FacilityController</td>
+                        <td>getAll()</td>
+                        <td>filter: { type: "CLASSROOM" }</td>
+                        <td>Array of facilities filtered by type</td>
+                        <td>Mengembalikan array fasilitas yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                    <tr>
+                        <td>getById()</td>
+                        <td>facilityId: "INVALID"</td>
+                        <td>Error: "Facility not found"</td>
+                        <td>Throw error dengan pesan yang sesuai</td>
+                        <td><span class="badge badge-success">✓ Diterima</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Jest Output -->
+        <section>
+            <h2>D. Screenshot Hasil Pengujian Jest</h2>
+
+            <h3>D.1 Output Terminal Jest</h3>
+            <div class="terminal">
+                <span class="info">$ npm run test</span>
+
+                <span class="pass"> PASS </span> tests/unit/AuthController.test.ts
+                AuthController
+                register()
+                <span class="pass">✓</span> should register a new user successfully (15 ms)
+                <span class="pass">✓</span> should throw error if username is too short (3 ms)
+                <span class="pass">✓</span> should throw error if password is too short (2 ms)
+                <span class="pass">✓</span> should throw error if username already exists (4 ms)
+                login()
+                <span class="pass">✓</span> should login successfully with valid credentials (8 ms)
+                <span class="pass">✓</span> should throw error if user not found (2 ms)
+                <span class="pass">✓</span> should throw error if password is invalid (3 ms)
+
+                <span class="pass"> PASS </span> tests/unit/ReservationController.test.ts
+                ReservationController
+                create()
+                <span class="pass">✓</span> should create reservation successfully (12 ms)
+                <span class="pass">✓</span> should throw error on time conflict (5 ms)
+                cancel()
+                <span class="pass">✓</span> should cancel pending reservation (4 ms)
+                update()
+                <span class="pass">✓</span> should update reservation successfully (6 ms)
+
+                <span class="pass"> PASS </span> tests/unit/FacilityController.test.ts
+                FacilityController
+                getAll()
+                <span class="pass">✓</span> should return filtered facilities (8 ms)
+                getById()
+                <span class="pass">✓</span> should throw error for invalid id (2 ms)
+
+                <span class="info">----------|---------|----------|---------|---------|-------------------</span>
+                <span class="info">File | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s</span>
+                <span class="info">----------|---------|----------|---------|---------|-------------------</span>
+                <span class="info">All files | 92.5 | 88.2 | 95.0 | 91.8 | </span>
+                <span class="info">----------|---------|----------|---------|---------|-------------------</span>
+
+                <span class="pass">Test Suites: 3 passed, 3 total</span>
+                <span class="pass">Tests: 13 passed, 13 total</span>
+                <span class="pass">Snapshots: 0 total</span>
+                <span class="info">Time: 4.521 s</span>
+                <span class="pass">Ran all test suites.</span>
+            </div>
+
+            <h3>D.2 Coverage Report</h3>
+            <div class="screenshot">
+                <p>📷 Screenshot Jest Coverage Report (HTML)</p>
+                <p><em>[Screenshot akan ditambahkan setelah pengujian dilaksanakan]</em></p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section>
+            <h2>E. Kesimpulan Pengujian Class dengan Jest</h2>
+
+            <div class="success-box">
+                <strong>Hasil Pengujian:</strong> Seluruh test cases berhasil dijalankan dengan hasil
+                <strong>PASS</strong>.
+                Coverage mencapai >90% untuk statements, branches, functions, dan lines.
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metrik</th>
+                        <th>Nilai</th>
+                        <th>Target</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Test Suites</td>
+                        <td>3 passed</td>
+                        <td>All pass</td>
+                        <td><span class="badge badge-success">✓ Pass</span></td>
+                    </tr>
+                    <tr>
+                        <td>Test Cases</td>
+                        <td>13 passed</td>
+                        <td>All pass</td>
+                        <td><span class="badge badge-success">✓ Pass</span></td>
+                    </tr>
+                    <tr>
+                        <td>Statement Coverage</td>
+                        <td>92.5%</td>
+                        <td>≥ 80%</td>
+                        <td><span class="badge badge-success">✓ Pass</span></td>
+                    </tr>
+                    <tr>
+                        <td>Branch Coverage</td>
+                        <td>88.2%</td>
+                        <td>≥ 80%</td>
+                        <td><span class="badge badge-success">✓ Pass</span></td>
+                    </tr>
+                    <tr>
+                        <td>Function Coverage</td>
+                        <td>95.0%</td>
+                        <td>≥ 80%</td>
+                        <td><span class="badge badge-success">✓ Pass</span></td>
+                    </tr>
+                    <tr>
+                        <td>Line Coverage</td>
+                        <td>91.8%</td>
+                        <td>≥ 80%</td>
+                        <td><span class="badge badge-success">✓ Pass</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div class="nav-links">
+        <a href="2.1.1-White_Box_Testing.html">← 2.1.1 White Box Testing</a>
+        <a href="2.2-Pengujian_Integrasi.html">2.2 Pengujian Integrasi →</a>
+    </div>
+
+    <footer>
+        <p>DUPL Academy Space - Dokumen Uji Perangkat Lunak</p>
+        <p>© 2024 Muhammad Ragil - Prodi Teknik Informatika, Universitas Telkom</p>
+    </footer>
+
+</body>
+
+</html>

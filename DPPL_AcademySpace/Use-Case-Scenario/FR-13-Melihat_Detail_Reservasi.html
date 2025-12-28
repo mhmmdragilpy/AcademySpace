@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-13 Melihat Detail Reservasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .extend-note {
+            font-style: italic;
+            color: #666;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.2.1.3 Use Case Scenario #15 &lt;Melihat Detail Reservasi&gt; <span class="admin-badge">ADMIN</span></h1>
+
+    <h2>Skenario Use Case #15:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>Admin sudah login dengan role Admin.</li>
+            <li>Terdapat minimal satu reservasi dalam database.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow</div>
+        <ul>
+            <li>Admin mengakses menu "Reservations" dari sidebar.</li>
+            <li>Tabel daftar semua reservasi ditampilkan.</li>
+            <li>Admin dapat melihat informasi singkat setiap reservasi:
+                <ul>
+                    <li>Nama dan username user</li>
+                    <li>Fasilitas yang direservasi</li>
+                    <li>Tanggal dan waktu (mulai - selesai)</li>
+                    <li>Status reservasi</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Melihat Dokumen Pendukung)</div>
+        <ul>
+            <li>Admin melihat kolom "Document" pada tabel.</li>
+            <li>Jika ada dokumen, tombol "View" ditampilkan.</li>
+            <li>Admin mengklik tombol "View".</li>
+            <li>Dokumen pendukung (Proposal/Rundown) dibuka di tab baru.</li>
+            <li>Admin dapat mengunduh atau mencetak dokumen jika diperlukan.</li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Filter berdasarkan Status)</div>
+        <ul>
+            <li>Admin menggunakan dropdown filter "All Status".</li>
+            <li>Admin memilih status tertentu (Pending/Approved/Rejected).</li>
+            <li>Reservasi difilter dan ditampilkan sesuai status.</li>
+        </ul>
+
+        <div class="flow-title">d. Alternative Flow</div>
+        <ul>
+            <li>Reservasi tidak memiliki dokumen pendukung.</li>
+            <li>Kolom Document menampilkan "No Doc" atau kosong.</li>
+            <li>Admin tetap dapat melakukan approval berdasarkan informasi lain.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Admin dapat melihat semua informasi detail reservasi.</li>
+            <li>Admin dapat mengambil keputusan untuk approve/reject. <span class="extend-note">(Include: FR-09)</span>
+            </li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-09-Menyetujui_atau_Menolak_Reservasi.html" class="nav-link">Lihat UI Design</a>
+
+</body>
+
+</html>

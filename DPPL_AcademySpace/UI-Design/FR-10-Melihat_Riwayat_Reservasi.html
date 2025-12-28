@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - My Reservations</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="wf-navbar">
+        <div class="wf-container wf-navbar-container">
+            <div class="wf-flex wf-items-center wf-gap-2">
+                <div class="wf-box"
+                    style="width: 150px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [Logo]
+                </div>
+            </div>
+            <div class="wf-flex wf-gap-4">
+                <a href="FR-06-Mencari_Fasilitas.html" class="wf-btn">Home</a>
+                <a href="FR-10-Melihat_Riwayat_Reservasi.html" class="wf-btn" style="text-decoration: underline;">My Reservations</a>
+                <a href="FR-16-Melihat_Guide_Penggunaan_Website.html" class="wf-btn">Guide</a>
+            </div>
+            <div class="wf-flex wf-gap-2 wf-items-center">
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" class="wf-btn">Log in</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="background: #f9f9f9; padding: 2rem 0; min-height: 80vh;">
+        <div class="wf-container">
+
+            <div class="wf-flex wf-justify-between wf-items-center" style="margin-bottom: 2rem;">
+                <div>
+                    <h1>My Reservations</h1>
+                    <p class="wf-text-muted">Track and manage your facility bookings.</p>
+                </div>
+                <a href="FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html" class="wf-btn wf-btn-primary">
+                    <span class="wf-icon">[+]</span> New Reservation
+                </a>
+            </div>
+
+            <div class="wf-card">
+                <div class="wf-card-header">
+                    <h3>History</h3>
+                    <p class="wf-text-small wf-text-muted">A list of your recent reservations.</p>
+                </div>
+                <div class="wf-card-body">
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th>Facility</th>
+                                <th>Date & Time</th>
+                                <th>Status</th>
+                                <th>Purpose</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Item 1: Pending -->
+                            <tr>
+                                <td><strong>Auditorium Utama</strong></td>
+                                <td>
+                                    2025-10-10<br>
+                                    <span class="wf-text-small wf-text-muted">09:00 - 12:00</span>
+                                </td>
+                                <td><span class="wf-badge wf-badge-warning">PENDING</span></td>
+                                <td>Seminar Nasional Tech</td>
+                                <td class="text-right">
+                                    <a href="FR-08-Mengedit_atau_Membatalkan_Reservasi.html" class="wf-btn wf-text-small">Edit</a>
+                                    <button class="wf-btn wf-text-small" style="border-color: #000; color: #000;"
+                                        onclick="if(confirm('Cancel reservation?')) alert('Reservation cancelled');">Cancel</button>
+                                </td>
+                            </tr>
+                            <!-- Item 2: Approved -->
+                            <tr>
+                                <td><strong>Lab Komputer 1</strong></td>
+                                <td>
+                                    2025-09-15<br>
+                                    <span class="wf-text-small wf-text-muted">13:00 - 15:00</span>
+                                </td>
+                                <td><span class="wf-badge wf-badge-success">APPROVED</span></td>
+                                <td>Praktikum Basis Data</td>
+                                <td class="text-right">
+                                    <button class="wf-btn wf-text-small" disabled style="opacity: 0.5;">Cancel</button>
+                                </td>
+                            </tr>
+                            <!-- Item 3: Past & Rated -->
+                            <tr>
+                                <td><strong>Ruang Rapat A</strong></td>
+                                <td>
+                                    2025-08-01<br>
+                                    <span class="wf-text-small wf-text-muted">10:00 - 11:00</span>
+                                </td>
+                                <td><span class="wf-badge wf-badge-success">APPROVED</span></td>
+                                <td>Rapat Koordinasi</td>
+                                <td class="text-right">
+                                    <span class="wf-badge">Rated</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="border-top: 2px solid #000; padding: 2rem 0;">
+        <div class="wf-container wf-text-center">
+            [Footer Content]
+        </div>
+    </footer>
+
+</body>
+
+</html>

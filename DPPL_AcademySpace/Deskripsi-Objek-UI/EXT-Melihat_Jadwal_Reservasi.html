@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Objek UI - EXT Melihat Jadwal Reservasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 2rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .extend-badge {
+            display: inline-block;
+            background: #6b46c1;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Deskripsi Objek UI - EXT Melihat Jadwal Reservasi <span class="admin-badge">ADMIN</span> <span
+            class="extend-badge">EXTEND</span></h1>
+
+    <h2>Tabel Deskripsi Layar</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID. LAYAR</th>
+                <th>NAMA LAYAR</th>
+                <th>DESKRIPSI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>P023</td>
+                <td>Page Calendar View (Extend)</td>
+                <td>Halaman untuk melihat jadwal reservasi dalam format kalender bulanan</td>
+            </tr>
+            <tr>
+                <td>M001</td>
+                <td>Modal Day Details</td>
+                <td>Popup modal untuk menampilkan detail reservasi pada tanggal yang dipilih</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Antarmuka P023: Page CALENDAR VIEW</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id_Objek</th>
+                <th>JENIS</th>
+                <th>LABEL</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sidebar1</td>
+                <td>Sidebar Navigation</td>
+                <td>Admin Sidebar</td>
+                <td>Menu navigasi admin</td>
+            </tr>
+            <tr>
+                <td>Title1</td>
+                <td>Title/Header</td>
+                <td>Manage Reservations</td>
+                <td>Header utama halaman</td>
+            </tr>
+            <tr>
+                <td>TabButton1</td>
+                <td>Tab Button</td>
+                <td>List View</td>
+                <td>Switch ke tampilan tabel</td>
+            </tr>
+            <tr>
+                <td>TabButton2</td>
+                <td>Tab Button (Active)</td>
+                <td>Calendar View</td>
+                <td>Tab aktif untuk tampilan kalender</td>
+            </tr>
+            <tr>
+                <td>Dropdown1</td>
+                <td>Dropdown</td>
+                <td>Filter by Facility</td>
+                <td>Filter kalender berdasarkan fasilitas</td>
+            </tr>
+            <tr>
+                <td>Dropdown2</td>
+                <td>Dropdown</td>
+                <td>Filter by Status</td>
+                <td>Filter berdasarkan status reservasi</td>
+            </tr>
+            <tr>
+                <td>Button1</td>
+                <td>Button</td>
+                <td>&lt; Prev</td>
+                <td>Navigasi ke bulan sebelumnya</td>
+            </tr>
+            <tr>
+                <td>Button2</td>
+                <td>Button</td>
+                <td>Today</td>
+                <td>Kembali ke bulan saat ini</td>
+            </tr>
+            <tr>
+                <td>Button3</td>
+                <td>Button</td>
+                <td>Next &gt;</td>
+                <td>Navigasi ke bulan berikutnya</td>
+            </tr>
+            <tr>
+                <td>Text1</td>
+                <td>Text</td>
+                <td>Month Year</td>
+                <td>Menampilkan bulan dan tahun aktif</td>
+            </tr>
+            <tr>
+                <td>Calendar1</td>
+                <td>Calendar Grid</td>
+                <td>Monthly Calendar</td>
+                <td>Grid kalender 7 kolom</td>
+            </tr>
+            <tr>
+                <td>CalendarCell1</td>
+                <td>Calendar Cell</td>
+                <td>Date Cell</td>
+                <td>Sel tanggal, klik untuk detail</td>
+            </tr>
+            <tr>
+                <td>CalendarEvent1</td>
+                <td>Event Indicator</td>
+                <td>Reservation Event</td>
+                <td>Indikator reservasi dengan warna status</td>
+            </tr>
+            <tr>
+                <td>Legend1</td>
+                <td>Legend</td>
+                <td>Status Legend</td>
+                <td>Keterangan warna status</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Antarmuka M001: Modal DAY DETAILS</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id_Objek</th>
+                <th>JENIS</th>
+                <th>LABEL</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ModalHeader1</td>
+                <td>Modal Header</td>
+                <td>Date Title</td>
+                <td>Menampilkan tanggal yang dipilih</td>
+            </tr>
+            <tr>
+                <td>ButtonClose1</td>
+                <td>Button</td>
+                <td>X (Close)</td>
+                <td>Tombol tutup modal</td>
+            </tr>
+            <tr>
+                <td>Text2</td>
+                <td>Text</td>
+                <td>Reservation Count</td>
+                <td>Jumlah reservasi pada tanggal tersebut</td>
+            </tr>
+            <tr>
+                <td>ReservationCard1</td>
+                <td>Card</td>
+                <td>Reservation Item</td>
+                <td>Card info detail reservasi</td>
+            </tr>
+            <tr>
+                <td>TextFacility1</td>
+                <td>Text</td>
+                <td>Facility Name</td>
+                <td>Nama fasilitas</td>
+            </tr>
+            <tr>
+                <td>Badge1</td>
+                <td>Badge</td>
+                <td>Status Badge</td>
+                <td>Badge status reservasi</td>
+            </tr>
+            <tr>
+                <td>TextTime1</td>
+                <td>Text</td>
+                <td>Time Slot</td>
+                <td>Waktu reservasi</td>
+            </tr>
+            <tr>
+                <td>TextUser1</td>
+                <td>Text</td>
+                <td>User Info</td>
+                <td>Info pengguna</td>
+            </tr>
+            <tr>
+                <td>ButtonApprove1</td>
+                <td>Button</td>
+                <td>Approve</td>
+                <td>Setujui reservasi (jika pending)</td>
+            </tr>
+            <tr>
+                <td>ButtonReject1</td>
+                <td>Button</td>
+                <td>Reject</td>
+                <td>Tolak reservasi (jika pending)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Identifikasi Object dan Tipe Kelas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Object</th>
+                <th>Tipe Kelas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>ManageReservationsPage</td>
+                <td>Boundary</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>CalendarViewComponent</td>
+                <td>Boundary</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>DayDetailModal</td>
+                <td>Boundary</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>CalendarController</td>
+                <td>Controller</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Reservation</td>
+                <td>Entity</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Facility</td>
+                <td>Entity</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="../UI-Design/EXT-Melihat_Jadwal_Reservasi.html" class="nav-link">Lihat UI Design</a>
+    <a href="index.html" class="nav-link">Kembali ke Index</a>
+</body>
+
+</html>

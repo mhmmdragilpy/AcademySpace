@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-15 Mengambil Token</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.2.1.5 Use Case Scenario #17 &lt;Mengambil Token&gt; <span class="admin-badge">ADMIN</span></h1>
+
+    <h2>Skenario Use Case #17:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>Admin sudah login dengan role Admin.</li>
+            <li>Admin memiliki akses ke menu Tokens.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Melihat Token)</div>
+        <ul>
+            <li>Admin mengakses menu "System Tokens" dari sidebar.</li>
+            <li>Halaman Tokens ditampilkan dengan dua kartu:
+                <ul>
+                    <li><strong>Admin Registration Token:</strong> Token yang dibutuhkan untuk mendaftarkan akun Admin
+                        baru.</li>
+                    <li><strong>Password Reset Master Token:</strong> Token yang digunakan untuk validasi reset password
+                        tanpa email.</li>
+                </ul>
+            </li>
+            <li>Setiap kartu menampilkan token string yang tersembunyi/terlihat.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Menyalin Token)</div>
+        <ul>
+            <li>Admin mengklik tombol "Copy Token" pada kartu token yang diinginkan.</li>
+            <li>Token disalin ke clipboard.</li>
+            <li>Notifikasi "Token copied to clipboard" ditampilkan.</li>
+            <li>Admin dapat membagikan token kepada user yang membutuhkan.</li>
+        </ul>
+
+        <div class="flow-title">c. Use Case: Memberikan Admin Registration Token</div>
+        <ul>
+            <li>Admin menyalin Admin Registration Token.</li>
+            <li>Admin memberikan token kepada calon Admin baru melalui channel aman (tatap muka, email internal, dll).
+            </li>
+            <li>Calon Admin menggunakan token saat registrasi sebagai Admin.</li>
+        </ul>
+
+        <div class="flow-title">d. Use Case: Memberikan Password Reset Token</div>
+        <ul>
+            <li>User melaporkan lupa password dan meminta reset.</li>
+            <li>Admin menyalin Password Reset Master Token.</li>
+            <li>Admin memberikan token kepada user yang terverifikasi identitasnya.</li>
+            <li>User menggunakan token di halaman Forgot Password.</li>
+        </ul>
+
+        <div class="warning">
+            <strong>⚠️ Peringatan Keamanan:</strong> Token bersifat sensitif. Pastikan hanya membagikan kepada pihak
+            yang berwenang dan melalui channel yang aman.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Token berhasil disalin ke clipboard.</li>
+            <li>Admin dapat menggunakan token untuk keperluan yang sesuai.</li>
+            <li>Keamanan data tetap terjaga jika token dijaga kerahasiaannya.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-15-Mengambil_Token_Sistem.html" class="nav-link">Lihat UI Design</a>
+
+</body>
+
+</html>

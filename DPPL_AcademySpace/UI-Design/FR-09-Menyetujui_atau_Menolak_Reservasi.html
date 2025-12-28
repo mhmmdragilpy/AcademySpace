@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Admin Reservations</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body class="wf-admin-body">
+
+    <!-- Admin Sidebar -->
+    <aside class="wf-admin-sidebar">
+        <div class="wf-logo">[Logo]</div>
+        <nav class="wf-admin-nav">
+            <nav class="wf-admin-nav">
+                <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html" class="active">
+                    <span class="wf-icon">[Cal]</span> Reservations
+                </a>
+                <a href="FR-11-Mengelola_Fasilitas.html">
+                    <span class="wf-icon">[Bldg]</span> Facilities
+                </a>
+                <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">
+                    <span class="wf-icon">[Chart]</span> Analytics
+                </a>
+                <a href="FR-15-Mengambil_Token_Sistem.html">
+                    <span class="wf-icon">[Key]</span> System Tokens
+                </a>
+                <a href="FR-02-Mengelola_Profil_Admin.html">
+                    <span class="wf-icon">[User]</span> Profile
+                </a>
+                <div style="margin-top: auto; border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+                    <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" style="color: #aaa;">
+                        <span class="wf-icon">[Out]</span> Logout
+                    </a>
+                </div>
+            </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wf-admin-main">
+        <header style="margin-bottom: 2rem;">
+            <h1>Manage Reservations</h1>
+            <p class="wf-text-muted">View and manage all reservations.</p>
+        </header>
+
+        <div class="wf-card">
+            <div class="wf-card-header wf-flex wf-justify-between wf-items-center">
+                <h3>Reservations</h3>
+                <select class="wf-select" style="width: auto;">
+                    <option>All Status</option>
+                    <option>Pending</option>
+                    <option>Approved</option>
+                    <option>Rejected</option>
+                </select>
+            </div>
+            <div class="wf-card-body">
+
+                <!-- Tabs -->
+                <div style="border-bottom: 1px solid #ccc; margin-bottom: 1rem; display: flex; gap: 1rem;">
+                    <button class="wf-btn" style="border-bottom: 2px solid #000; border-radius: 0;">List View</button>
+                    <button class="wf-btn" style="border: none; color: #777;">Calendar View</button>
+                </div>
+
+                <!-- Content: List View -->
+                <div style="display: block;">
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Facility</th>
+                                <th>Date & Time</th>
+                                <th>Status</th>
+                                <th>Document</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1: Pending -->
+                            <tr>
+                                <td>
+                                    <strong>John Doe</strong><br>
+                                    <span class="wf-text-small wf-text-muted">@johne</span>
+                                </td>
+                                <td>Auditorium Utama</td>
+                                <td>
+                                    2025-10-15<br>
+                                    <span class="wf-text-small wf-text-muted">09:00 - 12:00</span>
+                                </td>
+                                <td><span class="wf-badge wf-badge-warning">Pending</span></td>
+                                <td><button class="wf-btn wf-text-small">[File] View</button></td>
+                                <td class="text-right">
+                                    <button class="wf-btn wf-btn-success wf-text-small"
+                                        onclick="alert('Reservation Approved');">[Chk] Approve</button>
+                                    <button class="wf-btn wf-btn-danger wf-text-small"
+                                        onclick="if(confirm('Reject reservation?')) alert('Rejected');">[X]
+                                        Reject</button>
+                                </td>
+                            </tr>
+                            <!-- Row 2: Approved -->
+                            <tr>
+                                <td>
+                                    <strong>Jane Smith</strong><br>
+                                    <span class="wf-text-small wf-text-muted">@janes</span>
+                                </td>
+                                <td>Lab Komputer</td>
+                                <td>
+                                    2025-10-20<br>
+                                    <span class="wf-text-small wf-text-muted">13:00 - 15:00</span>
+                                </td>
+                                <td><span class="wf-badge wf-badge-success">Approved</span></td>
+                                <td><span class="wf-text-small wf-text-muted">No Doc</span></td>
+                                <td class="text-right"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

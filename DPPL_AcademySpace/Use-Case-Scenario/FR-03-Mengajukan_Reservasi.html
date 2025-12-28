@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-03 Mengajukan Reservasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .extend-note {
+            font-style: italic;
+            color: #666;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.1.1.3 Use Case Scenario #3 &lt;Mengajukan Reservasi&gt;</h1>
+
+    <h2>Skenario Use Case #3:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>User sudah login.</li>
+            <li>User telah memilih fasilitas yang ingin direservasi.</li>
+            <li>Fasilitas dalam status "Active" (tersedia untuk booking).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow</div>
+        <ul>
+            <li>User mengakses halaman detail ruangan. <span class="extend-note">(Include: FR-07 Melihat Detail
+                    Ruangan)</span></li>
+            <li>User memilih tanggal reservasi dari kalender ketersediaan.</li>
+            <li>Slot waktu yang tersedia untuk tanggal tersebut ditampilkan.</li>
+            <li>User memilih waktu mulai dan waktu selesai.</li>
+            <li>User mengisi jumlah peserta.</li>
+            <li>User mengunggah dokumen pendukung (Proposal/Rundown) jika diperlukan.</li>
+            <li>User mengisi keperluan penggunaan ruangan.</li>
+            <li>User mengklik tombol "Ajukan Pemesanan".</li>
+            <li>Data reservasi divalidasi.</li>
+            <li>Reservasi disimpan dengan status "Pending".</li>
+            <li>User diarahkan ke halaman My Reservations.</li>
+        </ul>
+
+        <div class="flow-title">b. Alternative Flow (Slot Tidak Tersedia)</div>
+        <ul>
+            <li>User memilih tanggal dari kalender.</li>
+            <li>Semua slot pada tanggal tersebut sudah terpesan.</li>
+            <li>User memilih tanggal lain yang tersedia.</li>
+        </ul>
+
+        <div class="flow-title">c. Alternative Flow (Validasi Gagal)</div>
+        <ul>
+            <li>User mengisi form reservasi dengan data yang tidak lengkap.</li>
+            <li>Pesan error ditampilkan untuk field yang wajib diisi.</li>
+            <li>User melengkapi data dan mencoba submit ulang.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>Reservasi tersimpan dalam database dengan status "Pending".</li>
+            <li>Admin menerima notifikasi untuk mereview reservasi.</li>
+            <li>User dapat melihat status reservasi di halaman My Reservations.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-07-Melihat_Detail_Ruangan.html" class="nav-link">Lihat UI Design: Detail Ruangan</a>
+
+</body>
+
+</html>

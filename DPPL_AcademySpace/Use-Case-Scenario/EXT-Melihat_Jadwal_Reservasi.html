@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - EXT Melihat Jadwal Reservasi (Calendar View)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .extend-badge {
+            display: inline-block;
+            background: #6b46c1;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+
+        .relationship-box {
+            background: #e8e8ff;
+            border: 1px solid #6b46c1;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.2.1.5 Use Case Scenario &lt;Extend: Melihat Jadwal Reservasi&gt; 
+        <span class="admin-badge">ADMIN</span>
+        <span class="extend-badge">EXTEND</span>
+    </h1>
+
+    <div class="relationship-box">
+        <strong>Relasi:</strong> Extend dari Use Case "FR-14: Melihat Jadwal Reservasi"<br>
+        <strong>Deskripsi:</strong> Use case ini memperluas fungsionalitas melihat jadwal reservasi dengan menambahkan tampilan kalender interaktif (Calendar View) untuk memvisualisasikan jadwal reservasi secara lebih intuitif.
+    </div>
+
+    <h2>Skenario Use Case Extend - Calendar View:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>Admin sudah login dengan role Admin.</li>
+            <li>Admin sedang berada di halaman "Manage Reservations".</li>
+            <li>Terdapat data reservasi dalam database.</li>
+            <li>Tab "Calendar View" tersedia di halaman.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Extension Point</div>
+        <ul>
+            <li>Extend dari FR-14 pada titik: "Admin ingin melihat jadwal dalam format kalender".</li>
+            <li>Kondisi aktivasi: Admin mengklik tab "Calendar View".</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow (Menampilkan Calendar View)</div>
+        <ul>
+            <li>Admin mengklik tab "Calendar View" pada halaman Manage Reservations.</li>
+            <li>Sistem memuat data reservasi untuk bulan dan tahun saat ini.</li>
+            <li>Kalender bulanan ditampilkan dengan grid 7 kolom (Minggu-Sabtu).</li>
+            <li>Setiap sel tanggal menampilkan indikator jumlah reservasi.</li>
+            <li>Reservasi ditampilkan dengan warna berbeda berdasarkan status:
+                <ul>
+                    <li>Pending: Kuning/Abu-abu terang</li>
+                    <li>Approved: Hijau/Hitam solid</li>
+                    <li>Rejected: Merah/Garis diagonal</li>
+                    <li>Cancelled: Abu-abu/Transparan</li>
+                </ul>
+            </li>
+            <li>Legend warna status ditampilkan di bawah kalender.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Navigasi Bulan)</div>
+        <ul>
+            <li>Admin melihat bulan dan tahun aktif di header kalender.</li>
+            <li>Admin mengklik tombol "←" untuk bulan sebelumnya atau "→" untuk bulan berikutnya.</li>
+            <li>Sistem memuat ulang data reservasi untuk bulan yang dipilih.</li>
+            <li>Tampilan kalender diperbarui dengan data baru.</li>
+            <li>Admin dapat kembali ke bulan saat ini dengan tombol "Today".</li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Melihat Detail Tanggal)</div>
+        <ul>
+            <li>Admin mengklik salah satu sel tanggal di kalender.</li>
+            <li>Popup modal "Day Details" muncul.</li>
+            <li>Modal menampilkan daftar reservasi pada tanggal tersebut:
+                <ul>
+                    <li>Nama fasilitas</li>
+                    <li>Waktu reservasi (jam mulai - jam selesai)</li>
+                    <li>Nama pengguna yang melakukan reservasi</li>
+                    <li>Status reservasi</li>
+                    <li>Tombol aksi: View Detail, Approve/Reject (jika pending)</li>
+                </ul>
+            </li>
+            <li>Admin dapat menutup popup dengan tombol close atau klik di luar modal.</li>
+        </ul>
+
+        <div class="flow-title">d. Primary Flow (Filter Berdasarkan Fasilitas)</div>
+        <ul>
+            <li>Admin mengklik dropdown "Filter by Facility".</li>
+            <li>Daftar semua fasilitas ditampilkan.</li>
+            <li>Admin memilih satu fasilitas.</li>
+            <li>Kalender diperbarui menampilkan hanya reservasi untuk fasilitas yang dipilih.</li>
+            <li>Admin dapat memilih "All Facilities" untuk menampilkan semua reservasi kembali.</li>
+        </ul>
+
+        <div class="flow-title">e. Primary Flow (Filter Berdasarkan Status)</div>
+        <ul>
+            <li>Admin mengklik dropdown "Filter by Status".</li>
+            <li>Pilihan status: All, Pending, Approved, Rejected, Cancelled.</li>
+            <li>Admin memilih status tertentu.</li>
+            <li>Kalender diperbarui menampilkan hanya reservasi dengan status yang dipilih.</li>
+        </ul>
+
+        <div class="flow-title">f. Alternative Flow (Tidak Ada Reservasi)</div>
+        <ul>
+            <li>Jika tidak ada reservasi pada bulan yang dipilih.</li>
+            <li>Kalender tetap ditampilkan dengan sel tanggal kosong (tanpa indikator).</li>
+            <li>Pesan "No reservations found for this month" ditampilkan di bawah kalender.</li>
+        </ul>
+
+        <div class="flow-title">g. Alternative Flow (Error Loading Data)</div>
+        <ul>
+            <li>Jika terjadi error saat memuat data reservasi.</li>
+            <li>Pesan error ditampilkan: "Failed to load calendar data".</li>
+            <li>Tombol "Retry" tersedia untuk memuat ulang data.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iv. Post-Condition</div>
+        <ul>
+            <li>Admin dapat melihat jadwal reservasi dalam format kalender bulanan.</li>
+            <li>Admin dapat mengidentifikasi tanggal-tanggal dengan reservasi banyak (busy days).</li>
+            <li>Admin dapat melihat distribusi status reservasi secara visual.</li>
+            <li>Admin dapat dengan cepat mengakses detail reservasi pada tanggal tertentu.</li>
+            <li>Admin dapat merencanakan maintenance fasilitas berdasarkan kepadatan jadwal.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/EXT-Melihat_Jadwal_Reservasi.html" class="nav-link">Lihat UI Design</a>
+    <a href="../Deskripsi-Objek-UI/EXT-Melihat_Jadwal_Reservasi.html" class="nav-link">Lihat Deskripsi Objek UI</a>
+    <a href="index.html" class="nav-link">Kembali ke Index</a>
+
+</body>
+
+</html>

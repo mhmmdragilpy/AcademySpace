@@ -1,0 +1,117 @@
+@startuml FR-15-Mengambil_Token_Sistem
+
+title Sequence Diagram: FR-15 Mengambil Token Sistem (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang mengambil token
+' Objek:
+'   - SystemTokensPage: Halaman system tokens (Boundary)
+'   - TokenController: Controller untuk token
+'   - TokenDB: Database token (Entity)
+'   - ClipboardService: Service untuk clipboard
+
+actor "Admin" as Admin
+
+boundary "SystemTokensPage" as TokenPage
+control "TokenController" as TokenCtrl
+entity "TokenDB" as TokenDB
+control "ClipboardService" as Clipboard
+
+' ============================================
+' SKENARIO 1: MELIHAT TOKEN
+' ============================================
+== Melihat System Tokens ==
+
+Admin -> TokenPage: Akses menu "System Tokens"
+activate TokenPage
+
+TokenPage -> TokenCtrl: getSystemTokens()
+activate TokenCtrl
+
+TokenCtrl -> TokenDB: findAllTokens()
+activate TokenDB
+TokenDB --> TokenCtrl: tokens[]
+deactivate TokenDB
+
+TokenCtrl --> TokenPage: tokenList\n(Admin Registration Token, Password Reset Token)
+deactivate TokenCtrl
+
+TokenPage --> Admin: Tampilkan kartu token:\n1. Admin Registration Token\n2. Password Reset Master Token
+deactivate TokenPage
+
+' ============================================
+' SKENARIO 2: MENYALIN ADMIN REGISTRATION TOKEN
+' ============================================
+== Menyalin Admin Registration Token ==
+
+Admin -> TokenPage: Klik "Copy Token" pada Admin Registration Token
+activate TokenPage
+
+TokenPage -> TokenCtrl: getToken("ADMIN_REGISTRATION")
+activate TokenCtrl
+
+TokenCtrl -> TokenDB: findByType("ADMIN_REGISTRATION")
+activate TokenDB
+TokenDB --> TokenCtrl: tokenValue
+deactivate TokenDB
+
+TokenCtrl --> TokenPage: token
+deactivate TokenCtrl
+
+TokenPage -> Clipboard: copyToClipboard(token)
+activate Clipboard
+Clipboard --> TokenPage: copied: boolean
+deactivate Clipboard
+
+alt Berhasil disalin
+    TokenPage --> Admin: Tampilkan toast "Token copied to clipboard!"
+else Gagal disalin
+    TokenPage --> Admin: Tampilkan error "Failed to copy token"
+end
+
+deactivate TokenPage
+
+' ============================================
+' SKENARIO 3: MENYALIN PASSWORD RESET TOKEN
+' ============================================
+== Menyalin Password Reset Master Token ==
+
+Admin -> TokenPage: Klik "Copy Token" pada Password Reset Token
+activate TokenPage
+
+TokenPage -> TokenCtrl: getToken("PASSWORD_RESET")
+activate TokenCtrl
+
+TokenCtrl -> TokenDB: findByType("PASSWORD_RESET")
+activate TokenDB
+TokenDB --> TokenCtrl: tokenValue
+deactivate TokenDB
+
+TokenCtrl --> TokenPage: token
+deactivate TokenCtrl
+
+TokenPage -> Clipboard: copyToClipboard(token)
+activate Clipboard
+Clipboard --> TokenPage: copied: boolean
+deactivate Clipboard
+
+alt Berhasil disalin
+    TokenPage --> Admin: Tampilkan toast "Token copied to clipboard!"
+else Gagal disalin
+    TokenPage --> Admin: Tampilkan error "Failed to copy token"
+end
+
+deactivate TokenPage
+
+note over Admin, TokenPage
+  Token ini digunakan untuk:
+  - Admin Registration Token: Untuk registrasi admin baru
+  - Password Reset Token: Untuk reset password user
+  
+  Admin harus menjaga kerahasiaan token ini.
+end note
+
+@enduml

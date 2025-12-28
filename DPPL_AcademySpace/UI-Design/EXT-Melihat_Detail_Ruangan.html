@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Detail Ruangan Popup</title>
+    <link rel="stylesheet" href="wireframe.css">
+    <style>
+        /* Modal/Popup Styles */
+        .wf-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .wf-popup-card {
+            background: #fff;
+            border: var(--wf-border-width) solid var(--wf-border-color);
+            width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .wf-popup-header {
+            position: relative;
+        }
+
+        .wf-popup-image {
+            width: 100%;
+            height: 180px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: var(--wf-border-width) solid var(--wf-border-color);
+        }
+
+        .wf-popup-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #fff;
+            border: 1px solid #000;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .wf-popup-status {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+
+        .wf-popup-body {
+            padding: 1.5rem;
+        }
+
+        .wf-popup-title {
+            font-size: 1.25rem;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .wf-popup-location {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .wf-popup-content {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .wf-popup-desc {
+            flex: 1;
+        }
+
+        .wf-popup-details {
+            flex: 0 0 140px;
+            border: 1px solid #ccc;
+            padding: 1rem;
+        }
+
+        .wf-detail-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .wf-detail-label {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .wf-detail-value {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background: Facility Cards Grid (dimmed) -->
+    <div style="opacity: 0.3; padding: 2rem;">
+        <nav class="wf-navbar">
+            <div class="wf-container wf-navbar-container">
+                <div class="wf-box"
+                    style="width: 150px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [Logo] Academy Space</div>
+                <div class="wf-flex wf-gap-4">
+                    <a href="#" class="wf-btn">Home</a>
+                    <a href="#" class="wf-btn">My Reservations</a>
+                    <a href="#" class="wf-btn">Guide</a>
+                </div>
+                <div class="wf-box"
+                    style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [User]</div>
+            </div>
+        </nav>
+        <div class="wf-container" style="margin-top: 2rem;">
+            <div class="wf-grid wf-grid-cols-3 wf-gap-4">
+                <div class="wf-card">
+                    <div class="wf-placeholder-img">[Facility Image]</div>
+                    <div class="wf-card-body">[Facility 1]</div>
+                </div>
+                <div class="wf-card">
+                    <div class="wf-placeholder-img">[Facility Image]</div>
+                    <div class="wf-card-body">[Facility 2]</div>
+                </div>
+                <div class="wf-card">
+                    <div class="wf-placeholder-img">[Facility Image]</div>
+                    <div class="wf-card-body">[Facility 3]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="wf-modal-backdrop">
+        <div class="wf-popup-card">
+            <!-- Header with Image -->
+            <div class="wf-popup-header">
+                <div class="wf-popup-image">[Facility Image: Auditorium Gedung Damar]</div>
+                <span class="wf-popup-status wf-badge wf-badge-success">Available</span>
+                <button class="wf-popup-close">X</button>
+            </div>
+
+            <!-- Body -->
+            <div class="wf-popup-body">
+                <!-- Title & Location -->
+                <h2 class="wf-popup-title">Auditorium Gedung Damar</h2>
+                <div class="wf-popup-location">
+                    <span class="wf-icon" style="width: 16px; height: 16px; font-size: 10px;">[Pin]</span>
+                    GEDUNG DAMAR
+                </div>
+
+                <!-- Content: Description + Details -->
+                <div class="wf-popup-content">
+                    <!-- Left: Description -->
+                    <div class="wf-popup-desc">
+                        <h4 style="margin: 0 0 0.5rem 0;">Description</h4>
+                        <p class="wf-text-small" style="margin: 0 0 1rem 0;">
+                            Ruangan Auditorium Gedung Damar yang berlokasi di Gedung GEDUNG_DAMAR dengan fasilitas untuk
+                            menampung 300 orang.
+                        </p>
+
+                        <h4 style="margin: 0 0 0.5rem 0;">Layout & Setup</h4>
+                        <p class="wf-text-small" style="margin: 0;">
+                            Optimized layout for Auditorium usage
+                        </p>
+                    </div>
+
+                    <!-- Right: Details Panel -->
+                    <div class="wf-popup-details">
+                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.875rem;">DETAILS</h4>
+
+                        <div class="wf-detail-item">
+                            <div class="wf-flex wf-items-center wf-gap-1">
+                                <span class="wf-icon" style="width: 20px; height: 20px; font-size: 10px;">[Ppl]</span>
+                                <div>
+                                    <div class="wf-detail-label">Capacity</div>
+                                    <div class="wf-detail-value">300 People</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wf-detail-item">
+                            <div class="wf-flex wf-items-center wf-gap-1">
+                                <span class="wf-icon" style="width: 20px; height: 20px; font-size: 10px;">[Type]</span>
+                                <div>
+                                    <div class="wf-detail-label">Type</div>
+                                    <div class="wf-detail-value">Auditorium</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book Now Button -->
+                <button class="wf-btn wf-btn-primary"
+                    style="margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="wf-icon"
+                        style="width: 16px; height: 16px; font-size: 10px; border-color: #fff;">[Cal]</span>
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Facility Detail</title>
+    <link rel="stylesheet" href="wireframe.css">
+    <style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="wf-navbar">
+        <div class="wf-container wf-navbar-container">
+            <div class="wf-flex wf-items-center wf-gap-2">
+                <div class="wf-box"
+                    style="width: 150px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [Logo]
+                </div>
+            </div>
+            <div class="wf-flex wf-gap-4">
+                <a href="FR-06-Mencari_Fasilitas.html" class="wf-btn">Home</a>
+                <a href="FR-10-Melihat_Riwayat_Reservasi.html" class="wf-btn">My Reservations</a>
+                <a href="FR-16-Melihat_Guide_Penggunaan_Website.html" class="wf-btn">Guide</a>
+            </div>
+            <div class="wf-flex wf-gap-2 wf-items-center">
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" class="wf-btn">Log in</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="background: #f9f9f9; padding: 3rem 0;">
+        <div class="wf-container">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1>Cek Ketersediaan Ruangan</h1>
+                <p class="wf-text-muted" style="font-size: 1.25rem;">Auditorium Utama - Gedung Fakultas A</p>
+                <div class="wf-flex wf-justify-center wf-items-center wf-gap-1">
+                    <span style="font-weight: bold;">4.5</span>
+                    <span class="wf-icon">[Star]</span>
+                    <span class="wf-text-muted">(12 ulasan)</span>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="wf-box" style="margin-bottom: 2rem;">
+                <div class="wf-grid wf-grid-cols-3 wf-gap-4" style="margin-bottom: 1.5rem;">
+                    <div style="border: 1px solid #000; padding: 1rem; border-radius: 4px;">
+                        <h3>Nama Ruangan</h3>
+                        <p>Auditorium Utama</p>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 1rem; border-radius: 4px;">
+                        <h3>Gedung</h3>
+                        <p>Gedung Fakultas A</p>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 1rem; border-radius: 4px;">
+                        <h3>Kapasitas</h3>
+                        <p>200 orang</p>
+                    </div>
+                </div>
+
+                <div style="border: 1px solid #000; padding: 1rem; border-radius: 4px;">
+                    <h3>Deskripsi</h3>
+                    <p>Large auditorium equipped with professional sound system, projector, and comfortable seating.</p>
+                </div>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="wf-box" style="margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 1rem;">Kalender Ketersediaan</h2>
+
+                <div class="wf-flex wf-justify-between wf-items-center" style="margin-bottom: 1rem;">
+                    <button class="wf-btn">&lt; Prev</button>
+                    <h3>Oktober 2025</h3>
+                    <button class="wf-btn">Next &gt;</button>
+                </div>
+
+                <div class="calendar-grid">
+                    <div class="text-center">Min</div>
+                    <div class="text-center">Sen</div>
+                    <div class="text-center">Sel</div>
+                    <div class="text-center">Rab</div>
+                    <div class="text-center">Kam</div>
+                    <div class="text-center">Jum</div>
+                    <div class="text-center">Sab</div>
+
+                    <!-- Days -->
+                    <button class="wf-btn" style="background: #fff; border: 1px solid #ccc;">1</button>
+                    <button class="wf-btn" style="background: #fff; border: 1px solid #ccc;">2</button>
+                    <button class="wf-btn" style="background: #fff; border: 1px solid #ccc;">3</button>
+                    <button class="wf-btn wf-btn-primary" style="background: #000; color: #fff;">4</button>
+                    <!-- Selected -->
+                    <button class="wf-btn" style="background: #fff; border: 1px solid #ccc;"
+                        onclick="alert('Date selected');">5</button>
+                    <button class="wf-btn" style="background: #fff; border: 1px solid #ccc;">...</button>
+                    <button class="wf-btn" style="background: #fff; border: 1px solid #ccc;">31</button>
+                </div>
+
+                <!-- Selected Date Info -->
+                <div style="margin-top: 1rem; padding: 1rem; background: #eee; text-align: center;">
+                    <strong>Tanggal terpilih: 2025-10-04</strong>
+                </div>
+            </div>
+
+            <!-- Time Slots (Conditionally Shown) -->
+            <div class="wf-box" style="margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 1rem;">Ketersediaan Jam pada Tanggal 2025-10-04</h2>
+                <div class="wf-grid wf-grid-cols-6 wf-gap-2">
+                    <div style="border: 1px solid #000; padding: 0.5rem; background: #eee; text-align: center;">
+                        <!-- Booked -->
+                        <strong>08:00</strong><br><small>Terpesan</small>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 0.5rem; background: #fff; text-align: center;">
+                        <!-- Available -->
+                        <strong>09:00</strong><br><small>Tersedia</small>
+                    </div>
+                    <div style="border: 1px solid #000; padding: 0.5rem; background: #fff; text-align: center;">
+                        <strong>10:00</strong><br><small>Tersedia</small>
+                    </div>
+                    <div class="wf-text-center">...</div>
+                </div>
+            </div>
+
+            <!-- Booking Form (Conditionally Shown) -->
+            <div class="wf-box">
+                <h2 style="margin-bottom: 1rem;">Ajukan Pemesanan Digital</h2>
+
+                <!-- Guide Banner -->
+                <div style="border: 1px solid #000; padding: 1rem; margin-bottom: 1.5rem; background: #f0f0f0;">
+                    <h4>✨ Smart Booking Process</h4>
+                    <div class="wf-grid wf-grid-cols-3 wf-gap-4">
+                        <div>1. Upload Proposal</div>
+                        <div>2. Smart Approval</div>
+                        <div>3. Get E-Permit</div>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="wf-grid wf-grid-cols-2 wf-gap-4">
+                        <div>
+                            <label class="wf-label">Tanggal</label>
+                            <input type="date" class="wf-input" value="2025-10-04" disabled>
+                        </div>
+                        <div>
+                            <label class="wf-label">Jumlah Peserta</label>
+                            <input type="number" class="wf-input" placeholder="10">
+                        </div>
+                        <div>
+                            <label class="wf-label">Waktu Mulai</label>
+                            <select class="wf-select">
+                                <option>09:00</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="wf-label">Waktu Selesai</label>
+                            <select class="wf-select">
+                                <option>11:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <label class="wf-label">Upload Proposal / Rundown (Max 5MB)</label>
+                        <div class="wf-flex wf-gap-2 wf-items-center">
+                            <input type="file" class="wf-input" style="max-width: 300px;">
+                        </div>
+                        <p class="wf-text-small wf-text-muted">Format: PDF, DOC, JPG, PNG.</p>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <label class="wf-label">Keperluan</label>
+                        <textarea class="wf-textarea" rows="3"
+                            placeholder="Tuliskan keperluan penggunaan ruangan..."></textarea>
+                    </div>
+
+                    <button type="button" class="wf-btn wf-btn-primary" style="width: 100%; margin-top: 1.5rem;"
+                        onclick="window.location.href='FR-10-Melihat_Riwayat_Reservasi.html'; alert('Reservation submitted!');">Ajukan
+                        Pemesanan</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="border-top: 2px solid #000; padding: 2rem 0;">
+        <div class="wf-container wf-text-center">
+            [Footer Content]
+        </div>
+    </footer>
+
+</body>
+
+</html>

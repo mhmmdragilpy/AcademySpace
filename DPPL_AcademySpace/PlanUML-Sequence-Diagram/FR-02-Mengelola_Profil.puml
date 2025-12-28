@@ -1,0 +1,166 @@
+@startuml FR-02-Mengelola_Profil
+
+title Sequence Diagram: FR-02 Mengelola Profil
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang ingin mengelola profil
+' Objek:
+'   - ProfilePage: Halaman profil (Boundary)
+'   - ProfileController: Controller untuk profil
+'   - UserDB: Database untuk data user (Entity)
+
+actor "User" as User
+
+boundary "ProfilePage" as ProfPage
+control "ProfileController" as ProfCtrl
+entity "UserDB" as UserDB
+
+' ============================================
+' SKENARIO 1: MELIHAT PROFIL
+' ============================================
+== Melihat Profil ==
+
+User -> ProfPage: Akses halaman profil
+activate ProfPage
+
+ProfPage -> ProfCtrl: getProfile(userId)
+activate ProfCtrl
+
+ProfCtrl -> UserDB: findUserById(userId)
+activate UserDB
+UserDB --> ProfCtrl: userData
+deactivate UserDB
+
+ProfCtrl --> ProfPage: profileData
+deactivate ProfCtrl
+
+ProfPage --> User: Tampilkan data profil\n(Full Name, Username, Role, Password: ******)
+deactivate ProfPage
+
+' ============================================
+' SKENARIO 2: EDIT NAMA
+' ============================================
+== Edit Full Name ==
+
+User -> ProfPage: Klik tombol "Edit" pada Full Name
+activate ProfPage
+
+ProfPage --> User: Tampilkan form edit nama
+
+User -> ProfPage: Isi nama baru
+User -> ProfPage: Klik "Save"
+
+ProfPage -> ProfCtrl: updateFullName(userId, newName)
+activate ProfCtrl
+
+ProfCtrl -> ProfCtrl: validateName(newName)
+
+alt Nama tidak valid
+    ProfCtrl --> ProfPage: error("Invalid name format")
+    ProfPage --> User: Tampilkan pesan error
+else Nama valid
+    ProfCtrl -> UserDB: updateUser(userId, {fullName: newName})
+    activate UserDB
+    UserDB --> ProfCtrl: updated
+    deactivate UserDB
+    
+    ProfCtrl --> ProfPage: success
+    deactivate ProfCtrl
+    
+    ProfPage --> User: Tampilkan notifikasi sukses\nUpdate tampilan dengan nama baru
+    deactivate ProfPage
+end
+
+' ============================================
+' SKENARIO 3: EDIT USERNAME
+' ============================================
+== Edit Username ==
+
+User -> ProfPage: Klik tombol "Edit" pada Username
+activate ProfPage
+
+ProfPage --> User: Tampilkan form edit username
+
+User -> ProfPage: Isi username baru
+User -> ProfPage: Klik "Save"
+
+ProfPage -> ProfCtrl: updateUsername(userId, newUsername)
+activate ProfCtrl
+
+ProfCtrl -> ProfCtrl: validateUsername(newUsername)
+
+alt Format username tidak valid
+    ProfCtrl --> ProfPage: error("Username must be 3-30 chars")
+    ProfPage --> User: Tampilkan pesan error
+else Format valid
+    ProfCtrl -> UserDB: checkUsernameExists(newUsername)
+    activate UserDB
+    UserDB --> ProfCtrl: isExists: boolean
+    deactivate UserDB
+    
+    alt Username sudah dipakai
+        ProfCtrl --> ProfPage: error("Username already taken")
+        ProfPage --> User: Tampilkan pesan error
+    else Username tersedia
+        ProfCtrl -> UserDB: updateUser(userId, {username: newUsername})
+        activate UserDB
+        UserDB --> ProfCtrl: updated
+        deactivate UserDB
+        
+        ProfCtrl --> ProfPage: success
+        deactivate ProfCtrl
+        
+        ProfPage --> User: Tampilkan notifikasi sukses
+        deactivate ProfPage
+    end
+end
+
+' ============================================
+' SKENARIO 4: EDIT PASSWORD
+' ============================================
+== Edit Password ==
+
+User -> ProfPage: Klik tombol "Edit" pada Password
+activate ProfPage
+
+ProfPage --> User: Tampilkan form edit password
+
+User -> ProfPage: Isi semua field password
+User -> ProfPage: Klik "Save"
+
+ProfPage -> ProfCtrl: updatePassword(userId, oldPassword, newPassword, confirmPassword)
+activate ProfCtrl
+
+alt New Password != Confirm Password
+    ProfCtrl --> ProfPage: error("Passwords do not match")
+    ProfPage --> User: Tampilkan pesan error
+else Passwords match
+    ProfCtrl -> UserDB: findUserById(userId)
+    activate UserDB
+    UserDB --> ProfCtrl: userData
+    deactivate UserDB
+    
+    ProfCtrl -> ProfCtrl: validateOldPassword(oldPassword)
+    
+    alt Old Password salah
+        ProfCtrl --> ProfPage: error("Current password is incorrect")
+        ProfPage --> User: Tampilkan pesan error
+    else Old Password benar
+        ProfCtrl -> ProfCtrl: hashPassword(newPassword)
+        ProfCtrl -> UserDB: updateUser(userId, {password: hashedNewPassword})
+        activate UserDB
+        UserDB --> ProfCtrl: updated
+        deactivate UserDB
+        
+        ProfCtrl --> ProfPage: success
+        deactivate ProfCtrl
+        
+        ProfPage --> User: Tampilkan notifikasi "Password updated"
+        deactivate ProfPage
+    end
+end
+
+@enduml

@@ -1,0 +1,153 @@
+@startuml FR-14-Melihat_Jadwal_Reservasi
+
+title Sequence Diagram: FR-14 Melihat Jadwal Reservasi (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang melihat jadwal
+' Objek:
+'   - ManageReservationsPage: Halaman kelola reservasi (Boundary)
+'   - CalendarView: Komponen kalender (Boundary)
+'   - AdminReservationController: Controller reservasi admin
+'   - ReservationDB: Database reservasi (Entity)
+'   - FacilityDB: Database fasilitas (Entity)
+
+actor "Admin" as Admin
+
+boundary "ManageReservationsPage" as ManageRes
+boundary "CalendarView" as CalendarView
+control "AdminReservationController" as AdminResCtrl
+entity "ReservationDB" as ResDB
+entity "FacilityDB" as FacDB
+
+' ============================================
+' SKENARIO 1: BERALIH KE CALENDAR VIEW
+' ============================================
+== Beralih ke Calendar View ==
+
+Admin -> ManageRes: Akses menu "Reservations"
+activate ManageRes
+
+ManageRes --> Admin: Tampilkan List View (default)
+
+Admin -> ManageRes: Klik tab "Calendar View"
+
+ManageRes -> CalendarView: switchToCalendarView()
+activate CalendarView
+
+CalendarView -> AdminResCtrl: getCalendarData(currentMonth, currentYear)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: getReservationsForMonth(month, year)
+activate ResDB
+ResDB --> AdminResCtrl: reservations[]
+deactivate ResDB
+
+AdminResCtrl -> FacDB: getAllFacilities()
+activate FacDB
+FacDB --> AdminResCtrl: facilities[]
+deactivate FacDB
+
+AdminResCtrl --> CalendarView: calendarData
+deactivate AdminResCtrl
+
+CalendarView --> Admin: Tampilkan kalender dengan:\n- Reservasi per tanggal\n- Warna berdasarkan status\n- Nama fasilitas
+
+deactivate CalendarView
+deactivate ManageRes
+
+' ============================================
+' SKENARIO 2: NAVIGASI BULAN
+' ============================================
+== Navigasi Bulan ==
+
+Admin -> CalendarView: Klik tombol ">" (Next Month)
+activate CalendarView
+
+CalendarView -> AdminResCtrl: getCalendarData(nextMonth, year)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: getReservationsForMonth(nextMonth, year)
+activate ResDB
+ResDB --> AdminResCtrl: reservations[]
+deactivate ResDB
+
+AdminResCtrl --> CalendarView: calendarData
+deactivate AdminResCtrl
+
+CalendarView --> Admin: Tampilkan kalender bulan berikutnya
+
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 3: MELIHAT DETAIL HARI
+' ============================================
+== Melihat Detail Hari ==
+
+Admin -> CalendarView: Klik pada tanggal di kalender
+activate CalendarView
+
+CalendarView -> AdminResCtrl: getReservationsByDate(date)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: findByDate(date)
+activate ResDB
+ResDB --> AdminResCtrl: dailyReservations[]
+deactivate ResDB
+
+AdminResCtrl --> CalendarView: reservationsOnDate
+deactivate AdminResCtrl
+
+CalendarView --> Admin: Tampilkan popup dengan:\n- Daftar reservasi hari itu\n- Fasilitas, Waktu, User, Status
+
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 4: FILTER BERDASARKAN FASILITAS
+' ============================================
+== Filter berdasarkan Fasilitas ==
+
+Admin -> CalendarView: Pilih fasilitas dari dropdown filter
+activate CalendarView
+
+CalendarView -> AdminResCtrl: getCalendarDataByFacility(facilityId, month, year)
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: getReservationsByFacilityAndMonth(facilityId, month, year)
+activate ResDB
+ResDB --> AdminResCtrl: filteredReservations[]
+deactivate ResDB
+
+AdminResCtrl --> CalendarView: filteredCalendarData
+deactivate AdminResCtrl
+
+CalendarView --> Admin: Tampilkan kalender hanya untuk\nfasilitas yang dipilih
+
+deactivate CalendarView
+
+' ============================================
+' SKENARIO 5: KEMBALI KE LIST VIEW
+' ============================================
+== Kembali ke List View ==
+
+Admin -> ManageRes: Klik tab "List View"
+activate ManageRes
+
+ManageRes -> AdminResCtrl: getAllReservations()
+activate AdminResCtrl
+
+AdminResCtrl -> ResDB: findAll()
+activate ResDB
+ResDB --> AdminResCtrl: reservations[]
+deactivate ResDB
+
+AdminResCtrl --> ManageRes: reservationsList
+deactivate AdminResCtrl
+
+ManageRes --> Admin: Tampilkan tabel reservasi
+
+deactivate ManageRes
+
+@enduml

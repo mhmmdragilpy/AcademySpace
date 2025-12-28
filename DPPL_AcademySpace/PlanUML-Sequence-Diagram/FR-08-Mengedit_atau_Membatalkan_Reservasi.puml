@@ -1,0 +1,134 @@
+@startuml FR-08-Mengedit_atau_Membatalkan_Reservasi
+
+title Sequence Diagram: FR-08 Mengedit atau Membatalkan Reservasi
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang mengedit/membatalkan reservasi
+' Objek:
+'   - MyReservationsPage: Halaman daftar reservasi (Boundary)
+'   - EditReservationPage: Halaman edit reservasi (Boundary)
+'   - ReservationController: Controller untuk reservasi
+'   - ReservationDB: Database reservasi (Entity)
+'   - FacilityDB: Database fasilitas (Entity)
+
+actor "User" as User
+
+boundary "MyReservationsPage" as MyRes
+boundary "EditReservationPage" as EditPage
+control "ReservationController" as ResCtrl
+entity "ReservationDB" as ResDB
+entity "FacilityDB" as FacDB
+
+' ============================================
+' SKENARIO 1: EDIT RESERVASI
+' ============================================
+== Edit Reservasi ==
+
+User -> MyRes: Klik tombol "Edit" pada reservasi
+activate MyRes
+
+MyRes -> EditPage: navigate("/reservations/{id}/edit")
+activate EditPage
+
+EditPage -> ResCtrl: getReservationById(reservationId)
+activate ResCtrl
+
+ResCtrl -> ResDB: findById(reservationId)
+activate ResDB
+ResDB --> ResCtrl: reservationData
+deactivate ResDB
+
+ResCtrl -> FacDB: getAllFacilities()
+activate FacDB
+FacDB --> ResCtrl: facilities[]
+deactivate FacDB
+
+ResCtrl --> EditPage: reservationData, facilities[]
+deactivate ResCtrl
+
+EditPage --> User: Tampilkan form edit dengan data existing
+deactivate MyRes
+
+User -> EditPage: Ubah data reservasi\n(Fasilitas, Tanggal, Waktu, Notes)
+User -> EditPage: Klik "Save Changes"
+
+EditPage -> ResCtrl: updateReservation(reservationId, updatedData)
+activate ResCtrl
+
+ResCtrl -> ResCtrl: validateReservationData()
+
+alt Data tidak valid
+    ResCtrl --> EditPage: error("Invalid data")
+    EditPage --> User: Tampilkan pesan error
+else Data valid
+    ResCtrl -> ResDB: checkTimeConflict(facilityId, date, startTime, endTime, excludeId)
+    activate ResDB
+    ResDB --> ResCtrl: hasConflict: boolean
+    deactivate ResDB
+    
+    alt Ada konflik waktu
+        ResCtrl --> EditPage: error("Time slot is already booked")
+        EditPage --> User: Tampilkan pesan error
+    else Tidak ada konflik
+        ResCtrl -> ResDB: update(reservationId, updatedData, status: "PENDING")
+        activate ResDB
+        ResDB --> ResCtrl: updated
+        deactivate ResDB
+        
+        ResCtrl --> EditPage: success
+        deactivate ResCtrl
+        
+        EditPage -> MyRes: redirect("/my-reservations")
+        activate MyRes
+        MyRes --> User: Tampilkan halaman reservasi\ndengan data terbaru
+        deactivate MyRes
+        deactivate EditPage
+    end
+end
+
+' ============================================
+' SKENARIO 2: MEMBATALKAN RESERVASI
+' ============================================
+== Membatalkan Reservasi ==
+
+User -> MyRes: Klik tombol "Cancel" pada reservasi
+activate MyRes
+
+MyRes --> User: Tampilkan dialog konfirmasi\n"Apakah Anda yakin ingin membatalkan?"
+
+alt User memilih "No"
+    User -> MyRes: Klik "No"
+    MyRes --> User: Tutup dialog, kembali ke daftar
+else User memilih "Yes"
+    User -> MyRes: Klik "Yes"
+    
+    MyRes -> ResCtrl: cancelReservation(reservationId)
+    activate ResCtrl
+    
+    ResCtrl -> ResDB: findById(reservationId)
+    activate ResDB
+    ResDB --> ResCtrl: reservationData
+    deactivate ResDB
+    
+    alt Reservasi sudah lewat tanggalnya
+        ResCtrl --> MyRes: error("Cannot cancel past reservation")
+        MyRes --> User: Tampilkan pesan error
+    else Reservasi masih aktif
+        ResCtrl -> ResDB: updateStatus(reservationId, "CANCELLED")
+        activate ResDB
+        ResDB --> ResCtrl: updated
+        deactivate ResDB
+        
+        ResCtrl --> MyRes: success
+        deactivate ResCtrl
+        
+        MyRes --> User: Tampilkan notifikasi sukses\nUpdate status menjadi "Cancelled"
+    end
+end
+
+deactivate MyRes
+
+@enduml

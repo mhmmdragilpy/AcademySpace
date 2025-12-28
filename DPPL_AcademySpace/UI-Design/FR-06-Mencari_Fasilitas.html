@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - Home</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body>
+
+    <!-- Navigation (from Navigation.tsx) -->
+    <nav class="wf-navbar">
+        <div class="wf-container wf-navbar-container">
+            <!-- Logo -->
+            <div class="wf-flex wf-items-center wf-gap-2">
+                <div class="wf-box"
+                    style="width: 150px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    [Academy Space Logo]
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="wf-flex wf-gap-4">
+                <a href="FR-06-Mencari_Fasilitas.html" class="wf-btn">Home</a>
+                <a href="FR-10-Melihat_Riwayat_Reservasi.html" class="wf-btn">My Reservations</a>
+                <a href="FR-16-Melihat_Guide_Penggunaan_Website.html" class="wf-btn">Guide</a>
+            </div>
+
+            <!-- Right Side (Login/Register buttons or User Profile) -->
+            <div class="wf-flex wf-gap-2 wf-items-center">
+                <!-- Logged Out State -->
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" class="wf-btn">Log in</a>
+                <a href="FR-01-Membuat_atau_Masuk_Akun_Register.html" class="wf-btn wf-btn-primary">Sign Up</a>
+
+                <!-- Logged In State (Commented out but structured) -->
+                <!-- 
+                <a href="FR-05-Menerima_Notifikasi_Approval_Rejection.html" class="wf-btn">[Bell Icon]</a>
+                <a href="FR-02-Mengelola_Profil.html" class="wf-btn">[User Avatar]</a>
+                -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="wf-container" style="padding: 4rem 1rem; text-align: center;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Discover & Book Exclusive Campus Spaces</h1>
+        <p class="wf-text-muted" style="margin-bottom: 2rem;">Find the perfect venue for your next event, meeting, or
+            study session in seconds.</p>
+
+        <!-- Search Bar -->
+        <div class="wf-box" style="max-width: 600px; margin: 0 auto; display: flex; gap: 0.5rem; padding: 0.5rem;">
+            <div class="wf-icon">[Search Icon]</div>
+            <input type="text" class="wf-input" placeholder="Search for facilities..."
+                style="margin-bottom: 0; border: none;">
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="wf-container" style="padding: 2rem 1rem;">
+        <div class="wf-flex wf-justify-between wf-items-center" style="margin-bottom: 2rem;">
+            <h2>Explore Our Facilities</h2>
+            <div class="wf-flex wf-gap-2">
+                <button class="wf-btn wf-btn-primary" onclick="location.reload();">All</button>
+                <button class="wf-btn" onclick="alert('Filter by Classrooms');">Classrooms</button>
+                <button class="wf-btn" onclick="alert('Filter by Auditoriums');">Auditoriums</button>
+                <button class="wf-btn" onclick="alert('Filter by Labs');">Labs</button>
+            </div>
+        </div>
+
+        <div class="wf-grid wf-grid-cols-3 wf-gap-4">
+            <!-- Facility Card 1 -->
+            <div class="wf-card">
+                <div class="wf-placeholder-img">Facility Image</div>
+                <div class="wf-card-body">
+                    <div class="wf-flex wf-justify-between">
+                        <span class="wf-badge wf-badge-success">Active</span>
+                        <span class="wf-text-small wf-text-muted">Gedung A</span>
+                    </div>
+                    <h3>Auditorium A</h3>
+                    <p class="wf-text-small wf-text-muted">Max Capacity: 200 • Projector, Sound System</p>
+                    <div class="wf-flex wf-justify-between wf-items-center" style="margin-top: 1rem;">
+                        <a href="FR-07-Melihat_Detail_Ruangan.html" class="wf-btn wf-btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Facility Card 2 -->
+            <div class="wf-card">
+                <div class="wf-placeholder-img">Facility Image</div>
+                <div class="wf-card-body">
+                    <div class="wf-flex wf-justify-between">
+                        <span class="wf-badge wf-badge-success">Active</span>
+                        <span class="wf-text-small wf-text-muted">Gedung B</span>
+                    </div>
+                    <h3>Computer Lab 1</h3>
+                    <p class="wf-text-small wf-text-muted">Max Capacity: 30 • 30 PCs, AC</p>
+                    <div class="wf-flex wf-justify-between wf-items-center" style="margin-top: 1rem;">
+                        <a href="FR-07-Melihat_Detail_Ruangan.html" class="wf-btn wf-btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Facility Card 3 -->
+            <div class="wf-card">
+                <div class="wf-placeholder-img">Facility Image</div>
+                <div class="wf-card-body">
+                    <div class="wf-flex wf-justify-between">
+                        <span class="wf-badge wf-badge-success">Active</span>
+                        <span class="wf-text-small wf-text-muted">Gedung C</span>
+                    </div>
+                    <h3>Meeting Room Delta</h3>
+                    <p class="wf-text-small wf-text-muted">Max Capacity: 10 • Whiteboard, TV</p>
+                    <div class="wf-flex wf-justify-between wf-items-center" style="margin-top: 1rem;">
+                        <a href="FR-07-Melihat_Detail_Ruangan.html" class="wf-btn wf-btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Most Valuable Places -->
+    <section class="wf-container" style="padding: 2rem 1rem; text-align: center;">
+        <h2>Most Popular Venues</h2>
+        <div class="wf-grid wf-grid-cols-2 wf-gap-4">
+            <div class="wf-card">
+                <div class="wf-placeholder-img" style="height: 150px;">Top Venue 1</div>
+            </div>
+            <div class="wf-card">
+                <div class="wf-placeholder-img" style="height: 150px;">Top Venue 2</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="wf-container" style="padding: 4rem 1rem; text-align: center; border-top: 2px solid #000;">
+        <h2>Have Questions?</h2>
+        <p>Contact our support team for assistance.</p>
+        <button class="wf-btn wf-btn-primary" onclick="alert('Contact form functionality');">Contact Us</button>
+    </section>
+
+    <!-- Footer (from Footer.tsx) -->
+    <footer style="border-top: 2px solid #000; padding: 2rem 0; margin-top: 2rem;">
+        <div class="wf-container">
+            <div class="wf-grid wf-grid-cols-4 wf-gap-4">
+                <!-- Brand Column -->
+                <div>
+                    <div class="wf-box" style="width: 150px; height: 40px; margin-bottom: 1rem;">[Logo]</div>
+                    <p class="wf-text-small">Transforming how you book and manage campus facilities.</p>
+                    <div class="wf-flex wf-gap-2" style="margin-top: 1rem;">
+                        <span class="wf-icon">[FB]</span>
+                        <span class="wf-icon">[TW]</span>
+                        <span class="wf-icon">[IG]</span>
+                        <span class="wf-icon">[LI]</span>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="FR-06-Mencari_Fasilitas.html">Home</a></li>
+                        <li><a href="FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html">Check Availability</a></li>
+                        <li><a href="FR-16-Melihat_Guide_Penggunaan_Website.html">User Guide</a></li>
+                        <li><a href="FR-01-Membuat_atau_Masuk_Akun_Login.html">Login</a></li>
+                    </ul>
+                </div>
+                <!-- Support -->
+                <div>
+                    <h4>Support</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Us -->
+                <div>
+                    <h4>Contact Us</h4>
+                    <div class="wf-flex wf-items-center wf-gap-2"><span class="wf-icon">[Map]</span> Jl. Telekomunikasi
+                        No. 1</div>
+                    <div class="wf-flex wf-items-center wf-gap-2"><span class="wf-icon">[Phone]</span> +62 22 7564108
+                    </div>
+                    <div class="wf-flex wf-items-center wf-gap-2"><span class="wf-icon">[Mail]</span>
+                        info@telkomuniversity.ac.id</div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #000; margin-top: 2rem; padding-top: 1rem; text-align: center;"
+                class="wf-text-small wf-text-muted">
+                &copy; 2025 Academy Space. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

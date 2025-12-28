@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2 Pengujian Integrasi - DUPL Academy Space</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+        }
+
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .meta-info {
+            background-color: #e8f6f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 5px solid #1abc9c;
+        }
+
+        .meta-info p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .status-pass {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .status-fail {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin: 20px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .screenshot-placeholder {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            background-color: #fafafa;
+            color: #888;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .file-tree pre {
+            font-family: monospace;
+            font-size: 14px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>2.2 Pengujian Integrasi</h1>
+
+        <div class="meta-info">
+            <p><strong>Proyek:</strong> Academy Space - Sistem Peminjaman Ruangan & Fasilitas Kampus</p>
+            <p><strong>Modul:</strong> Integrasi Backend (API & Services)</p>
+            <p><strong>Tanggal Pengujian:</strong> 22 Desember 2025</p>
+            <p><strong>PIC:</strong> Muhammad Ragil</p>
+            <p><strong>Tools:</strong> Jest, Supertest</p>
+        </div>
+
+        <section>
+            <h2>Deskripsi Pengujian Integrasi</h2>
+            <p>
+                Pengujian integrasi dilakukan untuk memverifikasi interaksi antara berbagai modul atau komponen dalam
+                sistem Academy Space.
+                Fokus utama pengujian ini adalah memastikan bahwa alur kerja (workflow) utama, seperti proses reservasi,
+                berjalan dengan benar
+                dari endpoint API hingga ke lapisan service, meskipun database yang digunakan dimock untuk isolasi
+                pengujian.
+            </p>
+            <p>
+                Pengujian dilakukan menggunakan framework <strong>Jest</strong> dan library <strong>Supertest</strong>
+                untuk mensimulasikan HTTP request ke aplikasi Express.
+            </p>
+        </section>
+
+        <section>
+            <h2>Skenario Pengujian: Alur Reservasi (Reservation Flow)</h2>
+            <p>
+                Skenario ini menguji alur lengkap pembuatan reservasi dan pengambilan data reservasi pengguna.
+                Pengujian mencakup:
+            </p>
+            <ol>
+                <li><strong>POST /api/reservations:</strong> Membuat reservasi baru.</li>
+                <li><strong>GET /api/reservations/my:</strong> Mengambil daftar reservasi milik pengguna yang sedang
+                    login.</li>
+            </ol>
+
+            <h3>Kode Pengujian Integrasi (ReservationFlow.test.ts)</h3>
+            <div class="code-block">
+                <pre>import { jest } from '@jest/globals';
+import request from 'supertest';
+
+// Mocks MUST be defined before imports that use them.
+// We mock DB connection to prevent real queries
+jest.unstable_mockModule('../../src/db/index', () => ({
+    pool: { query: jest.fn() },
+    query: jest.fn(() => Promise.resolve({ rows: [] })),
+}));
+
+// Mock logger to verify error details
+jest.unstable_mockModule('../../src/utils/logger', () => ({
+    default: { info: jest.fn(), error: console.error },
+    logger: { info: jest.fn(), error: console.error }
+}));
+
+// Mock Authentication Middleware to bypass real JWT checks
+const mockUser = { id: 1, role: 'user', username: 'testuser' };
+jest.unstable_mockModule('../../src/middlewares/authMiddleware', () => ({
+    authenticateToken: (req: any, res: any, next: any) => {
+        req.user = mockUser;
+        next();
+    },
+    authorizeAdmin: (req: any, res: any, next: any) => { next(); },
+    authorizeVerificator: (req: any, res: any, next: any) => { next(); }
+}));
+
+// Mock Validate Middleware to bypass Zod schema checks in integration
+jest.unstable_mockModule('../../src/middlewares/validate', () => ({
+    validate: (schema: any) => (req: any, res: any, next: any) => next()
+}));
+
+// Mock services to return predictable data
+const mockReservationService = {
+    create: jest.fn() as jest.Mock,
+    getUserReservations: jest.fn() as jest.Mock,
+};
+jest.unstable_mockModule('../../src/services/reservationService', () => ({
+    reservationService: mockReservationService
+}));
+
+// Import App
+const { app } = await import('../../src/app');
+
+describe('Integration Test: Reservation Flow', () => {
+    
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should allow a user to create a reservation', async () => {
+        const reservationData = {
+            facilityId: 1,
+            date: '2025-01-01',
+            startTime: '10:00',
+            endTime: '12:00',
+            purpose: 'Integration Test'
+        };
+
+        const mockCreatedReservation = {
+            id: 101,
+            userId: 1,
+            ...reservationData,
+            status: 'PENDING'
+        };
+
+        mockReservationService.create.mockResolvedValue(mockCreatedReservation);
+
+        const response = await request(app)
+            .post('/api/reservations')
+            .send(reservationData)
+            .set('Authorization', 'Bearer mock-token');
+
+        expect(response.status).toBe(201);
+        expect(response.body.status).toBe('success');
+        expect(response.body.data).toEqual(expect.objectContaining({
+            id: 101,
+            purpose: 'Integration Test'
+        }));
+        expect(mockReservationService.create).toHaveBeenCalled();
+    });
+
+    it('should return user reservations', async () => {
+        const mockReservations = [
+            { id: 1, purpose: 'Meeting 1' },
+            { id: 2, purpose: 'Meeting 2' }
+        ];
+
+        mockReservationService.getUserReservations.mockResolvedValue(mockReservations);
+
+        const response = await request(app)
+            .get('/api/reservations/my')
+            .set('Authorization', 'Bearer mock-token');
+
+        expect(response.status).toBe(200);
+        expect(response.body.data).toHaveLength(2);
+        expect(mockReservationService.getUserReservations).toHaveBeenCalledWith(1);
+    });
+});</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>Hasil Pengujian Integrasi</h2>
+            <div class="code-block" style="background-color: #1e1e1e; color: #d4d4d4;">
+                <pre>
+> server@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js
+
+PASS tests/unit/authController.test.ts
+PASS tests/integration/ReservationFlow.test.ts
+  Integration Test: Reservation Flow
+    √ should allow a user to create a reservation (25 ms)
+    √ should return user reservations (12 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        2.13 s
+Ran all test suites.
+</pre>
+            </div>
+
+            <h3>Rangkuman Hasil</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">No</th>
+                        <th width="30%">Skenario Integrasi</th>
+                        <th width="40%">Deskripsi Interaksi</th>
+                        <th width="15%">Hasil Harapan</th>
+                        <th width="10%">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Create Reservation</td>
+                        <td>Request POST dikirim ke endpoint, melewati middleware auth (mock), ditangani controller,
+                            memanggil service.</td>
+                        <td>Status 201 Created, Data reservasi dikembalikan.</td>
+                        <td class="status-pass">BERHASIL</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Get My Reservations</td>
+                        <td>Request GET dikirim dengan token, controller memanggil service dengan ID user dari token.
+                        </td>
+                        <td>Status 200 OK, Array reservasi dikembalikan.</td>
+                        <td class="status-pass">BERHASIL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Kesimpulan</h2>
+            <p>
+                Berdasarkan hasil pengujian integrasi di atas, dapat disimpulkan bahwa alur komunikasi antara
+                <strong>Layer Router</strong>,
+                <strong>Layer Controller</strong>, dan <strong>Layer Service</strong> berjalan dengan baik. Mekanisme
+                dependency injection (melalui mocking)
+                berhasil memvalidasi logika bisnis tanpa ketergantungan langsung pada database fisik untuk pengujian
+                integrasi level ini.
+                Sistem siap untuk tahap pengujian selanjutnya (System Testing / UAT).
+            </p>
+        </section>
+
+        <div class="nav-buttons">
+            <a href="2.1.2-Pengujian_Class_Jest.html" class="btn">&laquo; Sebelumnya: 2.1.2 Unit Testing</a>
+            <a href="../DUPL-BAB-1/1.Pendahuluan.html" class="btn">Kembali ke BAB 1</a>
+            <a href="#" class="btn" style="background-color: #95a5a6; cursor: not-allowed;">Selanjutnya: 2.3 System Test
+                &raquo;</a>
+        </div>
+    </div>
+</body>
+
+</html>

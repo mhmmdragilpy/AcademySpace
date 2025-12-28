@@ -1,0 +1,138 @@
+@startuml FR-12-Menyaring_Pencarian_Fasilitas
+
+title Sequence Diagram: FR-12 Menyaring Pencarian Fasilitas
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang menyaring fasilitas
+' Objek:
+'   - HomePage: Halaman utama (Boundary)
+'   - FilterComponent: Komponen filter (Boundary)
+'   - SearchController: Controller pencarian
+'   - FacilityDB: Database fasilitas (Entity)
+'   - FacilityCard: Kartu fasilitas (Boundary)
+
+actor "User" as User
+
+boundary "HomePage" as HomePage
+boundary "FilterComponent" as Filter
+control "SearchController" as SearchCtrl
+entity "FacilityDB" as FacDB
+boundary "FacilityCard" as FacCard
+
+' ============================================
+' SKENARIO 1: FILTER BERDASARKAN KATEGORI
+' ============================================
+== Filter berdasarkan Kategori ==
+
+User -> HomePage: Akses halaman Home
+activate HomePage
+
+HomePage -> Filter: displayFilterButtons()
+activate Filter
+
+Filter --> User: Tampilkan tombol filter:\n[All] [Classrooms] [Auditoriums] [Labs]
+
+User -> Filter: Klik tombol "Classrooms"
+
+Filter -> SearchCtrl: filterByType("CLASSROOM")
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findByType("CLASSROOM")
+activate FacDB
+FacDB --> SearchCtrl: filteredFacilities[]
+deactivate FacDB
+
+SearchCtrl --> Filter: filteredResults
+deactivate SearchCtrl
+
+Filter --> HomePage: updateFacilityGrid(filteredResults)
+
+loop untuk setiap facility
+    HomePage -> FacCard: render(facilityData)
+    activate FacCard
+    FacCard --> HomePage: cardComponent
+    deactivate FacCard
+end
+
+HomePage --> User: Tampilkan hanya fasilitas Classroom
+
+deactivate Filter
+deactivate HomePage
+
+' ============================================
+' SKENARIO 2: KOMBINASI FILTER DAN SEARCH
+' ============================================
+== Kombinasi Filter dan Search ==
+
+User -> HomePage: Ketik "Gedung A" di search bar
+activate HomePage
+
+User -> Filter: Klik tombol "Labs"
+activate Filter
+
+Filter -> SearchCtrl: searchWithFilter(keyword: "Gedung A", type: "LAB")
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findByTypeAndKeyword("LAB", "Gedung A")
+activate FacDB
+FacDB --> SearchCtrl: combinedResults[]
+deactivate FacDB
+
+SearchCtrl --> Filter: searchResults
+deactivate SearchCtrl
+
+Filter --> HomePage: updateFacilityGrid(searchResults)
+
+alt Hasil ditemukan
+    loop untuk setiap result
+        HomePage -> FacCard: render(facilityData)
+        activate FacCard
+        FacCard --> HomePage: cardComponent
+        deactivate FacCard
+    end
+    HomePage --> User: Tampilkan Lab di Gedung A
+else Tidak ada hasil
+    HomePage --> User: Tampilkan pesan "No facilities found"
+end
+
+deactivate Filter
+deactivate HomePage
+
+' ============================================
+' SKENARIO 3: RESET FILTER
+' ============================================
+== Reset Filter ==
+
+User -> Filter: Klik tombol "All"
+activate Filter
+
+Filter -> SearchCtrl: resetFilter()
+activate SearchCtrl
+
+SearchCtrl -> FacDB: findAllActive()
+activate FacDB
+FacDB --> SearchCtrl: allFacilities[]
+deactivate FacDB
+
+SearchCtrl --> Filter: allResults
+deactivate SearchCtrl
+
+Filter --> HomePage: updateFacilityGrid(allResults)
+activate HomePage
+
+loop untuk setiap facility
+    HomePage -> FacCard: render(facilityData)
+    activate FacCard
+    FacCard --> HomePage: cardComponent
+    deactivate FacCard
+end
+
+HomePage --> User: Tampilkan semua fasilitas
+
+deactivate HomePage
+deactivate Filter
+
+@enduml

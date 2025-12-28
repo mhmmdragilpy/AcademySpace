@@ -1,0 +1,122 @@
+@startuml FR-16-Melihat_Guide_Penggunaan_Website
+
+title Sequence Diagram: FR-16 Melihat Guide Penggunaan Website
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang melihat guide
+' Objek:
+'   - GuidePage: Halaman panduan (Boundary)
+'   - StepCard: Kartu langkah panduan (Boundary)
+'   - GuideController: Controller panduan
+'   - CheckAvailabilityPage: Halaman ketersediaan (Boundary)
+'   - MyReservationsPage: Halaman reservasi (Boundary)
+
+actor "User" as User
+
+boundary "GuidePage" as GuidePage
+boundary "StepCard" as StepCard
+control "GuideController" as GuideCtrl
+boundary "CheckAvailabilityPage" as AvailPage
+boundary "MyReservationsPage" as MyRes
+
+' ============================================
+' SKENARIO 1: MELIHAT HALAMAN GUIDE
+' ============================================
+== Melihat Halaman Guide ==
+
+User -> GuidePage: Akses halaman "Guide"
+activate GuidePage
+
+GuidePage -> GuideCtrl: getGuideContent()
+activate GuideCtrl
+
+GuideCtrl --> GuidePage: guideSteps[]
+deactivate GuideCtrl
+
+loop untuk setiap langkah (1-6)
+    GuidePage -> StepCard: render(stepData)
+    activate StepCard
+    StepCard --> GuidePage: cardComponent
+    deactivate StepCard
+end
+
+GuidePage --> User: Tampilkan panduan:\n1. Cek Ketersediaan\n2. Reservasi Online\n3. Smart Approval\n4. Ketentuan Waktu\n5. E-Permit\n6. Layanan 24/7
+
+deactivate GuidePage
+
+' ============================================
+' SKENARIO 2: MEMBACA STEP CEK KETERSEDIAAN
+' ============================================
+== Membaca Step Cek Ketersediaan ==
+
+User -> StepCard: Membaca Step 1: Cek Ketersediaan
+activate StepCard
+
+StepCard --> User: Tampilkan informasi:\n- Icon kalender\n- Judul: "Cek Ketersediaan"\n- Deskripsi langkah-langkah\n  mengecek jadwal fasilitas
+
+deactivate StepCard
+
+' ============================================
+' SKENARIO 3: NAVIGASI KE CEK KETERSEDIAAN
+' ============================================
+== Navigasi ke Halaman Ketersediaan ==
+
+User -> GuidePage: Klik tombol "Cek Ketersediaan"
+activate GuidePage
+
+GuidePage -> AvailPage: navigate("/availability")
+activate AvailPage
+
+AvailPage --> User: Tampilkan halaman Check Availability
+
+deactivate AvailPage
+deactivate GuidePage
+
+' ============================================
+' SKENARIO 4: MEMBACA STEP RESERVASI ONLINE
+' ============================================
+== Membaca Step Reservasi Online ==
+
+User -> GuidePage: Kembali ke halaman Guide
+activate GuidePage
+
+User -> StepCard: Membaca Step 2: Reservasi Online
+activate StepCard
+
+StepCard --> User: Tampilkan informasi:\n- Icon form\n- Judul: "Reservasi Online"\n- Deskripsi cara mengisi\n  formulir pemesanan digital
+
+deactivate StepCard
+deactivate GuidePage
+
+' ============================================
+' SKENARIO 5: MEMBACA STEP SMART APPROVAL
+' ============================================
+== Membaca Step Smart Approval ==
+
+User -> StepCard: Membaca Step 3: Smart Approval
+activate StepCard
+
+StepCard --> User: Tampilkan informasi:\n- Icon checklist\n- Judul: "Smart Approval"\n- Deskripsi proses persetujuan\n  oleh admin
+
+deactivate StepCard
+
+' ============================================
+' SKENARIO 6: NAVIGASI KE RIWAYAT RESERVASI
+' ============================================
+== Navigasi ke Riwayat Reservasi ==
+
+User -> GuidePage: Klik tombol "Riwayat Reservasi"
+activate GuidePage
+
+GuidePage -> MyRes: navigate("/my-reservations")
+activate MyRes
+
+MyRes --> User: Tampilkan halaman My Reservations
+
+deactivate MyRes
+deactivate GuidePage
+
+@enduml

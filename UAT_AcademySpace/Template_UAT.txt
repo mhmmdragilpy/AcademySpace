@@ -1,0 +1,7918 @@
+﻿APLIKASI WEB KKOP 
+
+DOKUMEN USER ACCEPTANCE TEST 
+
+ 
+
+Versi : 6.0 
+
+Tanggal Versi: 2025 
+
+ 
+
+
+
+RIWAYAT PERUBAHAN 
+
+ 
+
+Tanggal Revisi Tanggal 
+Versi Dibuat Oleh Disetujui Oleh Keterangan 
+
+Dokumen Persetujuan 
+
+1.0 Arief Ginanjar  Iwan Abadi  Versi 
+
+1.1 Irwin Supriadi 31 Desember 2019 Arief Ginanjar   
+
+1.2 Arief Ginanjar 11 April 2023 Iwan Abadi   
+
+5.0 Arief Ginanjar 13 Maret 2024 Iwan Abadi   
+
+6.0      
+
+ 
+
+
+
+1. User Acceptance Test (Fungsi User) 
+
+ 
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+I. User Publik 
+
+1 REQ-1 Home Alamat web untuk testing: Publik  25 
+
+https://kkop.gienvisionservice.co.id/ November ✓   
+
+2025 
+
+2 REQ-2 Mengubah 1. Sistem menampilkan halaman utama Publik/User  25 
+
+Bahasa 2. Klik drop down bahasa pada menu bar Login November 
+
+3. Muncul pilihan bahasa dalam bahasa 2025 
+
+indonesia (Indonesia) dan bahasa inggris ✓   
+
+(English) 
+
+4. Klik salah satu bahasa 
+
+5. Bahasa akan terganti 
+
+3 REQ-3 Menampilkan 1. Sistem menampilkan halaman utama User login  25 
+
+form login 2. Sistem menampilkan form input November 
+
+username dan password 2025 ✓   
+
+3. User input data username dan password 
+
+4.  Klik masuk 
+
+4 REQ-4 Publik: 1. Sistem menampilkan halaman utama Publik/User  25 
+
+Melakukan 2. Klik tombol analisis bangunan Login November ✓   
+
+Analisis 3. Pilih bandara pada kolom pencarian 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Kllik tombol tambah objek (ikon +) 
+
+5. Muncul form tinggi bangunan 
+
+6. Isi tinggi bangunan pada form 
+
+7. Klik tombol analisis 
+
+8. Muncul hasil analisis 
+
+5 REQ-5 Publik: 1. Sistem menampilkan halaman utama Publik/User  25 
+
+Unduh Hasil 2. Klik tombol analisis bangunan Login November 
+
+3. Pilih bandara pada kolom pencarian 2025 
+
+4. Klik tombol tambah objek (icon +) 
+
+5. Muncul form tinggi bangunan 
+✓   
+
+6. Isi tinggi bangunan pada form 
+
+7. Klik tombol analisis 
+
+8. Muncul hasil analisis 
+
+9. Klik tombol unduh 
+
+10. File terunduh dalam bentuk file PDF 
+
+6 REQ-6 Publik: 1. Pilih bandara pada kolom pencarian Publik/User  25 
+
+Mengukur 2. Klik tombol ukur jarak (ikon penggaris) Login November 
+
+Jarak 3. Klik lokasi-lokasi di KKOP 2025 
+✓   
+
+ 4. Muncul angka (dalam meter) 
+
+ 
+
+ 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7 REQ-7 Publik: My 1. Klik tombol lokasi saya (ikon target) Publik/User  25 
+
+Location 2. Muncul marker merah yang menunjukan Login November ✓   
+
+lokasi user 2025 
+
+8 REQ-8 Publik: 1. Klik tombol jenis peta pada sisi kiri atas Publik/User  25 
+
+Memilih 2. Muncul pilihan jenis peta seperti map Login November 
+
+Jenis Peta dan satelit 2025 
+
+3. Klik salah satu jenis peta yang akan ✓   
+
+dipilih 
+
+4. Tampilan peta akan terganti sesuai 
+
+dengan jenis peta yang dipilih 
+
+9 REQ-9 Publik: 1. Klik tombol tentang KKOP pada Publik/User  25 
+
+Tentang halaman utama Login November ✓   
+
+KKOP 2. Informasi tentang KKOP akan muncul 2025 
+
+10 REQ-10 Publik: 1. Klik tombol tutorial aplikasi pada Publik/User  25 
+
+Tutorial halaman utama Login November ✓   
+
+Aplikasi 2. Informasi tutorial aplikasi akan muncul 2025 
+
+11 REQ-11 Publik: 1. Klik tombol informasi pengurusan Publik/User  25 
+
+Informasi rekomendasi ketinggian di halaman awal Login November 
+
+Pengurusan utama 2025 ✓   
+
+Rekomendasi 2. Muncul pilihan menu alur permohonan 
+
+Ketinggian rekomendasi KKOP dan pengurusan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+permohonan rekomendasi KKOP 
+
+3. Klik menu yang informasi yang akan 
+
+dipilih 
+
+4. Informasi muncul 
+
+12 REQ-12 Publik: 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pencarian 2. Klik tombol analisis bangunan Login November 
+
+Lokasi 3. Pilih bandara pada kolom pencarian 2025 
+
+Berdasarkan 4. Klik tombol pencarian titik (ikon 
+
+Alamat magnifier) 
+
+5. Pilih alamat 
+
+6. Muncul marker 
+
+13 REQ-13 Publik: 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pencarian 2. Klik tombol analisis bangunan Login November 
+
+Lokasi 3. Pilih bandara pada kolom pencarian 2025 
+
+Berdasarkan 4. Klik tombol pencarian titik (ikon 
+
+Koordinat magnifier) 
+
+5. Pilih koordinat 
+
+6. Masukkan koordinat (latitude, longitude) 
+
+7. Muncul marker 
+
+14 REQ-14 Publik: 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Melihat 2. Klik tombol analisis bangunan Login November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Legend 3. Pilih bandara pada kolom pencarian 2025 
+
+4. Klik tombol melihat legend 
+
+5. Muncul pop up informasi legend 
+
+15 REQ-15 Publik: 1. Klik tombol versi android di halaman Publik/User  25 ✓   
+
+Download utama Login November 
+
+APK 2. APK terunduh 2025 
+
+(Aplikasi 
+
+DIKO) 
+
+II. User Login 
+
+16 REQ-1 User Login: 1. Sistem menampilkan halaman utama User Login  25 ✓   
+
+Pendaftaran 2. Klik daftar November 
+
+3. Mengisi form pendaftaran 2025 
+
+4. Notifikasi pendaftaran masuk ke e-mail 
+
+yang telah didaftarkan 
+
+17 REQ-2 User Login: 1. Sistem menampilkan form login pada User Login  25 ✓   
+
+Login halaman utam November 
+
+2. Input username dan password 2025 
+
+3. Klik captcha 
+
+4. Klik masuk 
+
+18 REQ-3 User Login: 1. Sistem menampilkan form login pada User Login  25 ✓   
+
+Mengubah halaman utama November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Profil 2. Input username dan password 2025 
+
+3. Klik captcha 
+
+4. Klik masuk 
+
+5. Klik my profile 
+
+6. Edit profile 
+
+7. Klik save 
+
+19 REQ-4 User Login: 1. Sistem menampilkan form login pada User Login  25 ✓   
+
+Logout halaman utama November 
+
+2. Input username dan password 2025 
+
+3. Klik captcha 
+
+4. Klik masuk 
+
+5. Klik Logout 
+
+20 REQ-5 User Login: 1. Sistem menampilkan halaman utama User Login  25 ✓   
+
+Melihat 2. Klik tombol analisis bangunan November 
+
+Obstacle 3. Pilih bandara pada kolom pencarian 2025 
+
+Existing 4. Klik tombol melihat obstacle 
+
+5. Muncul marker berwarna biru untuk 
+
+obstacle existing 
+
+6. Klik salah satu marker 
+
+7. Muncul informasi dan gambar dari 
+
+obstacle yang dipilih 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+21 REQ-6 User Login: 1. Sistem menampilkan halaman utama User Login  25 ✓   
+
+Unduh 2. Klik tombol analisis bangunan November 
+
+Seluruh 3. Pilih bandara pada kolom pencarian 2025 
+
+Obstacle 4. Klik tombol melihat obstacle 
+
+5. Muncul marker berwarna biru untuk 
+
+obstacle existing 
+
+6. Klik salah satu marker 
+
+7. Muncul informasi dan gambar dari 
+
+obstacle yang dipilih 
+
+8. Klik unduh PDF 
+
+9. File terunduh 
+
+22 REQ-7 User login: 1. Sistem menampilkan halaman utama User Login  25 ✓   
+
+Membagikan 2. Klik analisis bangunan November 
+
+Hasil 3. Pilih bandara pada kolom pencarian 2025 
+
+Analisis 4. Klik tombol tambah objek (ikon +) 
+
+5. Muncul form tinggi bangunan 
+
+6. Isi tinggi bangunan pada form 
+
+7. Klik tombol analisis 
+
+8. Muncul hasil analisis 
+
+9. Klik tombol bagikan 
+
+10. Pilih ikon media sosial untuk 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+membagikan melalui media sosial 
+
+seperti facebook, X, maupun e-mail 
+
+11. Login media sosial 
+
+12. Hasil analisis yang dibagikan berupa 
+
+tautan KKOP 
+
+23 REQ-8 User Login: 1. Sistem menampilkan form login pada User Login  25 ✓   
+
+Lupa halaman utama November 
+
+Password 2. Klik lupa password 2025 
+
+3. Muncul isian e-mail yang akan direset 
+
+password 
+
+4. Klik reset 
+
+5. Notifikasi reset password beserta 
+
+password baru masuk ke e-mail 
+
+  
+
+
+
+2. User Acceptance Lain 
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+24 REQ-15 Pencarian 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Bedasarkan 2. Klik tombol analisis bangunan Login November 
+
+Alamat 3. Pilih bandara pada kolom pencarian 2025 
+
+4. Klik tombol pencarian titik (ikon 
+
+magnifier) 
+
+5. Pilih alamat 
+
+6. Tulis alamat pada bagian field alamat 
+
+7. Marker akan mengarah pada alamat 
+
+yang ditulis 
+
+8. Dapat menambahkan bangunan 
+
+9. Dapat dilanjutkan dengan mengunduh 
+
+PDF 
+
+25 REQ-16 Pencarian 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Berdasarkan 2. Klik tombol analisis bangunan Login November 
+
+Koordinat 3. Pilih bandara pada kolom pencarian 2025 
+
+4. Klik tombol pencarian titik (ikon 
+
+magnifier) 
+
+5. Pilih koordinat 
+
+6. Isi koordinat pada field koordinat 
+
+(latitude, longitude) 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7. Marker akan mengarah pada alamat 
+
+yang ditulis 
+
+8. Dapat menambahkan bangunan 
+
+9. Dapat dilanjutkan dengan mengunduh 
+
+PDF 
+
+  
+
+
+
+3. Admin Acceptance Test 
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+26 REQ-1 Menampilka 1. Sistem menampilkan form login pada Admin  25 ✓   
+
+n form login halaman utama November 
+
+2. Input username dan password 2025 
+
+3. Klik masuk 
+
+27 REQ-2 Tampilan 1. Sistem menampilkan form login pada Admin  25 ✓   
+
+Home halaman utama November 
+
+2. Input username dan password 2025 
+
+3. Klik masuk 
+
+4. Muncul tampilan dashboard 
+
+5. Klik logo diko di sudut kiri atas 
+
+6. Muncul tampilan home admin 
+
+28 REQ-3 Menampilka 1. Klik menu dashboard di home Admin  25 ✓   
+
+n dashboard 2. Sistem menampilkan dashboard November 
+
+2025 
+
+29 REQ-4 Menu 1. Klik menu pengguna Admin  25 ✓   
+
+Pengguna: 2. Klik data pengguna web November 
+
+Download 3. Unduh excel 2025 
+
+Excel 4. File excel akan terunduh 
+
+ 
+
+ 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+30 REQ-5 Menu 1. Klik menu pengguna Admin  25 ✓   
+
+Pengguna: 2. Klik data pengguna web November 
+
+Tambah 3. Klik tambah 2025 
+
+Pengguna 4. Isi form tambah pengguna 
+
+5. Klik add 
+
+6. Data masuk ke data pengguna 
+
+31 REQ-6 Admin: 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Mengukur 2. Pilih bandara November 
+
+Jarak 3. Klik tombol “ON” pada jarak 2025 
+
+4. Klik lokasi-lokasi di KKOP 
+
+5. Muncul angka (dalam meter) 
+
+32 REQ-7 Admin: 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Melakukan 2. Pilih bandara November 
+
+Analisis 3. Klik tombol “ON” pada tambah 2025 
+
+ bangunan 
+
+ 4. Muncul form analisis 
+
+ 5. Klik marker hijau dan arahkan ke lokasi 
+
+ yang akan dianalisis 
+
+ 6. Isi tinggi rencana bangunan pada form 
+
+ 7. Klik tombol analisis 
+
+ 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+33 REQ-8 Admin: 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Unduh Hasil 2. Pilih bandara November 
+
+3. Klik tombol “ON” pada tambah 2025 
+
+bangunan 
+
+4. Muncul form analisis 
+
+5. Klik marker hijau dan arahkan ke lokasi 
+
+yang akan dianalisis 
+
+6. Isi tinggi rencana bangunan pada form 
+
+7. Klik tombol analisis 
+
+8. Klik tombol “cetak PDF” 
+
+9. File terunduh 
+
+34 REQ-9 Admin: My 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Location 2. Pilih bandara November 
+
+3. Klik tombol lihat pada my location 2025 
+
+4. Muncul marker sesuai dengan lokasi 
+
+terkini user 
+
+5. Data naalisis bangunan terisi otomatis 
+
+kecuali tinggi bangunan 
+
+35 REQ-10 Admin: 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Memilih 2. Pilih bandara November 
+
+Jenis Peta 3. Klik tombol jenis peta pada sisi kiri 2025 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+4. Muncul pilihan jenis peta seperti map dan 
+
+satelit 
+
+5. Klik salah satu jenis peta yang akan 
+
+dipilih 
+
+6. Tampilan peta akan terganti sesuai yang 
+
+dipilih 
+
+36 REQ-11 Melihat 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Obstacle 2. Pilih bandara November 
+
+Existing 3. Klik tombol “ON” pada obstacle 2025 
+
+4. Muncul marker berwarna biru untuk 
+
+obstacle existing 
+
+5. Klik salah satu marker 
+
+6. Muncul informasi dan gambar dari 
+
+obstacle 
+
+37 REQ-12 Unduh 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+Obstacle 2. Pilih bandara November 
+
+ 3. Klik unduh pada cetak obstacle 2025 
+
+ 4. Data obstacle akan terunduh dalam 
+
+ bentuk dokumen PDF 
+
+ 
+
+ 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+38 REQ-13 Sembunyika 1. Klik bandara (ikon pesawat) Admin  25 ✓   
+
+n Marker di 2. Pilih bandara November 
+
+Peta 3. Klik tombol “OFF” oada tambah 2025 
+
+bangunan 
+
+4. Marker akan tersembunyi 
+
+39 REQ-14 Input 1. Klik obstacle (ikon bendera) Admin  25 ✓   
+
+Obstacle 2. Pilih bandara November 
+
+Baru 3. Input foto obstacle 2025 
+
+4. Input nama obstacle 
+
+5. Input alamat obstacle 
+
+6. Input tinggi obstacle 
+
+7. Input latitude 
+
+8. Input longitude 
+
+9. Input lebih ketinggian 
+
+10. Klik tombol tambah obstacle 
+
+11. Obstacle akan masuk pada daftar tabel di 
+
+bawah 
+
+12. Detail dari obstacle dapat dilihat 
+
+40 REQ-15 Tentang 1. Klik tombol tentang KKOP Admin  25 ✓   
+
+KKOP 2. Informasi tentang KKOP akan muncul November 
+
+2025 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+41 REQ-16 Tutorial 1. Klik tombol tutorial aplikasi Admin  25 ✓   
+
+Aplikasi 2. Informasi tutorial aplikasi akan muncul November 
+
+2025 
+
+42 REQ-17 Informasi 1. Klik tombol informasi pengurusan Admin  25 ✓   
+
+Pengurusan rekomendasi ketinggian November 
+
+Rekomendasi 2. Muncul pilihan menu alur permohonan 2025 
+
+Ketinggian rekomendasi KKOP dan pengurusan 
+
+permohonan rekomendasi KKOP 
+
+3. Klik menu yang informasi yang akan 
+
+dipilih 
+
+4. Informasi muncul 
+
+43 REQ-18 Feedback 1. Klik tombol feedback rating Admin  25 ✓  (perlu 
+
+Rating 2. Informasi feedback rating muncul dalam November diperiksa 
+
+bentuk kolom tabel 2025 ulang) 
+
+44 REQ-19 Pengaturan: 1. Klik tombol pengaturan Admin  25 ✓   
+
+Bandara 2. Klik tombol bandara November 
+
+3. Informasi bandara dan disclaimer KKOP 2025 
+
+bandara akan muncul  
+
+45 REQ-20 Mengubah 1. Klik tombol pengaturan Admin  25 ✓   
+
+Desclimer 2. Klik tombol bandara November 
+
+Bandara 3. Informasi bandara dan disclaimer KKOP 2025 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+bandara akan muncul  
+
+4. Klik tombol Option pada action 
+
+5. Klik edit 
+
+6. Isi field disclaimer yang akan 
+
+ditampilkan 
+
+7. Klik edit 
+
+46 REQ-21 Pengaturan 1. Klik tombol pengaturan Admin  25 ✓   
+
+Bandara: 2. Klik tombol bandara November 
+
+Mengubah 3. Informasi bandara dan disclaimer KKOP 2025 
+
+Status View bandara akan muncul  
+
+4. Klik tombol Option pada action 
+
+5. Klik edit 
+
+6. Klik kolom tampilkan bandara 
+
+7. Klik edit 
+
+47 REQ-22 Pengaturan: 1. Klik tombol pengaturan Admin  25 ✓   
+
+Profesi 2. Klik tombol profesi November 
+
+3. Informasi profesi akan muncul 2025 
+
+48 REQ-23 Pengaturan 1. Klik tombol pengaturan Admin  25 ✓   
+
+Profesi: 2. Klik tombol profesi November 
+
+Menambah 3. Informasi profesi akan muncul 2025 
+
+Profesi 4. Klik Tambah 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+5. Input Profile Name 
+
+6. Input Urutan 
+
+7. Pilih Status 
+
+8. Klik Save 
+
+49 REQ-24 Pengaturan 1. Klik tombol pengaturan Admin  30 ✓   
+
+Referensi 2. Klik menu obstacle referensi November 
+
+Obstacle 3. Pengaturan referensi obstacle bandara 2025 
+
+akan muncul  
+
+4. Klik tombol Option pada action 
+
+5. Klik edit 
+
+6. Klik textbox referensi obstacle 
+
+7. Isi informasi referensi obstacle 
+
+8. Klik save 
+
+50 REQ-25 Pengaturan 1. Klik tombol pengaturan Admin  30 ✓   
+
+Alur 2. Klik menu alur rekomendasi November 
+
+Rekomendasi 3. Pengaturan alur permohonan akan 2025 
+
+muncul  
+
+4. Klik tombol pilih file 
+
+5. Klik upload image 
+
+6. Proses upload akan berjalan. 
+
+7. Kemudian image permohonan berubah 
+
+
+
+Acceptance Test 
+Testing 
+
+No REQ Requiremen Scenario User Tester Result Signature 
+Date 
+
+t Yes No 
+
+51 REQ-26 Pengaturan 1. Klik tombol pengaturan Admin  30 ✓   
+
+Pengurusan 2. Klik menu pengurusan permohonan November 
+
+Permohonan 3. Pengaturan pengurusan permohonan akan 2025 
+
+muncul  
+
+4. Lakukan editing terhadap data sesuai 
+
+kebutuhan 
+
+5. Klik tombol upgrade 
+
+  
+
+
+
+4. User Acceptance Test (Analisa data KKOP) 
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+1. Bandar Udara Depati Amir (PGK) 
+
+52 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Depati Amir (PGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+53 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Depati Amir (PGK) 2025 
+
+pada kolom pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+54 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Depati Amir (PGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+55 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Depati Amir (PGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+56 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Depati Amir (PGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+57 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Depati Amir (PGK) 2025 
+
+Kecelakaan pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+58 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Depati Amir (PGK) 2025 
+
+Landas pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+2. Bandar Udara Husein Sastranegara (BDO) 
+
+59 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Husein Sastranegara 2025 
+
+(BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+60 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Husein Sastranegara 2025 
+
+(BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+61 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Husein Sastranegara 2025 
+
+(BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+62 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Husein Sastranegara 2025 
+
+(BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+63 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Husein Sastranegara 2025 
+
+(BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+64 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Husein Sastranegara 2025 
+
+Kecelakaan (BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+65 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Husein Sastranegara 2025 
+
+Landas (BDO) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+3. Bandar Udara Supadio (PNK) 
+
+66 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Supadio (PNK) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+67 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Supadio (PNK) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+68 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Supadio (PNK) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+69 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Supadio (PNK) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+70 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Supadio (PNK) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+71 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Supadio (PNK) pada 2025 
+
+Kecelakaan kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+72 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dan Lepas 3. Pilih bandara Supadio (PNK) pada 2025 
+
+Landas kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+4. Bandar Udara Sultan Thaha (DJB) 
+
+73 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+74 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+75 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+76 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+77 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+78 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+Kecelakaan pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+79 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Sultan Thaha (DJB) 2025 
+
+Landas pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+5. Bandar Udara Sultan Mahmud Badaruddin II (PLM) 
+
+80 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+3. Pilih bandara Sultan Mahmud 2025 
+
+Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+81 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Mahmud 2025 
+
+Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+82 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Mahmud 2025 
+
+Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+83 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Sultan Mahmud 2025 
+
+Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+84 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Sultan Mahmud 2025 
+
+Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+85 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Sultan Mahmud 2025 
+
+Kecelakaan Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+86 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Sultan Mahmud 2025 
+
+Landas Badaruddin II (PLM) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+6. Bandar Udara Sultan Syarif Kasim II (PKU) 
+
+87 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+(PKU) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+88 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+(PKU) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+89 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+(PKU) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+90 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+(PKU) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+91 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+(PKU) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+92 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+Kecelakaan (PKU) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+93 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Sultan Syarif Kasim II 2025 
+
+Landas (PKU) pada kolom pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+7. Bandar Udara Sultan Iskandar Muda (BTJ) 
+
+94 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Iskandar Muda 2025 
+
+(BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+95 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Iskandar Muda 2025 
+
+(BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+96 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Iskandar Muda 2025 
+
+(BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+97 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Sultan Iskandar Muda 2025 
+
+(BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+98 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Sultan Iskandar Muda 2025 
+
+(BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+99 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Sultan Iskandar Muda 2025 
+
+Kecelakaan (BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+100 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Sultan Iskandar Muda 2025 
+
+Landas (BTJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+8. Bandar Udara Halim Perdanakusuma (HLP) 
+
+101 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Halim Perdanakusuma 2025 
+
+(HLP) pada kolom pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+102 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Halim Perdanakusuma 2025 
+
+(HLP) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+103 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Halim Perdanakusuma 2025 
+
+(HLP) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+104 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Halim Perdanakusuma 2025 
+
+(HLP) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+105 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Halim Perdanakusuma 2025 
+
+(HLP) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+106 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Halim Perdanakusuma 2025 
+
+Kecelakaan (HLP) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+107 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Halim Perdanakusuma 2025 
+
+Landas (HLP) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+9. Bandar Udara Banyuwangi (BWX) 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+108 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Banyuwangi (BWX) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+109 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Banyuwangi (BWX) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+110 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Banyuwangi (BWX) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+111 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Banyuwangi (BWX) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+112 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Banyuwangi (BWX) 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+113 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Banyuwangi (BWX) 2025 
+
+Kecelakaan pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+114 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Banyuwangi (BWX) 2025 
+
+Landas pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+10. Bandar Udara Raja Sisingamangraja XII (DTB) 
+
+115 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Raja Sisingamangraja 2025 
+
+XII (DTB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+116 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+3. Pilih bandara Raja Sisingamangraja 2025 
+
+XII (DTB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+117 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Raja Sisingamangraja 2025 
+
+XII (DTB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+118 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Raja Sisingamangraja 2025 
+
+XII (DTB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+119 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Raja Sisingamangraja 2025 
+
+XII (DTB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+120 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Raja Sisingamangraja 2025 
+
+Kecelakaan XII (DTB) pada kolom pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+121 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Raja Sisingamangraja 2025 
+
+Landas XII (DTB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+11. Bandar Udara Minangkabau (PDG) 
+
+122 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Minangkabau (PDG) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+123 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Minangkabau (PDG) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+124 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Minangkabau (PDG) 2025 
+
+pada kolom pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+125 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Minangkabau (PDG) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+126 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Minangkabau (PDG) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+127 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Minangkabau (PDG) 2025 
+
+Kecelakaan pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+128 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Minangkabau (PDG) 2025 
+
+Landas pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+12. Bandar Udara Raja Haji Fisabilillah (TNJ) 
+
+129 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+(TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+130 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+(TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+131 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+(TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+132 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+(TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+133 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+(TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+134 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+Kecelakaan (TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+135 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Raja Haji Fisabilillah 2025 
+
+Landas (TNJ) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+13. Bandar Udara Tjilik Riwut (PKY) 
+
+136 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+137 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+138 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+139 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Luar 3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+140 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+141 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+Kecelakaan pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+142 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Tjilik Riwut (PKY) 2025 
+
+Landas pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+14. Bandar Udara Jenderal Besar Soedirman (PWL) 
+
+143 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Jenderal Besar 2025 
+
+Soedirman (PWL) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+144 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Jenderal Besar 2025 
+
+Soedirman (PWL) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+145 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Jenderal Besar 2025 
+
+Soedirman (PWL) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+146 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Jenderal Besar 2025 
+
+Soedirman (PWL) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+147 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Jenderal Besar 2025 
+
+Soedirman (PWL) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+148 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Jenderal Besar 2025 
+
+Kecelakaan Soedirman (PWL) pada kolom 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+149 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Jenderal Besar 2025 
+
+Landas Soedirman (PWL) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+15. Bandar Udara Radin Inten II International (TKG) 
+
+150 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Radin Inten II 2025 
+
+International (TKG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+151 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Radin Inten II 2025 
+
+International (TKG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+152 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Radin Inten II 2025 
+
+International (TKG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+153 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Radin Inten II 2025 
+
+International (TKG) pada kolom 
+
+pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+154 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Radin Inten II 2025 
+
+International (TKG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+155 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Radin Inten II 2025 
+
+Kecelakaan International (TKG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+156 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Radin Inten II 2025 
+
+Landas International (TKG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+ 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+16. Bandar Udara H.A.S. Hanandjoeddin International (TJQ) 
+
+157 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+International (TJQ) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+158 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+International (TJQ) pada kolom 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+159 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+International (TJQ) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+160 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+International (TJQ) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+161 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+International (TJQ) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+162 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Bahaya 3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+Kecelakaan International (TJQ) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+163 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara H.A.S. Hanandjoeddin 2025 
+
+Landas International (TJQ) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+17. Bandar Udara Fatmawati Soekarno (BKS) 
+
+164 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Fatmawati Soekarno 2025 
+
+(BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+165 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Fatmawati Soekarno 2025 
+
+(BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+166 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Fatmawati Soekarno 2025 
+
+(BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+167 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Fatmawati Soekarno 2025 
+
+(BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+168 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Fatmawati Soekarno 2025 
+
+(BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+169 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Fatmawati Soekarno 2025 
+
+Kecelakaan (BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+170 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Fatmawati Soekarno 2025 
+
+Landas (BKS) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+18. Bandar Udara Kertajati International (KJT) 
+
+171 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Kertajati International 2025 
+
+(KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+172 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Kertajati International 2025 
+
+(KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+173 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Kertajati International 2025 
+
+(KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+174 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Luar 3. Pilih bandara Kertajati International 2025 
+
+(KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+175 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Kertajati International 2025 
+
+(KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+176 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Kertajati International 2025 
+
+Kecelakaan (KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+177 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Kertajati International 2025 
+
+Landas (KJT) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+19. Bandar Udara Ngurah Rai (DPS) 
+
+178 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+179 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+180 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+181 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+182 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+kolom pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+183 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+Kecelakaan kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+184 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Ngurah Rai (DPS) pada 2025 
+
+Landas kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+20. Bandar Udara Seppingan International (BPN) 
+
+185 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Seppingan 2025 
+
+International (BPN) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+186 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+3. Pilih bandara Seppingan 2025 
+
+International (BPN) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+187 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Seppingan 2025 
+
+International (BPN) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+188 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Seppingan 2025 
+
+International (BPN) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+189 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Seppingan 2025 
+
+International (BPN) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+190 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Seppingan 2025 
+
+Kecelakaan International (BPN) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+191 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Seppingan 2025 
+
+Landas International (BPN) pada kolom 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+21. Bandar Udara Yogyakarta International (YIA) 
+
+192 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Yogyakarta 2025 
+
+International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+193 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Yogyakarta 2025 
+
+International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+194 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Yogyakarta 2025 
+
+International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+195 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Yogyakarta 2025 
+
+International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+196 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Yogyakarta 2025 
+
+International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+197 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Yogyakarta 2025 
+
+Kecelakaan International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+198 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Yogyakarta 2025 
+
+Landas International (YIA) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+22. Bandar Udara Adisutjipto International (JOG) 
+
+199 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Adisutjipto 2025 
+
+International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+200 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Adisutjipto 2025 
+
+International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+201 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Adisutjipto 2025 
+
+International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+202 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Adisutjipto 2025 
+
+International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+203 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Adisutjipto 2025 
+
+International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+204 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Adisutjipto 2025 
+
+Kecelakaan International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+205 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Adisutjipto 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Landas International (JOG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+23. Bandar Udara Juanda International (SUB) 
+
+206 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Juanda International 2025 
+
+(SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+207 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Juanda International 2025 
+
+(SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+208 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Juanda International 2025 
+
+(SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+209 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Juanda International 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+(SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+210 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Juanda International 2025 
+
+(SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+211 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Juanda International 2025 
+
+Kecelakaan (SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+212 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Juanda International 2025 
+
+Landas (SUB) pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+24. Bandar Udara Soekarno-Hatta (CGK) 
+
+213 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+214 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+215 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+216 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+217 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+218 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+Kecelakaan pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+219 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Soekarno-Hatta (CGK) 2025 
+
+Landas pada kolom pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+acuan 
+
+25. Bandar Udara Sultan Hasanuddin International (UPG) 
+
+220 REQ-1 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Utama 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Hasanuddin 2025 
+
+International (UPG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Utama” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+221 REQ-2 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Transisi 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Hasanuddin 2025 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+International (UPG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Transisi” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+222 REQ-3 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Kerucut 2. Klik analisis bangunan Login/Admin November 
+
+3. Pilih bandara Sultan Hasanuddin 2025 
+
+International (UPG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Kerucut” 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+223 REQ-4 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Luar 3. Pilih bandara Sultan Hasanuddin 2025 
+
+International (UPG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal Luar” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+224 REQ-5 Permukaan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Horizontal 2. Klik analisis bangunan Login/Admin November 
+
+Dalam 3. Pilih bandara Sultan Hasanuddin 2025 
+
+International (UPG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Permukaan Horizontal 
+
+Dalam” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+225 REQ-6 Kawasan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+Kemungkinan 2. Klik analisis bangunan Login/Admin November 
+
+Bahaya 3. Pilih bandara Sultan Hasanuddin 2025 
+
+Kecelakaan International (UPG) pada kolom 
+
+pencarian 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Kemungkinan Bahaya 
+
+Kecelakaan” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+226 REQ-7 Ancangan 1. Sistem menampilkan halaman utama Publik/User  25 ✓   
+
+Pendaratan 2. Klik analisis bangunan Login/Admin November 
+
+dan Lepas 3. Pilih bandara Sultan Hasanuddin 2025 
+
+Landas International (UPG) pada kolom 
+
+pencarian 
+
+
+
+Test 
+Acceptance Testing 
+
+No REQ Scenario User Tester Result Signature 
+Requirement Date 
+
+Yes No 
+
+4. Cari objek berdasarkan koordinat 
+
+5. Masukan koordinat acuan pada 
+
+kawasan “Ancangan Pendaratan dan 
+
+Lepas Landas” 
+
+6. Klik tambah objek ketika marker 
+
+muncul 
+
+7. Masukan tinggi bangunan 
+
+8. Klik analisis 
+
+9. Muncul hasil analisis 
+
+10. Batas ketinggian hasil analisis 
+
+dibandingkan dengan batas ketinggian 
+
+acuan 
+
+ 
+
+  
+
+
+
+PERSETUJUAN DOKUMEN ANALISIS DAN DESAIN 
+
+ 
+
+Jabatan Proyek Nama dan Jabatan Tanda Tangan 
+
+Tanggal: 
+
+ 
+Manajer Protek  
+
+ 
+
+_____________________ 
+
+Tanggal: 
+
+ 
+Sponsor Proyek  
+
+ 
+
+_____________________ 
+
+Tanggal: 
+
+ 
+Programmer  
+
+ 
+
+_____________________ 
+
+Tanggal: 
+
+ 
+Ahli KKOP  
+
+ 
+
+_____________________ 
+
+ 
+
+
+
+ANGGOTA TIM PROYEK 
+
+ 
+
+Jabatan Proyek Nama dan Jabatan 
+
+Ketua Tim  
+
+Programmer Web  
+
+Programmer Android  
+
+Ahli KKOP

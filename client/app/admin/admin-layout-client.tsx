@@ -5,15 +5,11 @@ import Link from "next/link";
 import { ReactNode, useState } from "react";
 import { signOut } from "next-auth/react";
 import {
-    LayoutDashboard,
     Calendar,
     Building,
-    Users,
     BarChart3,
-    Home,
     LogOut,
     Menu,
-    X,
     Key,
     User
 } from "lucide-react";
@@ -30,11 +26,6 @@ import { cn } from "@/lib/utils";
 
 const sidebarNavItems = [
     {
-        title: "Dashboard",
-        href: "/admin/dashboard",
-        icon: LayoutDashboard,
-    },
-    {
         title: "Reservations",
         href: "/admin/reservations",
         icon: Calendar,
@@ -44,7 +35,6 @@ const sidebarNavItems = [
         href: "/admin/facilities",
         icon: Building,
     },
-    // Users item removed here
     {
         title: "Analytics",
         href: "/admin/analytics",
@@ -106,14 +96,7 @@ export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
                     })}
                 </nav>
             </div>
-            <div className="p-4 border-t border-gray-200 space-y-2">
-                <Link
-                    href="/"
-                    className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                >
-                    <Home className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500" />
-                    Back to Home
-                </Link>
+            <div className="p-4 border-t border-gray-200">
                 <Button
                     variant="ghost"
                     size="sm"

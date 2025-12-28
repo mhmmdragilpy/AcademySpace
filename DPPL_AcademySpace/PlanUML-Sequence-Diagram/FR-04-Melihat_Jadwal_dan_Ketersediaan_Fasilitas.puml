@@ -1,0 +1,143 @@
+@startuml FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas
+
+title Sequence Diagram: FR-04 Melihat Jadwal dan Ketersediaan Fasilitas
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang melihat jadwal
+' Objek:
+'   - CheckAvailabilityPage: Halaman ketersediaan (Boundary)
+'   - AvailabilityController: Controller ketersediaan
+'   - FacilityDB: Database fasilitas (Entity)
+'   - ReservationDB: Database reservasi (Entity)
+'   - FacilityCard: Komponen kartu fasilitas (Boundary)
+'   - FacilityDetailPage: Halaman detail (Boundary)
+
+actor "User" as User
+
+boundary "CheckAvailabilityPage" as AvailPage
+control "AvailabilityController" as AvailCtrl
+entity "FacilityDB" as FacDB
+entity "ReservationDB" as ResDB
+boundary "FacilityCard" as FacCard
+boundary "FacilityDetailPage" as FacDetail
+
+' ============================================
+' SKENARIO 1: MELIHAT DAFTAR FASILITAS
+' ============================================
+== Melihat Daftar Fasilitas ==
+
+User -> AvailPage: Akses halaman "Check Availability"
+activate AvailPage
+
+AvailPage -> AvailCtrl: getAllFacilities()
+activate AvailCtrl
+
+AvailCtrl -> FacDB: findAllActive()
+activate FacDB
+FacDB --> AvailCtrl: facilities[]
+deactivate FacDB
+
+AvailCtrl --> AvailPage: facilitiesList
+deactivate AvailCtrl
+
+loop untuk setiap facility
+    AvailPage -> FacCard: render(facilityData)
+    activate FacCard
+    FacCard --> AvailPage: cardComponent
+    deactivate FacCard
+end
+
+AvailPage --> User: Tampilkan daftar fasilitas\n(Nama, Gedung, Tipe, Kapasitas, Status)
+deactivate AvailPage
+
+' ============================================
+' SKENARIO 2: FILTER BERDASARKAN TIPE
+' ============================================
+== Filter berdasarkan Tipe ==
+
+User -> AvailPage: Pilih tipe dari dropdown (All Types/Classroom/Lab/Auditorium)
+activate AvailPage
+
+AvailPage -> AvailCtrl: filterByType(facilityType)
+activate AvailCtrl
+
+alt Tipe = "All Types"
+    AvailCtrl -> FacDB: findAllActive()
+    activate FacDB
+    FacDB --> AvailCtrl: allFacilities[]
+    deactivate FacDB
+else Tipe spesifik
+    AvailCtrl -> FacDB: findByType(facilityType)
+    activate FacDB
+    FacDB --> AvailCtrl: filteredFacilities[]
+    deactivate FacDB
+end
+
+AvailCtrl --> AvailPage: filteredResults
+deactivate AvailCtrl
+
+AvailPage --> User: Tampilkan fasilitas terfilter
+deactivate AvailPage
+
+' ============================================
+' SKENARIO 3: PENCARIAN FASILITAS
+' ============================================
+== Pencarian Fasilitas ==
+
+User -> AvailPage: Ketik keyword di search bar
+activate AvailPage
+
+AvailPage -> AvailCtrl: searchFacilities(keyword)
+activate AvailCtrl
+
+AvailCtrl -> FacDB: findByNameOrBuilding(keyword)
+activate FacDB
+FacDB --> AvailCtrl: searchResults[]
+deactivate FacDB
+
+AvailCtrl --> AvailPage: searchResults
+deactivate AvailCtrl
+
+alt Hasil ditemukan
+    AvailPage --> User: Tampilkan hasil pencarian
+else Tidak ada hasil
+    AvailPage --> User: Tampilkan pesan "Tidak ada fasilitas"
+end
+
+deactivate AvailPage
+
+' ============================================
+' SKENARIO 4: MELIHAT DETAIL DAN JADWAL
+' ============================================
+== Melihat Detail dan Jadwal ==
+
+User -> FacCard: Klik "View Details"
+activate FacCard
+
+FacCard -> FacDetail: navigate("/availability/{slug}")
+activate FacDetail
+
+FacDetail -> AvailCtrl: getFacilityWithSchedule(slug)
+activate AvailCtrl
+
+AvailCtrl -> FacDB: findBySlug(slug)
+activate FacDB
+FacDB --> AvailCtrl: facilityData
+deactivate FacDB
+
+AvailCtrl -> ResDB: getScheduleForMonth(facilityId, currentMonth)
+activate ResDB
+ResDB --> AvailCtrl: scheduleData[]
+deactivate ResDB
+
+AvailCtrl --> FacDetail: facilityWithSchedule
+deactivate AvailCtrl
+
+FacDetail --> User: Tampilkan detail fasilitas\ndengan kalender jadwal
+deactivate FacDetail
+deactivate FacCard
+
+@enduml

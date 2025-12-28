@@ -1,0 +1,128 @@
+@startuml FR-10-Melihat_Riwayat_Reservasi
+
+title Sequence Diagram: FR-10 Melihat Riwayat Reservasi
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - User: Pengguna yang melihat riwayat reservasi
+' Objek:
+'   - MyReservationsPage: Halaman My Reservations (Boundary)
+'   - ReservationController: Controller reservasi
+'   - ReservationDB: Database reservasi (Entity)
+'   - FacilityDB: Database fasilitas (Entity)
+
+actor "User" as User
+
+boundary "MyReservationsPage" as MyRes
+control "ReservationController" as ResCtrl
+entity "ReservationDB" as ResDB
+entity "FacilityDB" as FacDB
+
+' ============================================
+' SKENARIO 1: MELIHAT DAFTAR RESERVASI
+' ============================================
+== Melihat Daftar Reservasi ==
+
+User -> MyRes: Akses halaman "My Reservations"
+activate MyRes
+
+MyRes -> ResCtrl: getUserReservations(userId)
+activate ResCtrl
+
+ResCtrl -> ResDB: findByUserId(userId)
+activate ResDB
+ResDB --> ResCtrl: reservations[]
+deactivate ResDB
+
+ResCtrl -> FacDB: getFacilitiesForReservations(facilityIds[])
+activate FacDB
+FacDB --> ResCtrl: facilities[]
+deactivate FacDB
+
+ResCtrl --> MyRes: reservationsWithFacilityData[]
+deactivate ResCtrl
+
+alt User memiliki reservasi
+    MyRes --> User: Tampilkan tabel reservasi\n(Facility, Date, Time, Status, Actions)
+else Tidak ada reservasi
+    MyRes --> User: Tampilkan pesan "Anda belum memiliki reservasi"\ndengan tombol "Create Reservation"
+end
+
+deactivate MyRes
+
+' ============================================
+' SKENARIO 2: FILTER BERDASARKAN STATUS
+' ============================================
+== Filter berdasarkan Status ==
+
+User -> MyRes: Pilih filter status (All/Pending/Approved/Rejected/Cancelled)
+activate MyRes
+
+MyRes -> ResCtrl: filterUserReservations(userId, status)
+activate ResCtrl
+
+ResCtrl -> ResDB: findByUserIdAndStatus(userId, status)
+activate ResDB
+ResDB --> ResCtrl: filteredReservations[]
+deactivate ResDB
+
+ResCtrl --> MyRes: filteredData
+deactivate ResCtrl
+
+MyRes --> User: Tampilkan reservasi terfilter
+deactivate MyRes
+
+' ============================================
+' SKENARIO 3: PENCARIAN BERDASARKAN FASILITAS
+' ============================================
+== Pencarian berdasarkan Nama Fasilitas ==
+
+User -> MyRes: Ketik nama fasilitas di search bar
+activate MyRes
+
+MyRes -> ResCtrl: searchUserReservations(userId, keyword)
+activate ResCtrl
+
+ResCtrl -> ResDB: findByUserIdWithKeyword(userId, keyword)
+activate ResDB
+ResDB --> ResCtrl: searchResults[]
+deactivate ResDB
+
+ResCtrl --> MyRes: searchResults
+deactivate ResCtrl
+
+alt Hasil ditemukan
+    MyRes --> User: Tampilkan hasil pencarian
+else Tidak ada hasil
+    MyRes --> User: Tampilkan pesan "Tidak ada reservasi yang sesuai"
+end
+
+deactivate MyRes
+
+' ============================================
+' SKENARIO 4: AKSI PADA RESERVASI
+' ============================================
+== Aksi pada Reservasi ==
+
+note over User, MyRes
+  User dapat melakukan aksi berdasarkan status:
+  - Pending: Edit, Cancel
+  - Approved: Cancel (dengan konfirmasi)
+  - Rejected: (tidak ada aksi)
+  - Cancelled: (tidak ada aksi)
+  - Completed: (tidak ada aksi)
+end note
+
+opt User ingin mengedit
+    User -> MyRes: Klik "Edit"
+    MyRes --> User: Redirect ke halaman Edit Reservation
+end
+
+opt User ingin membatalkan
+    User -> MyRes: Klik "Cancel"
+    MyRes --> User: Tampilkan dialog konfirmasi
+end
+
+@enduml

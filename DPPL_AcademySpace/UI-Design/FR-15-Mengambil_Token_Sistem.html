@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Space - System Tokens</title>
+    <link rel="stylesheet" href="wireframe.css">
+</head>
+
+<body class="wf-admin-body">
+
+    <!-- Admin Sidebar -->
+    <aside class="wf-admin-sidebar">
+        <div class="wf-logo">[Logo]</div>
+        <nav class="wf-admin-nav">
+            <nav class="wf-admin-nav">
+                <a href="FR-09-Menyetujui_atau_Menolak_Reservasi.html">
+                    <span class="wf-icon">[Cal]</span> Reservations
+                </a>
+                <a href="FR-11-Mengelola_Fasilitas.html">
+                    <span class="wf-icon">[Bldg]</span> Facilities
+                </a>
+                <a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">
+                    <span class="wf-icon">[Chart]</span> Analytics
+                </a>
+                <a href="FR-15-Mengambil_Token_Sistem.html" class="active">
+                    <span class="wf-icon">[Key]</span> System Tokens
+                </a>
+                <a href="FR-02-Mengelola_Profil_Admin.html">
+                    <span class="wf-icon">[User]</span> Profile
+                </a>
+                <div style="margin-top: auto; border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+                    <a href="FR-01-Membuat_atau_Masuk_Akun_Login.html" style="color: #aaa;">
+                        <span class="wf-icon">[Out]</span> Logout
+                    </a>
+                </div>
+            </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="wf-admin-main">
+        <header style="margin-bottom: 2rem;">
+            <h1>System Tokens</h1>
+            <p class="wf-text-muted">Manage global system tokens for registration and recovery.</p>
+        </header>
+
+        <div class="wf-grid wf-grid-cols-2 wf-gap-4">
+
+            <!-- Admin Token Card -->
+            <div class="wf-card">
+                <div class="wf-card-header">
+                    <h3>[Key] Admin Registration Token</h3>
+                    <p class="wf-text-muted wf-text-small">Required for creating new Admin accounts. Keep this secret.
+                    </p>
+                </div>
+                <div class="wf-card-body">
+                    <div
+                        style="background: #eee; padding: 1rem; margin-bottom: 1rem; font-family: monospace; border-radius: 4px; border: 1px solid #ccc;">
+                        ADMIN_SECRET_KEY_123
+                    </div>
+                    <button class="wf-btn" style="width: 100%;" onclick="alert('Token copied to clipboard');">[Copy]
+                        Copy Token</button>
+                </div>
+            </div>
+
+            <!-- Password Reset Token Card -->
+            <div class="wf-card">
+                <div class="wf-card-header">
+                    <h3>[Key] Password Reset Master Token</h3>
+                    <p class="wf-text-muted wf-text-small">Used to validate password reset requests without email.</p>
+                </div>
+                <div class="wf-card-body">
+                    <div
+                        style="background: #eee; padding: 1rem; margin-bottom: 1rem; font-family: monospace; border-radius: 4px; border: 1px solid #ccc;">
+                        RESET_MASTER_KEY_456
+                    </div>
+                    <button class="wf-btn" style="width: 100%;" onclick="alert('Token copied to clipboard');">[Copy]
+                        Copy Token</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</body>
+
+</html>

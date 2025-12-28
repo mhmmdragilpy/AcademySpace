@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Scenario - FR-10 Melihat Riwayat Reservasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+        }
+
+        .section {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .extend-note {
+            font-style: italic;
+            color: #666;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>3.1.1.9 Use Case Scenario #9 &lt;Melihat Riwayat Reservasi&gt;</h1>
+
+    <h2>Skenario Use Case #9:</h2>
+
+    <div class="section">
+        <div class="section-title">i. Pre-Condition</div>
+        <ul>
+            <li>User sudah login.</li>
+            <li>User memiliki minimal satu reservasi dalam database.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">ii. Use Case Description</div>
+
+        <div class="flow-title">a. Primary Flow</div>
+        <ul>
+            <li>User mengakses halaman "My Reservations" melalui menu navigasi.</li>
+            <li>Daftar semua reservasi user ditampilkan dalam bentuk tabel.</li>
+            <li>Setiap baris reservasi menampilkan:
+                <ul>
+                    <li>Nama fasilitas</li>
+                    <li>Tanggal dan waktu reservasi</li>
+                    <li>Status (Pending/Approved/Rejected/Cancelled/Completed)</li>
+                    <li>Aksi yang tersedia (Edit/Cancel)</li>
+                </ul>
+            </li>
+            <li>Reservasi diurutkan berdasarkan tanggal terbaru.</li>
+        </ul>
+
+        <div class="flow-title">b. Primary Flow (Filter dan Pencarian)</div>
+        <ul>
+            <li>User dapat memfilter reservasi berdasarkan status.</li>
+            <li>User dapat mencari reservasi berdasarkan nama fasilitas.</li>
+            <li>Tampilan tabel diperbarui sesuai filter.</li>
+        </ul>
+
+        <div class="flow-title">c. Primary Flow (Aksi pada Reservasi)</div>
+        <ul>
+            <li>User mengklik "Edit" untuk mengubah reservasi. <span class="extend-note">(Include: FR-08 Mengedit
+                    Reservasi)</span></li>
+            <li>User mengklik "Cancel" untuk membatalkan reservasi. <span class="extend-note">(Include: FR-08
+                    Membatalkan Reservasi)</span></li>
+        </ul>
+
+        <div class="flow-title">d. Alternative Flow</div>
+        <ul>
+            <li>User tidak memiliki reservasi.</li>
+            <li>Pesan "Anda belum memiliki reservasi" ditampilkan.</li>
+            <li>Tombol untuk membuat reservasi baru disediakan.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">iii. Post-Condition</div>
+        <ul>
+            <li>User dapat melihat semua riwayat reservasi mereka.</li>
+            <li>User mengetahui status terkini dari setiap reservasi.</li>
+            <li>User dapat mengambil tindakan pada reservasi yang masih aktif.</li>
+        </ul>
+    </div>
+
+    <a href="../UI-Design/FR-10-Melihat_Riwayat_Reservasi.html" class="nav-link">Lihat UI Design</a>
+
+</body>
+
+</html>

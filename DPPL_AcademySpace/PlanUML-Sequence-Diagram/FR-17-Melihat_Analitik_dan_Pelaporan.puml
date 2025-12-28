@@ -1,0 +1,162 @@
+@startuml FR-17-Melihat_Analitik_dan_Pelaporan
+
+title Sequence Diagram: FR-17 Melihat Analitik dan Pelaporan (ADMIN)
+
+' ============================================
+' DAFTAR AKTOR DAN OBJEK (LIFELINE)
+' ============================================
+' Aktor:
+'   - Admin: Administrator yang melihat analitik
+' Objek:
+'   - AnalyticsPage: Halaman analytics (Boundary)
+'   - AnalyticsController: Controller untuk analytics
+'   - ReservationDB: Database reservasi (Entity)
+'   - FacilityDB: Database fasilitas (Entity)
+'   - UserDB: Database user (Entity)
+
+actor "Admin" as Admin
+
+boundary "AnalyticsPage" as AnalPage
+control "AnalyticsController" as AnalCtrl
+entity "ReservationDB" as ResDB
+entity "FacilityDB" as FacDB
+entity "UserDB" as UserDB
+
+' ============================================
+' SKENARIO 1: MELIHAT STATISTIK OVERVIEW
+' ============================================
+== Melihat Analytics Dashboard ==
+
+Admin -> AnalPage: Akses menu "Analytics"
+activate AnalPage
+
+AnalPage -> AnalCtrl: getDashboardStats()
+activate AnalCtrl
+
+par Load statistik secara paralel
+    AnalCtrl -> ResDB: countTotalReservations()
+    activate ResDB
+    ResDB --> AnalCtrl: totalCount
+    deactivate ResDB
+    
+    AnalCtrl -> ResDB: countByStatus("APPROVED")
+    activate ResDB
+    ResDB --> AnalCtrl: approvedCount
+    deactivate ResDB
+    
+    AnalCtrl -> ResDB: countByStatus("PENDING")
+    activate ResDB
+    ResDB --> AnalCtrl: pendingCount
+    deactivate ResDB
+    
+    AnalCtrl -> ResDB: countLast30Days()
+    activate ResDB
+    ResDB --> AnalCtrl: last30DaysCount
+    deactivate ResDB
+end
+
+AnalCtrl --> AnalPage: dashboardStats
+deactivate AnalCtrl
+
+AnalPage --> Admin: Tampilkan stat cards:\n- Total Reservations\n- Approved\n- Pending\n- Past 30 Days
+
+' ============================================
+' SKENARIO 2: MELIHAT CHART STATUS DISTRIBUTION
+' ============================================
+AnalPage -> AnalCtrl: getStatusDistribution()
+activate AnalCtrl
+
+AnalCtrl -> ResDB: groupByStatus()
+activate ResDB
+ResDB --> AnalCtrl: statusData[]
+deactivate ResDB
+
+AnalCtrl --> AnalPage: pieChartData
+deactivate AnalCtrl
+
+AnalPage --> Admin: Tampilkan Pie Chart\n"Reservation Status Distribution"
+
+' ============================================
+' SKENARIO 3: MELIHAT TOP FACILITIES
+' ============================================
+AnalPage -> AnalCtrl: getTopFacilities(limit: 5)
+activate AnalCtrl
+
+AnalCtrl -> ResDB: groupByFacility(limit: 5)
+activate ResDB
+ResDB --> AnalCtrl: topFacilities[]
+deactivate ResDB
+
+AnalCtrl -> FacDB: getFacilityNames(facilityIds[])
+activate FacDB
+FacDB --> AnalCtrl: facilityNames[]
+deactivate FacDB
+
+AnalCtrl --> AnalPage: barChartData
+deactivate AnalCtrl
+
+AnalPage --> Admin: Tampilkan Bar Chart\n"Top 5 Facilities"
+
+' ============================================
+' SKENARIO 4: MELIHAT DAILY TREND
+' ============================================
+AnalPage -> AnalCtrl: getDailyTrend(days: 30)
+activate AnalCtrl
+
+AnalCtrl -> ResDB: groupByDate(lastDays: 30)
+activate ResDB
+ResDB --> AnalCtrl: dailyData[]
+deactivate ResDB
+
+AnalCtrl --> AnalPage: lineChartData
+deactivate AnalCtrl
+
+AnalPage --> Admin: Tampilkan Line Chart\n"Daily Reservation Trend"
+
+' ============================================
+' SKENARIO 5: MELIHAT FACILITY UTILIZATION
+' ============================================
+AnalPage -> AnalCtrl: getFacilityUtilization()
+activate AnalCtrl
+
+AnalCtrl -> FacDB: findAll()
+activate FacDB
+FacDB --> AnalCtrl: facilities[]
+deactivate FacDB
+
+loop untuk setiap facility
+    AnalCtrl -> ResDB: getReservationStats(facilityId)
+    activate ResDB
+    ResDB --> AnalCtrl: reservationCount, avgAttendees
+    deactivate ResDB
+end
+
+AnalCtrl --> AnalPage: utilizationTableData
+deactivate AnalCtrl
+
+AnalPage --> Admin: Tampilkan tabel Facility Utilization
+
+' ============================================
+' SKENARIO 6: MELIHAT TOP ACTIVE USERS
+' ============================================
+AnalPage -> AnalCtrl: getTopActiveUsers(limit: 5)
+activate AnalCtrl
+
+AnalCtrl -> ResDB: groupByUser(limit: 5)
+activate ResDB
+ResDB --> AnalCtrl: topUsers[]
+deactivate ResDB
+
+AnalCtrl -> UserDB: getUserNames(userIds[])
+activate UserDB
+UserDB --> AnalCtrl: userNames[]
+deactivate UserDB
+
+AnalCtrl --> AnalPage: topUsersData
+deactivate AnalCtrl
+
+AnalPage --> Admin: Tampilkan tabel Top Active Users
+
+deactivate AnalPage
+
+@enduml

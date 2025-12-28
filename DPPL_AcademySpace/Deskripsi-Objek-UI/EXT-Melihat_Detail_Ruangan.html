@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Objek UI - EXT Melihat Detail Ruangan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 2rem;
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 2rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .extend-badge {
+            display: inline-block;
+            background: #6b46c1;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Deskripsi Objek UI - EXT Melihat Detail Ruangan (Popup Card) <span class="extend-badge">EXTEND</span></h1>
+
+    <h2>Tabel Deskripsi Layar</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID. LAYAR</th>
+                <th>NAMA LAYAR</th>
+                <th>DESKRIPSI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>M002</td>
+                <td>Modal Popup Detail Ruangan</td>
+                <td>Popup card yang menampilkan informasi detail fasilitas/ruangan saat user klik pada card fasilitas
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Antarmuka M002: Modal POPUP DETAIL RUANGAN</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Id_Objek</th>
+                <th>JENIS</th>
+                <th>LABEL</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ModalBackdrop1</td>
+                <td>Backdrop</td>
+                <td>Modal Overlay</td>
+                <td>Overlay semi-transparan di belakang popup</td>
+            </tr>
+            <tr>
+                <td>PopupCard1</td>
+                <td>Modal Container</td>
+                <td>Detail Ruangan Popup</td>
+                <td>Container utama popup card</td>
+            </tr>
+            <tr>
+                <td>Image1</td>
+                <td>Image</td>
+                <td>Facility Image</td>
+                <td>Gambar fasilitas/ruangan di bagian atas popup</td>
+            </tr>
+            <tr>
+                <td>Badge1</td>
+                <td>Badge</td>
+                <td>Available/Unavailable</td>
+                <td>Status ketersediaan fasilitas (hijau/merah)</td>
+            </tr>
+            <tr>
+                <td>ButtonClose1</td>
+                <td>Button</td>
+                <td>X (Close)</td>
+                <td>Tombol untuk menutup popup, posisi kanan atas</td>
+            </tr>
+            <tr>
+                <td>Title1</td>
+                <td>Title</td>
+                <td>Nama Ruangan</td>
+                <td>Nama fasilitas, contoh: "Auditorium Gedung Damar"</td>
+            </tr>
+            <tr>
+                <td>TextLocation1</td>
+                <td>Text + Icon</td>
+                <td>Lokasi</td>
+                <td>Lokasi gedung dengan icon pin</td>
+            </tr>
+            <tr>
+                <td>SectionDesc1</td>
+                <td>Section</td>
+                <td>Description</td>
+                <td>Section deskripsi fasilitas</td>
+            </tr>
+            <tr>
+                <td>TextDesc1</td>
+                <td>Text</td>
+                <td>Deskripsi</td>
+                <td>Teks deskripsi lengkap fasilitas</td>
+            </tr>
+            <tr>
+                <td>SectionLayout1</td>
+                <td>Section</td>
+                <td>Layout & Setup</td>
+                <td>Section informasi layout ruangan</td>
+            </tr>
+            <tr>
+                <td>TextLayout1</td>
+                <td>Text</td>
+                <td>Layout Info</td>
+                <td>Informasi layout/setup ruangan</td>
+            </tr>
+            <tr>
+                <td>PanelDetails1</td>
+                <td>Panel</td>
+                <td>Details Panel</td>
+                <td>Panel di kanan berisi detail spesifik</td>
+            </tr>
+            <tr>
+                <td>DetailCapacity1</td>
+                <td>Detail Item</td>
+                <td>Capacity</td>
+                <td>Kapasitas ruangan dengan icon dan nilai</td>
+            </tr>
+            <tr>
+                <td>DetailType1</td>
+                <td>Detail Item</td>
+                <td>Type</td>
+                <td>Tipe ruangan (Auditorium, Lab, etc)</td>
+            </tr>
+            <tr>
+                <td>ButtonBook1</td>
+                <td>Button (Primary)</td>
+                <td>Book Now</td>
+                <td>Tombol untuk melakukan booking, navigasi ke halaman reservasi</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Identifikasi Object dan Tipe Kelas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Object</th>
+                <th>Tipe Kelas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>FacilitySearchPage</td>
+                <td>Boundary</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>FacilityDetailPopup</td>
+                <td>Boundary</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>FacilityController</td>
+                <td>Controller</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Facility</td>
+                <td>Entity</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Building</td>
+                <td>Entity</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="../UI-Design/EXT-Melihat_Detail_Ruangan.html" class="nav-link">Lihat UI Design</a>
+    <a href="index.html" class="nav-link">Kembali ke Index</a>
+</body>
+
+</html>

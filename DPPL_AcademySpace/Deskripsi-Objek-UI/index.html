@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Objek UI - Index</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #000;
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            margin-top: 2rem;
+            color: #333;
+            border-left: 4px solid #000;
+            padding-left: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 2rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        tr:hover {
+            background: #eee;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .badge-user {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge-admin {
+            background: #333;
+            color: #fff;
+        }
+
+        .badge-extend {
+            background: #666;
+            color: #fff;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .summary-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .summary-card .label {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📋 Deskripsi Objek UI - Academy Space</h1>
+
+    <div class="summary">
+        <div class="summary-card">
+            <div class="number">20</div>
+            <div class="label">Total Layar/Page</div>
+        </div>
+        <div class="summary-card">
+            <div class="number">14</div>
+            <div class="label">User Pages</div>
+        </div>
+        <div class="summary-card">
+            <div class="number">6</div>
+            <div class="label">Admin Pages</div>
+        </div>
+    </div>
+
+    <!-- Master Table -->
+    <h2>Tabel Master Deskripsi Objek UI</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID. LAYAR</th>
+                <th>NAMA LAYAR</th>
+                <th>DESKRIPSI</th>
+                <th>ROLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>P001</td>
+                <td>Page Registrasi User</td>
+                <td>Page untuk membuat akun baru sebagai User/Mahasiswa</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P002</td>
+                <td>Page Login User</td>
+                <td>Page untuk masuk ke akun User/Mahasiswa</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P003</td>
+                <td>Page Registrasi Admin</td>
+                <td>Page untuk membuat akun baru sebagai Admin</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P004</td>
+                <td>Page Login Admin</td>
+                <td>Page untuk masuk ke akun Admin</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P005</td>
+                <td>Page Profile User</td>
+                <td>Page untuk melihat dan mengedit profil User</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P006</td>
+                <td>Page Profile Admin</td>
+                <td>Page untuk melihat dan mengedit profil Admin</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P007</td>
+                <td>Page Home</td>
+                <td>Page utama untuk mencari dan melihat daftar fasilitas</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P008</td>
+                <td>Page Facility Detail</td>
+                <td>Page untuk melihat detail fasilitas dan mengajukan reservasi</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P009</td>
+                <td>Page Check Availability</td>
+                <td>Page untuk melihat jadwal dan ketersediaan fasilitas</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P010</td>
+                <td>Page Notifications</td>
+                <td>Page untuk melihat daftar notifikasi</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P011</td>
+                <td>Page Edit Reservation</td>
+                <td>Page untuk mengedit reservasi</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P012</td>
+                <td>Page My Reservations</td>
+                <td>Page untuk melihat daftar dan riwayat reservasi</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P013</td>
+                <td>Page Guide</td>
+                <td>Page untuk melihat panduan penggunaan website</td>
+                <td><span class="badge badge-user">USER</span></td>
+            </tr>
+            <tr>
+                <td>P014</td>
+                <td>Page Forgot Password</td>
+                <td>Page untuk mereset password yang lupa</td>
+                <td><span class="badge badge-extend">EXTEND</span></td>
+            </tr>
+            <tr>
+                <td>P015</td>
+                <td>Page Admin Manage Reservations</td>
+                <td>Page untuk admin mengelola reservasi</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P016</td>
+                <td>Page Admin Manage Facilities</td>
+                <td>Page untuk admin melihat daftar fasilitas</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P017</td>
+                <td>Page Admin Create Facility</td>
+                <td>Page untuk admin menambah fasilitas baru</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P018</td>
+                <td>Page Admin Edit Facility</td>
+                <td>Page untuk admin mengedit fasilitas</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P019</td>
+                <td>Page Admin System Tokens</td>
+                <td>Page untuk admin melihat token system</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+            <tr>
+                <td>P020</td>
+                <td>Page Admin Analytics</td>
+                <td>Page untuk admin melihat analitik</td>
+                <td><span class="badge badge-admin">ADMIN</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- User Pages -->
+    <h2>👤 Deskripsi Objek UI - User (Mahasiswa)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>FR</th>
+                <th>Nama Use Case</th>
+                <th>File Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>FR-01</td>
+                <td>Membuat atau Masuk Akun</td>
+                <td><a href="FR-01-Membuat_atau_Masuk_Akun.html">FR-01-Membuat_atau_Masuk_Akun.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-02</td>
+                <td>Mengelola Profil</td>
+                <td><a href="FR-02-Mengelola_Profil.html">FR-02-Mengelola_Profil.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-03</td>
+                <td>Mengajukan Reservasi</td>
+                <td><a href="FR-03-Mengajukan_Reservasi.html">FR-03-Mengajukan_Reservasi.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-04</td>
+                <td>Melihat Jadwal dan Ketersediaan Fasilitas</td>
+                <td><a
+                        href="FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html">FR-04-Melihat_Jadwal_dan_Ketersediaan_Fasilitas.html</a>
+                </td>
+            </tr>
+            <tr>
+                <td>FR-05</td>
+                <td>Menerima Notifikasi Approval/Rejection</td>
+                <td><a
+                        href="FR-05-Menerima_Notifikasi_Approval_Rejection.html">FR-05-Menerima_Notifikasi_Approval_Rejection.html</a>
+                </td>
+            </tr>
+            <tr>
+                <td>FR-06</td>
+                <td>Mencari Fasilitas</td>
+                <td><a href="FR-06-Mencari_Fasilitas.html">FR-06-Mencari_Fasilitas.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-07</td>
+                <td>Melihat Detail Ruangan</td>
+                <td><a href="FR-07-Melihat_Detail_Ruangan.html">FR-07-Melihat_Detail_Ruangan.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-08</td>
+                <td>Mengedit atau Membatalkan Reservasi</td>
+                <td><a
+                        href="FR-08-Mengedit_atau_Membatalkan_Reservasi.html">FR-08-Mengedit_atau_Membatalkan_Reservasi.html</a>
+                </td>
+            </tr>
+            <tr>
+                <td>FR-10</td>
+                <td>Melihat Riwayat Reservasi</td>
+                <td><a href="FR-10-Melihat_Riwayat_Reservasi.html">FR-10-Melihat_Riwayat_Reservasi.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-12</td>
+                <td>Menyaring Pencarian Fasilitas</td>
+                <td><a href="FR-12-Menyaring_Pencarian_Fasilitas.html">FR-12-Menyaring_Pencarian_Fasilitas.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-16</td>
+                <td>Melihat Guide Penggunaan Website</td>
+                <td><a
+                        href="FR-16-Melihat_Guide_Penggunaan_Website.html">FR-16-Melihat_Guide_Penggunaan_Website.html</a>
+                </td>
+            </tr>
+            <tr>
+                <td>EXT</td>
+                <td>Mereset Password</td>
+                <td><a href="EXT-Mereset_Password.html">EXT-Mereset_Password.html</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Admin Pages -->
+    <h2>🔧 Deskripsi Objek UI - Admin</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>FR</th>
+                <th>Nama Use Case</th>
+                <th>File Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>FR-09</td>
+                <td>Menyetujui atau Menolak Reservasi</td>
+                <td><a
+                        href="FR-09-Menyetujui_atau_Menolak_Reservasi.html">FR-09-Menyetujui_atau_Menolak_Reservasi.html</a>
+                </td>
+            </tr>
+            <tr>
+                <td>FR-11</td>
+                <td>Mengelola Fasilitas</td>
+                <td><a href="FR-11-Mengelola_Fasilitas.html">FR-11-Mengelola_Fasilitas.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-13</td>
+                <td>Melihat Detail Reservasi</td>
+                <td><a href="FR-13-Melihat_Detail_Reservasi.html">FR-13-Melihat_Detail_Reservasi.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-14</td>
+                <td>Melihat Jadwal Reservasi</td>
+                <td><a href="FR-14-Melihat_Jadwal_Reservasi.html">FR-14-Melihat_Jadwal_Reservasi.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-15</td>
+                <td>Mengambil Token</td>
+                <td><a href="FR-15-Mengambil_Token_Sistem.html">FR-15-Mengambil_Token_Sistem.html</a></td>
+            </tr>
+            <tr>
+                <td>FR-17</td>
+                <td>Melihat Analitik dan Pelaporan</td>
+                <td><a href="FR-17-Melihat_Analitik_dan_Pelaporan.html">FR-17-Melihat_Analitik_dan_Pelaporan.html</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; text-align: center; color: #666;">
+        <p>Academy Space - Deskripsi Objek UI Documentation</p>
+        <p><a href="../UI-Design/FR-06-Mencari_Fasilitas.html">Lihat UI Design →</a></p>
+        <p><a href="../Use-Case-Scenario/index.html">Lihat Use Case Scenario →</a></p>
+    </footer>
+
+</body>
+
+</html>

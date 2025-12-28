@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Acceptance Test - Academy Space</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --text: #333;
+            --light: #f8f9fa;
+            --border: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header .logo {
+            width: 280px;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+
+        .doc-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .doc-info {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .doc-info p {
+            margin-bottom: 0.3rem;
+            text-align: center;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .header-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 2rem;
+            font-size: 0.85rem;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border);
+            padding: 0.6rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0066cc;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .badge-pass {
+            background-color: var(--success);
+            color: #fff;
+        }
+
+        .badge-fail {
+            background-color: var(--danger);
+            color: #fff;
+        }
+
+        .badge-pending {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .step-list {
+            list-style-type: decimal;
+            padding-left: 1rem;
+            margin: 0;
+        }
+
+        .step-list li {
+            margin-bottom: 0.2rem;
+        }
+
+        .nav-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #666;
+        }
+
+        ul,
+        ol {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="Logo.png" alt="Academy Space Logo" class="logo">
+        <div class="header-divider"></div>
+        <h1>DOKUMEN USER ACCEPTANCE TEST</h1>
+        <div class="doc-title">Academy Space</div>
+        <div class="version-badge">✓ VERSI 3.0 - FINAL</div>
+        <div class="doc-info">
+            <p><strong>Sistem Reservasi Fasilitas Kampus</strong></p>
+            <p>Tanggal Finalisasi: 28 Desember 2025</p>
+            <p>Program Studi S1 Informatika - Fakultas Informatika - Universitas Telkom</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Riwayat Perubahan -->
+        <section>
+            <h2>Riwayat Perubahan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Versi</th>
+                        <th>Tanggal</th>
+                        <th>Dibuat Oleh</th>
+                        <th>Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.0</td>
+                        <td>22 Desember 2025</td>
+                        <td>Muhammad Ragil (103012300015)</td>
+                        <td>Dokumen Awal UAT</td>
+                    </tr>
+                    <tr>
+                        <td>1.1</td>
+                        <td>23 Desember 2025</td>
+                        <td>Rayhan Yoga Edy P. (103012300123)</td>
+                        <td>Penambahan test case fungsi User</td>
+                    </tr>
+                    <tr>
+                        <td>1.2</td>
+                        <td>24 Desember 2025</td>
+                        <td>Auzan Syahman R. (103012330412)</td>
+                        <td>Penambahan test case fungsi Admin</td>
+                    </tr>
+                    <tr>
+                        <td>2.0</td>
+                        <td>26 Desember 2025</td>
+                        <td>Varen Aditya S. (103012330442)</td>
+                        <td>Penyesuaian dengan implementasi aktual (Sign In, Sign Up, dll)</td>
+                    </tr>
+                    <tr>
+                        <td>3.0</td>
+                        <td>28 Desember 2025</td>
+                        <td>Muhammad Ragil (103012300015)</td>
+                        <td><strong>FINALISASI</strong> - Semua test case PASS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Pendahuluan -->
+        <section>
+            <h2>1. Pendahuluan</h2>
+            <h3>1.1 Tujuan</h3>
+            <p>
+                Dokumen User Acceptance Test (UAT) ini disusun untuk memvalidasi bahwa sistem <strong>Academy
+                    Space</strong>
+                telah memenuhi kebutuhan fungsional sesuai dengan implementasi nyata. Pengujian dilakukan oleh end-user
+                untuk memastikan sistem siap digunakan dalam lingkungan produksi.
+            </p>
+            <h3>1.2 Ruang Lingkup</h3>
+            <ul>
+                <li>Fungsi Autentikasi (Sign In, Sign Up, Reset Password, Logout)</li>
+                <li>Manajemen Profil Pengguna</li>
+                <li>Pencarian dan Pemesanan Fasilitas</li>
+                <li>Manajemen Reservasi (User)</li>
+                <li>Panel Administrasi (Admin)</li>
+                <li>Manajemen Fasilitas (Admin)</li>
+                <li>Analytics dan System Tokens (Admin)</li>
+            </ul>
+            <h3>1.3 Referensi Implementasi</h3>
+            <div class="info-box">
+                <p><strong>Teknologi:</strong> Next.js 14, TypeScript, NextAuth, PostgreSQL</p>
+                <p><strong>Button Labels:</strong> Sign In, Sign Up, Check Availability, Approve, Reject</p>
+                <p><strong>Navigation:</strong> Home, My Reservations, Admin Panel, Guide, Profile</p>
+            </div>
+        </section>
+
+        <!-- UAT User - Autentikasi -->
+        <section>
+            <h2>2. UAT Fungsi User</h2>
+            <h3>2.1 Autentikasi & Manajemen Akun</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-U01</td>
+                        <td>Sign Up User</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka <code>/register</code></li>
+                                <li>Pilih role "User"</li>
+                                <li>Isi: Full Name, Username, Password, Confirm Password</li>
+                                <li>Klik tombol <strong>"Sign Up"</strong></li>
+                            </ol>
+                        </td>
+                        <td>Name: Test User<br>Username: testuser<br>Password: Pass@123</td>
+                        <td>Redirect ke login, toast sukses muncul</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U02</td>
+                        <td>Sign In</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka <code>/login</code></li>
+                                <li>Lihat judul "Welcome Back"</li>
+                                <li>Isi Username & Password</li>
+                                <li>Klik <strong>"Sign In"</strong></li>
+                            </ol>
+                        </td>
+                        <td>Username: testuser<br>Password: Pass@123</td>
+                        <td>Redirect ke Home, menu "My Reservations" tampil di navbar</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U03</td>
+                        <td>Sign In Gagal</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka <code>/login</code></li>
+                                <li>Masukkan password salah</li>
+                                <li>Klik "Sign In"</li>
+                            </ol>
+                        </td>
+                        <td>Password: wrongpass</td>
+                        <td>Toast error "Invalid username or password" muncul</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U04</td>
+                        <td>Logout</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik avatar di kanan atas</li>
+                                <li>Pilih <strong>"Log out"</strong> dari dropdown</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Redirect ke /login, session berakhir</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U05</td>
+                        <td>Reset Password</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik "Forgot password?" di login</li>
+                                <li>Isi Username & Reset Token</li>
+                                <li>Isi New Password & Confirm</li>
+                                <li>Klik <strong>"Reset Password"</strong></li>
+                            </ol>
+                        </td>
+                        <td>Token dari Admin<br>New Pass: NewPass@123</td>
+                        <td>Sukses, redirect ke login</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U06</td>
+                        <td>Edit Profile - Full Name</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka menu "Profile"</li>
+                                <li>Klik ikon pensil di "Full Name"</li>
+                                <li>Ubah nama, tekan Enter</li>
+                            </ol>
+                        </td>
+                        <td>Nama Baru: Updated Name</td>
+                        <td>Nama tersimpan, toast sukses</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U07</td>
+                        <td>Edit Profile - Username</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon pensil di "Username"</li>
+                                <li>Ubah username (lowercase, 3-30 char)</li>
+                                <li>Klik ikon ceklist</li>
+                            </ol>
+                        </td>
+                        <td>Username: newusername</td>
+                        <td>Username tersimpan</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U08</td>
+                        <td>Edit Profile - Password</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon pensil di "Password"</li>
+                                <li>Isi password baru (min 6 char)</li>
+                                <li>Klik ikon ceklist</li>
+                            </ol>
+                        </td>
+                        <td>New Password: SecurePass123</td>
+                        <td>Password berubah, toast sukses</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U09</td>
+                        <td>Upload Avatar</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Hover pada foto profil</li>
+                                <li>Klik ikon kamera</li>
+                                <li>Pilih file gambar (max 5MB)</li>
+                            </ol>
+                        </td>
+                        <td>File: avatar.jpg</td>
+                        <td>Avatar terupload, tampil real-time</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2.2 Pencarian & Ketersediaan Fasilitas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>TC-U11</td>
+                        <td>Search Fasilitas</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Ketik keyword di Search Bar</li>
+                                <li>Tunggu hasil (debounce 500ms)</li>
+                            </ol>
+                        </td>
+                        <td>Keyword: "GKU"</td>
+                        <td>Daftar fasilitas terfilter sesuai keyword</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U12</td>
+                        <td>Filter by Type</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik pill kategori (Semua, Ruang Rapat, dll)</li>
+                            </ol>
+                        </td>
+                        <td>Kategori: Ruang Rapat</td>
+                        <td>Hanya fasilitas tipe tersebut yang tampil</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U13</td>
+                        <td>Lihat Detail Fasilitas</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>{Pada halaman Home, scroll ke bawah}</li>
+                                <li>{Klik tombol "View details" pada kartu fasilitas}</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Redirect ke /availability/[slug], detail fasilitas tampil</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2.3 Manajemen Reservasi User</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-U14</td>
+                        <td>Buat Reservasi Baru</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Pilih fasilitas, masuk detail</li>
+                                <li>Pilih tanggal & slot waktu</li>
+                                <li>Isi Purpose & Participants</li>
+                                <li>Upload dokumen (opsional)</li>
+                                <li>Klik <strong>"Submit Reservation"</strong></li>
+                            </ol>
+                        </td>
+                        <td>Date: besok<br>Time: 09:00-11:00<br>Purpose: Rapat</td>
+                        <td>Reservasi tersimpan, status PENDING</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U15</td>
+                        <td>Lihat My Reservations</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik menu <strong>"My Reservations"</strong> di navbar</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Tabel history reservasi tampil dengan kolom: Facility, Date & Time, Status, Purpose, Actions
+                        </td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U16</td>
+                        <td>Edit Reservasi PENDING</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Pada reservasi PENDING, klik <strong>"Edit"</strong></li>
+                                <li>Ubah data, submit</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Data reservasi terupdate</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U17</td>
+                        <td>Cancel Reservasi</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik tombol <strong>"Cancel"</strong> (merah)</li>
+                                <li>Konfirmasi dialog</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Status berubah jadi CANCELED (gray)</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>TC-U18</td>
+                        <td>Lihat Notifikasi</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon Bell di navbar</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Halaman notifikasi tampil, unread count terupdate</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U19</td>
+                        <td>Akses Guide</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik menu <strong>"Guide"</strong> di navbar</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Halaman panduan penggunaan tampil</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- UAT Admin -->
+        <section>
+            <h2>3. UAT Fungsi Admin</h2>
+            <h3>3.1 Akses Admin Panel</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-A01</td>
+                        <td>Sign Up Admin</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka <code>/register</code></li>
+                                <li>Pilih role "Admin"</li>
+                                <li>Isi form + Admin Registration Token</li>
+                                <li>Klik "Sign Up"</li>
+                            </ol>
+                        </td>
+                        <td>Token: (valid system token)</td>
+                        <td>Akun admin berhasil dibuat</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A02</td>
+                        <td>Akses Admin Panel</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Login sebagai Admin</li>
+                                <li>Klik <strong>"Admin Panel"</strong> di navbar</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Sidebar admin tampil: Reservations, Facilities, Analytics, System Tokens, Profile</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 Manajemen Reservasi (Admin)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-A03</td>
+                        <td>Lihat Semua Reservasi</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka menu "Reservations"</li>
+                                <li>Lihat List View & Calendar View</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Tabel reservasi tampil dengan User, Facility, Date & Time, Status, Document, Actions</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A04</td>
+                        <td>Filter by Status</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Gunakan dropdown "Filter by status"</li>
+                                <li>Pilih: Pending/Approved/Rejected</li>
+                            </ol>
+                        </td>
+                        <td>Status: Pending</td>
+                        <td>Hanya reservasi dengan status tersebut tampil</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A05</td>
+                        <td>Approve Reservasi</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Cari reservasi PENDING</li>
+                                <li>Klik tombol <strong>"Approve"</strong> (ikon ✓)</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Status berubah APPROVED (hijau), notifikasi terkirim ke user</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A06</td>
+                        <td>Reject Reservasi</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik tombol <strong>"Reject"</strong> (ikon ✗)</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Status berubah REJECTED (merah)</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A07</td>
+                        <td>View Document</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik <strong>"View Document"</strong></li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Modal preview dokumen (PDF/Image) terbuka</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A08</td>
+                        <td>Lihat Detail Reservasi</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik baris reservasi di tabel</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Modal detail tampil: User, Facility, Date, Time, Participants, Purpose, Document, Action
+                            buttons</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A09</td>
+                        <td>Calendar View</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik tab "Calendar View"</li>
+                                <li>Pilih tanggal di kalender</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Reservasi untuk tanggal tersebut tampil di panel kanan</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.3 Manajemen Fasilitas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-A10</td>
+                        <td>Lihat Daftar Fasilitas</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka menu "Facilities"</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Tabel: Name, Building, Type, Capacity, Status, Actions</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A11</td>
+                        <td>Tambah Fasilitas</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik <strong>"Add Facility"</strong></li>
+                                <li>Isi form: Name, Building, Type, Capacity, Description</li>
+                                <li>Upload foto</li>
+                                <li>Submit</li>
+                            </ol>
+                        </td>
+                        <td>Name: Room Test<br>Capacity: 50</td>
+                        <td>Fasilitas baru muncul di list</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A12</td>
+                        <td>Edit Fasilitas</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon Edit (pensil) pada fasilitas</li>
+                                <li>Ubah data, submit</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Data fasilitas terupdate</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A13</td>
+                        <td>Set Maintenance</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon Wrench (obeng) pada fasilitas aktif</li>
+                                <li>Konfirmasi dialog</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Badge "Maintenance" (merah) muncul, fasilitas tidak tampil di user search</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A14</td>
+                        <td>Clear Maintenance</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon CheckCircle pada fasilitas maintenance</li>
+                                <li>Konfirmasi</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Status kembali "Active" (hijau)</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A15</td>
+                        <td>Delete Fasilitas</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik ikon Trash (tempat sampah)</li>
+                                <li>Konfirmasi dialog</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Fasilitas terhapus dari list</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.4 Analytics & Reporting</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-A16</td>
+                        <td>Lihat Analytics</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka menu "Analytics"</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Stats cards: Total Reservations, Approved, Pending, Past 30 Days</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A17</td>
+                        <td>Lihat Charts</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Scroll ke bagian charts</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Grafik: Pie Chart (Status Distribution), Bar Chart (Top 5 Facilities), Line Chart (Daily
+                            Trend), Bar Chart (Weekly Activity)</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A18</td>
+                        <td>Facility Utilization Table</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Lihat tabel Facility Utilization</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Tabel: Facility, Type, Building, Capacity, Total Reservations, Avg Participants</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A19</td>
+                        <td>Top Active Users Table</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Lihat tabel Top Active Users</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Tabel: User Name, Username, Department, Total Reservations</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.5 System Tokens</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="12%">Fitur</th>
+                        <th width="25%">Langkah Pengujian</th>
+                        <th width="15%">Data Uji</th>
+                        <th width="20%">Hasil Diharapkan</th>
+                        <th width="8%">Status</th>
+                        <th width="15%">Catatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-A20</td>
+                        <td>Lihat System Tokens</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Buka menu "System Tokens"</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Dua card muncul: Admin Registration Token, Password Reset Master Token</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A21</td>
+                        <td>Copy Admin Token</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik <strong>"Copy Token"</strong> di card Admin Registration Token</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Token tersalin ke clipboard, toast "Admin Token copied to clipboard" muncul</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A22</td>
+                        <td>Copy Reset Token</td>
+                        <td>
+                            <ol class="step-list">
+                                <li>Klik "Copy Token" di card Password Reset Master Token</li>
+                            </ol>
+                        </td>
+                        <td>-</td>
+                        <td>Token tersalin, toast sukses</td>
+                        <td><span class="badge badge-pass">PASS</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Ringkasan -->
+        <section>
+            <h2>4. Ringkasan Pengujian</h2>
+            <div class="info-box">
+                <p><strong>Total Test Cases: 40</strong> - <span class="badge badge-pass">ALL PASS</span></p>
+                <ul>
+                    <li>User Functions: 18 test cases (TC-U01 s/d TC-U09, TC-U11 s/d TC-U19)</li>
+                    <li>Admin Functions: 22 test cases (TC-A01 s/d TC-A22)</li>
+                </ul>
+                <p><strong>Tanggal Finalisasi:</strong> 28 Desember 2025</p>
+                <p><strong>Difinalisasi oleh:</strong> Muhammad Ragil (103012300015)</p>
+            </div>
+
+            <h3>4.1 Kriteria Kelulusan</h3>
+            <ul>
+                <li>Semua test case PASS tanpa error kritis</li>
+                <li>Alur utama (Sign In, Reservasi, Approve) berjalan lancar</li>
+                <li>Tidak ada data loss atau security issue</li>
+            </ul>
+
+            <h3>4.2 Tabel Persetujuan</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Peran</th>
+                        <th>Nama</th>
+                        <th>Tanda Tangan</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>User Tester</td>
+                        <td>Rayhan Yoga Edy P. (103012300123)</td>
+                        <td>✓</td>
+                        <td>28 Desember 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Admin Tester</td>
+                        <td>Auzan Syahman R. (103012330412)</td>
+                        <td>✓</td>
+                        <td>28 Desember 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Developer</td>
+                        <td>Varen Aditya S. (103012330442)</td>
+                        <td>✓</td>
+                        <td>28 Desember 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Project Manager / Finalisator</td>
+                        <td>Muhammad Ragil (103012300015)</td>
+                        <td>✓</td>
+                        <td>28 Desember 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Lampiran -->
+        <section>
+            <h2>5. Lampiran</h2>
+            <h3>5.1 Referensi UI Elements</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemen</th>
+                        <th>Label di Implementasi</th>
+                        <th>Lokasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Login Button</td>
+                        <td>Sign In</td>
+                        <td>/login</td>
+                    </tr>
+                    <tr>
+                        <td>Register Button</td>
+                        <td>Sign Up</td>
+                        <td>/register</td>
+                    </tr>
+                    <tr>
+                        <td>Logout Menu</td>
+                        <td>Log out</td>
+                        <td>Dropdown Avatar</td>
+                    </tr>
+                    <tr>
+                        <td>Reset Password Button</td>
+                        <td>Reset Password</td>
+                        <td>/forgot-password</td>
+                    </tr>
+                    <tr>
+                        <td>Check Availability</td>
+                        <td>Check Availability</td>
+                        <td>Home & Facility Card</td>
+                    </tr>
+                    <tr>
+                        <td>User Menu</td>
+                        <td>My Reservations</td>
+                        <td>Navbar</td>
+                    </tr>
+                    <tr>
+                        <td>Admin Menu</td>
+                        <td>Admin Panel</td>
+                        <td>Navbar (admin only)</td>
+                    </tr>
+                    <tr>
+                        <td>Approve Button</td>
+                        <td>Approve (icon ✓)</td>
+                        <td>Admin Reservations</td>
+                    </tr>
+                    <tr>
+                        <td>Reject Button</td>
+                        <td>Reject (icon ✗)</td>
+                        <td>Admin Reservations</td>
+                    </tr>
+                    <tr>
+                        <td>Add Facility</td>
+                        <td>Add Facility</td>
+                        <td>Admin Facilities</td>
+                    </tr>
+                    <tr>
+                        <td>Copy Token</td>
+                        <td>Copy Token</td>
+                        <td>System Tokens</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.2 Status Legend</h3>
+            <table>
+                <tr>
+                    <td><span class="badge badge-pass">PASS</span></td>
+                    <td>Test case berhasil sesuai expected result</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-fail">FAIL</span></td>
+                    <td>Test case gagal, perlu perbaikan</td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-pending">PENDING</span></td>
+                    <td>Belum diuji</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <div class="nav-links">
+        <a href="../DUPL_AcademySpace/DUPL-BAB-2/2.2-Pengujian_Integrasi.html">← Kembali ke DUPL</a>
+        <a href="#" onclick="window.print()">Cetak Dokumen</a>
+    </div>
+
+    <footer>
+        <p>Academy Space - User Acceptance Test Document</p>
+        <p>Universitas Telkom - 2025</p>
+    </footer>
+</body>
+
+</html>
