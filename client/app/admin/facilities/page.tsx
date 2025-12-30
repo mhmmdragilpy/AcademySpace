@@ -7,16 +7,41 @@ import api from "@/lib/api";
 import { toast } from "sonner";
 import Link from "next/link";
 import { Facility } from "@/types";
-import { Plus, Edit, Trash2, Wrench, CheckCircle } from "lucide-react";
+import { Plus, Edit, Trash2, Wrench, CheckCircle, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
+type ConfirmActionType = 'delete' | 'setMaintenance' | 'clearMaintenance' | null;
 
 export default function AdminFacilitiesPage() {
   const { data: facilities, isLoading, error } = useFacilities({ includeInactive: true });
   const deleteMutation = useDeleteFacility();
   const queryClient = useQueryClient();
+
+  // Confirmation dialog state
+  const [confirmDialog, setConfirmDialog] = useState<{
+    isOpen: boolean;
+    type: ConfirmActionType;
+    facilityId: number | null;
+    facilityName: string;
+  }>({
+    isOpen: false,
+    type: null,
+    facilityId: null,
+    facilityName: '',
+  });
 
   // Set maintenance mutation
   const setMaintenanceMutation = useMutation({
@@ -48,20 +73,98 @@ export default function AdminFacilitiesPage() {
     },
   });
 
-  const handleDelete = (id: number, name: string) => {
-    if (!confirm(`Are you sure you want to delete "${name}"?`)) return;
-    deleteMutation.mutate(id);
+  // Open confirmation dialog
+  const openConfirmDialog = (type: ConfirmActionType, facilityId: number, facilityName: string) => {
+    setConfirmDialog({
+      isOpen: true,
+      type,
+      facilityId,
+      facilityName,
+    });
   };
 
-  const handleSetMaintenance = (id: number, name: string) => {
-    if (!confirm(`Set "${name}" to maintenance mode? It will not appear in user search.`)) return;
-    setMaintenanceMutation.mutate(id);
+  // Handle confirmed action
+  const handleConfirmedAction = () => {
+    if (!confirmDialog.facilityId) return;
+
+    switch (confirmDialog.type) {
+      case 'delete':
+        deleteMutation.mutate(confirmDialog.facilityId);
+        break;
+      case 'setMaintenance':
+        setMaintenanceMutation.mutate(confirmDialog.facilityId);
+        break;
+      case 'clearMaintenance':
+        clearMaintenanceMutation.mutate(confirmDialog.facilityId);
+        break;
+    }
+
+    setConfirmDialog({ isOpen: false, type: null, facilityId: null, facilityName: '' });
   };
 
-  const handleClearMaintenance = (id: number, name: string) => {
-    if (!confirm(`Clear maintenance for "${name}"?`)) return;
-    clearMaintenanceMutation.mutate(id);
+  // Get dialog content based on action type
+  const getDialogContent = () => {
+    switch (confirmDialog.type) {
+      case 'delete':
+        return {
+          title: 'Hapus Fasilitas?',
+          description: (
+            <>
+              Anda akan <span className="font-semibold text-red-600">menghapus</span> fasilitas{' '}
+              <span className="font-semibold">"{confirmDialog.facilityName}"</span>.
+              <br /><br />
+              <span className="text-red-600 font-medium">⚠️ Tindakan ini tidak dapat dibatalkan!</span>
+              <br />
+              Semua data terkait fasilitas ini akan dihapus secara permanen.
+            </>
+          ),
+          actionText: 'Ya, Hapus',
+          actionClass: 'bg-red-600 hover:bg-red-700',
+          icon: <Trash2 className="w-4 h-4 mr-2" />,
+        };
+      case 'setMaintenance':
+        return {
+          title: 'Set Maintenance Mode?',
+          description: (
+            <>
+              Anda akan mengubah fasilitas{' '}
+              <span className="font-semibold">"{confirmDialog.facilityName}"</span> ke mode{' '}
+              <span className="font-semibold text-orange-600">maintenance</span>.
+              <br /><br />
+              Fasilitas tidak akan muncul di pencarian user dan tidak bisa dipesan selama maintenance.
+            </>
+          ),
+          actionText: 'Ya, Set Maintenance',
+          actionClass: 'bg-orange-600 hover:bg-orange-700',
+          icon: <Wrench className="w-4 h-4 mr-2" />,
+        };
+      case 'clearMaintenance':
+        return {
+          title: 'Clear Maintenance?',
+          description: (
+            <>
+              Anda akan mengaktifkan kembali fasilitas{' '}
+              <span className="font-semibold">"{confirmDialog.facilityName}"</span>.
+              <br /><br />
+              Fasilitas akan kembali tersedia dan bisa dipesan oleh user.
+            </>
+          ),
+          actionText: 'Ya, Aktifkan',
+          actionClass: 'bg-green-600 hover:bg-green-700',
+          icon: <CheckCircle className="w-4 h-4 mr-2" />,
+        };
+      default:
+        return {
+          title: 'Konfirmasi',
+          description: 'Apakah Anda yakin?',
+          actionText: 'Ya',
+          actionClass: '',
+          icon: null,
+        };
+    }
   };
+
+  const dialogContent = getDialogContent();
 
   return (
     <div className="container mx-auto px-4 max-w-7xl space-y-6">
@@ -165,7 +268,7 @@ export default function AdminFacilitiesPage() {
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => handleClearMaintenance(facility.facility_id, facility.name)}
+                              onClick={() => openConfirmDialog('clearMaintenance', facility.facility_id, facility.name)}
                               disabled={clearMaintenanceMutation.isPending}
                               className="text-green-600 hover:text-green-700"
                               title="Clear Maintenance"
@@ -176,7 +279,7 @@ export default function AdminFacilitiesPage() {
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => handleSetMaintenance(facility.facility_id, facility.name)}
+                              onClick={() => openConfirmDialog('setMaintenance', facility.facility_id, facility.name)}
                               disabled={setMaintenanceMutation.isPending}
                               className="text-orange-600 hover:text-orange-700"
                               title="Set to Maintenance"
@@ -188,7 +291,7 @@ export default function AdminFacilitiesPage() {
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => handleDelete(facility.facility_id, facility.name)}
+                            onClick={() => openConfirmDialog('delete', facility.facility_id, facility.name)}
                             disabled={deleteMutation.isPending}
                             className="text-destructive hover:text-destructive"
                           >
@@ -204,6 +307,33 @@ export default function AdminFacilitiesPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* Confirmation Dialog */}
+      <AlertDialog open={confirmDialog.isOpen} onOpenChange={(open) => !open && setConfirmDialog({ isOpen: false, type: null, facilityId: null, facilityName: '' })}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              {confirmDialog.type === 'delete' && <AlertTriangle className="w-5 h-5 text-red-600" />}
+              {confirmDialog.type === 'setMaintenance' && <Wrench className="w-5 h-5 text-orange-600" />}
+              {confirmDialog.type === 'clearMaintenance' && <CheckCircle className="w-5 h-5 text-green-600" />}
+              {dialogContent.title}
+            </AlertDialogTitle>
+            <AlertDialogDescription asChild>
+              <div>{dialogContent.description}</div>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Batal</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleConfirmedAction}
+              className={dialogContent.actionClass}
+            >
+              {dialogContent.icon}
+              {dialogContent.actionText}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

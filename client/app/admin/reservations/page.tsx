@@ -8,7 +8,8 @@ import { toast } from "sonner";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 import { format, isSameDay } from "date-fns";
-import { List, Calendar as CalendarIcon, Check, X, FileText, Eye, ExternalLink, Clock, Users } from "lucide-react";
+import { List, Calendar as CalendarIcon, Check, X, FileText, Eye, ExternalLink, Clock, Users, LayoutGrid } from "lucide-react";
+import { CalendarViewComponent, CalendarReservation } from "@/components/CalendarViewComponent";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,7 +27,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
+  DialogFooter,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export default function AdminReservationsPage() {
   const { data: session } = useSession();
@@ -34,6 +47,21 @@ export default function AdminReservationsPage() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [filterStatus, setFilterStatus] = useState("All");
   const [selectedReservation, setSelectedReservation] = useState<any>(null);
+
+  // Confirmation dialog state
+  const [confirmAction, setConfirmAction] = useState<{
+    isOpen: boolean;
+    reservationId: number | null;
+    action: 'approved' | 'rejected' | null;
+    facilityName: string;
+    userName: string;
+  }>({
+    isOpen: false,
+    reservationId: null,
+    action: null,
+    facilityName: '',
+    userName: '',
+  });
 
   const { data: reservations = [], isLoading } = useQuery({
     queryKey: ['admin-reservations'],
@@ -58,6 +86,33 @@ export default function AdminReservationsPage() {
       toast.error("Failed to update status");
     }
   });
+
+  // Open confirmation dialog
+  const openConfirmDialog = (reservation: any, action: 'approved' | 'rejected') => {
+    setConfirmAction({
+      isOpen: true,
+      reservationId: reservation.id,
+      action,
+      facilityName: reservation.facilityName || reservation.facility_name || 'Unknown',
+      userName: reservation.userName || reservation.user_name || 'Unknown',
+    });
+  };
+
+  // Handle confirmed action
+  const handleConfirmedAction = () => {
+    if (confirmAction.reservationId && confirmAction.action) {
+      statusMutation.mutate({
+        id: confirmAction.reservationId,
+        status: confirmAction.action
+      });
+    }
+    setConfirmAction({ isOpen: false, reservationId: null, action: null, facilityName: '', userName: '' });
+  };
+
+  // Cancel confirmation
+  const cancelConfirmAction = () => {
+    setConfirmAction({ isOpen: false, reservationId: null, action: null, facilityName: '', userName: '' });
+  };
 
   const handleStatusUpdate = (id: number, status: string) => {
     statusMutation.mutate({ id, status });
@@ -253,7 +308,10 @@ export default function AdminReservationsPage() {
               <div className="flex gap-3 pt-4 border-t">
                 <Button
                   className="flex-1 bg-green-600 hover:bg-green-700"
-                  onClick={() => handleStatusUpdate(reservation.id, 'approved')}
+                  onClick={() => {
+                    setSelectedReservation(null);
+                    openConfirmDialog(reservation, 'approved');
+                  }}
                   disabled={statusMutation.isPending}
                 >
                   <Check className="w-4 h-4 mr-2" />
@@ -262,7 +320,10 @@ export default function AdminReservationsPage() {
                 <Button
                   variant="destructive"
                   className="flex-1"
-                  onClick={() => handleStatusUpdate(reservation.id, 'rejected')}
+                  onClick={() => {
+                    setSelectedReservation(null);
+                    openConfirmDialog(reservation, 'rejected');
+                  }}
                   disabled={statusMutation.isPending}
                 >
                   <X className="w-4 h-4 mr-2" />
@@ -310,14 +371,18 @@ export default function AdminReservationsPage() {
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="list" className="w-full">
-            <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsList className="grid w-full max-w-lg grid-cols-3">
               <TabsTrigger value="list">
                 <List className="w-4 h-4 mr-2" />
                 List View
               </TabsTrigger>
               <TabsTrigger value="calendar">
                 <CalendarIcon className="w-4 h-4 mr-2" />
-                Calendar View
+                Date View
+              </TabsTrigger>
+              <TabsTrigger value="fullcalendar">
+                <LayoutGrid className="w-4 h-4 mr-2" />
+                Full Calendar
               </TabsTrigger>
             </TabsList>
 
@@ -365,7 +430,7 @@ export default function AdminReservationsPage() {
                                   variant="ghost"
                                   size="sm"
                                   className="text-green-600 hover:text-green-700 hover:bg-green-50"
-                                  onClick={() => handleStatusUpdate(res.id, 'approved')}
+                                  onClick={() => openConfirmDialog(res, 'approved')}
                                   disabled={statusMutation.isPending}
                                 >
                                   <Check className="w-4 h-4 mr-1" />
@@ -375,7 +440,7 @@ export default function AdminReservationsPage() {
                                   variant="ghost"
                                   size="sm"
                                   className="text-red-600 hover:text-red-700 hover:bg-red-50"
-                                  onClick={() => handleStatusUpdate(res.id, 'rejected')}
+                                  onClick={() => openConfirmDialog(res, 'rejected')}
                                   disabled={statusMutation.isPending}
                                 >
                                   <X className="w-4 h-4 mr-1" />
@@ -438,10 +503,10 @@ export default function AdminReservationsPage() {
                             </div>
                             {res.status?.toUpperCase() === 'PENDING' && (
                               <div className="flex flex-col gap-2" onClick={(e) => e.stopPropagation()}>
-                                <Button size="sm" className="bg-green-600 hover:bg-green-700" onClick={() => handleStatusUpdate(res.id, 'approved')}>
+                                <Button size="sm" className="bg-green-600 hover:bg-green-700" onClick={() => openConfirmDialog(res, 'approved')}>
                                   <Check className="w-4 h-4 mr-1" /> Approve
                                 </Button>
-                                <Button size="sm" variant="destructive" onClick={() => handleStatusUpdate(res.id, 'rejected')}>
+                                <Button size="sm" variant="destructive" onClick={() => openConfirmDialog(res, 'rejected')}>
                                   <X className="w-4 h-4 mr-1" /> Reject
                                 </Button>
                               </div>
@@ -454,12 +519,80 @@ export default function AdminReservationsPage() {
                 </div>
               </div>
             </TabsContent>
+
+            <TabsContent value="fullcalendar" className="mt-6">
+              <CalendarViewComponent
+                reservations={filteredReservations.map((res: any): CalendarReservation => ({
+                  id: res.id,
+                  facilityId: res.facilityId,
+                  facilityName: res.facilityName || res.facility_name || "Unknown",
+                  date: res.date,
+                  startTime: res.startTime || res.start_time || "",
+                  endTime: res.endTime || res.end_time || "",
+                  purpose: res.purpose || "",
+                  status: res.status || "PENDING",
+                  userName: res.userName || res.user_name,
+                  attendees: res.participants || res.attendees,
+                }))}
+                onReservationClick={(reservation) => {
+                  const fullRes = filteredReservations.find((r: any) => r.id === reservation.id);
+                  if (fullRes) setSelectedReservation(fullRes);
+                }}
+                view="month"
+              />
+            </TabsContent>
           </Tabs>
         </CardContent>
       </Card>
 
       {/* Detail Modal */}
       <ReservationDetailModal reservation={selectedReservation} />
+
+      {/* Confirmation Dialog */}
+      <AlertDialog open={confirmAction.isOpen} onOpenChange={(open) => !open && cancelConfirmAction()}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              {confirmAction.action === 'approved' ? 'Approve Reservation?' : 'Reject Reservation?'}
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              {confirmAction.action === 'approved' ? (
+                <>
+                  Anda akan <span className="font-semibold text-green-600">menyetujui</span> reservasi dari{' '}
+                  <span className="font-semibold">{confirmAction.userName}</span> untuk{' '}
+                  <span className="font-semibold">{confirmAction.facilityName}</span>.
+                  <br /><br />
+                  User akan menerima notifikasi bahwa reservasi mereka telah disetujui.
+                </>
+              ) : (
+                <>
+                  Anda akan <span className="font-semibold text-red-600">menolak</span> reservasi dari{' '}
+                  <span className="font-semibold">{confirmAction.userName}</span> untuk{' '}
+                  <span className="font-semibold">{confirmAction.facilityName}</span>.
+                  <br /><br />
+                  User akan menerima notifikasi bahwa reservasi mereka ditolak.
+                </>
+              )}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={cancelConfirmAction}>Batal</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleConfirmedAction}
+              className={confirmAction.action === 'approved'
+                ? 'bg-green-600 hover:bg-green-700'
+                : 'bg-red-600 hover:bg-red-700'
+              }
+            >
+              {confirmAction.action === 'approved' ? (
+                <><Check className="w-4 h-4 mr-2" /> Ya, Approve</>
+              ) : (
+                <><X className="w-4 h-4 mr-2" /> Ya, Reject</>
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

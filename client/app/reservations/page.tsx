@@ -20,6 +20,16 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 import { RatingDialog } from "@/components/RatingDialog";
 
@@ -27,13 +37,29 @@ export default function ReservationManagementPage() {
     const { data: session } = useSession();
     const [ratingModal, setRatingModal] = useState<{ isOpen: boolean, reservationId: number, facilityId: number, facilityName: string } | null>(null);
 
+    // Cancel confirmation state
+    const [cancelConfirm, setCancelConfirm] = useState<{
+        isOpen: boolean;
+        reservationId: number | null;
+        facilityName: string;
+    }>({ isOpen: false, reservationId: null, facilityName: '' });
+
     const { data: reservations, isLoading, isError } = useMyReservations();
     const cancelMutation = useCancelReservation();
 
-    const handleCancel = (id: number) => {
-        if (confirm("Are you sure you want to cancel this reservation?")) {
-            cancelMutation.mutate(id);
+    const openCancelConfirm = (reservation: any) => {
+        setCancelConfirm({
+            isOpen: true,
+            reservationId: reservation.reservation_id || reservation.id,
+            facilityName: reservation.facilityName || reservation.facility_name,
+        });
+    };
+
+    const handleConfirmedCancel = () => {
+        if (cancelConfirm.reservationId) {
+            cancelMutation.mutate(cancelConfirm.reservationId);
         }
+        setCancelConfirm({ isOpen: false, reservationId: null, facilityName: '' });
     };
 
     const openRatingModal = (reservation: any) => {
@@ -181,7 +207,7 @@ export default function ReservationManagementPage() {
                                                             <Button
                                                                 variant="destructive"
                                                                 size="sm"
-                                                                onClick={() => handleCancel((res.reservation_id || res.id) as number)}
+                                                                onClick={() => openCancelConfirm(res)}
                                                                 disabled={cancelMutation.isPending}
                                                             >
                                                                 {cancelMutation.isPending ? <Loader2 className="h-3 w-3 animate-spin" /> : "Cancel"}
@@ -221,6 +247,37 @@ export default function ReservationManagementPage() {
                         facilityName={ratingModal.facilityName}
                     />
                 )}
+
+                {/* Cancel Confirmation Dialog */}
+                <AlertDialog open={cancelConfirm.isOpen} onOpenChange={(open) => !open && setCancelConfirm({ isOpen: false, reservationId: null, facilityName: '' })}>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle className="flex items-center gap-2">
+                                <AlertCircle className="w-5 h-5 text-red-600" />
+                                Batalkan Reservasi?
+                            </AlertDialogTitle>
+                            <AlertDialogDescription asChild>
+                                <div>
+                                    Anda akan <span className="font-semibold text-red-600">membatalkan</span> reservasi untuk{' '}
+                                    <span className="font-semibold">"{cancelConfirm.facilityName}"</span>.
+                                    <br /><br />
+                                    <span className="text-amber-600">⚠️ Tindakan ini tidak dapat dibatalkan.</span>
+                                    <br />
+                                    Slot waktu akan tersedia kembali untuk user lain.
+                                </div>
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Kembali</AlertDialogCancel>
+                            <AlertDialogAction
+                                onClick={handleConfirmedCancel}
+                                className="bg-red-600 hover:bg-red-700"
+                            >
+                                Ya, Batalkan Reservasi
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </main>
         </div>
     );

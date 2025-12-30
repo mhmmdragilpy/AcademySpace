@@ -23,12 +23,23 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export default function Navigation() {
   const { data: session } = useSession();
   // @ts-ignore
   const userRole = session?.user?.role || "user";
   const [notificationCount, setNotificationCount] = useState(0);
+  const [logoutConfirm, setLogoutConfirm] = useState(false);
 
   useEffect(() => {
     // @ts-ignore
@@ -50,6 +61,10 @@ export default function Navigation() {
   };
 
   const handleLogout = () => {
+    setLogoutConfirm(true);
+  };
+
+  const confirmLogout = () => {
     signOut({ callbackUrl: "/login" });
   };
 
@@ -76,146 +91,175 @@ export default function Navigation() {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-primary shadow-lg border-b border-white/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-48 h-10">
-              <Image
-                src="/images/Logo.png"
-                alt="Academy Space Logo"
-                fill
-                className="object-contain object-left"
-              />
+    <>
+      <nav className="sticky top-0 z-50 bg-primary shadow-lg border-b border-white/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative w-48 h-10">
+                <Image
+                  src="/images/Logo.png"
+                  alt="Academy Space Logo"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-1">
+              <NavLink href="/">Home</NavLink>
+
+              {userRole === 'user' && (
+                <>
+                  <NavLink href="/reservations">My Reservations</NavLink>
+                </>
+              )}
+
+              {userRole === 'admin' && (
+                <NavLink href="/admin/dashboard">Admin Panel</NavLink>
+              )}
+
+              <NavLink href="/guide">Guide</NavLink>
             </div>
-          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            <NavLink href="/">Home</NavLink>
-
-            {userRole === 'user' && (
-              <>
-                <NavLink href="/reservations">My Reservations</NavLink>
-              </>
-            )}
-
-            {userRole === 'admin' && (
-              <NavLink href="/admin/dashboard">Admin Panel</NavLink>
-            )}
-
-            <NavLink href="/guide">Guide</NavLink>
-          </div>
-
-          {/* Right Side */}
-          <div className="flex items-center gap-4">
-            {session ? (
-              <div className="flex items-center gap-4">
-                {/* Show notification for all logged-in users */}
-                <Link href="/notifications" className="relative p-2 text-primary-foreground/80 hover:text-white transition-colors">
-                  <Bell className="w-5 h-5" />
-                  {notificationCount > 0 && (
-                    <span className="absolute top-1 right-1 h-2.5 w-2.5 rounded-full bg-destructive ring-2 ring-primary" />
-                  )}
-                </Link>
-
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-white/20 hover:ring-white/40">
-                      <Avatar className="h-9 w-9">
-                        <AvatarImage src={session.user?.image || undefined} alt={session.user?.name || ""} />
-                        <AvatarFallback className="bg-primary-foreground text-primary font-bold">
-                          {session.user?.name?.charAt(0).toUpperCase() || "U"}
-                        </AvatarFallback>
-                      </Avatar>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56" align="end" forceMount>
-                    <DropdownMenuLabel className="font-normal">
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">{session.user?.name}</p>
-                        <p className="text-xs leading-none text-muted-foreground">
-                          {session.user?.email}
-                        </p>
-                      </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild>
-                      <Link href="/profile" className="cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
-                        <span>Profile</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleLogout} className="text-destructive focus:text-destructive cursor-pointer">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>Log out</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            ) : (
-              <div className="hidden md:flex items-center gap-3">
-                <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white" asChild>
-                  <Link href="/login">Log in</Link>
-                </Button>
-                <Button className="bg-white text-primary hover:bg-gray-100 font-bold" asChild>
-                  <Link href="/register">Sign Up</Link>
-                </Button>
-              </div>
-            )}
-
-            {/* Mobile Menu Button - Sheet */}
-            <Sheet>
-              <SheetTrigger asChild>
-                <button
-                  className="md:hidden p-2 text-white hover:bg-white/10 rounded-md"
-                >
-                  <Menu size={24} />
-                </button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <SheetHeader>
-                  <SheetTitle>Menu</SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col gap-4 mt-6">
-                  <MobileNavLink href="/">Home</MobileNavLink>
-                  {userRole === 'user' && (
-                    <>
-                      <MobileNavLink href="/reservations">My Reservations</MobileNavLink>
-                    </>
-                  )}
-                  {userRole === 'admin' && (
-                    <MobileNavLink href="/admin/dashboard">Admin Panel</MobileNavLink>
-                  )}
-                  <MobileNavLink href="/guide">Guide</MobileNavLink>
-
-                  <div className="border-t pt-4 mt-2">
-                    {session ? (
-                      <Button
-                        onClick={handleLogout}
-                        variant="destructive"
-                        className="w-full justify-start"
-                      >
-                        <LogOut className="mr-2 h-4 w-4" /> Log out
-                      </Button>
-                    ) : (
-                      <div className="flex flex-col gap-3">
-                        <Button variant="outline" className="w-full" asChild>
-                          <Link href="/login">Log in</Link>
-                        </Button>
-                        <Button className="w-full" asChild>
-                          <Link href="/register">Sign Up</Link>
-                        </Button>
-                      </div>
+            {/* Right Side */}
+            <div className="flex items-center gap-4">
+              {session ? (
+                <div className="flex items-center gap-4">
+                  {/* Show notification for all logged-in users */}
+                  <Link href="/notifications" className="relative p-2 text-primary-foreground/80 hover:text-white transition-colors">
+                    <Bell className="w-5 h-5" />
+                    {notificationCount > 0 && (
+                      <span className="absolute top-1 right-1 h-2.5 w-2.5 rounded-full bg-destructive ring-2 ring-primary" />
                     )}
-                  </div>
+                  </Link>
+
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-white/20 hover:ring-white/40">
+                        <Avatar className="h-9 w-9">
+                          <AvatarImage src={session.user?.image || undefined} alt={session.user?.name || ""} />
+                          <AvatarFallback className="bg-primary-foreground text-primary font-bold">
+                            {session.user?.name?.charAt(0).toUpperCase() || "U"}
+                          </AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="end" forceMount>
+                      <DropdownMenuLabel className="font-normal">
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-sm font-medium leading-none">{session.user?.name}</p>
+                          <p className="text-xs leading-none text-muted-foreground">
+                            {session.user?.email}
+                          </p>
+                        </div>
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href="/profile" className="cursor-pointer">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Profile</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleLogout} className="text-destructive focus:text-destructive cursor-pointer">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log out</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
-              </SheetContent>
-            </Sheet>
+              ) : (
+                <div className="hidden md:flex items-center gap-3">
+                  <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white" asChild>
+                    <Link href="/login">Log in</Link>
+                  </Button>
+                  <Button className="bg-white text-primary hover:bg-gray-100 font-bold" asChild>
+                    <Link href="/register">Sign Up</Link>
+                  </Button>
+                </div>
+              )}
+
+              {/* Mobile Menu Button - Sheet */}
+              <Sheet>
+                <SheetTrigger asChild>
+                  <button
+                    className="md:hidden p-2 text-white hover:bg-white/10 rounded-md"
+                  >
+                    <Menu size={24} />
+                  </button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                  <SheetHeader>
+                    <SheetTitle>Menu</SheetTitle>
+                  </SheetHeader>
+                  <div className="flex flex-col gap-4 mt-6">
+                    <MobileNavLink href="/">Home</MobileNavLink>
+                    {userRole === 'user' && (
+                      <>
+                        <MobileNavLink href="/reservations">My Reservations</MobileNavLink>
+                      </>
+                    )}
+                    {userRole === 'admin' && (
+                      <MobileNavLink href="/admin/dashboard">Admin Panel</MobileNavLink>
+                    )}
+                    <MobileNavLink href="/guide">Guide</MobileNavLink>
+
+                    <div className="border-t pt-4 mt-2">
+                      {session ? (
+                        <Button
+                          onClick={handleLogout}
+                          variant="destructive"
+                          className="w-full justify-start"
+                        >
+                          <LogOut className="mr-2 h-4 w-4" /> Log out
+                        </Button>
+                      ) : (
+                        <div className="flex flex-col gap-3">
+                          <Button variant="outline" className="w-full" asChild>
+                            <Link href="/login">Log in</Link>
+                          </Button>
+                          <Button className="w-full" asChild>
+                            <Link href="/register">Sign Up</Link>
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Logout Confirmation Dialog */}
+      <AlertDialog open={logoutConfirm} onOpenChange={setLogoutConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2">
+              <LogOut className="w-5 h-5 text-red-600" />
+              Logout?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              Anda yakin ingin keluar dari akun?
+              <br />
+              Anda perlu login kembali untuk mengakses fitur yang memerlukan autentikasi.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Batal</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmLogout}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Ya, Logout
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }

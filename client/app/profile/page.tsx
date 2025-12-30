@@ -14,6 +14,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 interface UserData {
     fullName: string;
@@ -40,6 +50,7 @@ export default function ProfilePage() {
     const [editingField, setEditingField] = useState<string | null>(null);
     const [tempValue, setTempValue] = useState("");
     const [isClient, setIsClient] = useState(false);
+    const [deleteAvatarConfirm, setDeleteAvatarConfirm] = useState(false);
 
     useEffect(() => {
         setIsClient(true);
@@ -117,7 +128,7 @@ export default function ProfilePage() {
     };
 
     const handleDeleteAvatar = async () => {
-        if (!confirm("Are you sure you want to remove your profile picture?")) return;
+        setDeleteAvatarConfirm(false);
 
         setIsUploading(true);
         const toastId = toast.loading("Removing profile picture...");
@@ -279,7 +290,7 @@ export default function ProfilePage() {
                                         </button>
                                         {userData.avatar && (
                                             <button
-                                                onClick={handleDeleteAvatar}
+                                                onClick={() => setDeleteAvatarConfirm(true)}
                                                 className="p-2 bg-red-500/80 backdrop-blur-sm rounded-full hover:bg-red-600 text-white transition-all"
                                                 title="Remove photo"
                                             >
@@ -485,6 +496,33 @@ export default function ProfilePage() {
             )}
 
             <Footer />
+
+            {/* Delete Avatar Confirmation Dialog */}
+            <AlertDialog open={deleteAvatarConfirm} onOpenChange={setDeleteAvatarConfirm}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2">
+                            <Trash2 className="w-5 h-5 text-red-600" />
+                            Hapus Foto Profil?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Anda yakin ingin menghapus foto profil?
+                            <br />
+                            Foto akan dihapus dan diganti dengan avatar default.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Batal</AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={handleDeleteAvatar}
+                            className="bg-red-600 hover:bg-red-700"
+                        >
+                            <Trash2 className="w-4 h-4 mr-2" />
+                            Ya, Hapus
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

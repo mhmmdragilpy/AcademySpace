@@ -22,6 +22,16 @@ import {
     SheetTitle,
     SheetClose
 } from "@/components/ui/sheet";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 
 const sidebarNavItems = [
@@ -59,6 +69,15 @@ interface AdminLayoutContentProps {
 export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
     const pathname = usePathname();
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const [logoutConfirm, setLogoutConfirm] = useState(false);
+
+    const handleLogout = () => {
+        setLogoutConfirm(true);
+    };
+
+    const confirmLogout = () => {
+        signOut({ callbackUrl: "/" });
+    };
 
     const SidebarContent = () => (
         <div className="flex flex-col h-full bg-white border-r border-gray-200">
@@ -101,7 +120,7 @@ export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
                     variant="ghost"
                     size="sm"
                     className="w-full justify-start text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={() => signOut({ callbackUrl: "/" })}
+                    onClick={handleLogout}
                 >
                     <LogOut className="mr-3 h-5 w-5" />
                     Logout
@@ -139,6 +158,33 @@ export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
                     {children}
                 </main>
             </div>
+
+            {/* Logout Confirmation Dialog */}
+            <AlertDialog open={logoutConfirm} onOpenChange={setLogoutConfirm}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2">
+                            <LogOut className="w-5 h-5 text-red-600" />
+                            Logout?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Anda yakin ingin keluar dari admin panel?
+                            <br />
+                            Session Anda akan berakhir dan perlu login kembali.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Batal</AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={confirmLogout}
+                            className="bg-red-600 hover:bg-red-700"
+                        >
+                            <LogOut className="w-4 h-4 mr-2" />
+                            Ya, Logout
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }
