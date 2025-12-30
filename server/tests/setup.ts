@@ -1,7 +1,7 @@
 // Test Setup Configuration
 // This file runs before all tests
-
-import { jest } from '@jest/globals';
+// @ts-nocheck - Disable strict type checking for test file
+import { jest, beforeAll, afterAll, beforeEach } from '@jest/globals';
 
 // Set default timeout for all tests
 jest.setTimeout(10000);

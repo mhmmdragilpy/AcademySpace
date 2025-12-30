@@ -1,4 +1,5 @@
-import { jest } from '@jest/globals';
+// @ts-nocheck - Disable strict type checking for test file due to Jest mock function typing issues
+import { jest, describe, it, expect, beforeEach } from '@jest/globals';
 import request from 'supertest';
 
 // Mocks MUST be defined before imports that use them.
