@@ -6,7 +6,7 @@ import buildingRoutes from './buildingRoutes.js';
 import reservationRoutes from './reservationRoutes.js';
 import notificationRoutes from './notificationRoutes.js';
 import userRoutes from './userRoutes.js';
-import ratingRoutes from './ratingRoutes.js';
+
 import dashboardRoutes from './dashboardRoutes.js';
 import uploadRoutes from './uploadRoutes.js';
 
@@ -19,7 +19,7 @@ router.use('/buildings', buildingRoutes);
 router.use('/reservations', reservationRoutes);
 router.use('/notifications', notificationRoutes);
 router.use('/users', userRoutes);
-router.use('/ratings', ratingRoutes);
+
 router.use('/dashboard', dashboardRoutes);
 router.use('/upload', uploadRoutes);
 

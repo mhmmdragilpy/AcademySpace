@@ -1,3 +1,4 @@
+// [USE CASE #4] Mencari Fasilitas - Landing Page View
 "use client";
 
 import Navigation from "@/components/Navigation";
@@ -7,7 +8,7 @@ import MostValuablePlaces from "@/components/MostValuablePlaces";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Navigation />

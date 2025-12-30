@@ -1,3 +1,4 @@
+// USE CASE #7: Mengajukan Reservasi - [View]
 "use client";
 
 import { useState, useEffect } from "react";
@@ -193,6 +194,7 @@ export function BookingForm({
         return true;
     };
 
+    // [USE CASE #7] Mengajukan Reservasi - Handle Submit Form Reservasi
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 

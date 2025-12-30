@@ -1,7 +1,9 @@
+// USE CASE #15: Melihat Analitik dan Pelaporan - [Controller]
 import type { Request, Response } from "express";
 import { query } from "../db/index.js";
 import logger from "../utils/logger.js";
 
+// [USE CASE #15] Melihat Analitik dan Pelaporan - Get dashboard stats
 export const getDashboardStats = async (req: Request, res: Response) => {
     try {
         // Users Count
@@ -55,6 +57,7 @@ export const getDashboardStats = async (req: Request, res: Response) => {
     }
 };
 
+// [USE CASE #16] Mengambil Token Sistem - Admin mengambil token
 export const getSystemTokens = async (req: Request, res: Response) => {
     try {
         const result = await query("SELECT key, value FROM system_tokens WHERE key IN ('ADMIN_REG_TOKEN', 'RESET_PASS_TOKEN')");

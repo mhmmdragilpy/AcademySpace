@@ -16,7 +16,7 @@ async function seedDatabase() {
         // Clear existing data (using TRUNCATE for cleaner reset)
         logger.info('Clearing existing data...');
         // Cascade to clear dependent tables
-        await query('TRUNCATE buildings, facilities, users, facility_types, reservation_statuses, reservations, reservation_items, notifications, ratings, system_tokens RESTART IDENTITY CASCADE;');
+        await query('TRUNCATE buildings, facilities, users, facility_types, reservation_statuses, reservations, reservation_items, notifications, system_tokens RESTART IDENTITY CASCADE;');
 
         // 1. Insert System Tokens
         logger.info('Seeding system tokens...');

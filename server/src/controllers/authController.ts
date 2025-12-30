@@ -1,3 +1,6 @@
+// USE CASE #1: Membuat atau Masuk Akun - [Controller]
+// USE CASE #2: Mereset Password - [Controller]
+// USE CASE #16: Mengambil Token Sistem - [Controller]
 import type { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -6,6 +9,7 @@ import { catchAsync } from "../utils/catchAsync.js";
 import { AppError } from "../utils/AppError.js";
 import { sendSuccess } from "../utils/response.js";
 
+// [USE CASE #1] Membuat atau Masuk Akun - Proses Registrasi User Baru
 export const register = catchAsync(async (req: Request, res: Response) => {
     const { name, username, password, role, admin_token } = req.body;
 
@@ -36,6 +40,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     sendSuccess(res, userWithoutPassword, "User registered successfully");
 });
 
+// [USE CASE #1] Membuat atau Masuk Akun - Proses Login User
 export const login = catchAsync(async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
@@ -76,6 +81,7 @@ export const getMe = catchAsync(async (req: Request, res: Response) => {
     sendSuccess(res, userWithoutPassword);
 });
 
+// [USE CASE #2] Mereset Password - Request Token Reset
 export const resetPassword = catchAsync(async (req: Request, res: Response) => {
     const { username, token, newPassword } = req.body;
 

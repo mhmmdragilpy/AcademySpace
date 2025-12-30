@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Use Case - Sistem Reservasi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigasi Dokumen</h3>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="mvc_architecture.html">Arsitektur MVC & Tech Stack</a></li>
+                <li><a href="skpl.html">SKPL (Kebutuhan/Use Cases)</a></li>
+                <li><a href="dppl.html">DPPL (Desain & Database)</a></li>
+                <li><a href="dupl.html">DUPL (Pengujian/Testing)</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Detail Use Case Skenario</h1>
+            <p>Berikut adalah rincian alur logika (Flow of Events) untuk setiap Use Case.</p>
+
+            <div class="card">
+                <h3>#7 Mengajukan Reservasi</h3>
+                <p><strong>Deskripsi:</strong> User mengajukan reservasi fasilitas untuk kegiatan tertentu.</p>
+                <p><strong>Aktor:</strong> User (Mahasiswa/Dosen)</p>
+                <h4>Pre-condition</h4>
+                <ul>
+                    <li>User telah login kedalam sistem.</li>
+                    <li>Fasilitas tersedia pada tanggal yang dipilih.</li>
+                </ul>
+                <h4>Primary Flow</h4>
+                <ol>
+                    <li>User memilih fasilitas dan melihat kalender.</li>
+                    <li>Sistem menampilkan slot waktu yang tersedia (Hijau) dan terisi (Merah).</li>
+                    <li>User memilih slot waktu yang diinginkan.</li>
+                    <li>User mengisi form: Jumlah Peserta, Keperluan, Upload Proposal (PDF).</li>
+                    <li>User menekan tombol "Ajukan Reservasi".</li>
+                    <li>Sistem memvalidasi input (kelengkapan data dan bentrok jadwal).</li>
+                    <li>Sistem menyimpan data reservasi dengan status "PENDING".</li>
+                    <li>Sistem menampilkan notifikasi sukses dan redirect ke halaman Riwayat.</li>
+                </ol>
+                <h4>Post-condition</h4>
+                <ul>
+                    <li>Data reservasi tersimpan di database.</li>
+                    <li>Slot waktu tercatat sementara agar tidak dibooking orang lain (walaupun masih pending).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>#9 Menyetujui atau Menolak Reservasi</h3>
+                <p><strong>Deskripsi:</strong> Admin memproses pengajuan reservasi yang masuk.</p>
+                <p><strong>Aktor:</strong> Admin</p>
+                <h4>Primary Flow</h4>
+                <ol>
+                    <li>Admin login dan membuka halaman "Manage Reservations".</li>
+                    <li>Sistem menampilkan daftar reservasi dengan status "PENDING".</li>
+                    <li>Admin memilih salah satu reservasi untuk melihat detail (Proposal, Keperluan).</li>
+                    <li>Admin menekan tombol "Approve" (Setuju) atau "Reject" (Tolak).</li>
+                    <li>Jika Reject, Admin wajib mengisi alasan penolakan.</li>
+                    <li>Sistem mengupdate status reservasi di database.</li>
+                    <li>Sistem mengirim notifikasi ke User.</li>
+                </ol>
+            </div>
+
+            <!-- Tambahkan detail Use Case lain sesuai kebutuhan presentasi -->
+            <div class="card">
+                <h3>#4 Mencari Fasilitas</h3>
+                <p><strong>Deskripsi:</strong> Sistem menyediakan fitur pencarian fasilitas.</p>
+                <p><strong>Aktor:</strong> User/Guest</p>
+                <h4>Primary Flow</h4>
+                <ol>
+                    <li>User mengakses halaman utama atau halaman eksplorasi.</li>
+                    <li>User mengetik kata kunci pada search bar (e.g. "Aula").</li>
+                    <li>Sistem melakukan query ke database menggunakan `ILIKE` atau pencarian teks.</li>
+                    <li>Sistem menampilkan daftar fasilitas yang relevan.</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

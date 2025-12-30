@@ -1,10 +1,19 @@
-import { BaseRepository } from './BaseRepository.js';
+// USE CASE #6: Melihat Jadwal dan Ketersediaan Fasilitas - [Model]
+// USE CASE #7: Mengajukan Reservasi - [Model]
+// USE CASE #8: Mengedit atau Membatalkan Reservasi - [Model]
+// USE CASE #9: Menyetujui atau Menolak Reservasi - [Model]
+// USE CASE #10: Melihat Detail Reservasi - [Model]
+// USE CASE #12: Melihat Riwayat Reservasi - [Model]
+// USE CASE #14: Melihat Jadwal Reservasi - [Model]
+// USE CASE #15: Melihat Analitik dan Pelaporan - [Model]
+import { BaseRepository } from "./BaseRepository.js";
 import type { Reservation } from '../types/models/index.js';
 
 export class ReservationRepository extends BaseRepository<Reservation> {
     protected tableName = 'reservations';
     protected primaryKey = 'reservation_id';
 
+    // [USE CASE #7] Mengajukan Reservasi - Insert reservasi & item ke DB
     async createWithItem(data: {
         userId: number;
         statusId: number;
@@ -57,6 +66,7 @@ export class ReservationRepository extends BaseRepository<Reservation> {
         }
     }
 
+    // [USE CASE #10] Melihat Detail Reservasi - Query detail dengan join
     async findWithDetails(id: number) {
         const query = `
             SELECT 
@@ -88,6 +98,7 @@ export class ReservationRepository extends BaseRepository<Reservation> {
         return result.rows[0] || null;
     }
 
+    // [USE CASE #14] Melihat Jadwal Reservasi - Query semua reservasi (Admin)
     async findAllWithDetails() {
         const query = `
             SELECT 
@@ -113,6 +124,7 @@ export class ReservationRepository extends BaseRepository<Reservation> {
         return result.rows;
     }
 
+    // [USE CASE #12] Melihat Riwayat Reservasi - Query reservasi per user
     async findByUserId(userId: number) {
         const query = `
             SELECT 
@@ -124,13 +136,12 @@ export class ReservationRepository extends BaseRepository<Reservation> {
                 to_char(ri.start_datetime, 'HH24:MI') as start_time,
                 to_char(ri.end_datetime, 'HH24:MI') as end_time,
                 r.created_at,
-                f.facility_id,
-                CASE WHEN rt.rating_id IS NOT NULL THEN true ELSE false END as is_rated
+                f.facility_id
             FROM reservations r
             JOIN reservation_items ri ON r.reservation_id = ri.reservation_id
             LEFT JOIN facilities f ON ri.facility_id = f.facility_id
             JOIN reservation_statuses rs ON r.status_id = rs.status_id
-            LEFT JOIN ratings rt ON r.reservation_id = rt.reservation_id
+
             WHERE r.requester_id = $1 
             ORDER BY r.created_at DESC
         `;
@@ -138,6 +149,7 @@ export class ReservationRepository extends BaseRepository<Reservation> {
         return result.rows;
     }
 
+    // [USE CASE #8] Mengedit atau Membatalkan Reservasi - Update data reservasi
     async updateWithDetails(id: number, data: {
         purpose?: string;
         attendees?: number;
@@ -214,6 +226,7 @@ export class ReservationRepository extends BaseRepository<Reservation> {
         }
     }
 
+    // [USE CASE #6] Melihat Jadwal dan Ketersediaan Fasilitas - Cek bentrok waktu
     async findConflicts(facilityId: number, start: string, end: string, excludeReservationId?: number) {
         let query = `
             SELECT ri.item_id 

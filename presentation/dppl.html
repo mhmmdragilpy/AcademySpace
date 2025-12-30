@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPPL (Desain) - Sistem Reservasi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .db-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .db-table th {
+            background-color: #08294B;
+            color: white;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .db-table td {
+            border: 1px solid #ddd;
+            padding: 6px;
+        }
+
+        .db-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .seq-box {
+            background: #f4f4f4;
+            padding: 15px;
+            border-left: 4px solid #FA7436;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigasi Dokumen</h3>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="mvc_architecture.html">Arsitektur MVC & Tech Stack</a></li>
+                <li><a href="skpl.html">SKPL (Kebutuhan/Use Cases)</a></li>
+                <li><a href="dppl.html" class="active">DPPL (Desain & Database)</a></li>
+                <li><a href="dupl.html">DUPL (Pengujian/Testing)</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Deskripsi Perancangan Perangkat Lunak (DPPL)</h1>
+            <p>Detail perancangan basis data dan logika algoritma sistem.</p>
+
+            <h2>1. Kamus Data (Database Schema)</h2>
+            <p>Sistem menggunakan <strong>PostgreSQL</strong>. Berikut adalah definisi tabel lengkap berdasarkan
+                <code>schema.sql</code>.</p>
+
+            <h3>Tabel: Users</h3>
+            <table class="db-table">
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>user_id</td>
+                    <td>INT (PK)</td>
+                    <td>Primary Key Auto Increment</td>
+                </tr>
+                <tr>
+                    <td>username</td>
+                    <td>VARCHAR</td>
+                    <td>Unique login identifier</td>
+                </tr>
+                <tr>
+                    <td>password_hash</td>
+                    <td>VARCHAR</td>
+                    <td>Bcrypt encrypted password</td>
+                </tr>
+                <tr>
+                    <td>full_name</td>
+                    <td>VARCHAR</td>
+                    <td>Nama lengkap pengguna</td>
+                </tr>
+                <tr>
+                    <td>role</td>
+                    <td>ENUM</td>
+                    <td>'admin' | 'user'</td>
+                </tr>
+                <tr>
+                    <td>is_suspended</td>
+                    <td>BOOLEAN</td>
+                    <td>Status aktif akun</td>
+                </tr>
+            </table>
+
+            <h3>Tabel: Facilities</h3>
+            <table class="db-table">
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>facility_id</td>
+                    <td>INT (PK)</td>
+                    <td>Primary Key</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>VARCHAR</td>
+                    <td>Nama ruangan/fasilitas</td>
+                </tr>
+                <tr>
+                    <td>type_id</td>
+                    <td>INT (FK)</td>
+                    <td>Referensi ke facility_types</td>
+                </tr>
+                <tr>
+                    <td>building_id</td>
+                    <td>INT (FK)</td>
+                    <td>Referensi ke buildings</td>
+                </tr>
+                <tr>
+                    <td>capacity</td>
+                    <td>INT</td>
+                    <td>Kapasitas maksimum orang</td>
+                </tr>
+                <tr>
+                    <td>is_active</td>
+                    <td>BOOLEAN</td>
+                    <td>Status ketersediaan umum</td>
+                </tr>
+            </table>
+
+            <h3>Tabel: Reservations</h3>
+            <table class="db-table">
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>reservation_id</td>
+                    <td>INT (PK)</td>
+                    <td>Primary Key</td>
+                </tr>
+                <tr>
+                    <td>requester_id</td>
+                    <td>INT (FK)</td>
+                    <td>Referensi ke Users (peminjam)</td>
+                </tr>
+                <tr>
+                    <td>status_id</td>
+                    <td>INT (FK)</td>
+                    <td>Referensi ke reservation_statuses (1=Pending, 2=Approved, etc)</td>
+                </tr>
+                <tr>
+                    <td>purpose</td>
+                    <td>TEXT</td>
+                    <td>Alasan peminjaman</td>
+                </tr>
+                <tr>
+                    <td>proposal_url</td>
+                    <td>VARCHAR</td>
+                    <td>Link file proposal (jika ada)</td>
+                </tr>
+            </table>
+
+            <h3>Tabel: Reservation_Items</h3>
+            <table class="db-table">
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>item_id</td>
+                    <td>INT (PK)</td>
+                    <td>Primary Key</td>
+                </tr>
+                <tr>
+                    <td>reservation_id</td>
+                    <td>INT (FK)</td>
+                    <td>Parent reservation</td>
+                </tr>
+                <tr>
+                    <td>facility_id</td>
+                    <td>INT (FK)</td>
+                    <td>Fasilitas yang dipinjam</td>
+                </tr>
+                <tr>
+                    <td>start_datetime</td>
+                    <td>TIMESTAMPTZ</td>
+                    <td>Waktu mulai peminjaman</td>
+                </tr>
+                <tr>
+                    <td>end_datetime</td>
+                    <td>TIMESTAMPTZ</td>
+                    <td>Waktu selesai peminjaman</td>
+                </tr>
+            </table>
+
+            <h2>2. Detail Logika Sequence (Pseudo-Code)</h2>
+
+            <h3>Logika Validasi Konflik Jadwal (Conflict Detection)</h3>
+            <p>Digunakan pada Use Case #7 (Reservasi) untuk mencegah double-booking.</p>
+            <div class="seq-box">
+                FUNCTION checkConflict(facility_id, new_start, new_end):
+                QUERY database:
+                SELECT * FROM reservation_items
+                WHERE facility_id = Input.facility_id
+                AND (
+                (start_datetime < new_end) AND (end_datetime> new_start)
+                    )
+                    AND reservation.status != 'REJECTED' or 'CANCELED'
+
+                    IF query_result IS NOT EMPTY:
+                    RETURN Conflict Found (True)
+                    ELSE:
+                    RETURN Safe (False)
+            </div>
+
+            <h3>Logika Reservasi Atomik</h3>
+            <p>Memastikan data reservasi dan item waktu tersimpan bersamaan atau batal keduanya (Transaction).</p>
+            <div class="seq-box">
+                BEGIN TRANSACTION
+                TRY:
+                1. INSERT INTO reservations (...) RETURNING reservation_id
+                2. FOR EACH requested_slot:
+                INSERT INTO reservation_items (reservation_id, ...)
+                3. COMMIT TRANSACTION
+                RETURN Success
+                CATCH Error:
+                ROLLBACK TRANSACTION
+                RETURN Failed
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -117,12 +117,4 @@ export interface PasswordResetToken {
     used: boolean;
     created_at: Date;
 }
-export interface Rating {
-    rating_id: number;
-    user_id: number;
-    facility_id: number;
-    reservation_id: number;
-    rating: number;
-    review?: string | null;
-    created_at: Date;
-}
+

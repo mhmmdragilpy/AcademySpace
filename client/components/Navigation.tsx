@@ -65,7 +65,7 @@ export default function Navigation() {
   };
 
   const confirmLogout = () => {
-    signOut({ callbackUrl: "/login" });
+    signOut({ callbackUrl: "/LoginPage" });
   };
 
   const NavLink = ({ href, children, isActive }: { href: string; children: React.ReactNode; isActive?: boolean }) => (
@@ -113,15 +113,15 @@ export default function Navigation() {
 
               {userRole === 'user' && (
                 <>
-                  <NavLink href="/reservations">My Reservations</NavLink>
+                  <NavLink href="/MyReservationsPage">My Reservations</NavLink>
                 </>
               )}
 
               {userRole === 'admin' && (
-                <NavLink href="/admin/dashboard">Admin Panel</NavLink>
+                <NavLink href="/AdminDashboard">Admin Panel</NavLink>
               )}
 
-              <NavLink href="/guide">Guide</NavLink>
+              <NavLink href="/GuidePage">Guide</NavLink>
             </div>
 
             {/* Right Side */}
@@ -129,7 +129,7 @@ export default function Navigation() {
               {session ? (
                 <div className="flex items-center gap-4">
                   {/* Show notification for all logged-in users */}
-                  <Link href="/notifications" className="relative p-2 text-primary-foreground/80 hover:text-white transition-colors">
+                  <Link href="/NotificationsPage" className="relative p-2 text-primary-foreground/80 hover:text-white transition-colors">
                     <Bell className="w-5 h-5" />
                     {notificationCount > 0 && (
                       <span className="absolute top-1 right-1 h-2.5 w-2.5 rounded-full bg-destructive ring-2 ring-primary" />
@@ -158,7 +158,7 @@ export default function Navigation() {
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem asChild>
-                        <Link href="/profile" className="cursor-pointer">
+                        <Link href="/ProfilePage" className="cursor-pointer">
                           <User className="mr-2 h-4 w-4" />
                           <span>Profile</span>
                         </Link>
@@ -173,10 +173,10 @@ export default function Navigation() {
               ) : (
                 <div className="hidden md:flex items-center gap-3">
                   <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white" asChild>
-                    <Link href="/login">Log in</Link>
+                    <Link href="/LoginPage">Log in</Link>
                   </Button>
                   <Button className="bg-white text-primary hover:bg-gray-100 font-bold" asChild>
-                    <Link href="/register">Sign Up</Link>
+                    <Link href="/RegisterPage">Sign Up</Link>
                   </Button>
                 </div>
               )}
@@ -198,13 +198,13 @@ export default function Navigation() {
                     <MobileNavLink href="/">Home</MobileNavLink>
                     {userRole === 'user' && (
                       <>
-                        <MobileNavLink href="/reservations">My Reservations</MobileNavLink>
+                        <MobileNavLink href="/MyReservationsPage">My Reservations</MobileNavLink>
                       </>
                     )}
                     {userRole === 'admin' && (
-                      <MobileNavLink href="/admin/dashboard">Admin Panel</MobileNavLink>
+                      <MobileNavLink href="/AdminDashboard">Admin Panel</MobileNavLink>
                     )}
-                    <MobileNavLink href="/guide">Guide</MobileNavLink>
+                    <MobileNavLink href="/GuidePage">Guide</MobileNavLink>
 
                     <div className="border-t pt-4 mt-2">
                       {session ? (
@@ -218,10 +218,10 @@ export default function Navigation() {
                       ) : (
                         <div className="flex flex-col gap-3">
                           <Button variant="outline" className="w-full" asChild>
-                            <Link href="/login">Log in</Link>
+                            <Link href="/LoginPage">Log in</Link>
                           </Button>
                           <Button className="w-full" asChild>
-                            <Link href="/register">Sign Up</Link>
+                            <Link href="/RegisterPage">Sign Up</Link>
                           </Button>
                         </div>
                       )}

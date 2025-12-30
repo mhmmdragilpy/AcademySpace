@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+// USE CASE #18: Menyaring Pencarian Fasilitas - [View]
 import { Search, SlidersHorizontal, X, Users, Building2, CheckCircle } from "lucide-react";
+import { Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,6 +42,7 @@ const defaultFilters: FilterState = {
     availability: "all",
 };
 
+// [USE CASE #18] Menyaring Pencarian Fasilitas - Logic Filter Pencarian
 export function FilterComponent({
     onFilterChange,
     facilityTypes,
@@ -134,8 +137,8 @@ export function FilterComponent({
                 <button
                     onClick={() => updateFilter("facilityType", null)}
                     className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${filters.facilityType === null
-                            ? "bg-[#FA7436] text-white shadow-md"
-                            : "bg-white text-gray-700 border hover:border-[#FA7436] hover:text-[#FA7436]"
+                        ? "bg-[#FA7436] text-white shadow-md"
+                        : "bg-white text-gray-700 border hover:border-[#FA7436] hover:text-[#FA7436]"
                         }`}
                 >
                     All
@@ -145,8 +148,8 @@ export function FilterComponent({
                         key={type.type_id}
                         onClick={() => updateFilter("facilityType", type.type_id)}
                         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${filters.facilityType === type.type_id
-                                ? "bg-[#FA7436] text-white shadow-md"
-                                : "bg-white text-gray-700 border hover:border-[#FA7436] hover:text-[#FA7436]"
+                            ? "bg-[#FA7436] text-white shadow-md"
+                            : "bg-white text-gray-700 border hover:border-[#FA7436] hover:text-[#FA7436]"
                             }`}
                     >
                         {type.name}

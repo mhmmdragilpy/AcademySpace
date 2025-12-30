@@ -1,3 +1,7 @@
+// USE CASE #4: Mencari Fasilitas - [Model]
+// USE CASE #5: Melihat Detail Ruangan - [Model]
+// USE CASE #13: Mengelola Fasilitas - [Model]
+// USE CASE #18: Menyaring Pencarian Fasilitas - [Model]
 import { BaseRepository } from './BaseRepository.js';
 import type { Facility } from '../types/models/index.js';
 
@@ -5,6 +9,7 @@ export class FacilityRepository extends BaseRepository<Facility> {
     protected tableName = 'facilities';
     protected primaryKey = 'facility_id';
 
+    // [USE CASE #4] [USE CASE #18] Mencari & Filter Fasilitas - Query dengan Dynamic Filter
     async findWithDetails(filters: any) {
         let queryText = `
             SELECT 
@@ -73,6 +78,7 @@ export class FacilityRepository extends BaseRepository<Facility> {
         return result.rows;
     }
 
+    // [USE CASE #6] Ketersediaan Fasilitas - Cek konflik ID fasilitas
     async findConflictingFacilityIds(start: string, end: string): Promise<number[]> {
         const query = `
             SELECT DISTINCT ri.facility_id 

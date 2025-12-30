@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKPL (Use Cases) - Sistem Reservasi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .uc-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #08294B;
+        }
+
+        .uc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .uc-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #08294B;
+        }
+
+        .uc-meta {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .uc-section {
+            margin-bottom: 15px;
+        }
+
+        .uc-section h4 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #FA7436;
+        }
+
+        .uc-section ul,
+        .uc-section ol {
+            margin-left: 20px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigasi Dokumen</h3>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="mvc_architecture.html">Arsitektur MVC & Tech Stack</a></li>
+                <li><a href="skpl.html" class="active">SKPL (Detail Use Cases)</a></li>
+                <li><a href="dppl.html">DPPL (Desain & Database)</a></li>
+                <li><a href="dupl.html">DUPL (Pengujian/Testing)</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Spesifikasi Kebutuhan Perangkat Lunak (SKPL)</h1>
+            <p>Dokumen ini merinci <strong>18 Use Case</strong> dengan alur lengkap (Pre-condition, Flow,
+                Post-condition) sesuai standar SKPL.</p>
+
+            <!-- USE CASE #1 -->
+            <div class="uc-card" id="uc1">
+                <div class="uc-header">
+                    <div class="uc-title">#1 Membuat atau Masuk Akun</div>
+                    <div class="uc-meta">Aktor: Guest, User</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>Mencocokkan data user dengan database; jika belum ada, user menginputkan biodata baru.</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Pre-condition</h4>
+                    <ul>
+                        <li>Pengunjung belum login (Guest).</li>
+                    </ul>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>User mengakses halaman Login.</li>
+                        <li>User memasukkan username dan password.</li>
+                        <li>Sistem memvalidasi kredensial.</li>
+                        <li>Jika valid, sistem membuat sesi dan redirect ke Home.</li>
+                        <li>Jika belum punya akun, user memilih "Register".</li>
+                        <li>User mengisi form registrasi (Nama, Username, Password).</li>
+                        <li>Sistem menyimpan data user baru.</li>
+                    </ol>
+                </div>
+                <div class="uc-section">
+                    <h4>Post-condition</h4>
+                    <ul>
+                        <li>User berhasil login dan mendapatkan akses sesuai Role.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- USE CASE #2 -->
+            <div class="uc-card" id="uc2">
+                <div class="uc-header">
+                    <div class="uc-title">#2 Mereset Password</div>
+                    <div class="uc-meta">Aktor: User</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>User membuat password baru jika lupa password lama.</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>User memilih "Lupa Password" di halaman login.</li>
+                        <li>User memasukkan Token Reset yang valid (didapat dari Admin).</li>
+                        <li>User memasukkan password baru dan konfirmasi.</li>
+                        <li>Sistem mengupdate password di database.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- USE CASE #3 -->
+            <div class="uc-card" id="uc3">
+                <div class="uc-header">
+                    <div class="uc-title">#3 Mengelola Profil</div>
+                    <div class="uc-meta">Aktor: User, Admin</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>User mengubah data profil seperti Nama, Username, atau Password.</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Pre-condition</h4>
+                    <ul>
+                        <li>User telah login.</li>
+                    </ul>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>User masuk ke halaman Profil.</li>
+                        <li>User mengedit kolom yang diizinkan (Nama, Foto).</li>
+                        <li>User menekan tombol Simpan.</li>
+                        <li>Sistem memvalidasi input (unik username, dll).</li>
+                        <li>Sistem menyimpan perubahan.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- USE CASE #4 & #18 -->
+            <div class="uc-card" id="uc4">
+                <div class="uc-header">
+                    <div class="uc-title">#4 Mencari Fasilitas & #18 Menyaring Pencarian</div>
+                    <div class="uc-meta">Aktor: User, Guest</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>Mencari fasilitas berdasarkan nama dan menyaring berdasarkan Tipe (Rapat, Aula, Lab).</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>User mengetik kata kunci di Search Bar.</li>
+                        <li>User memilih filter Tipe Fasilitas (opsional).</li>
+                        <li>Sistem melakukan query pencarian (ILIKE) dengan filter.</li>
+                        <li>Sistem menampilkan daftar fasilitas yang cocok.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- USE CASE #7 -->
+            <div class="uc-card" id="uc7">
+                <div class="uc-header">
+                    <div class="uc-title">#7 Mengajukan Reservasi</div>
+                    <div class="uc-meta">Aktor: User (Mahasiswa/Dosen)</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>Mengajukan peminjaman ruangan dengan detail kegiatan.</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Pre-condition</h4>
+                    <ul>
+                        <li>User login. Fasilitas tersedia.</li>
+                    </ul>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>User memilih tanggal dan jam pada kalender fasilitas.</li>
+                        <li>Sistem memvalidasi ketersediaan slot (Check Conflict).</li>
+                        <li>User mengisi Form: Keperluan, Jumlah Peserta.</li>
+                        <li>User mengunggah Dokumen Proposal (Opsional).</li>
+                        <li>User submit reservasi.</li>
+                        <li>Sistem menyimpan data dengan status <strong>PENDING</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- USE CASE #9 -->
+            <div class="uc-card" id="uc9">
+                <div class="uc-header">
+                    <div class="uc-title">#9 Menyetujui atau Menolak Reservasi</div>
+                    <div class="uc-meta">Aktor: Admin</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>Admin memverifikasi pengajuan reservasi.</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Pre-condition</h4>
+                    <ul>
+                        <li>Ada reservasi baru berstatus PENDING.</li>
+                    </ul>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>Admin melihat daftar reservasi Pending.</li>
+                        <li>Admin memeriksa detail dan dokumen proposal.</li>
+                        <li>Admin memilih: <strong>Approve</strong> atau <strong>Reject</strong>.</li>
+                        <li>Sistem mengupdate status reservasi.</li>
+                        <li>Sistem mengirim notifikasi ke User yang bersangkutan.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- USE CASE #13 -->
+            <div class="uc-card" id="uc13">
+                <div class="uc-header">
+                    <div class="uc-title">#13 Mengelola Fasilitas</div>
+                    <div class="uc-meta">Aktor: Admin</div>
+                </div>
+                <div class="uc-section">
+                    <h4>Deskripsi</h4>
+                    <p>CRUD (Create, Read, Update, Delete) data fasilitas gedung dan ruangan.</p>
+                </div>
+                <div class="uc-section">
+                    <h4>Primary Flow</h4>
+                    <ol>
+                        <li>Admin masuk halaman Manage Facilities.</li>
+                        <li>Admin klik "Add Facility" untuk menambah.</li>
+                        <li>Admin mengisi Form: Nama, Kapasitas, Deskripsi, Foto.</li>
+                        <li>Sistem menyimpan data fasilitas baru.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- List Sisa Use Cases (Compact) -->
+            <div class="uc-card">
+                <div class="uc-header">
+                    <div class="uc-title">Use Case Lainnya</div>
+                </div>
+                <div class="uc-section">
+                    <ul>
+                        <li><strong>#5 Melihat Detail Ruangan:</strong> Menampilkan spesifikasi lengkap ruangan.</li>
+                        <li><strong>#6 Melihat Jadwal:</strong> Menampilkan kalender booking publik.</li>
+                        <li><strong>#8 Edit/Batal Reservasi:</strong> User membatalkan booking sebelum diapprove.</li>
+                        <li><strong>#10 & #14 Detail & Jadwal Reservasi (Admin):</strong> Admin memonitoring semua
+                            jadwal kampus.</li>
+                        <li><strong>#11 Notifikasi:</strong> Sistem memberi alert real-time status booking.</li>
+                        <li><strong>#12 Riwayat Reservasi:</strong> User melihat history peminjaman.</li>
+                        <li><strong>#15 Analitik:</strong> Dashboard statistik penggunaan ruangan.</li>
+                        <li><strong>#16 Token Sistem:</strong> Generate token untuk validasi sistem.</li>
+                        <li><strong>#17 Guide:</strong> Halaman statis panduan user.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

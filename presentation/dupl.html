@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUPL (Testing) - Sistem Reservasi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .test-table th {
+            background-color: #08294B;
+            color: white;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .test-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .test-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .badge-pass {
+            background-color: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .badge-fail {
+            background-color: #dc3545;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigasi Dokumen</h3>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="mvc_architecture.html">Arsitektur MVC & Tech Stack</a></li>
+                <li><a href="skpl.html">SKPL (Kebutuhan/Use Cases)</a></li>
+                <li><a href="dppl.html">DPPL (Desain & Database)</a></li>
+                <li><a href="dupl.html" class="active">DUPL (Pengujian/Testing)</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Dokumen Uji Perangkat Lunak (DUPL)</h1>
+            <p>Berisi ringkasan hasil <strong>User Acceptance Test (UAT)</strong> versi 3.0 (Final) yang telah
+                dilakukan.</p>
+
+            <div class="card">
+                <h3>Ringkasan Hasil</h3>
+                <ul>
+                    <li><strong>Total Test Cases:</strong> 20++ Skenario</li>
+                    <li><strong>Status:</strong> <span class="badge-pass">ALL PASSED</span></li>
+                    <li><strong>Tester:</strong> Tim Pengembang & Perwakilan User</li>
+                </ul>
+            </div>
+
+            <h2>I. UAT Fungsi User (Mahasiswa/Dosen)</h2>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th width="8%">ID</th>
+                        <th width="20%">Fitur</th>
+                        <th width="32%">Langkah Pengujian</th>
+                        <th width="25%">Hasil Diharapkan</th>
+                        <th width="15%">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-U01</td>
+                        <td>Sign Up User</td>
+                        <td>1. Buka /register<br>2. Isi Nama, Username, Password<br>3. Klik Sign Up</td>
+                        <td>Akun terbuat, redirect ke Login</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U02</td>
+                        <td>Sign In Berhasil</td>
+                        <td>1. Input username & password valid<br>2. Klik Sign In</td>
+                        <td>Masuk ke Home Page</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U03</td>
+                        <td>Sign In Gagal</td>
+                        <td>1. Input password salah<br>2. Klik Sign In</td>
+                        <td>Pesan error muncul, tetap di Login</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U11</td>
+                        <td>Search Fasilitas</td>
+                        <td>1. Ketik "GKU" di search bar<br>2. Tunggu hasil reload</td>
+                        <td>Hanya fasilitas GKU yang tampil</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U14</td>
+                        <td>Submit Reservasi</td>
+                        <td>1. Pilih slot waktu<br>2. Isi keperluan<br>3. Submit</td>
+                        <td>Sukses, data masuk status PENDING</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-U17</td>
+                        <td>Cancel Reservasi</td>
+                        <td>1. Klik tombol Cancel di History<br>2. Konfirmasi</td>
+                        <td>Status berubah jadi CANCELED</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>II. UAT Fungsi Admin</h2>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th width="8%">ID</th>
+                        <th width="20%">Fitur</th>
+                        <th width="32%">Langkah Pengujian</th>
+                        <th width="25%">Hasil Diharapkan</th>
+                        <th width="15%">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TC-A01</td>
+                        <td>Sign Up Admin</td>
+                        <td>1. Register pilih Role 'Admin'<br>2. Input Token Sistem Valid</td>
+                        <td>Akun Admin terbentuk</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A05</td>
+                        <td>Approve Reservasi</td>
+                        <td>1. Login Admin<br>2. Buka Manage Reservations<br>3. Klik Approve untuk item Pending</td>
+                        <td>Status berubah APPROVED, notif dikirim</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A06</td>
+                        <td>Reject Reservasi</td>
+                        <td>1. Klik Reject pada item Pending<br>2. (Opsional) isi alasan</td>
+                        <td>Status berubah REJECTED</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td>TC-A03</td>
+                        <td>Create Facility</td>
+                        <td>1. Menu Facilities -> Add New<br>2. Isi Nama, Gedung, Foto<br>3. Save</td>
+                        <td>Fasilitas baru muncul di list</td>
+                        <td><span class="badge-pass">PASS</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

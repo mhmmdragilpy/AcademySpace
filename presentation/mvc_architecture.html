@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsitektur MVC - Sistem Reservasi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigasi Dokumen</h3>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="mvc_architecture.html" class="active">Arsitektur MVC & Tech Stack</a></li>
+                <li><a href="skpl.html">SKPL (Kebutuhan/Use Cases)</a></li>
+                <li><a href="dppl.html">DPPL (Desain & Database)</a></li>
+                <li><a href="dupl.html">DUPL (Pengujian/Testing)</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Arsitektur MVC & Mapping File Lengkap</h1>
+
+            <div class="card">
+                <p>Halaman ini memuat <strong>Peta Lokasi File (Code Mapping)</strong> untuk setiap Use Case. Gunakan
+                    tabel ini untuk menjawab pertanyaan: <em>"Di mana kode untuk fitur ini berada?"</em></p>
+            </div>
+
+            <h2>Tabel Mapping Lengkap (View - Controller - Model)</h2>
+            <p>Berikut adalah lokasi file spesifik untuk **SEMUA 18 Use Case**:</p>
+
+            <table style="font-size: 0.9rem;">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 20%;">Use Case</th>
+                        <th style="width: 25%;">VIEW (Frontend)<br><small>client/app/...</small></th>
+                        <th style="width: 25%;">CONTROLLER (Backend)<br><small>server/src/controllers/...</small></th>
+                        <th style="width: 25%;">MODEL (Repository)<br><small>server/src/repositories/...</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- AUTHENTICATION -->
+                    <tr>
+                        <td><strong>#1</strong></td>
+                        <td>Membuat/Masuk Akun</td>
+                        <td>
+                            <code>LoginPage/page.tsx</code><br>
+                            <code>RegisterPage/page.tsx</code>
+                        </td>
+                        <td><code>authController.ts</code><br>(register, login)</td>
+                        <td><code>UserRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#2</strong></td>
+                        <td>Mereset Password</td>
+                        <td><code>ForgotPasswordPage/page.tsx</code></td>
+                        <td><code>authController.ts</code><br>(resetPassword)</td>
+                        <td><code>UserRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#3</strong></td>
+                        <td>Mengelola Profil</td>
+                        <td><code>ProfilePage/page.tsx</code></td>
+                        <td><code>userController.ts</code><br>(updateMyProfile)</td>
+                        <td><code>UserRepository.ts</code></td>
+                    </tr>
+
+                    <!-- FACILITY BROWSING -->
+                    <tr>
+                        <td><strong>#4</strong></td>
+                        <td>Mencari Fasilitas</td>
+                        <td>
+                            <code>page.tsx (Home)</code><br>
+                            <code>components/FacilitiesSection.tsx</code>
+                        </td>
+                        <td><code>facilityController.ts</code><br>(getAllFacilities)</td>
+                        <td><code>FacilityRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#5</strong></td>
+                        <td>Detail Ruangan</td>
+                        <td>
+                            <code>FacilityDetailPage/[slug]/page.tsx</code><br>
+                            <code>components/FacilityDetailPopup.tsx</code>
+                        </td>
+                        <td><code>facilityController.ts</code><br>(getFacilityById)</td>
+                        <td><code>FacilityRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#6</strong></td>
+                        <td>Cek Jadwal & Ketersediaan</td>
+                        <td><code>CheckAvailabilityPage/page.tsx</code></td>
+                        <td><code>reservationController.ts</code><br>(checkAvailability - service)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#18</strong></td>
+                        <td>Filter Pencarian</td>
+                        <td><code>components/FilterComponent.tsx</code></td>
+                        <td><code>facilityController.ts</code><br>(getAllFacilities + filters)</td>
+                        <td><code>FacilityRepository.ts</code></td>
+                    </tr>
+
+                    <!-- RESERVATION FLOW -->
+                    <tr>
+                        <td><strong>#7</strong></td>
+                        <td>Mengajukan Reservasi</td>
+                        <td><code>components/BookingForm.tsx</code></td>
+                        <td><code>reservationController.ts</code><br>(createReservation)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#8</strong></td>
+                        <td>Edit/Batal Reservasi</td>
+                        <td>
+                            <code>MyReservationsPage/page.tsx</code><br>
+                            <code>EditReservationPage/[id]/page.tsx</code>
+                        </td>
+                        <td><code>reservationController.ts</code><br>(cancel, update)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#12</strong></td>
+                        <td>Riwayat Reservasi</td>
+                        <td><code>MyReservationsPage/page.tsx</code></td>
+                        <td><code>reservationController.ts</code><br>(getUserReservations)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#11</strong></td>
+                        <td>Notifikasi</td>
+                        <td><code>NotificationsPage/page.tsx</code></td>
+                        <td><code>notificationController.ts</code></td>
+                        <td><code>NotificationRepository.ts</code></td>
+                    </tr>
+
+                    <!-- ADMIN FEATURES -->
+                    <tr>
+                        <td><strong>#9</strong></td>
+                        <td>Approve/Reject Reservasi</td>
+                        <td><code>AdminDashboard/ManageReservationsPage/page.tsx</code></td>
+                        <td><code>reservationController.ts</code><br>(updateReservationStatus)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#10</strong></td>
+                        <td>Detail Reservasi (Admin)</td>
+                        <td><code>AdminDashboard/ManageReservationsPage/page.tsx</code></td>
+                        <td><code>reservationController.ts</code><br>(getReservationById)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#14</strong></td>
+                        <td>Jadwal Reservasi (Admin)</td>
+                        <td><code>AdminDashboard/ManageReservationsPage/page.tsx</code></td>
+                        <td><code>reservationController.ts</code><br>(getAllReservations)</td>
+                        <td><code>ReservationRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#13</strong></td>
+                        <td>Mengelola Fasilitas CRUD</td>
+                        <td><code>AdminDashboard/ManageFacilitiesPage/page.tsx</code></td>
+                        <td><code>facilityController.ts</code><br>(create, update, delete)</td>
+                        <td><code>FacilityRepository.ts</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#15</strong></td>
+                        <td>Analitik & Laporan</td>
+                        <td><code>AdminDashboard/AnalyticsPage/page.tsx</code></td>
+                        <td><code>dashboardController.ts</code><br>(getDashboardStats)</td>
+                        <td><code>ReservationRepository.ts</code><br>(count queries)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>#16</strong></td>
+                        <td>System Token</td>
+                        <td><code>AdminDashboard/SystemTokensPage/page.tsx</code></td>
+                        <td><code>dashboardController.ts</code><br>(getSystemTokens)</td>
+                        <td><code>UserRepository.ts</code></td>
+                    </tr>
+
+                    <!-- MISC -->
+                    <tr>
+                        <td><strong>#17</strong></td>
+                        <td>Guide Penggunaan</td>
+                        <td>
+                            <code>GuidePage/page.tsx</code><br>
+                            <code>components/GuideSection.tsx</code>
+                        </td>
+                        <td>- <br>(Static Content)</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>MVC Component Detail</h2>
+
+            <h3><span class="badge badge-blue">VIEW (Frontend)</span></h3>
+            <p>Dibangun dengan <strong>Next.js 14 (App Router)</strong>. Bertanggung jawab menangani Interaction Logic
+                dan UI Rendering.</p>
+            <ul>
+                <li><strong>Pages:</strong> <code>client/app/</code> (e.g. <code>LoginPage/page.tsx</code>,
+                    <code>FacilityDetailPage/page.tsx</code>).</li>
+                <li><strong>Components:</strong> <code>client/components/</code> (e.g. <code>BookingForm.tsx</code>,
+                    <code>FacilityCard.tsx</code>). State management menggunakan <code>useState</code> dan
+                    <code>React Query</code>.</li>
+            </ul>
+
+            <h3><span class="badge badge-orange">CONTROLLER (Backend Logic)</span></h3>
+            <p>Dibangun dengan <strong>Express.js</strong>. Menerima request HTTP, memvalidasi input dengan
+                <strong>Zod</strong>, memanggil Service, dan mengirim Response JSON standar.</p>
+
+            <h3><span class="badge badge-green">MODEL (Data Layer)</span></h3>
+            <p>Menggunakan <strong>Repository Pattern</strong>. File Repository berisi <em>Raw SQL Queries</em> untuk
+                berinteraksi dengan PostgreSQL. Ini memisahkan query logik dari bisnis logik.</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

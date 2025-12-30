@@ -8,7 +8,7 @@ import api from "@/lib/api";
 import { Facility, FacilityType } from "@/types";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search } from "lucide-react";
-import { FacilityDetailModal } from "./FacilityDetailModal";
+import { FacilityDetailPopup } from "./FacilityDetailPopup";
 
 // Group facilities by building
 interface BuildingGroup {
@@ -254,7 +254,7 @@ const ExploreSection = () => {
         )}
 
         {selectedFacility && (
-          <FacilityDetailModal
+          <FacilityDetailPopup
             facility={selectedFacility}
             isOpen={!!selectedFacility}
             onClose={() => setSelectedFacility(null)}

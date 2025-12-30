@@ -1,3 +1,4 @@
+// [USE CASE #17] Melihat Guide Penggunaan Website - Text Panduan
 "use client";
 
 import { useState } from 'react';
