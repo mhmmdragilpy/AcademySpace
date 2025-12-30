@@ -4,6 +4,7 @@ import { userService } from "../services/userService.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { AppError } from "../utils/AppError.js";
 import { sendSuccess } from "../utils/response.js";
+// [USE CASE #1] Membuat atau Masuk Akun - Proses Registrasi User Baru
 export const register = catchAsync(async (req, res) => {
     const { name, username, password, role, admin_token } = req.body;
     // Check if user already exists
@@ -27,6 +28,7 @@ export const register = catchAsync(async (req, res) => {
     const { password_hash, ...userWithoutPassword } = newUser;
     sendSuccess(res, userWithoutPassword, "User registered successfully");
 });
+// [USE CASE #1] Membuat atau Masuk Akun - Proses Login User
 export const login = catchAsync(async (req, res) => {
     const { username, password } = req.body;
     const user = await userService.findByUsername(username);
@@ -52,6 +54,7 @@ export const getMe = catchAsync(async (req, res) => {
     const { password_hash, ...userWithoutPassword } = user;
     sendSuccess(res, userWithoutPassword);
 });
+// [USE CASE #2] Mereset Password - Request Token Reset
 export const resetPassword = catchAsync(async (req, res) => {
     const { username, token, newPassword } = req.body;
     // Validate System Reset Token

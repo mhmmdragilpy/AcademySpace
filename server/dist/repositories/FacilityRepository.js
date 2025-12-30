@@ -1,7 +1,12 @@
+// USE CASE #4: Mencari Fasilitas - [Model]
+// USE CASE #5: Melihat Detail Ruangan - [Model]
+// USE CASE #13: Mengelola Fasilitas - [Model]
+// USE CASE #18: Menyaring Pencarian Fasilitas - [Model]
 import { BaseRepository } from './BaseRepository.js';
 export class FacilityRepository extends BaseRepository {
     tableName = 'facilities';
     primaryKey = 'facility_id';
+    // [USE CASE #4] [USE CASE #18] Mencari & Filter Fasilitas - Query dengan Dynamic Filter
     async findWithDetails(filters) {
         let queryText = `
             SELECT 
@@ -29,9 +34,12 @@ export class FacilityRepository extends BaseRepository {
         const values = [];
         let filterConditions = [];
         let paramIndex = 1;
-        // Filter by active status - if includeInactive is false or not provided, only show active OR maintenance
+        // Filter by active status - if includeInactive is false or not provided:
+        // - Only show active facilities (is_active = true)
+        // - Exclude facilities under maintenance (maintenance_until > NOW())
         if (filters.includeInactive !== true) {
-            filterConditions.push(`(f.is_active = true OR (f.maintenance_until IS NOT NULL AND f.maintenance_until > NOW()))`);
+            filterConditions.push(`f.is_active = true`);
+            filterConditions.push(`(f.maintenance_until IS NULL OR f.maintenance_until <= NOW())`);
         }
         if (filters.building) {
             filterConditions.push(`b.name = $${paramIndex}`);
@@ -60,6 +68,7 @@ export class FacilityRepository extends BaseRepository {
         const result = await this.query(queryText, values);
         return result.rows;
     }
+    // [USE CASE #6] Ketersediaan Fasilitas - Cek konflik ID fasilitas
     async findConflictingFacilityIds(start, end) {
         const query = `
             SELECT DISTINCT ri.facility_id 
@@ -72,6 +81,41 @@ export class FacilityRepository extends BaseRepository {
         `;
         const result = await this.query(query, [start, end]);
         return result.rows.map((row) => row.facility_id);
+    }
+    // Find facility by slug (name converted to slug format)
+    async findBySlug(slug, includeInactive = false) {
+        let queryText = `
+            SELECT 
+                f.facility_id, 
+                f.name, 
+                ft.name as type_name, 
+                b.name as building_name, 
+                b.building_id,
+                f.room_number, 
+                f.capacity, 
+                f.layout_description, 
+                f.photo_url,
+                f.floor,
+                f.description,
+                f.type_id,
+                f.is_active,
+                f.maintenance_until,
+                f.maintenance_reason,
+                f.created_at,
+                f.updated_at
+            FROM facilities f
+            LEFT JOIN facility_types ft ON f.type_id = ft.type_id
+            LEFT JOIN buildings b ON f.building_id = b.building_id
+            WHERE (LOWER(REGEXP_REPLACE(f.name, '[^a-zA-Z0-9]+', '-', 'g')) = LOWER($1)
+                OR LOWER(REGEXP_REPLACE(CONCAT(f.name, '-', b.code), '[^a-zA-Z0-9]+', '-', 'g')) = LOWER($1))
+        `;
+        // Exclude maintenance and inactive facilities for regular users
+        if (!includeInactive) {
+            queryText += ` AND f.is_active = true AND (f.maintenance_until IS NULL OR f.maintenance_until <= NOW())`;
+        }
+        queryText += ` LIMIT 1`;
+        const result = await this.query(queryText, [slug]);
+        return result.rows[0] || null;
     }
 }
 //# sourceMappingURL=FacilityRepository.js.map

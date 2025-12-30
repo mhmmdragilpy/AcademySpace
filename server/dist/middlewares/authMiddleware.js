@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { sendError } from "../utils/response.js";
+// [USE CASE #1] Membuat atau Masuk Akun - Proteksi Route dengan Token JWT
 export const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];

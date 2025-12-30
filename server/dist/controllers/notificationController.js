@@ -2,6 +2,7 @@ import { notificationService } from "../services/notificationService.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { sendSuccess, sendError } from "../utils/response.js";
 import { AppError } from "../utils/AppError.js";
+// [USE CASE #11] Menerima Notifikasi Approval/Rejection - Get notifikasi user
 export const getUserNotifications = catchAsync(async (req, res) => {
     const userId = req.user.id;
     const result = await notificationService.getUserNotifications(userId);

@@ -10,6 +10,7 @@ export const getAllUsers = catchAsync(async (req, res) => {
     });
     sendSuccess(res, safeUsers);
 });
+// [USE CASE #3] Mengelola Profil - Melihat data diri user
 export const getUserById = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || '0');
     const user = await userService.findById(id);
@@ -19,6 +20,7 @@ export const getUserById = catchAsync(async (req, res) => {
     const { password_hash, ...safeUser } = user;
     sendSuccess(res, safeUser);
 });
+// [USE CASE #3] Mengelola Profil - Memperbarui data diri user
 export const updateUser = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || '0');
     // Check username uniqueness if updating username
@@ -101,6 +103,7 @@ export const deleteProfileAvatar = catchAsync(async (req, res) => {
     sendSuccess(res, safeUser);
 });
 // Get current user's profile
+// [USE CASE #3] Mengelola Profil - Melihat profil user login
 export const getMyProfile = catchAsync(async (req, res) => {
     const userId = req.user.id;
     const user = await userService.findById(userId);

@@ -1,7 +1,9 @@
+// USE CASE #11: Menerima Notifikasi Approval/Rejection - [Model]
 import { BaseRepository } from './BaseRepository.js';
 export class NotificationRepository extends BaseRepository {
     tableName = 'notifications';
     primaryKey = 'notification_id';
+    // [USE CASE #11] Menerima Notifikasi Approval/Rejection - Query list notifikasi
     async findByUserId(userId) {
         const query = `
             SELECT * FROM notifications 

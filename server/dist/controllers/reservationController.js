@@ -6,6 +6,7 @@ import { sendSuccess, sendCreated, sendError } from "../utils/response.js";
 import { AppError } from "../utils/AppError.js";
 // Schemas are used in rules, but controllers here just take validated body
 // (assuming middleware is applied in routes)
+// [USE CASE #7] Mengajukan Reservasi - Membuat reservasi baru
 export const createReservation = catchAsync(async (req, res) => {
     const userId = req.user.id;
     const data = req.body;
@@ -15,21 +16,25 @@ export const createReservation = catchAsync(async (req, res) => {
     });
     sendCreated(res, newReservation);
 });
+// [USE CASE #12] Melihat Riwayat Reservasi - User melihat reservasinya sendiri
 export const getUserReservations = catchAsync(async (req, res) => {
     const userId = req.user.id;
     const reservations = await reservationService.getUserReservations(userId);
     sendSuccess(res, reservations);
 });
+// [USE CASE #14] Melihat Jadwal Reservasi - Admin melihat semua reservasi
 export const getAllReservations = catchAsync(async (req, res) => {
     const reservations = await reservationService.getAllReservations();
     sendSuccess(res, reservations);
 });
+// [USE CASE #9] Menyetujui atau Menolak Reservasi - Admin mengubah status
 export const updateReservationStatus = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || "0");
     const { status } = req.body;
     const updated = await reservationService.updateStatus(id, status);
     sendSuccess(res, updated);
 });
+// [USE CASE #8] Mengedit atau Membatalkan Reservasi - User mengupdate reservasi (PENDING)
 export const updateReservation = catchAsync(async (req, res) => {
     const userId = req.user.id;
     const id = parseInt(req.params.id || "0");
@@ -37,12 +42,14 @@ export const updateReservation = catchAsync(async (req, res) => {
     const updated = await reservationService.update(id, userId, data);
     sendSuccess(res, updated);
 });
+// [USE CASE #8] Mengedit atau Membatalkan Reservasi - Cancel reservasi
 export const cancelReservation = catchAsync(async (req, res) => {
     const userId = req.user.id;
     const id = parseInt(req.params.id || "0");
     await reservationService.cancel(id, userId);
     sendSuccess(res, { message: "Reservation cancelled successfully" });
 });
+// [USE CASE #10] Melihat Detail Reservasi - Detail satu reservasi
 export const getReservationById = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || "0");
     const userId = req.user.id;

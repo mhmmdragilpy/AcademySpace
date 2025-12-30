@@ -107,6 +107,33 @@ export class FacilityService {
             is_active: facility.is_active
         };
     }
+    async findBySlug(slug) {
+        const facility = await this.facilityRepository.findBySlug(slug);
+        if (!facility)
+            return null;
+        return {
+            id: facility.facility_id,
+            facility_id: facility.facility_id,
+            name: facility.name,
+            type_id: facility.type_id,
+            type: facility.type_name,
+            type_name: facility.type_name,
+            building: facility.building_name,
+            building_id: facility.building_id,
+            building_name: facility.building_name,
+            room_number: facility.room_number,
+            capacity: facility.capacity,
+            floor: facility.floor,
+            description: facility.description,
+            layout_description: facility.layout_description,
+            generic_description: facility.description,
+            image_url: facility.photo_url,
+            photo_url: facility.photo_url,
+            is_active: facility.is_active,
+            maintenance_until: facility.maintenance_until,
+            maintenance_reason: facility.maintenance_reason
+        };
+    }
     async create(data) {
         let typeId = data.type_id;
         if (!typeId && data.type) {

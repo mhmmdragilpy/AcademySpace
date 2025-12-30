@@ -5,6 +5,8 @@ import logger from "../utils/logger.js";
 import { sendSuccess, sendError, sendCreated } from "../utils/response.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { AppError } from "../utils/AppError.js";
+// [USE CASE #4] Mencari Fasilitas - Mendapatkan list fasilitas
+// [USE CASE #18] Menyaring Pencarian Fasilitas - Filter berdasarkan tipe
 export const getAllFacilities = catchAsync(async (req, res) => {
     const filters = {
         building: req.query.building,
@@ -19,6 +21,7 @@ export const getAllFacilities = catchAsync(async (req, res) => {
     const result = await facilityService.findAll(filters);
     sendSuccess(res, result);
 });
+// [USE CASE #5] Melihat Detail Ruangan - Mendapatkan detail fasilitas by ID
 export const getFacilityById = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || "0");
     const cacheKey = `facility:${id}`;
@@ -51,6 +54,16 @@ export const getFacilityById = catchAsync(async (req, res) => {
     }
     sendSuccess(res, result);
 });
+// Get facility by slug (name converted to URL-friendly format)
+export const getFacilityBySlug = catchAsync(async (req, res) => {
+    const slug = req.params.slug || "";
+    const result = await facilityService.findBySlug(slug);
+    if (!result) {
+        throw new AppError("Facility not found", 404);
+    }
+    sendSuccess(res, result);
+});
+// [USE CASE #13] Mengelola Fasilitas - Menambahkan fasilitas baru (Admin)
 export const createFacility = catchAsync(async (req, res) => {
     // Input already validated by middleware (zod)
     // Support both legacy (type, building) and new (type_id, building_id) formats
@@ -71,6 +84,7 @@ export const createFacility = catchAsync(async (req, res) => {
     });
     sendCreated(res, newFacility, "Facility created successfully");
 });
+// [USE CASE #13] Mengelola Fasilitas - Mengupdate data fasilitas (Admin)
 export const updateFacility = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || "0");
     const validatedData = req.body;
@@ -99,6 +113,7 @@ export const updateFacility = catchAsync(async (req, res) => {
     }
     sendSuccess(res, updatedFacility, "Facility updated successfully");
 });
+// [USE CASE #13] Mengelola Fasilitas - Menghapus fasilitas (Admin)
 export const deleteFacility = catchAsync(async (req, res) => {
     const id = parseInt(req.params.id || "0");
     const deleted = await facilityService.delete(id);
