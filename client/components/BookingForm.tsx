@@ -104,7 +104,7 @@ export function BookingForm({
 
         if (!session) {
             toast.error("Please login to upload files");
-            router.push("/login");
+            router.push("/LoginPage");
             return;
         }
 
@@ -126,7 +126,7 @@ export function BookingForm({
             console.error("Upload failed", error);
             if (error.response?.status === 401) {
                 toast.error("Session expired. Please login again.");
-                router.push("/login");
+                router.push("/LoginPage");
             } else {
                 toast.error("Failed to upload file");
             }
@@ -138,7 +138,7 @@ export function BookingForm({
     const validateForm = (): boolean => {
         if (!session) {
             toast.error("Please login to book a room");
-            router.push("/login");
+            router.push("/LoginPage");
             return false;
         }
 
@@ -238,7 +238,7 @@ export function BookingForm({
                 onSuccess();
             } else {
                 // Default redirect
-                setTimeout(() => router.push("/reservations"), 1500);
+                setTimeout(() => router.push("/MyReservationsPage"), 1500);
             }
         } catch (error: any) {
             console.error("Booking failed", error);

@@ -176,7 +176,7 @@ export default function AdminFacilitiesPage() {
           <p className="text-muted-foreground">View and manage all facilities</p>
         </div>
         <Button asChild>
-          <Link href="/admin/facilities/create">
+          <Link href="/AdminDashboard/ManageFacilitiesPage/CreateFacilityPage">
             <Plus className="w-4 h-4 mr-2" />
             Add Facility
           </Link>
@@ -260,7 +260,7 @@ export default function AdminFacilitiesPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div className="flex items-center justify-end gap-1">
                           <Button variant="ghost" size="sm" asChild>
-                            <Link href={`/admin/facilities/edit/${facility.facility_id}`}>
+                            <Link href={`/AdminDashboard/ManageFacilitiesPage/EditFacilityPage/${facility.facility_id}`}>
                               <Edit className="w-4 h-4" />
                             </Link>
                           </Button>

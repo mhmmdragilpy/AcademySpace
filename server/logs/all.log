@@ -209,3 +209,47 @@
 2025-12-30 14:11:40:1140 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
 2025-12-30 14:11:44:1144 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
 2025-12-30 14:12:08:128 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-30 14:14:04:144 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:14:04:144 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:15:01:151 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-30 14:22:53:2253 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/ruang-rapat-tult-1604 - GET - ::1[39m
+2025-12-30 14:30:00:300 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/convention-hall - GET - ::1[39m
+2025-12-30 14:30:17:3017 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:30:17:3017 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:30:43:3043 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/taman-green-lounge - GET - ::1[39m
+2025-12-30 14:47:24:4724 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:47:24:4724 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:47:41:4741 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:47:41:4741 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:47:45:4745 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/area-makan-tult-lt16 - GET - ::1[39m
+2025-12-30 14:47:45:4745 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/area-makan-tult-lt16 - GET - ::1[39m
+2025-12-30 14:48:13:4813 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/joglo - GET - ::1[39m
+2025-12-30 14:48:13:4813 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/joglo - GET - ::1[39m
+2025-12-30 14:48:16:4816 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/joglo - GET - ::1[39m
+2025-12-30 14:48:16:4816 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/joglo - GET - ::1[39m
+2025-12-30 14:48:18:4818 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:48:18:4818 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:48:20:4820 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:48:21:4821 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:48:23:4823 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:48:23:4823 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:49:00:490 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:49:00:490 [33mwarn[39m: [33m400 - Validation Error: params.id: ID must be a number - /api/facilities/auditorium-gedung-damar - GET - ::1[39m
+2025-12-30 14:51:29:5129 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:51:29:5129 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:51:41:5141 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:51:41:5141 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:51:52:5152 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:51:52:5152 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:52:02:522 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:52:02:522 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:52:28:5228 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:52:28:5228 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:52:48:5248 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:52:48:5248 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 14:53:38:5338 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 14:53:38:5338 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 15:12:26:1226 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 15:12:26:1226 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-30 15:12:48:1248 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-30 15:12:48:1248 [32minfo[39m: [32m✅ Connected to Database[39m

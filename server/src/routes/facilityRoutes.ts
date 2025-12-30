@@ -7,7 +7,8 @@ import {
     updateFacility,
     deleteFacility,
     setMaintenance,
-    clearMaintenance
+    clearMaintenance,
+    getFacilityBySlug
 } from "../controllers/facilityController.js";
 import { authenticateToken, authorizeAdmin } from "../middlewares/authMiddleware.js";
 import { validate } from "../middlewares/validate.js";
@@ -22,7 +23,9 @@ const router = Router();
 
 // [USE CASE #4] [USE CASE #18] Mencari Fasilitas - Public Routes
 router.get("/", validate(getFacilitiesQuerySchema), getAllFacilities);
-// [USE CASE #5] Melihat Detail Ruangan
+// [USE CASE #5] Melihat Detail Ruangan - By Slug (must be before /:id)
+router.get("/slug/:slug", getFacilityBySlug);
+// [USE CASE #5] Melihat Detail Ruangan - By ID
 router.get("/:id", validate(facilityIdSchema), getFacilityById);
 // [USE CASE #6] Ketersediaan Fasilitas
 router.get("/:id/reservations", validate(facilityIdSchema), getFacilityReservations);

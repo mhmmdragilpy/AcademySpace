@@ -57,7 +57,7 @@ export default function AdminProfilePage() {
 
     useEffect(() => {
         if (status === "unauthenticated") {
-            router.push("/login");
+            router.push("/LoginPage");
             return;
         }
 
@@ -117,6 +117,8 @@ export default function AdminProfilePage() {
             }));
 
             await update({ user: { image: newAvatarUrl } });
+            // Force a refresh to update all components (like Navigation) with new avatar
+            router.refresh();
             toast.success("Profile picture updated successfully!", { id: toastId });
         } catch (error) {
             console.error("Upload failed", error);
@@ -137,6 +139,8 @@ export default function AdminProfilePage() {
 
             setUserData((prev) => ({ ...prev, avatar: "" }));
             await update({ user: { image: null } });
+            // Force a refresh to update all components (like Navigation) with removed avatar
+            router.refresh();
 
             toast.success("Profile picture removed successfully!", { id: toastId });
         } catch (error) {
@@ -207,6 +211,10 @@ export default function AdminProfilePage() {
 
             setUserData(updatedData);
             setEditingField(null);
+            // Refresh to update all components with the new data
+            if (field === "fullName") {
+                router.refresh();
+            }
             toast.success("Profile updated successfully!", { id: toastId });
         } catch (error: any) {
             console.error("Update failed", error);

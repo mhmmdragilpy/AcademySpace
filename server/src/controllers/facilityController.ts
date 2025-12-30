@@ -66,6 +66,19 @@ export const getFacilityById = catchAsync(async (req: Request, res: Response) =>
     sendSuccess(res, result);
 });
 
+// Get facility by slug (name converted to URL-friendly format)
+export const getFacilityBySlug = catchAsync(async (req: Request, res: Response) => {
+    const slug = req.params.slug || "";
+
+    const result = await facilityService.findBySlug(slug);
+
+    if (!result) {
+        throw new AppError("Facility not found", 404);
+    }
+
+    sendSuccess(res, result);
+});
+
 // [USE CASE #13] Mengelola Fasilitas - Menambahkan fasilitas baru (Admin)
 export const createFacility = catchAsync(async (req: Request, res: Response) => {
     // Input already validated by middleware (zod)

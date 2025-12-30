@@ -116,7 +116,7 @@ export default function NotificationsPage() {
                                     key={notification.notification_id || index}
                                     onClick={() => {
                                         markAsRead(notification.notification_id);
-                                        router.push('/reservations');
+                                        router.push('/MyReservationsPage');
                                     }}
                                     className={`p-5 rounded-xl shadow-sm border ${borderColor} ${bgColor} cursor-pointer hover:shadow-md transition-all duration-200 group relative`}
                                 >

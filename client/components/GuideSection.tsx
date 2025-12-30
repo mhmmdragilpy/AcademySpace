@@ -40,13 +40,13 @@ const GuideSection = () => {
 
           <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center">
             <a
-              href="/cek-ketersediaan"
+              href="/CheckAvailabilityPage"
               className="inline-flex items-center justify-center bg-[#FA7436] text-white font-bold py-3 px-8 rounded-full hover:bg-[#e5672f] transform hover:scale-105 transition-all shadow-lg hover:shadow-xl"
             >
               Cek Ketersediaan
             </a>
             <a
-              href="/reservations"
+              href="/MyReservationsPage"
               className="inline-flex items-center justify-center bg-white text-[#08294B] border-2 border-[#08294B] font-bold py-3 px-8 rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all shadow-md hover:shadow-lg"
             >
               Riwayat Reservasi

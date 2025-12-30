@@ -87,7 +87,7 @@ export default function FacilityDetailPage() {
                     const facilityData = (resById as any)?.data || resById;
                     setFacility(facilityData as Facility);
                 } catch {
-                    router.push("/cek-ketersediaan");
+                    router.push("/CheckAvailabilityPage");
                 }
             } finally {
                 setLoading(false);
@@ -191,7 +191,7 @@ export default function FacilityDetailPage() {
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
                         Fasilitas tidak ditemukan
                     </h2>
-                    <Button onClick={() => router.push("/cek-ketersediaan")}>
+                    <Button onClick={() => router.push("/CheckAvailabilityPage")}>
                         Kembali ke Daftar Fasilitas
                     </Button>
                 </div>

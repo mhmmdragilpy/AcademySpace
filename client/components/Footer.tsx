@@ -35,10 +35,10 @@ export default function Footer() {
                         <h3 className="text-white font-semibold text-lg mb-4">Quick Links</h3>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
-                            <li><Link href="/cek-ketersediaan" className="hover:text-primary transition-colors">Check Availability</Link></li>
-                            <li><Link href="/guide" className="hover:text-primary transition-colors">User Guide</Link></li>
-                            <li><Link href="/login" className="hover:text-primary transition-colors">Login</Link></li>
-                            <li><Link href="/register" className="hover:text-primary transition-colors">Sign Up</Link></li>
+                            <li><Link href="/CheckAvailabilityPage" className="hover:text-primary transition-colors">Check Availability</Link></li>
+                            <li><Link href="/GuidePage" className="hover:text-primary transition-colors">User Guide</Link></li>
+                            <li><Link href="/LoginPage" className="hover:text-primary transition-colors">Login</Link></li>
+                            <li><Link href="/RegisterPage" className="hover:text-primary transition-colors">Sign Up</Link></li>
                         </ul>
                     </div>
 

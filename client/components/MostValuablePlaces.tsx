@@ -78,7 +78,7 @@ const MostValuablePlaces = () => {
                     <div className="mt-4 flex justify-between items-center">
                       <span className="text-gray-700 font-semibold">Kapasitas: {place.capacity || 0} orang</span>
                       <Link
-                        href={`/availability/${slug}`}
+                        href={`/FacilityDetailPage/${slug}`}
                         className="bg-[#07294B] text-white px-4 py-2 rounded-lg hover:bg-[#051a30] transition-colors"
                       >
                         Cek

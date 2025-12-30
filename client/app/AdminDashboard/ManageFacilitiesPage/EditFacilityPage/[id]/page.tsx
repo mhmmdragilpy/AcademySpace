@@ -173,7 +173,7 @@ export default function EditFacilityPage() {
         },
         onSuccess: () => {
             toast.success("Facility updated successfully");
-            router.push("/admin/facilities");
+            router.push("/AdminDashboard/ManageFacilitiesPage");
         },
         onError: (error: any) => {
             console.error("Failed to update facility", error);
@@ -223,7 +223,7 @@ export default function EditFacilityPage() {
         <div className="container mx-auto px-4 max-w-3xl space-y-6">
             <div className="flex items-center gap-4">
                 <Button variant="ghost" size="sm" asChild>
-                    <Link href="/admin/facilities">
+                    <Link href="/AdminDashboard/ManageFacilitiesPage">
                         <ArrowLeft className="w-4 h-4 mr-2" />
                         Back
                     </Link>
@@ -462,7 +462,7 @@ export default function EditFacilityPage() {
                                 Update Facility
                             </Button>
                             <Button type="button" variant="outline" asChild>
-                                <Link href="/admin/facilities">Cancel</Link>
+                                <Link href="/AdminDashboard/ManageFacilitiesPage">Cancel</Link>
                             </Button>
                         </div>
                     </form>

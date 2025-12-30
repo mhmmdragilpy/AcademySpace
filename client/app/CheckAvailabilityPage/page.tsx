@@ -205,7 +205,7 @@ export default function AvailabilityPage() {
                             </p>
 
                             <Link
-                              href={`/availability/${facility.slug}`}
+                              href={`/FacilityDetailPage/${facility.slug}`}
                               className="w-full bg-[#FA7436] text-white font-medium py-2 rounded-lg hover:bg-[#e5672f] transition-all duration-300 flex items-center justify-center gap-2 text-sm shadow-md"
                             >
                               <Calendar size={16} />

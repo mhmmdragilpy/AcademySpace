@@ -102,7 +102,7 @@ export default function ReservationManagementPage() {
         return (
             <div className="min-h-screen bg-muted flex items-center justify-center">
                 <Button asChild>
-                    <Link href="/login">Please Login</Link>
+                    <Link href="/LoginPage">Please Login</Link>
                 </Button>
             </div>
         );
