@@ -11,6 +11,20 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 
+const StatsCard = ({ title, value, icon: Icon, colorClass }: any) => (
+  <Card>
+    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+      <CardTitle className="text-sm font-medium">
+        {title}
+      </CardTitle>
+      <Icon className={`h-4 w-4 text-muted-foreground ${colorClass}`} />
+    </CardHeader>
+    <CardContent>
+      <div className="text-2xl font-bold">{value !== undefined ? value : "-"}</div>
+    </CardContent>
+  </Card>
+);
+
 export default function AdminDashboardPage() {
   const { data: session } = useSession();
 
@@ -29,20 +43,6 @@ export default function AdminDashboardPage() {
     },
     enabled: !!session?.accessToken,
   });
-
-  const StatsCard = ({ title, value, icon: Icon, colorClass }: any) => (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">
-          {title}
-        </CardTitle>
-        <Icon className={`h-4 w-4 text-muted-foreground ${colorClass}`} />
-      </CardHeader>
-      <CardContent>
-        <div className="text-2xl font-bold">{value !== undefined ? value : "-"}</div>
-      </CardContent>
-    </Card>
-  );
 
   return (
     <div className="container mx-auto px-4 max-w-7xl space-y-8">

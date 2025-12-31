@@ -15,7 +15,7 @@ export const reservationSchema = z.object({
 
 export const reservationStatusSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/).transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
     body: z.object({
         status: z.enum(['approved', 'rejected', 'cancelled', 'ongoing', 'completed']),
@@ -24,17 +24,20 @@ export const reservationStatusSchema = z.object({
 
 export const reservationIdSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/).transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
 });
 
 export const updateReservationSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/).transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
     body: z.object({
         purpose: z.string().min(5).optional(),
         participants: z.number().int().positive().optional(),
-        // We disallow date/time updates for now as per previous service logic
+        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format YYYY-MM-DD").optional(),
+        startTime: z.string().regex(/^\d{2}:\d{2}$/, "Invalid time format HH:MM").optional(),
+        endTime: z.string().regex(/^\d{2}:\d{2}$/, "Invalid time format HH:MM").optional(),
+        proposal_url: z.string().optional(),
     }),
 });

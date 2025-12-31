@@ -2,8 +2,9 @@
 // USE CASE #12: Melihat Riwayat Reservasi - [View]
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "sonner";
 import { Loader2, AlertCircle, Plus } from "lucide-react";
@@ -36,8 +37,19 @@ import {
 
 
 export default function ReservationManagementPage() {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+    const router = useRouter();
 
+    // @ts-ignore - role is added to session
+    const userRole = session?.user?.role;
+    const isAdmin = userRole === 'admin';
+
+    // Redirect admin to Admin Dashboard
+    useEffect(() => {
+        if (status === "authenticated" && isAdmin) {
+            router.replace("/AdminDashboard/ManageReservationsPage");
+        }
+    }, [status, isAdmin, router]);
 
     // Cancel confirmation state
     const [cancelConfirm, setCancelConfirm] = useState<{
@@ -48,6 +60,18 @@ export default function ReservationManagementPage() {
 
     const { data: reservations, isLoading, isError } = useMyReservations();
     const cancelMutation = useCancelReservation();
+
+    // Show loading/redirect for admin
+    if (status === "loading" || isAdmin) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50/30 flex items-center justify-center">
+                <div className="text-center">
+                    <Loader2 className="w-10 h-10 animate-spin text-orange-500 mx-auto mb-4" />
+                    <p className="text-gray-500">{isAdmin ? "Redirecting to Admin Dashboard..." : "Loading..."}</p>
+                </div>
+            </div>
+        );
+    }
 
     const openCancelConfirm = (reservation: any) => {
         setCancelConfirm({
@@ -118,7 +142,7 @@ export default function ReservationManagementPage() {
                         <p className="text-muted-foreground mt-1">Track and manage your facility bookings.</p>
                     </div>
                     <Button asChild>
-                        <Link href="/CheckAvailabilityPage">
+                        <Link href="/">
                             <Plus className="mr-2 h-4 w-4" /> New Reservation
                         </Link>
                     </Button>
@@ -145,7 +169,7 @@ export default function ReservationManagementPage() {
                             <div className="text-center py-16">
                                 <p className="text-muted-foreground mb-4">No reservations found.</p>
                                 <Button variant="outline" asChild>
-                                    <Link href="/CheckAvailabilityPage">Book your first room</Link>
+                                    <Link href="/">Book your first room</Link>
                                 </Button>
                             </div>
                         ) : (

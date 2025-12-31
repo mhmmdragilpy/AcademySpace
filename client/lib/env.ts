@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-    NEXT_PUBLIC_API_URL: z.string().url().default('http://localhost:5001/api'),
+    NEXT_PUBLIC_API_URL: z.string().url().default('http://localhost:5000/api'),
     NEXTAUTH_URL: z.string().url().optional(),
     NEXTAUTH_SECRET: z.string().optional(),
 });
@@ -20,5 +20,5 @@ if (!_env.success) {
 }
 
 export const env = _env.data || {
-    NEXT_PUBLIC_API_URL: 'http://localhost:5001/api'
+    NEXT_PUBLIC_API_URL: 'http://localhost:5000/api'
 };

@@ -260,14 +260,6 @@ const ExploreSection = () => {
             onClose={() => setSelectedFacility(null)}
           />
         )}
-
-        <div className="mt-12 text-center">
-          <Link href="/CheckAvailabilityPage">
-            <button className="bg-[#FA7436] text-white font-medium py-3 px-8 rounded-lg hover:bg-[#e5672f] transition-colors">
-              Lihat Semua Fasilitas
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );

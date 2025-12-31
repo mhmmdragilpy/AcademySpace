@@ -253,3 +253,35 @@
 2025-12-30 15:12:26:1226 [32minfo[39m: [32m✅ Connected to Database[39m
 2025-12-30 15:12:48:1248 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
 2025-12-30 15:12:48:1248 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 00:44:01:441 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 00:44:01:441 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 02:08:14:814 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 02:08:14:814 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 02:08:58:858 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 02:08:59:859 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 02:09:16:916 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 02:09:16:916 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 02:18:16:1816 [33mwarn[39m: [33m404 - Facility not found - /api/facilities/slug/area-makan-tult-lt16 - GET - ::1[39m
+2025-12-31 02:18:16:1816 [33mwarn[39m: [33m404 - Facility not found - /api/facilities/slug/area-makan-tult-lt16 - GET - ::1[39m
+2025-12-31 02:18:16:1816 [33mwarn[39m: [33m400 - Validation Error: params.id: Expected number, received nan - /api/facilities/area-makan-tult-lt16 - GET - ::1[39m
+2025-12-31 02:18:17:1817 [33mwarn[39m: [33m400 - Validation Error: params.id: Expected number, received nan - /api/facilities/area-makan-tult-lt16 - GET - ::1[39m
+2025-12-31 02:19:38:1938 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 02:19:38:1938 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 02:37:34:3734 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 02:45:31:4531 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 02:55:37:5537 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 02:55:48:5548 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 03:05:44:544 [33mwarn[39m: [33m400 - Validation Error: body.facilityId: Expected number, received nan - /api/reservations - POST - ::1[39m
+2025-12-31 03:06:00:60 [33mwarn[39m: [33m400 - Validation Error: body.facilityId: Expected number, received nan - /api/reservations - POST - ::1[39m
+2025-12-31 03:07:26:726 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 03:08:37:837 [33mwarn[39m: [33m400 - Validation Error: body.facilityId: Expected number, received nan - /api/reservations - POST - ::1[39m
+2025-12-31 03:10:23:1023 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 03:10:23:1023 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 03:10:53:1053 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 03:10:53:1053 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 03:11:42:1142 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2025-12-31 03:11:42:1142 [32minfo[39m: [32m✅ Connected to Database[39m
+2025-12-31 03:17:41:1741 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 03:18:42:1842 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 03:19:08:198 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2025-12-31 03:20:07:207 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m

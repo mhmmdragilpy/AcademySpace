@@ -62,6 +62,62 @@ const sidebarNavItems = [
     },
 ];
 
+interface SidebarContentProps {
+    pathname: string | null;
+    handleLogout: () => void;
+    setIsMobileOpen: (val: boolean) => void;
+}
+
+const SidebarContent = ({ pathname, handleLogout, setIsMobileOpen }: SidebarContentProps) => (
+    <div className="flex flex-col h-full bg-white border-r border-gray-200">
+        <div className="h-16 flex items-center px-6 border-b border-gray-200">
+            <span className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <Building className="h-6 w-6 text-primary" />
+                Admin Panel
+            </span>
+        </div>
+        <div className="flex-1 overflow-y-auto py-4">
+            <nav className="px-3 space-y-1">
+                {sidebarNavItems.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
+
+                    return (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className={cn(
+                                "group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                                isActive
+                                    ? "bg-primary/10 text-primary"
+                                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            )}
+                            onClick={() => setIsMobileOpen(false)}
+                        >
+                            <Icon className={cn(
+                                "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
+                                isActive ? "text-primary" : "text-gray-400 group-hover:text-gray-500"
+                            )} />
+                            {item.title}
+                        </Link>
+                    );
+                })}
+            </nav>
+        </div>
+        <div className="p-4 border-t border-gray-200">
+            <Button
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start text-destructive hover:bg-destructive/10 hover:text-destructive"
+                onClick={handleLogout}
+            >
+                <LogOut className="mr-3 h-5 w-5" />
+                Logout
+            </Button>
+        </div>
+    </div>
+);
+
 interface AdminLayoutContentProps {
     children: ReactNode;
 }
@@ -79,61 +135,11 @@ export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
         signOut({ callbackUrl: "/" });
     };
 
-    const SidebarContent = () => (
-        <div className="flex flex-col h-full bg-white border-r border-gray-200">
-            <div className="h-16 flex items-center px-6 border-b border-gray-200">
-                <span className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                    <Building className="h-6 w-6 text-primary" />
-                    Admin Panel
-                </span>
-            </div>
-            <div className="flex-1 overflow-y-auto py-4">
-                <nav className="px-3 space-y-1">
-                    {sidebarNavItems.map((item) => {
-                        const Icon = item.icon;
-                        const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
-
-                        return (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className={cn(
-                                    "group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
-                                    isActive
-                                        ? "bg-primary/10 text-primary"
-                                        : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                )}
-                                onClick={() => setIsMobileOpen(false)}
-                            >
-                                <Icon className={cn(
-                                    "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
-                                    isActive ? "text-primary" : "text-gray-400 group-hover:text-gray-500"
-                                )} />
-                                {item.title}
-                            </Link>
-                        );
-                    })}
-                </nav>
-            </div>
-            <div className="p-4 border-t border-gray-200">
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full justify-start text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={handleLogout}
-                >
-                    <LogOut className="mr-3 h-5 w-5" />
-                    Logout
-                </Button>
-            </div>
-        </div>
-    );
-
     return (
         <div className="min-h-screen bg-gray-50 flex">
             {/* Desktop Sidebar */}
             <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 z-20">
-                <SidebarContent />
+                <SidebarContent pathname={pathname} handleLogout={handleLogout} setIsMobileOpen={setIsMobileOpen} />
             </div>
 
             {/* Mobile Header */}
@@ -146,8 +152,7 @@ export function AdminLayoutContent({ children }: AdminLayoutContentProps) {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="left" className="p-0 w-72">
-                        {/* Pass a close handler or just let Link clicks close it via state */}
-                        <SidebarContent />
+                        <SidebarContent pathname={pathname} handleLogout={handleLogout} setIsMobileOpen={setIsMobileOpen} />
                     </SheetContent>
                 </Sheet>
             </div>

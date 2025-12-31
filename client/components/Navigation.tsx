@@ -40,13 +40,24 @@ export default function Navigation() {
   const userRole = session?.user?.role || "user";
   const [notificationCount, setNotificationCount] = useState(0);
   const [logoutConfirm, setLogoutConfirm] = useState(false);
+  const [userProfile, setUserProfile] = useState<any>(null); // Store latest profile
 
   useEffect(() => {
     // @ts-ignore
     if (session?.accessToken) {
       fetchUnreadNotifications();
+      fetchLatestProfile(); // Fetch actual profile to get updated avatar
     }
   }, [session?.accessToken]);
+
+  const fetchLatestProfile = async () => {
+    try {
+      const res = await api.get("/users/profile");
+      setUserProfile(res);
+    } catch (error) {
+      console.error("Failed to fetch profile", error);
+    }
+  };
 
   const fetchUnreadNotifications = async () => {
     try {
@@ -95,8 +106,8 @@ export default function Navigation() {
       <nav className="sticky top-0 z-50 bg-primary shadow-lg border-b border-white/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            {/* Logo - Admin goes to Admin Dashboard, others go to Home */}
+            <Link href={userRole === 'admin' ? "/AdminDashboard" : "/"} className="flex items-center gap-2 group">
               <div className="relative w-48 h-10">
                 <Image
                   src="/images/Logo.png"
@@ -109,19 +120,23 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
-              <NavLink href="/">Home</NavLink>
+              {/* Show Home only for non-admin users or when not logged in */}
+              {userRole !== 'admin' && (
+                <NavLink href="/">Home</NavLink>
+              )}
 
               {userRole === 'user' && (
-                <>
-                  <NavLink href="/MyReservationsPage">My Reservations</NavLink>
-                </>
+                <NavLink href="/MyReservationsPage">My Reservations</NavLink>
               )}
 
               {userRole === 'admin' && (
                 <NavLink href="/AdminDashboard">Admin Panel</NavLink>
               )}
 
-              <NavLink href="/GuidePage">Guide</NavLink>
+              {/* Guide accessible to all */}
+              {userRole !== 'admin' && (
+                <NavLink href="/GuidePage">Guide</NavLink>
+              )}
             </div>
 
             {/* Right Side */}
@@ -140,9 +155,13 @@ export default function Navigation() {
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-white/20 hover:ring-white/40">
                         <Avatar className="h-9 w-9">
-                          <AvatarImage src={session.user?.image || undefined} alt={session.user?.name || ""} />
+                          <AvatarImage
+                            src={userProfile?.avatar_url || session.user?.image || undefined}
+                            alt={userProfile?.full_name || session.user?.name || ""}
+                            className="object-cover"
+                          />
                           <AvatarFallback className="bg-primary-foreground text-primary font-bold">
-                            {session.user?.name?.charAt(0).toUpperCase() || "U"}
+                            {(userProfile?.full_name || session.user?.name || "U").charAt(0).toUpperCase()}
                           </AvatarFallback>
                         </Avatar>
                       </Button>
@@ -195,16 +214,20 @@ export default function Navigation() {
                     <SheetTitle>Menu</SheetTitle>
                   </SheetHeader>
                   <div className="flex flex-col gap-4 mt-6">
-                    <MobileNavLink href="/">Home</MobileNavLink>
+                    {/* Show Home only for non-admin */}
+                    {userRole !== 'admin' && (
+                      <MobileNavLink href="/">Home</MobileNavLink>
+                    )}
                     {userRole === 'user' && (
-                      <>
-                        <MobileNavLink href="/MyReservationsPage">My Reservations</MobileNavLink>
-                      </>
+                      <MobileNavLink href="/MyReservationsPage">My Reservations</MobileNavLink>
                     )}
                     {userRole === 'admin' && (
                       <MobileNavLink href="/AdminDashboard">Admin Panel</MobileNavLink>
                     )}
-                    <MobileNavLink href="/GuidePage">Guide</MobileNavLink>
+                    {/* Guide only for non-admin */}
+                    {userRole !== 'admin' && (
+                      <MobileNavLink href="/GuidePage">Guide</MobileNavLink>
+                    )}
 
                     <div className="border-t pt-4 mt-2">
                       {session ? (

@@ -48,7 +48,7 @@ export default function ForgotPasswordPage() {
   const onResetPassword = async (data: ResetPasswordValues) => {
     setLoading(true);
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api"}/auth/reset-password`, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/auth/reset-password`, {
         username: data.username,
         token: data.token,
         newPassword: data.newPassword,

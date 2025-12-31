@@ -145,9 +145,11 @@ export class ReservationService {
         }
 
         return {
-            id: detail.reservation_id,
+            reservation_id: detail.reservation_id, // Use reservation_id for frontend compatibility
+            id: detail.reservation_id, // Also keep id for backward compatibility
             userName: detail.user_name,
             userUsername: detail.user_username,
+            facilityId: detail.facility_id, // Add facilityId for edit page
             facilityName: detail.facility_name,
             status: detail.status,
             purpose: detail.purpose,
@@ -156,7 +158,9 @@ export class ReservationService {
             startTime: detail.start_time,
             endTime: detail.end_time,
             participants: detail.attendees,
-            facilityCapacity: detail.facility_capacity
+            attendees: detail.attendees, // Alias for compatibility
+            facilityCapacity: detail.facility_capacity,
+            proposal_url: detail.proposal_url // Add proposal_url for edit
         };
     }
 

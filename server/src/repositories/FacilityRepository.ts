@@ -96,8 +96,41 @@ export class FacilityRepository extends BaseRepository<Facility> {
         return result.rows.map((row: any) => row.facility_id);
     }
 
-    // Find facility by slug (name converted to slug format)
+    // Find facility by slug (name converted to slug format) or by facility_id
     async findBySlug(slug: string, includeInactive: boolean = false) {
+        // First, try to find by numeric ID if slug is a number
+        const numericId = parseInt(slug);
+        if (!isNaN(numericId)) {
+            const byIdResult = await this.query(`
+                SELECT 
+                    f.facility_id, 
+                    f.name, 
+                    ft.name as type_name, 
+                    b.name as building_name, 
+                    b.building_id,
+                    f.room_number, 
+                    f.capacity, 
+                    f.layout_description, 
+                    f.photo_url,
+                    f.floor,
+                    f.description,
+                    f.type_id,
+                    f.is_active,
+                    f.maintenance_until,
+                    f.maintenance_reason,
+                    f.created_at,
+                    f.updated_at
+                FROM facilities f
+                LEFT JOIN facility_types ft ON f.type_id = ft.type_id
+                LEFT JOIN buildings b ON f.building_id = b.building_id
+                WHERE f.facility_id = $1
+                ${!includeInactive ? ' AND f.is_active = true' : ''}
+                LIMIT 1
+            `, [numericId]);
+            if (byIdResult.rows[0]) return byIdResult.rows[0];
+        }
+
+        // Try to find by slug (name converted to URL-friendly format)
         let queryText = `
             SELECT 
                 f.facility_id, 
@@ -121,12 +154,13 @@ export class FacilityRepository extends BaseRepository<Facility> {
             LEFT JOIN facility_types ft ON f.type_id = ft.type_id
             LEFT JOIN buildings b ON f.building_id = b.building_id
             WHERE (LOWER(REGEXP_REPLACE(f.name, '[^a-zA-Z0-9]+', '-', 'g')) = LOWER($1)
-                OR LOWER(REGEXP_REPLACE(CONCAT(f.name, '-', b.code), '[^a-zA-Z0-9]+', '-', 'g')) = LOWER($1))
+                OR LOWER(REGEXP_REPLACE(CONCAT(f.name, '-', b.code), '[^a-zA-Z0-9]+', '-', 'g')) = LOWER($1)
+                OR LOWER(REPLACE(REPLACE(f.name, ' ', '-'), '.', '')) = LOWER($1))
         `;
 
-        // Exclude maintenance and inactive facilities for regular users
+        // Only exclude inactive facilities, but allow maintenance ones (users can view them)
         if (!includeInactive) {
-            queryText += ` AND f.is_active = true AND (f.maintenance_until IS NULL OR f.maintenance_until <= NOW())`;
+            queryText += ` AND f.is_active = true`;
         }
 
         queryText += ` LIMIT 1`;

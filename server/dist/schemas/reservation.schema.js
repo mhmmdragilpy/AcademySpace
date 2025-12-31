@@ -12,7 +12,7 @@ export const reservationSchema = z.object({
 });
 export const reservationStatusSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/).transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
     body: z.object({
         status: z.enum(['approved', 'rejected', 'cancelled', 'ongoing', 'completed']),
@@ -20,12 +20,12 @@ export const reservationStatusSchema = z.object({
 });
 export const reservationIdSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/).transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
 });
 export const updateReservationSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/).transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
     body: z.object({
         purpose: z.string().min(5).optional(),

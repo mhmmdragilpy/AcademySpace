@@ -59,7 +59,7 @@ export default function RegisterPage() {
 
         setIsLoading(true);
         try {
-            await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api"}/auth/register`, {
+            await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api"}/auth/register`, {
                 name: data.name,
                 username: data.username,
                 password: data.password,

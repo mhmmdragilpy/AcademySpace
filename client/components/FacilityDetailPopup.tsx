@@ -29,7 +29,8 @@ export function FacilityDetailPopup({
     if (!facility) return null;
 
     const imageUrl = facility.image_url || facility.photo_url;
-    const slug = facility.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+    // Use facility_id as slug for reliable routing (name-based slugs can be inconsistent)
+    const slug = facility.facility_id;
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>

@@ -22,7 +22,7 @@ export const createFacilitySchema = z.object({
 
 export const updateFacilitySchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/, "ID must be a number").transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
     body: z.object({
         name: z.string().min(2).optional(),
@@ -45,7 +45,7 @@ export const updateFacilitySchema = z.object({
 
 export const facilityIdSchema = z.object({
     params: z.object({
-        id: z.string().regex(/^\d+$/, "ID must be a number").transform(Number),
+        id: z.coerce.number().int().positive(),
     }),
 });
 

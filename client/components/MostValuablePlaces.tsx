@@ -48,7 +48,8 @@ const MostValuablePlaces = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {places?.map((place) => {
-              const slug = place.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+              // Use facility_id as slug for reliable routing
+              const slug = place.facility_id;
               return (
                 <div key={place.facility_id} className="bg-gray-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="h-48 overflow-hidden relative bg-gray-200">

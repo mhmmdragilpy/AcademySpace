@@ -44,6 +44,213 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+// Helper functions
+const getStatusColor = (status: string) => {
+  switch (status?.toUpperCase()) {
+    case 'APPROVED': return "bg-green-100 text-green-800 border-green-200";
+    case 'PENDING': return "bg-yellow-100 text-yellow-800 border-yellow-200";
+    case 'REJECTED': return "bg-red-100 text-red-800 border-red-200";
+    case 'CANCELED': return "bg-gray-100 text-gray-800 border-gray-200";
+    default: return "bg-gray-100 text-gray-800 border-gray-200";
+  }
+};
+
+const getStatusIcon = (status: string) => {
+  switch (status?.toUpperCase()) {
+    case 'APPROVED': return <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>;
+    case 'PENDING': return <span className="w-2 h-2 rounded-full bg-yellow-500 mr-2"></span>;
+    case 'REJECTED': return <span className="w-2 h-2 rounded-full bg-red-500 mr-2"></span>;
+    default: return <span className="w-2 h-2 rounded-full bg-gray-500 mr-2"></span>;
+  }
+};
+
+// Document Preview Component
+const DocumentPreview = ({ url }: { url: string | null }) => {
+  if (!url) return <span className="text-gray-400 text-sm">No document</span>;
+
+  // Get base URL by removing '/api' from the API URL
+  const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api").replace(/\/api$/, "");
+  const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`;
+  const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+  const isPdf = /\.pdf$/i.test(url);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline" size="sm" className="gap-2">
+          <FileText className="w-4 h-4" />
+          View Document
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-4xl max-h-[80vh]">
+        <DialogHeader>
+          <DialogTitle>Document Preview</DialogTitle>
+        </DialogHeader>
+        <div className="mt-4">
+          {isImage ? (
+            <img src={fullUrl} alt="Proposal Document" className="w-full h-auto rounded-lg" />
+          ) : isPdf ? (
+            <div className="text-center py-8">
+              <FileText className="w-16 h-16 mx-auto text-blue-500 mb-4" />
+              <p className="text-gray-600 mb-4">PDF document ready for viewing</p>
+              <div className="flex gap-3 justify-center">
+                <Button asChild>
+                  <a href={fullUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Open PDF in New Tab
+                  </a>
+                </Button>
+                <Button variant="outline" asChild>
+                  <a href={fullUrl} download>
+                    Download PDF
+                  </a>
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <FileText className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+              <p className="text-gray-600 mb-4">Preview not available for this file type</p>
+              <Button asChild>
+                <a href={fullUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Open in New Tab
+                </a>
+              </Button>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+// Reservation Detail Modal
+interface ReservationDetailModalProps {
+  reservation: any;
+  onClose: () => void;
+  onApprove: (res: any) => void;
+  onReject: (res: any) => void;
+  isPending: boolean;
+}
+
+const ReservationDetailModal = ({ reservation, onClose, onApprove, onReject, isPending }: ReservationDetailModalProps) => {
+  if (!reservation) return null;
+
+  const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api").replace(/\/api$/, "");
+  const fullUrl = reservation.proposalUrl?.startsWith('http')
+    ? reservation.proposalUrl
+    : reservation.proposalUrl
+      ? `${baseUrl}${reservation.proposalUrl}`
+      : null;
+
+  return (
+    <Dialog open={!!reservation} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            Reservation Detail
+            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getStatusColor(reservation.status)}`}>
+              {reservation.status}
+            </span>
+          </DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4 mt-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium text-gray-500">User</label>
+              <p className="font-semibold">{reservation.userName}</p>
+              <p className="text-sm text-gray-500">@{reservation.userUsername}</p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">Facility</label>
+              <p className="font-semibold">{reservation.facilityName}</p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">Date</label>
+              <p className="font-semibold">{reservation.date}</p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">Time</label>
+              <p className="font-semibold flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                {reservation.startTime} - {reservation.endTime}
+              </p>
+            </div>
+            <div>
+              <label className="text-sm font-medium text-gray-500">Participants</label>
+              <p className="font-semibold flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                {reservation.participants} orang
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-gray-500">Purpose</label>
+            <p className="bg-gray-50 p-3 rounded-lg mt-1">{reservation.purpose}</p>
+          </div>
+
+          {/* Document Preview Section */}
+          <div className="border-t pt-4">
+            <label className="text-sm font-medium text-gray-500 block mb-2">Supporting Document</label>
+            {fullUrl ? (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-blue-600" />
+                    <span className="font-medium text-blue-800">Document Uploaded</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={fullUrl} target="_blank" rel="noopener noreferrer">
+                        <Eye className="w-4 h-4 mr-1" />
+                        Preview
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={fullUrl} download>
+                        Download
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center text-gray-500">
+                No document uploaded
+              </div>
+            )}
+          </div>
+
+          {/* Action Buttons */}
+          {reservation.status?.toUpperCase() === 'PENDING' && (
+            <div className="flex gap-3 pt-4 border-t">
+              <Button
+                className="flex-1 bg-green-600 hover:bg-green-700"
+                onClick={() => onApprove(reservation)}
+                disabled={isPending}
+              >
+                <Check className="w-4 h-4 mr-2" />
+                Approve Reservation
+              </Button>
+              <Button
+                variant="destructive"
+                className="flex-1"
+                onClick={() => onReject(reservation)}
+                disabled={isPending}
+              >
+                <X className="w-4 h-4 mr-2" />
+                Reject Reservation
+              </Button>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 export default function AdminReservationsPage() {
   const { data: session } = useSession();
   const queryClient = useQueryClient();
@@ -118,10 +325,6 @@ export default function AdminReservationsPage() {
     setConfirmAction({ isOpen: false, reservationId: null, action: null, facilityName: '', userName: '' });
   };
 
-  const handleStatusUpdate = (id: number, status: string) => {
-    statusMutation.mutate({ id, status });
-  };
-
   const filteredReservations = reservations.filter((res: any) => {
     if (filterStatus !== "All" && res.status?.toUpperCase() !== filterStatus.toUpperCase()) return false;
     return true;
@@ -135,211 +338,6 @@ export default function AdminReservationsPage() {
   });
 
   const bookedDays = reservations.map((res: any) => new Date(res.date));
-
-  // Color-coded status badge
-  const getStatusColor = (status: string) => {
-    switch (status?.toUpperCase()) {
-      case 'APPROVED': return "bg-green-100 text-green-800 border-green-200";
-      case 'PENDING': return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case 'REJECTED': return "bg-red-100 text-red-800 border-red-200";
-      case 'CANCELED': return "bg-gray-100 text-gray-800 border-gray-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status?.toUpperCase()) {
-      case 'APPROVED': return <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>;
-      case 'PENDING': return <span className="w-2 h-2 rounded-full bg-yellow-500 mr-2"></span>;
-      case 'REJECTED': return <span className="w-2 h-2 rounded-full bg-red-500 mr-2"></span>;
-      default: return <span className="w-2 h-2 rounded-full bg-gray-500 mr-2"></span>;
-    }
-  };
-
-  // Document Preview Component
-  const DocumentPreview = ({ url }: { url: string | null }) => {
-    if (!url) return <span className="text-gray-400 text-sm">No document</span>;
-
-    // Get base URL by removing '/api' from the API URL
-    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api").replace(/\/api$/, "");
-    const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`;
-    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
-    const isPdf = /\.pdf$/i.test(url);
-
-    return (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline" size="sm" className="gap-2">
-            <FileText className="w-4 h-4" />
-            View Document
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="max-w-4xl max-h-[80vh]">
-          <DialogHeader>
-            <DialogTitle>Document Preview</DialogTitle>
-          </DialogHeader>
-          <div className="mt-4">
-            {isImage ? (
-              <img src={fullUrl} alt="Proposal Document" className="w-full h-auto rounded-lg" />
-            ) : isPdf ? (
-              <div className="text-center py-8">
-                <FileText className="w-16 h-16 mx-auto text-blue-500 mb-4" />
-                <p className="text-gray-600 mb-4">PDF document ready for viewing</p>
-                <div className="flex gap-3 justify-center">
-                  <Button asChild>
-                    <a href={fullUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Open PDF in New Tab
-                    </a>
-                  </Button>
-                  <Button variant="outline" asChild>
-                    <a href={fullUrl} download>
-                      Download PDF
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center py-8">
-                <FileText className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-                <p className="text-gray-600 mb-4">Preview not available for this file type</p>
-                <Button asChild>
-                  <a href={fullUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Open in New Tab
-                  </a>
-                </Button>
-              </div>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
-    );
-  };
-
-  // Reservation Detail Modal
-  const ReservationDetailModal = ({ reservation }: { reservation: any }) => {
-    if (!reservation) return null;
-
-    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api").replace(/\/api$/, "");
-    const fullUrl = reservation.proposalUrl?.startsWith('http')
-      ? reservation.proposalUrl
-      : reservation.proposalUrl
-        ? `${baseUrl}${reservation.proposalUrl}`
-        : null;
-
-    return (
-      <Dialog open={!!selectedReservation} onOpenChange={() => setSelectedReservation(null)}>
-        <DialogContent className="max-w-2xl">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              Reservation Detail
-              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getStatusColor(reservation.status)}`}>
-                {reservation.status}
-              </span>
-            </DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4 mt-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm font-medium text-gray-500">User</label>
-                <p className="font-semibold">{reservation.userName}</p>
-                <p className="text-sm text-gray-500">@{reservation.userUsername}</p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-500">Facility</label>
-                <p className="font-semibold">{reservation.facilityName}</p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-500">Date</label>
-                <p className="font-semibold">{reservation.date}</p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-500">Time</label>
-                <p className="font-semibold flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  {reservation.startTime} - {reservation.endTime}
-                </p>
-              </div>
-              <div>
-                <label className="text-sm font-medium text-gray-500">Participants</label>
-                <p className="font-semibold flex items-center gap-1">
-                  <Users className="w-4 h-4" />
-                  {reservation.participants} orang
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <label className="text-sm font-medium text-gray-500">Purpose</label>
-              <p className="bg-gray-50 p-3 rounded-lg mt-1">{reservation.purpose}</p>
-            </div>
-
-            {/* Document Preview Section */}
-            <div className="border-t pt-4">
-              <label className="text-sm font-medium text-gray-500 block mb-2">Supporting Document</label>
-              {fullUrl ? (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-blue-600" />
-                      <span className="font-medium text-blue-800">Document Uploaded</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={fullUrl} target="_blank" rel="noopener noreferrer">
-                          <Eye className="w-4 h-4 mr-1" />
-                          Preview
-                        </a>
-                      </Button>
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={fullUrl} download>
-                          Download
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center text-gray-500">
-                  No document uploaded
-                </div>
-              )}
-            </div>
-
-            {/* Action Buttons */}
-            {reservation.status?.toUpperCase() === 'PENDING' && (
-              <div className="flex gap-3 pt-4 border-t">
-                <Button
-                  className="flex-1 bg-green-600 hover:bg-green-700"
-                  onClick={() => {
-                    setSelectedReservation(null);
-                    openConfirmDialog(reservation, 'approved');
-                  }}
-                  disabled={statusMutation.isPending}
-                >
-                  <Check className="w-4 h-4 mr-2" />
-                  Approve Reservation
-                </Button>
-                <Button
-                  variant="destructive"
-                  className="flex-1"
-                  onClick={() => {
-                    setSelectedReservation(null);
-                    openConfirmDialog(reservation, 'rejected');
-                  }}
-                  disabled={statusMutation.isPending}
-                >
-                  <X className="w-4 h-4 mr-2" />
-                  Reject Reservation
-                </Button>
-              </div>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
-    );
-  };
 
   return (
     <div className="container mx-auto px-4 max-w-7xl space-y-6">
@@ -550,7 +548,19 @@ export default function AdminReservationsPage() {
       </Card>
 
       {/* Detail Modal */}
-      <ReservationDetailModal reservation={selectedReservation} />
+      <ReservationDetailModal
+        reservation={selectedReservation}
+        onClose={() => setSelectedReservation(null)}
+        onApprove={() => {
+          setSelectedReservation(null);
+          openConfirmDialog(selectedReservation, 'approved');
+        }}
+        onReject={() => {
+          setSelectedReservation(null);
+          openConfirmDialog(selectedReservation, 'rejected');
+        }}
+        isPending={statusMutation.isPending}
+      />
 
       {/* Confirmation Dialog */}
       <AlertDialog open={confirmAction.isOpen} onOpenChange={(open) => !open && cancelConfirmAction()}>

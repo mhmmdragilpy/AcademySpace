@@ -79,6 +79,7 @@ export class ReservationRepository extends BaseRepository<Reservation> {
                 ri.facility_id,
                 rs.name as status,
                 r.purpose,
+                r.proposal_url,
                 r.requester_id as user_id,
                 r.attendees,
                 to_char(ri.start_datetime, 'YYYY-MM-DD') as date,

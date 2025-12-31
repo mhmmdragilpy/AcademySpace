@@ -262,7 +262,7 @@ export function BookingForm({
     const isSlotAvailable = (slot: string) => !existingBookings[slot];
 
     return (
-        <Card className={`animate-in fade-in slide-in-from-bottom-4 duration-500 ${className}`}>
+        <Card className={`animate-in fade-in slide-in-from-bottom-4 duration-500 w-full ${className}`}>
             <CardHeader>
                 <CardTitle className="text-2xl font-bold text-[#07294B] flex items-center">
                     <span className="bg-[#FA7436] w-2 h-8 mr-3 rounded-full"></span>
@@ -277,9 +277,9 @@ export function BookingForm({
                         <h4 className="font-semibold text-[#07294B] mb-3 flex items-center">
                             ✨ Smart Booking Process
                         </h4>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                            <div className="flex items-start gap-3">
-                                <div className="bg-white p-2 rounded-full shadow-sm text-[#FA7436] font-bold">
+                        <div className="flex flex-col md:flex-row gap-4 text-sm">
+                            <div className="flex items-start gap-3 flex-1">
+                                <div className="bg-white p-2 rounded-full shadow-sm text-[#FA7436] font-bold shrink-0">
                                     1
                                 </div>
                                 <div>
@@ -287,8 +287,8 @@ export function BookingForm({
                                     <p className="text-gray-500">Dukungan file digital (PDF/Img)</p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-3">
-                                <div className="bg-white p-2 rounded-full shadow-sm text-[#FA7436] font-bold">
+                            <div className="flex items-start gap-3 flex-1">
+                                <div className="bg-white p-2 rounded-full shadow-sm text-[#FA7436] font-bold shrink-0">
                                     2
                                 </div>
                                 <div>
@@ -296,8 +296,8 @@ export function BookingForm({
                                     <p className="text-gray-500">Verifikasi H-3 (Reguler) / H-7 (Event)</p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-3">
-                                <div className="bg-white p-2 rounded-full shadow-sm text-[#FA7436] font-bold">
+                            <div className="flex items-start gap-3 flex-1">
+                                <div className="bg-white p-2 rounded-full shadow-sm text-[#FA7436] font-bold shrink-0">
                                     3
                                 </div>
                                 <div>
@@ -309,131 +309,133 @@ export function BookingForm({
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Date and Participants Row */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="date" className="flex items-center gap-2">
-                                <Calendar className="w-4 h-4" />
-                                Tanggal
-                            </Label>
-                            <Input
-                                id="date"
-                                type="date"
-                                value={selectedDate}
-                                disabled
-                                className="bg-gray-100"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="participants" className="flex items-center gap-2">
-                                <Users className="w-4 h-4" />
-                                Jumlah Peserta
-                            </Label>
-                            <Input
-                                id="participants"
-                                type="number"
-                                min="1"
-                                value={participants}
-                                onChange={(e) =>
-                                    setParticipants(e.target.value === "" ? "" : parseInt(e.target.value))
-                                }
-                                required
-                            />
-                        </div>
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-6 w-full">
+                    {/* Date Field */}
+                    <div className="space-y-2 w-full">
+                        <Label htmlFor="date" className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4 text-[#FA7436]" />
+                            Tanggal
+                        </Label>
+                        <Input
+                            id="date"
+                            type="date"
+                            value={selectedDate}
+                            disabled
+                            className="bg-gray-100 w-full"
+                        />
                     </div>
 
-                    {/* Time Selection Row */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="startTime" className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                Waktu Mulai
-                            </Label>
-                            <Select value={startTime} onValueChange={setStartTime}>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Pilih waktu mulai" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {timeSlots.map((time) => (
-                                        <SelectItem
-                                            key={`start-${time}`}
-                                            value={time}
-                                            disabled={!isSlotAvailable(time)}
-                                        >
-                                            {time} {!isSlotAvailable(time) && "(Terpesan)"}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="endTime" className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                Waktu Selesai
-                            </Label>
-                            <Select value={endTime} onValueChange={setEndTime}>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Pilih waktu selesai" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {timeSlots.map((time) => (
-                                        <SelectItem
-                                            key={`end-${time}`}
-                                            value={time}
-                                            disabled={time <= startTime}
-                                        >
-                                            {time}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
+                    {/* Participants Field */}
+                    <div className="space-y-2 w-full">
+                        <Label htmlFor="participants" className="flex items-center gap-2">
+                            <Users className="w-4 h-4 text-[#FA7436]" />
+                            Jumlah Peserta
+                        </Label>
+                        <Input
+                            id="participants"
+                            type="number"
+                            min="1"
+                            value={participants}
+                            onChange={(e) =>
+                                setParticipants(e.target.value === "" ? "" : parseInt(e.target.value))
+                            }
+                            required
+                            className="w-full"
+                        />
                     </div>
 
-                    {/* File Upload */}
-                    <div className="space-y-2">
+                    {/* Start Time Field */}
+                    <div className="space-y-2 w-full">
+                        <Label htmlFor="startTime" className="flex items-center gap-2">
+                            <Clock className="w-4 h-4 text-[#FA7436]" />
+                            Waktu Mulai
+                        </Label>
+                        <Select value={startTime} onValueChange={setStartTime}>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Pilih waktu mulai" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {timeSlots.map((time) => (
+                                    <SelectItem
+                                        key={`start-${time}`}
+                                        value={time}
+                                        disabled={!isSlotAvailable(time)}
+                                    >
+                                        {time} {!isSlotAvailable(time) && "(Terpesan)"}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                    {/* End Time Field */}
+                    <div className="space-y-2 w-full">
+                        <Label htmlFor="endTime" className="flex items-center gap-2">
+                            <Clock className="w-4 h-4 text-[#FA7436]" />
+                            Waktu Selesai
+                        </Label>
+                        <Select value={endTime} onValueChange={setEndTime}>
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Pilih waktu selesai" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {timeSlots.map((time) => (
+                                    <SelectItem
+                                        key={`end-${time}`}
+                                        value={time}
+                                        disabled={time <= startTime}
+                                    >
+                                        {time}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                    {/* File Upload Field */}
+                    <div className="space-y-2 w-full">
                         <Label htmlFor="proposal" className="flex items-center gap-2">
-                            <FileText className="w-4 h-4" />
+                            <FileText className="w-4 h-4 text-[#FA7436]" />
                             Upload Proposal / Rundown (Max 5MB)
                         </Label>
-                        <div className="flex gap-2 items-center">
+                        <div className="flex flex-col gap-2 w-full">
                             <Input
                                 id="proposal"
                                 type="file"
                                 accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                                 onChange={handleFileUpload}
                                 disabled={uploading}
-                                className="max-w-md"
+                                className="w-full"
                             />
-                            {uploading && (
-                                <span className="text-sm text-muted-foreground flex items-center gap-1">
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    Uploading...
-                                </span>
-                            )}
-                            {proposalUrl && (
-                                <span className="text-sm text-green-600 font-medium flex items-center gap-1">
-                                    <CheckCircle className="w-4 h-4" />
-                                    Uploaded
-                                </span>
-                            )}
+                            <div className="flex items-center justify-between">
+                                <p className="text-xs text-muted-foreground">Format: PDF, DOC, JPG, PNG.</p>
+                                {uploading && (
+                                    <span className="text-sm text-muted-foreground flex items-center gap-1">
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                        Uploading...
+                                    </span>
+                                )}
+                                {proposalUrl && !uploading && (
+                                    <span className="text-sm text-green-600 font-medium flex items-center gap-1">
+                                        <CheckCircle className="w-4 h-4" />
+                                        Uploaded
+                                    </span>
+                                )}
+                            </div>
                         </div>
-                        <p className="text-xs text-muted-foreground">Format: PDF, DOC, JPG, PNG.</p>
                     </div>
 
-                    {/* Purpose */}
-                    <div className="space-y-2">
+                    {/* Purpose Field */}
+                    <div className="space-y-2 w-full">
                         <Label htmlFor="purpose">Keperluan</Label>
                         <Textarea
                             id="purpose"
-                            rows={3}
+                            rows={4}
                             placeholder="Tuliskan keperluan penggunaan ruangan..."
                             value={purpose}
                             onChange={(e) => setPurpose(e.target.value)}
                             required
+                            className="w-full resize-none"
                         />
                     </div>
 
@@ -441,7 +443,7 @@ export function BookingForm({
                     <Button
                         type="submit"
                         disabled={submitting || uploading}
-                        className="w-full bg-[#FA7436] hover:bg-[#e5672f] text-white font-medium py-3"
+                        className="w-full bg-[#FA7436] hover:bg-[#e5672f] text-white font-medium py-3 mt-4"
                     >
                         {submitting ? (
                             <>
