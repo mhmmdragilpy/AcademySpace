@@ -1,221 +1,167 @@
-<p align="center">
-  <img src="client/public/logo.svg" alt="Academy Space Logo" width="120" height="120">
-</p>
+<div align="center">
+  <img src="client/public/logo.svg" alt="Academy Space Logo" width="120" height="120" />
+  
+  # Academy Space
+  
+  **Sistem Reservasi Fasilitas Kampus Modern & Terintegrasi**
+  
+  [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)]()
+  [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)]()
+  [![Tech Stack](https://img.shields.io/badge/stack-Next.js%20%7C%20Express%20%7C%20PostgreSQL-7356f9?style=flat-square)]()
 
-<h1 align="center">🏫 Academy Space</h1>
+  <p align="center">
+    <a href="https://academy-space.vercel.app/" target="_blank">
+      <img src="https://img.shields.io/badge/🚀_Live_Demo-Visit_Academy_Space-000000?style=for-the-badge&logo=vercel" alt="Live Demo" />
+    </a>
+  </p>
 
-<p align="center">
-  <strong>Sistem Reservasi Fasilitas Kampus Modern</strong>
-</p>
+  <p>
+    <b>Academy Space</b> adalah solusi digital komprehensif untuk manajemen peminjaman fasilitas kampus. 
+    Dirancang untuk memberikan pengalaman reservasi yang <i>seamless</i>, transparan, dan efisien bagi seluruh civitas akademika.
+  </p>
 
-<p align="center">
-  <a href="#-fitur-utama">Fitur</a> •
-  <a href="#%EF%B8%8F-tech-stack">Tech Stack</a> •
-  <a href="#-struktur-project">Struktur</a> •
-  <a href="#-instalasi">Instalasi</a> •
-  <a href="#-api-endpoints">API</a> •
-  <a href="#-deployment">Deployment</a>
-</p>
+</div>
 
 ---
 
-## 📖 Deskripsi
+## 🏗️ Technology Stack
 
-**Academy Space** adalah aplikasi web full-stack modern untuk manajemen dan reservasi fasilitas kampus. Sistem ini dirancang untuk memudahkan mahasiswa dan dosen dalam memesan ruangan dan gedung secara online, transparan, dan efisien.
+Project ini dibangun menggunakan teknologi modern untuk memastikan performa, skalabilitas, dan *user experience* terbaik.
 
-Dilengkapi dengan sistem deteksi konflik jadwal cerdas dan alur persetujuan digital, Academy Space menghilangkan redundansi dan tumpang tindih dalam pemakaian fasilitas kampus.
+### Frontend / Client
+| Technology | Description |
+| :--- | :--- |
+| **Next.js 16** | Framework React modern dengan App Router & Server Components. |
+| **React 19** | Library UI terkini untuk interaktivitas tinggi. |
+| **TypeScript** | Static typing untuk kode yang lebih robust dan maintainable. |
+| **TailwindCSS 4** | Styling framework utility-first untuk desain responsif. |
+| **Shadcn/UI** | Set komponen UI yang modular dan aksesibel. |
+| **TanStack Query** | Manajemen state server-side yang efisien. |
+| **Zustand** | State management client-side yang ringan. |
+
+### Backend / Server
+| Technology | Description |
+| :--- | :--- |
+| **Node.js & Express** | Runtime & Framework backend yang cepat dan fleksibel. |
+| **PostgreSQL** | Database relasional utama untuk data integritas tinggi. |
+| **Redis** | In-memory store untuk caching dan session management. |
+| **SQL (pg)** | Data Access Layer yang optimal dan native. |
+| **JWT & Bcrypt** | Standar keamanan untuk Autentikasi dan Otorisasi. |
+| **Nodemailer** | Layanan pengiriman notifikasi email. |
+
+---
 
 ## ✨ Fitur Utama
 
-### 👥 Untuk User (Mahasiswa/Dosen)
-- 🔐 **Autentikasi Aman** - Login & Register dengan JWT
-- 🏢 **Eksplorasi Fasilitas** - Cari gedung dan ruangan dengan detail lengkap (Kapasitas, Foto, Fasilitas)
-- 📅 **Smart Availability Check** - Cek ketersediaan ruangan secara real-time dengan kalender interaktif
-- 📝 **Pengajuan Reservasi** - Booking dengan upload proposal dan validasi tanggal
-- ⭐ **Rating & Ulasan** - Berikan bintang dan ulasan untuk ruangan yang telah selesai digunakan
-- 🔔 **Riwayat & Status** - Pantau status pengajuan (Pending/Approved/Rejected)
+Berikut adalah kapabilitas utama yang telah diimplementasikan dalam Academy Space:
 
-### 🛡️ Untuk Admin
-- 📊 **Dashboard Eksekutif** - Statistik penggunaan fasilitas
-- ✅ **Manajemen Persetujuan** - Review pengajuan reservasi dengan cepat
-- 🛠️ **Manajemen Fasilitas** - Tambah/Edit/Hapus gedung dan ruangan, set status maintenance
--  **Konfigurasi Sistem** - Kelola variabel sistem via token
+*   **🔐 Secure Authentication**: Sistem login aman untuk Mahasiswa, Dosen, dan Admin menggunakan JWT.
+*   **🏢 Facility Browsing**: Katalog lengkap gedung dan ruangan dengan detail fasilitas, kapasitas, dan galeri foto.
+*   **📅 Smart Availability System**: Pengecekan ketersediaan ruangan secara *real-time* untuk mencegah jadwal bentrok.
+*   **📝 Automated Reservation Flow**: Proses pengajuan peminjaman yang terstruktur, mulai dari upload proposal hingga approval.
+*   **🔔 Real-time Notifications**: Notifikasi status pengajuan (Disetujui/Ditolak/Pending).
+*   **📊 Admin Dashboard**: Panel kontrol komprehensif untuk manajemen aset, approval reservasi, dan laporan penggunaan.
+*   **⭐ Rating & Feedback**: Sistem ulasan transparan untuk mengevaluasi kondisi fasilitas pasca-pemakaian.
 
-## 🛠️ Tech Stack
+---
 
-### 🖥️ Frontend (Client)
-| Teknologi | Deskripsi |
-|-----------|-----------|
-| **Next.js 16** | Framework React Modern dengan App Router & Turbopack |
-| **React 19** | Library UI terkini |
-| **TypeScript** | Bahasa pemrograman type-safe |
-| **TailwindCSS 4** | Styling framework utility-first |
-| **NextAuth.js 5** | Solusi autentikasi lengkap |
-| **TanStack Query** | Manajemen state server yang powerful |
-| **Zustand** | State management yang ringan |
-| **Shadcn/UI** | Komponen UI yang indah dan aksesibel |
-| **Lucide React** | Ikon modern |
+## 📸 Screenshots
 
-### ⚙️ Backend (Server)
-| Teknologi | Deskripsi |
-|-----------|-----------|
-| **Node.js** | Runtime environment JavaScript |
-| **Express.js** | Framework web server yang cepat dan minimalis |
-| **PostgreSQL** | Database relasional yang robust |
-| **TypeScript** | Keamanan tipe di backend |
-| **JWT** | Standar keamanan token |
-| **Multer** | Middleware upload file |
-| **Winston** | Logger sistem yang handal |
-| **Helmet** | Header keamanan HTTP |
+> *Visualisasi antarmuka aplikasi user dan admin dashboard.*
 
-## 📁 Struktur Project
+| **Login Page** | **Dashboard User** |
+| :---: | :---: |
+| ![Login Page Placeholder](https://via.placeholder.com/600x300?text=Login+Page+Screenshot) | ![Dashboard Placeholder](https://via.placeholder.com/600x300?text=Dashboard+User+Screenshot) |
 
-```
-academy_space/
-├── 📂 client/                    # Frontend (Next.js 16)
-│   ├── 📂 app/                   # App Router
-│   │   ├── 📂 admin/             # Dashboard Admin
-│   │   │   ├── 📂 facilities/    # Kelola fasilitas
-│   │   │   ├── 📂 reservations/  # Kelola reservasi
-│   │   │   └── 📂 system-tokens/ # System tokens
-│   │   ├── 📂 availability/      # Halaman Detail Ruangan & Booking
-│   │   ├── 📂 cek-ketersediaan/  # Landing Page Pencarian
-│   │   ├── 📂 login/             # Auth Pages
-│   │   └── 📂 reservations/      # User Dashboard
-│   ├── 📂 components/            # Reusable Components
-│   ├── 📂 hooks/                 # Custom React Hooks (React Query)
-│   └── 📂 lib/                   # Utilities (API client, etc)
-│
-├── 📂 server/                    # Backend (Express)
-│   ├── 📂 src/
-│   │   ├── 📂 config/            # Env Configuration
-│   │   ├── 📂 controllers/       # Request Handlers
-│   │   ├── 📂 db/                # Database Setup & Migrations
-│   │   ├── 📂 middlewares/       # Auth, Error, Upload Middleware
-│   │   ├── 📂 repositories/      # Data Access Layer (SQL Queries)
-│   │   ├── 📂 routes/            # API Route Definitions
-│   │   ├── 📂 services/          # Business Logic
-│   │   └── index.ts              # Entry Point
-│   └── 📂 uploads/               # User Uploaded Proposals
-│
-├── docker-compose.yml            # Container Orchestration
-└── README.md                     # Dokumentasi Project
-```
+| **Facility Detail** | **Admin Panel** |
+| :---: | :---: |
+| ![Detail Placeholder](https://via.placeholder.com/600x300?text=Facility+Detail+Screenshot) | ![Admin Placeholder](https://via.placeholder.com/600x300?text=Admin+Panel+Screenshot) |
 
-## 🗄️ Database Schema
+---
 
-Sistem menggunakan PostgreSQL dengan skema relasional yang teroptimasi:
+## ⚙️ Prerequisites
 
-```
-┌─────────────┐     ┌─────────────────┐     ┌─────────────┐
-│    users    │────<│   reservations  │>────│  facilities │
-└─────────────┘     └─────────────────┘     └─────────────┘
-       │                    │                      │
-       │                    │                      │
-       ▼                    ▼                      ▼
-┌─────────────┐     ┌──────────────────┐    ┌─────────────┐
-│notifications│     │reservation_items │    │  buildings  │
-└─────────────┘     └──────────────────┘    └─────────────┘
-       │                    │                      │
-       │                    ▼                      │
-       │            ┌─────────────┐                │
-       └───────────>│   ratings   │<───────────────┘
-                    └─────────────┘
-```
+Sebelum memulai instalasi, pastikan environment Anda telah memenuhi syarat berikut:
 
-## 🚀 Instalasi & Menjalankan
+*   **Node.js**: Versi `20.x` atau lebih baru.
+*   **PostgreSQL**: Versi `15.x` siap berjalan.
+*   **Redis**: (Optional namun direkomendasikan untuk fitur lanjutan).
+*   **Git**: Untuk cloning repository.
 
-### Prerequisites
-- Node.js >= 20.x
-- PostgreSQL >= 15.x
-- Git
+---
 
-### 1️⃣ Clone Repository
+## 🚀 Installation & Getting Started
+
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda.
+
+### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/academy-space.git
-cd academy_space
+git clone https://github.com/mhmmdragilpy/AcademySpace.git
+cd AcademySpace
 ```
 
-### 2️⃣ Install Dependencies
+### 2. Install Dependencies
+Install dependency untuk kedua sisi (Server & Client).
 ```bash
-# Backend
+# Install Server Dependencies
 cd server
 npm install
 
-# Frontend
+# Install Client Dependencies
 cd ../client
 npm install
 ```
 
-### 3️⃣ Setup Environment Variables
+### 3. Environment Setup
+Buat file `.env` di folder `server` dan `client` sesuai dengan contoh berikut.
 
-**Server** (`server/.env`):
+**Server (`server/.env`)**:
 ```env
 NODE_ENV=development
 PORT=5000
-DATABASE_URL=postgresql://postgres:password@localhost:5432/academy_space
-JWT_SECRET=rahasia_negara_api
-CLIENT_URL=http://localhost:3000
-CORS_ORIGIN=http://localhost:3000
+DATABASE_URL=postgresql://user:password@localhost:5432/academy_space
+JWT_SECRET=your_super_secret_key
+# Konfigurasi tambahan (Redis, Email, etc) jika dperlukan
 ```
 
-**Client** (`client/.env`):
+**Client (`client/.env`)**:
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
-AUTH_SECRET=rahasia_next_auth
+AUTH_SECRET=your_auth_secret
 ```
 
-### 4️⃣ Setup Database
+### 4. Database Setup
+Lakukan migrasi skema dan *seeding* data awal.
+
 ```bash
 cd server
 
 # Setup Schema (Drop & Create Tables)
 npx tsx src/db/setup.ts
 
-# Seed Initial Data (Dummy Data)
-npm run seed
+# Seeding Data Dummy
+npx tsx src/db/seed.ts
 ```
 
-### 5️⃣ Jalankan Aplikasi
+### 5. Running the Application
+Jalankan backend dan frontend pada terminal yang berbeda.
 
-**Mode Development** (Jalankan di 2 terminal terpisah):
-
-Terminal 1 (Backend):
+**Terminal 1 (Backend)**:
 ```bash
 cd server
 npm run dev
-# Server running at http://localhost:5000
+# Server berjalan di http://localhost:5000
 ```
 
-Terminal 2 (Frontend):
+**Terminal 2 (Frontend)**:
 ```bash
 cd client
 npm run dev
-# Client running at http://localhost:3000
+# Aplikasi dapat diakses di http://localhost:3000
 ```
-
-## 📡 API Endpoints Utama
-
-### Auth
-- `POST /auth/login` - Login user/admin
-- `POST /auth/register` - Registrasi user
-
-### Facilities
-- `GET /facilities` - List semua fasilitas
-- `GET /facilities/:id` - Detail fasilitas
-- `GET /facilities/:id/reservations` - Cek jadwal fasilitas
-
-### Reservations
-- `POST /reservations` - Buat reservasi baru
-- `GET /reservations/my` - List reservasi user login
-- `POST /reservations/:id/cancel` - Batalkan reservasi
-
-### Ratings
-- `POST /ratings` - Submit ulasan (hanya setelah reservasi selesai)
-- `GET /ratings/facility/:id` - Lihat ulasan fasilitas
 
 ---
 
-<p align="center">
-  Made with ❤️ by <strong>Academy Space Team</strong>
-</p>
+## 👤 Author
+
+Developed with ❤️ by **Mang Do-san**

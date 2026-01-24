@@ -74,7 +74,11 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                    <p>&copy; {new Date().getFullYear()} Academy Space. All rights reserved.</p>
+                    <div className="flex flex-col md:flex-row items-center gap-2">
+                        <p>&copy; {new Date().getFullYear()} Academy Space. All rights reserved.</p>
+                        <span className="hidden md:block w-1 h-1 bg-gray-500 rounded-full"></span>
+                        <p>Developed with <span className="text-red-500">❤️</span> by <span className="text-gray-300 font-medium hover:text-white transition-colors cursor-pointer">Mang Do-san</span></p>
+                    </div>
                     <div className="flex gap-6">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
