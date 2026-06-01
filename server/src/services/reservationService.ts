@@ -3,7 +3,7 @@ import { FacilityRepository } from '../repositories/FacilityRepository.js';
 import { UserRepository } from '../repositories/UserRepository.js';
 import { NotificationRepository } from '../repositories/NotificationRepository.js';
 import { query } from '../db/index.js'; // For raw queries if needed, but try to avoid
-import logger from '../utils/logger.js';
+import { logger } from '../utils/logger.js';
 import { AppError } from '../utils/AppError.js';
 
 // Status Repository (Inline for now or generic)

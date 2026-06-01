@@ -156,7 +156,7 @@ export default function Navigation() {
                       <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-white/20 hover:ring-white/40">
                         <Avatar className="h-9 w-9">
                           <AvatarImage
-                            src={userProfile?.avatar_url || session.user?.image || undefined}
+                            src={userProfile?.profile_picture_url || session.user?.image || undefined}
                             alt={userProfile?.full_name || session.user?.name || ""}
                             className="object-cover"
                           />

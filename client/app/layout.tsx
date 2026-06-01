@@ -1,4 +1,4 @@
-import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -12,6 +12,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "Academy Space - Sistem Reservasi Fasilitas Kampus",
+  description: "Platform reservasi fasilitas kampus yang modern, efisien, dan paperless. Kelola peminjaman ruangan dengan mudah dan transparan.",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

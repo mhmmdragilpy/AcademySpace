@@ -1,16 +1,15 @@
-export type UserRole = 'admin' | 'user' | 'admin_verificator';
+export type UserRole = 'admin' | 'user';
 export type ApprovalAction = 'PENDING' | 'APPROVED' | 'REJECTED' | 'CANCELED';
 export type AuditChange = 'CREATE' | 'UPDATE' | 'DELETE' | 'CANCEL';
 
 export interface User {
     user_id: number;
-    email: string;
     password_hash: string;
     full_name: string;
     role: UserRole;
     profile_picture_url?: string | null;
     verification_token?: string | null;
-    username?: string | null;
+    username: string;
     recovery_token?: string | null;
     is_suspended?: boolean;
     created_at: Date;
@@ -65,6 +64,7 @@ export interface Reservation {
     status_id: number;
     purpose: string;
     attendees?: number | null;
+    proposal_url?: string | null;
     is_canceled: boolean;
     created_at: Date;
     updated_at: Date;
@@ -106,15 +106,6 @@ export interface Notification {
     message?: string | null;
     is_read: boolean;
     status_id?: number | null;
-    created_at: Date;
-}
-
-export interface PasswordResetToken {
-    token_id: number;
-    user_id: number;
-    token: string;
-    expires_at?: Date | null;
-    used: boolean;
     created_at: Date;
 }
 

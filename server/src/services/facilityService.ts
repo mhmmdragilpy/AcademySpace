@@ -28,10 +28,7 @@ export class FacilityService {
                 facilities = facilities.filter((f: any) => !conflictingIds.includes(f.facility_id));
             }
 
-            // Conflicting IDs filter
-            if (conflictingIds.length > 0) {
-                facilities = facilities.filter((f: any) => !conflictingIds.includes(f.facility_id));
-            }
+
 
             // Maintenance exclusion removal - User wants to see maintenance status
             // The frontend will handle disabling the booking button.

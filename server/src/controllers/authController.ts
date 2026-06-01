@@ -8,6 +8,7 @@ import { userService } from "../services/userService.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { AppError } from "../utils/AppError.js";
 import { sendSuccess } from "../utils/response.js";
+import { env } from "../config/env.js";
 
 // [USE CASE #1] Membuat atau Masuk Akun - Proses Registrasi User Baru
 export const register = catchAsync(async (req: Request, res: Response) => {
@@ -59,7 +60,7 @@ export const login = catchAsync(async (req: Request, res: Response) => {
 
     const token = jwt.sign(
         { id: user.user_id, role: user.role },
-        process.env.JWT_SECRET || "secret_key",
+        env.JWT_SECRET,
         { expiresIn: "1d" }
     );
 

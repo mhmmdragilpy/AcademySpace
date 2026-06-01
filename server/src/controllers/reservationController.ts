@@ -8,7 +8,7 @@
 import type { Request, Response } from "express";
 import { reservationService } from "../services/reservationService.js";
 import { query } from "../db/index.js";
-import logger from "../utils/logger.js";
+import { logger } from "../utils/logger.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { sendSuccess, sendCreated, sendError } from "../utils/response.js";
 import { AppError } from "../utils/AppError.js";

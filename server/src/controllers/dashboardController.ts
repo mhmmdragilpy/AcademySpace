@@ -1,7 +1,7 @@
 // USE CASE #15: Melihat Analitik dan Pelaporan - [Controller]
 import type { Request, Response } from "express";
 import { query } from "../db/index.js";
-import logger from "../utils/logger.js";
+import { logger } from "../utils/logger.js";
 
 // [USE CASE #15] Melihat Analitik dan Pelaporan - Get dashboard stats
 export const getDashboardStats = async (req: Request, res: Response) => {

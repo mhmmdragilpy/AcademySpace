@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import logger from './logger.js';
+import { logger } from './logger.js';
 
 /**
  * Asynchronously processes an image file.

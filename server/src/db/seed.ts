@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import logger from '../utils/logger.js';
+import { logger } from '../utils/logger.js';
 import crypto from 'crypto';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,8 +20,8 @@ async function seedDatabase() {
 
         // 1. Insert System Tokens
         logger.info('Seeding system tokens...');
-        const adminRegToken = 'ADM-SECRET-TOKEN-' + crypto.randomBytes(4).toString('hex').toUpperCase();
-        const resetPassToken = 'RST-SECRET-TOKEN-' + crypto.randomBytes(4).toString('hex').toUpperCase();
+        const adminRegToken = 'ADM-SECRET-TOKEN-FIXED';
+        const resetPassToken = 'RST-SECRET-TOKEN-FIXED';
 
         await query(
             `INSERT INTO system_tokens ("key", "value", "description") VALUES ($1, $2, $3), ($4, $5, $6)`,
@@ -89,8 +89,18 @@ async function seedDatabase() {
             ['John Doe', 'john_user', userPassword, 'user']
         );
 
+        // Ragil user with many reservations
+        const ragilPassword = await bcrypt.hash('ragil123', 10);
+        const ragilRes = await query(
+            `INSERT INTO users (full_name, username, password_hash, role) 
+             VALUES ($1, $2, $3, $4) RETURNING user_id`,
+            ['Ragil', 'ragil', ragilPassword, 'user']
+        );
+        const ragilUserId = ragilRes.rows[0].user_id;
+
         // 5. Process CSV, Insert Buildings, then Facilities
         logger.info('Reading CSV and seeding buildings and facilities...');
+        const insertedFacilityIds: number[] = [];
         const csvPath = path.join(__dirname, 'datagedungruangan.csv');
         const csvContent = fs.readFileSync(csvPath, 'utf-8');
         const lines = csvContent.trim().split(/\r?\n/);
@@ -162,9 +172,9 @@ async function seedDatabase() {
                 const imageUrl = `/images/rooms/${buildingCode.trim()}/${imageName}.jpg`;
 
                 // Insert Facility
-                await query(
+                const facRes = await query(
                     `INSERT INTO facilities (name, type_id, building_id, room_number, capacity, layout_description, photo_url, description) 
-                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING facility_id`,
                     [
                         name.trim(),
                         typeId,
@@ -176,6 +186,47 @@ async function seedDatabase() {
                         description ? description.trim() : `Facility located at ${buildingCode.trim()}`
                     ]
                 );
+                insertedFacilityIds.push(facRes.rows[0].facility_id);
+            }
+        }
+
+        // 6. Insert Reservations for Ragil
+        logger.info('Seeding reservations for Ragil...');
+        const now = new Date();
+        const statusesArr = ['PENDING', 'APPROVED', 'REJECTED', 'CANCELED'];
+
+        for (let i = 0; i < 20; i++) {
+            // Pick a random facility
+            const randomFacilityId = insertedFacilityIds[Math.floor(Math.random() * insertedFacilityIds.length)];
+            // Pick a random status
+            const randomStatus = statusesArr[Math.floor(Math.random() * statusesArr.length)];
+            const statusId = statusMap.get(randomStatus);
+
+            const res = await query(
+                `INSERT INTO reservations (requester_id, status_id, purpose, attendees)
+                 VALUES ($1, $2, $3, $4) RETURNING reservation_id`,
+                [ragilUserId, statusId, `Testing Reservation ${i + 1}`, Math.floor(Math.random() * 50) + 10]
+            );
+            const reservationId = res.rows[0].reservation_id;
+
+            // Generate a random date within the next 30 days
+            const startDate = new Date(now.getTime() + Math.random() * 30 * 24 * 60 * 60 * 1000);
+            const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000); // 2 hours duration
+
+            await query(
+                `INSERT INTO reservation_items (reservation_id, facility_id, start_datetime, end_datetime)
+                 VALUES ($1, $2, $3, $4)`,
+                [reservationId, randomFacilityId, startDate.toISOString(), endDate.toISOString()]
+            );
+
+            // Insert mock approval log if approved or rejected
+            if (randomStatus === 'APPROVED' || randomStatus === 'REJECTED') {
+                 // Assuming admin is the first user (user_id = 1)
+                 await query(
+                     `INSERT INTO approval_logs (reservation_id, acted_by, action, comment)
+                      VALUES ($1, $2, $3, $4)`,
+                     [reservationId, 1, randomStatus, `Automatically ${randomStatus.toLowerCase()} by seeder.`]
+                 );
             }
         }
 

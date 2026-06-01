@@ -1,18 +1,21 @@
 import { createClient } from 'redis';
-import logger from '../utils/logger.js';
+import { logger } from '../utils/logger.js';
 
 const redisClient = createClient({
     url: process.env.REDIS_URL || 'redis://localhost:6379'
 });
 
-redisClient.on('error', (err) => logger.error('Redis Client Error', err));
+redisClient.on('error', () => {
+    // Silently ignore Redis errors — Redis is optional
+});
 
-// Connect to Redis only if environment variable is set or we want to default
-// In a real app we might want to await this connection at startup
-if (process.env.REDIS_URL || process.env.NODE_ENV === 'development') {
+// Only connect to Redis if REDIS_URL is explicitly configured
+if (process.env.REDIS_URL) {
     redisClient.connect().catch(err => {
         logger.warn("Failed to connect to Redis. Caching will be disabled.", err.message);
     });
+} else {
+    logger.info("⚠️ Redis not configured (REDIS_URL not set). Caching disabled.");
 }
 
 export { redisClient };

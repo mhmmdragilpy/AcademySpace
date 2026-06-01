@@ -10,7 +10,7 @@ const envSchema = z.object({
     DATABASE_URL: z.string().url(),
     REDIS_URL: z.string().url().optional(),
     JWT_SECRET: z.string().min(10),
-    CLIENT_URL: z.string().url().default('http://localhost:3000'),
+    FRONTEND_URL: z.string().url().default('http://localhost:3000'),
     CORS_ORIGIN: z.string().default('http://localhost:3000'),
 });
 

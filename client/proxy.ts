@@ -7,24 +7,25 @@ export default auth((req) => {
     const role = (user as any)?.role;
     const { pathname } = req.nextUrl;
 
-    // Define route types
-    const isAuthRoute = pathname === "/login" || pathname === "/register";
-    const isAdminRoute = pathname.startsWith("/admin");
+    // Define route types (using actual PascalCase route paths)
+    const isAuthRoute = pathname === "/LoginPage" || pathname === "/RegisterPage";
+    const isAdminRoute = pathname.startsWith("/AdminDashboard");
     const isUserRoute =
-        pathname.startsWith("/booking") ||
-        pathname.startsWith("/reservations") ||
-        pathname === "/profile";
+        pathname.startsWith("/FacilityDetailPage") ||
+        pathname.startsWith("/MyReservationsPage") ||
+        pathname.startsWith("/EditReservationPage") ||
+        pathname === "/ProfilePage" ||
+        pathname === "/NotificationsPage";
 
     const isPublicRoute =
         pathname === "/" ||
-        pathname === "/facilities" ||
-        pathname === "/guide";
+        pathname === "/GuidePage";
 
     // 1. Handling Authentication Routes (Login/Register)
     if (isAuthRoute) {
         if (isLoggedIn) {
             if (role === 'admin') {
-                return NextResponse.redirect(new URL('/admin/dashboard', req.url));
+                return NextResponse.redirect(new URL('/AdminDashboard', req.url));
             }
             return NextResponse.redirect(new URL('/', req.url));
         }
@@ -33,7 +34,7 @@ export default auth((req) => {
 
     // 2. Protected Routes Check
     if (!isLoggedIn && (isAdminRoute || isUserRoute)) {
-        return NextResponse.redirect(new URL('/login', req.url));
+        return NextResponse.redirect(new URL('/LoginPage', req.url));
     }
 
     // 3. Admin Routes Protection
@@ -50,7 +51,7 @@ export default auth((req) => {
             // If admin tries to access user routes, redirect to admin dashboard
             // If authenticated but no role (weird), redirect home
             if (role === 'admin') {
-                return NextResponse.redirect(new URL('/admin/dashboard', req.url));
+                return NextResponse.redirect(new URL('/AdminDashboard', req.url));
             }
             return NextResponse.next();
         }

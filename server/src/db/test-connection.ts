@@ -1,5 +1,5 @@
 import { query, pool } from './index.js';
-import logger from '../utils/logger.js';
+import { logger } from '../utils/logger.js';
 
 async function testConnection() {
     try {

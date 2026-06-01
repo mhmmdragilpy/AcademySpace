@@ -18,7 +18,7 @@ export const reservationStatusSchema = z.object({
         id: z.coerce.number().int().positive(),
     }),
     body: z.object({
-        status: z.enum(['approved', 'rejected', 'cancelled', 'ongoing', 'completed']),
+        status: z.enum(['approved', 'rejected', 'canceled']),
     }),
 });
 

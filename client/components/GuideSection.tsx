@@ -1,10 +1,7 @@
 // [USE CASE #17] Melihat Guide Penggunaan Website - Text Panduan
 "use client";
 
-import { useState } from 'react';
-
 const GuideSection = () => {
-  const [expanded, setExpanded] = useState(false);
 
   const guideContent = [
     "Akses menu 'Availability' untuk melihat ketersediaan ruangan secara real-time dan transparan.",

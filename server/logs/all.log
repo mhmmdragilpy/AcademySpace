@@ -285,3 +285,118 @@
 2025-12-31 03:18:42:1842 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
 2025-12-31 03:19:08:198 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
 2025-12-31 03:20:07:207 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-05-20 13:43:38:4338 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-20 13:43:38:4338 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:38:4338 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-20 13:43:39:4339 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:39:4339 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:39:4339 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:40:4340 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:41:4341 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:42:4342 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:44:4344 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:47:4347 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:49:4349 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:51:4351 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:53:4353 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:55:4355 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:57:4357 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:59:4359 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:01:441 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:03:443 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:05:445 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:07:447 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:10:4410 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:12:4412 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:14:4414 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:16:4416 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:18:4418 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:20:4420 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:22:4422 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:24:4424 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:26:4426 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:29:4429 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:31:4431 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:33:4433 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:35:4435 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:37:4437 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:39:4439 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:41:4441 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:48:07:487 [32minfo[39m: [32mDatabase initialized successfully![39m
+2026-05-20 13:48:39:4839 [32minfo[39m: [32mStarting database seeding...[39m
+2026-05-20 13:48:39:4839 [32minfo[39m: [32mClearing existing data...[39m
+2026-05-20 13:48:39:4839 [32minfo[39m: [32mSeeding system tokens...[39m
+2026-05-20 13:48:39:4839 [32minfo[39m: [32mSeeding facility types...[39m
+2026-05-20 13:48:39:4839 [32minfo[39m: [32mSeeding reservation statuses...[39m
+2026-05-20 13:48:39:4839 [32minfo[39m: [32mCreating users...[39m
+2026-05-20 13:48:40:4840 [32minfo[39m: [32mReading CSV and seeding buildings and facilities...[39m
+2026-05-20 13:48:40:4840 [32minfo[39m: [32mDatabase seeding completed successfully![39m
+2026-05-20 13:48:50:4850 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-20 13:48:50:4850 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-20 13:48:50:4850 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-20 13:52:52:5252 [33mwarn[39m: [33m400 - User with this username already exists - /api/auth/register - POST - ::1[39m
+2026-05-20 14:12:31:1231 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-20 14:12:31:1231 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-20 14:12:31:1231 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-20 14:22:31:2231 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-20 14:22:31:2231 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-20 14:22:31:2231 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-20 14:29:31:2931 [33mwarn[39m: [33m400 - User with this username already exists - /api/auth/register - POST - ::1[39m
+2026-05-20 14:35:04:354 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mStarting database seeding...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mClearing existing data...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mSeeding system tokens...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mSeeding facility types...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mSeeding reservation statuses...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mCreating users...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mReading CSV and seeding buildings and facilities...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mSeeding reservations for Ragil...[39m
+2026-05-20 14:40:28:4028 [32minfo[39m: [32mDatabase seeding completed successfully![39m
+2026-05-20 14:41:15:4115 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-20 14:41:15:4115 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-20 14:41:15:4115 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-20 14:41:15:4115 [33mwarn[39m: [33m404 - User not found - /api/users/profile - GET - ::1[39m
+2026-05-20 14:41:15:4115 [33mwarn[39m: [33m404 - User not found - /api/users/profile - GET - ::1[39m
+2026-05-20 14:41:31:4131 [33mwarn[39m: [33m404 - User not found - /api/users/profile - GET - ::1[39m
+2026-05-20 14:41:32:4132 [33mwarn[39m: [33m404 - User not found - /api/users/profile - GET - ::1[39m
+2026-05-31 22:59:49:5949 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-31 22:59:49:5949 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-31 22:59:49:5949 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-31 23:04:28:428 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-31 23:04:28:428 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-31 23:04:28:428 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-31 23:09:03:93 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-31 23:09:03:93 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-31 23:09:03:93 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-31 23:13:59:1359 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-31 23:13:59:1359 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-31 23:13:59:1359 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-31 23:22:51:2251 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-31 23:22:52:2252 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-31 23:22:52:2252 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-31 23:27:54:2754 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-05-31 23:27:57:2757 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-05-31 23:36:34:3634 [33mwarn[39m: [33m400 - Kapasitas tidak mencukupi, sisa hanya 300 - /api/reservations - POST - ::1[39m
+2026-05-31 23:54:43:5443 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-05-31 23:54:43:5443 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-05-31 23:54:44:5444 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-05-31 23:57:47:5747 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mStarting database seeding...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mClearing existing data...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mSeeding system tokens...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mSeeding facility types...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mSeeding reservation statuses...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mCreating users...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mReading CSV and seeding buildings and facilities...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mSeeding reservations for Ragil...[39m
+2026-06-01 00:00:58:058 [32minfo[39m: [32mDatabase seeding completed successfully![39m
+2026-06-01 00:01:25:125 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-06-01 00:01:25:125 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-06-01 00:01:25:125 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-06-01 00:05:46:546 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-06-01 00:49:00:490 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-06-01 00:49:15:4915 [33mwarn[39m: [33m401 - Invalid credentials - /api/auth/login - POST - ::1[39m
+2026-06-01 17:12:05:125 [32minfo[39m: [32m⚠️ Redis not configured (REDIS_URL not set). Caching disabled.[39m
+2026-06-01 17:12:05:125 [32minfo[39m: [32m🚀 Server running on http://localhost:5000[39m
+2026-06-01 17:12:05:125 [32minfo[39m: [32m✅ Connected to Database[39m
+2026-06-01 17:19:21:1921 [33mwarn[39m: [33m400 - User with this username already exists - /api/auth/register - POST - ::1[39m

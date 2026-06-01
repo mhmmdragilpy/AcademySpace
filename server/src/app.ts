@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import dotenv from "dotenv";
 import { query, pool } from "./db/index.js";
 import apiRoutes from "./routes/index.js";
 import { logger } from "./utils/logger.js";
@@ -9,7 +8,6 @@ import { errorHandler } from "./middlewares/errorHandler.js";
 import { apiLimiter } from "./middlewares/rateLimiter.js";
 import { env } from "./config/env.js";
 
-dotenv.config();
 
 export const app = express();
 
@@ -27,9 +25,9 @@ app.use(
             scriptSrc: ["'self'", "'unsafe-inline'"],
             styleSrc: ["'self'", "'unsafe-inline'"],
             imgSrc: ["'self'", "data:", "https:", "http:", "blob:"],
-            connectSrc: ["'self'", env.CLIENT_URL, "http://localhost:3000"],
-            frameSrc: ["'self'", env.CLIENT_URL, "blob:"],
-            frameAncestors: ["'self'", env.CLIENT_URL],
+            connectSrc: ["'self'", env.FRONTEND_URL, "http://localhost:3000"],
+            frameSrc: ["'self'", env.FRONTEND_URL, "blob:"],
+            frameAncestors: ["'self'", env.FRONTEND_URL],
         },
     })
 );

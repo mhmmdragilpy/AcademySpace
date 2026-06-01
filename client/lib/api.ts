@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import { getSession } from "next-auth/react";
-import { toast } from "sonner";
+import { getSession, signOut } from "next-auth/react";
 import { ApiResponse } from "../types";
 
 const api = axios.create({
@@ -32,6 +31,8 @@ api.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
     return Promise.reject(error);
 });
 
+let isSigningOut = false;
+
 // Response Interceptor
 api.interceptors.response.use(
     (response: AxiosResponse<ApiResponse<any>>) => {
@@ -44,17 +45,12 @@ api.interceptors.response.use(
         return response.data;
     },
     (error: AxiosError<ApiResponse<any>>) => {
-        const message = error.response?.data?.message || error.message || "An unexpected error occurred";
-
-        // Show toast for errors (only on client)
-        if (typeof window !== "undefined") {
-            toast.error(message);
-        }
-
-        // Handle 401 Unauthorized (optional: redirect to login)
+        // Handle 401 Unauthorized — sign out and redirect to login
         if (error.response?.status === 401) {
-            // Logic to redirect or sign out
-            // const { data: session } = useSession(); // Can't use hook here
+            if (typeof window !== "undefined" && !isSigningOut) {
+                isSigningOut = true;
+                signOut({ callbackUrl: '/LoginPage', redirectTo: '/LoginPage' } as any);
+            }
         }
 
         return Promise.reject(error);

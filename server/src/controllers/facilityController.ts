@@ -6,7 +6,7 @@ import type { Request, Response } from "express";
 import { facilityService } from "../services/facilityService.js";
 import { query } from "../db/index.js";
 import { redisClient } from "../db/redis.js";
-import logger from "../utils/logger.js";
+import { logger } from "../utils/logger.js";
 import { sendSuccess, sendError, sendCreated } from "../utils/response.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { AppError } from "../utils/AppError.js";

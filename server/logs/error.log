@@ -12,3 +12,38 @@
 [31m    at async FacilityRepository.findWithDetails (C:\academy_space\server\src\repositories\FacilityRepository.ts:72:24)[39m
 [31m    at async FacilityService.findAll (C:\academy_space\server\src\services\facilityService.ts:18:26)[39m
 [31m    at async <anonymous> (C:\academy_space\server\src\controllers\facilityController.ts:22:20)[39m
+2026-05-20 13:43:38:4338 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:39:4339 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:39:4339 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:39:4339 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:40:4340 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:41:4341 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:42:4342 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:44:4344 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:47:4347 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:49:4349 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:51:4351 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:53:4353 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:55:4355 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:57:4357 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:43:59:4359 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:01:441 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:03:443 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:05:445 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:07:447 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:10:4410 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:12:4412 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:14:4414 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:16:4416 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:18:4418 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:20:4420 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:22:4422 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:24:4424 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:26:4426 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:29:4429 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:31:4431 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:33:4433 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:35:4435 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:37:4437 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:39:4439 [31merror[39m: [31mRedis Client Error[39m
+2026-05-20 13:44:41:4441 [31merror[39m: [31mRedis Client Error[39m

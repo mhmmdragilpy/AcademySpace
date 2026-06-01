@@ -45,10 +45,10 @@ export default function Footer() {
                     <div>
                         <h3 className="text-white font-semibold text-lg mb-4">Support</h3>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
-                            <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Support</Link></li>
-                            <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-                            <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                            <li><Link href="#" className="hover:text-primary transition-colors">FAQ</Link></li>
+                            <li><Link href="#" className="hover:text-primary transition-colors">Contact Support</Link></li>
+                            <li><Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+                            <li><Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
                         </ul>
                     </div>
 
@@ -80,9 +80,9 @@ export default function Footer() {
                         <p>Developed with <span className="text-red-500">❤️</span> by <span className="text-gray-300 font-medium hover:text-white transition-colors cursor-pointer">Mang Do-san</span></p>
                     </div>
                     <div className="flex gap-6">
-                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-                        <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Terms</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
                     </div>
                 </div>
             </div>

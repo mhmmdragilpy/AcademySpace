@@ -552,12 +552,14 @@ export default function AdminReservationsPage() {
         reservation={selectedReservation}
         onClose={() => setSelectedReservation(null)}
         onApprove={() => {
+          const reservation = selectedReservation;
           setSelectedReservation(null);
-          openConfirmDialog(selectedReservation, 'approved');
+          openConfirmDialog(reservation, 'approved');
         }}
         onReject={() => {
+          const reservation = selectedReservation;
           setSelectedReservation(null);
-          openConfirmDialog(selectedReservation, 'rejected');
+          openConfirmDialog(reservation, 'rejected');
         }}
         isPending={statusMutation.isPending}
       />
